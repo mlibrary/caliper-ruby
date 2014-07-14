@@ -12,6 +12,8 @@ Gem::Specification.new do |g|
 
   g.files = Dir["{app,config,db,lib}/**/*", "Rakefile"]
 
+  g.add_dependency "activesupport"
+
   g.add_development_dependency "rspec"
   g.add_development_dependency "simplecov"
   g.add_development_dependency "simplecov-rcov"

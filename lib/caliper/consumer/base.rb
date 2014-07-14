@@ -13,11 +13,11 @@ module Caliper
       def measure(action, learning_context, activity_context, timestamp); end
 
       def with_debug?
-        @options[:debug]
+        @options[:debug] || false
       end
 
       def with_ssl?
-        @options[:ssl]
+        @options[:ssl] || false
       end
 
       def on_error(error)
