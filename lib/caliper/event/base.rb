@@ -1,7 +1,7 @@
 module Caliper
   module Event
     class Base
-      attr_accessor :action, :agent, :context, :activity_context, :learning_context, :type
+      attr_accessor :action, :agent, :context, :object, :type, :start_at, :end_at
     end
   end
 end
