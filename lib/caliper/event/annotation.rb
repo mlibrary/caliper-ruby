@@ -4,8 +4,9 @@ module Caliper
       attr_accessor :location
 
       def initialize(action)
+        @context = "http://purl.imsglobal.org/ctx/caliper/v1/AnnotationEvent"
+		    @type = "http://purl.imsglobal.org/caliper/v1/AnnotationEvent"
         # only subclasses should be instantiated
-        raise NotImplementedError unless @type
         @action = action
       end
     end
