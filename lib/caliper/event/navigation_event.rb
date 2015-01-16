@@ -1,12 +1,23 @@
+require_relative 'event'
+require_relative 'event_type'
+require_relative 'event_context'
+require_relative '../profiles/profile_actions'
+
 module Caliper
   module Event
-    class Navigation < Base
-      attr_accessor :from_resource, :operation_type
+    class NavigationEvent < Event
+      attr_accessor :context,
+                    :type,
+                    :action,
+                    :object,
+                    :from_resource, #the resource from which the navigation starts
+                    :target
 
       def initialize
-        @context = "some uri"
-        @type = "NavigationEvent"
-        @action = "navigatedTo"
+	      super
+	      @context = EventContext::NAVIGATION
+	      @type = EventType::NAVIGATION
+	      @action = Caliper::Profiles::ProfileActions::NAVIGATED_TO
       end
     end
   end

@@ -1,18 +1,19 @@
 require "json"
-require_relative 'base'
 
+##
+##  The base Caliper Entity.  Analogous to a schema.org Thing.
+##
 module Caliper
   module Entities
-    class Agent < Caliper::Entities::Entity
-	    include FOAF::Agent
+    class Entity
 
-			LIS_PERSON = "http://purl.imsglobal.org/caliper/v1/lis/Person"
-			LIS_ORGANIZATION = "http://purl.imsglobal.org/caliper/v1/lis/Organization"
-		  SOFTWARE_APPLICATION = "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
+			attr_accessor :id, :name, :last_modified
 
-	    def initialize(type)
-				@type=type
-	    end
+			def initialize()
+				@id = ""
+				@name = ""
+				@last_modified = ""
+			end
     end
   end
 end

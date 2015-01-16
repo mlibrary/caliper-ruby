@@ -5,19 +5,17 @@ require_relative '../profiles/profile_actions'
 
 module Caliper
   module Event
-    class NavigationEvent < Event
+    class OutcomeEvent < Event
       attr_accessor :context,
                     :type,
                     :action,
                     :object,
-                    :from_resource, #the resource from which the navigation starts
-                    :target
+                    :generated
 
       def initialize
 	      super
-	      @context = EventContext::NAVIGATION
-	      @type = EventType::NAVIGATION
-	      @action = ProfileActions::NAVIGATED_TO
+	      @context = EventContext::OUTCOME
+	      @type = EventType::OUTCOME
       end
     end
   end

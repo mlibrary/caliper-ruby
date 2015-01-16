@@ -1,5 +1,7 @@
+
 module Caliper
   class Client
+	  attr_accessor :api_key, :options, :stats
     def initialize(key, opts = {})
       if opts[:consumer]
         opts[:consumer] = Object.const_get(opts[:consumer]) if opts[:consumer].is_a?(String)

@@ -1,22 +1,12 @@
-require "json"
-require_relative 'base'
-
+require_relative '../../entities/entity'
+# Public: From http://xmlns.com/foaf/spec/#term_Agent An agent (eg. person,
+#        group, software or physical artifact)
 module Caliper
   module Entities
-    class Agent
-	    extend foaf::Agent
-	    attr_accessor :type
+	  module FOAF
+      class Agent < Entity
 
-	    # Public:
-      def to_json(*a)
-	      {
-		      "type" => @type
-	      }.to_json(*a)
       end
-
-	    def initialize(type)
-				@type=type
-	    end
     end
   end
 end
