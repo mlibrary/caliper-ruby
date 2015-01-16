@@ -1,0 +1,2 @@
+class Targetable
+end

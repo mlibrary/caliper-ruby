@@ -1,6 +1,6 @@
 module Caliper
   module Event
-    class Annotation < Base
+    class AnnotationEvent < Event
       attr_accessor :location
 
       def initialize(action)
