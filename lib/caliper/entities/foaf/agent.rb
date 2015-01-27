@@ -4,7 +4,7 @@ require_relative '../../entities/entity'
 module Caliper
   module Entities
 	  module FOAF
-      class Agent < Entity
+      module Agent
 
       end
     end

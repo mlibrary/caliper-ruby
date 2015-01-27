@@ -1,7 +1,5 @@
 require "json"
-require_relative 'digital_resource_type'
 require_relative 'entity'
-require_relative 'entity_type'
 
 # Public: Caliper representation of a CreativeWork (https://schema.org/CreativeWork)
 # We add learning specific attributes, including a list of
@@ -13,50 +11,38 @@ require_relative 'entity_type'
 
 module Caliper
   module Entities
+	  module DigitalResourceType
+		  ASSIGNABLE_DIGITAL_RESOURCE = "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource"
+		  EPUB_CHAPTER = "http://www.idpf.org/epub/vocab/structure/#chapter"
+		  EPUB_PART = "http://www.idpf.org/epub/vocab/structure/#part"
+		  EPUB_SUB_CHAPTER = "http://www.idpf.org/epub/vocab/structure/#subchapter"
+		  EPUB_VOLUME = "http://www.idpf.org/epub/vocab/structure/#volume"
+		  FRAME = "http://purl.imsglobal.org/caliper/v1/Frame"
+		  MEDIA_LOCATION = "http://purl.imsglobal.org/caliper/v1/MediaLocation"
+		  MEDIA_OBJECT = "http://purl.imsglobal.org/caliper/v1/MediaObject"
+		  READING = "http://www.idpf.org/epub/vocab/structure"
+		  WEB_PAGE = "http://purl.imsglobal.org/caliper/v1/WebPage"
+	  end
     class DigitalResource < Entity
-	    attr_accessor :id,
-                    :name,  #(https://schema.org/name) -the name of the resource,
-                    :object_type,
-                    :properties,
-                    :aligned_learning_objectives, # a list of learning objectives
-	                  :keywords,  # a list of learning objectives
-	                  :part_of,
-	                  :last_modified_time,
-	                  :about, # (https://schema.org/about) - the subject matter of the resource
-	                  :language #(https://schema.org/Language) - Natural languages such as Spanish, Tamil, Hindi, English, etc.
-	                            # and programming languages such as Scheme and Lisp.
-										:type
-
+	    attr_accessor :type,
+	                  :object_types, # list of String
+	                  :learning_objectives, # a list of learning objectives
+	                  :keywords
+	                  :part_of
 	    # Public:
       def to_json(*a)
 	      {
-		      "id" => @id,
 		      "type" => @type,
-		      "name" => @name,
-		      "objectType" => @object_type,
-		      "properties" =>@properties,
-	        "alignedLearningObjective" => @aligned_learning_objective,
-	        "keyword" => @keyword,
-	        "partOf" => @part_of,
-	        "lastModifiedTime" => @last_modified_time
+		      "objectTypes" => @object_types,
+	        "learningObjective" => @learning_objectives,
+	        "keywords" => @keywords,
+	        "partOf" => @part_of
 	      }.to_json(*a)
       end
 
 	    def initialize()
 		    super
-		    @id=""
-			  @name = ""
-			  @objectType = "object type"
-		    @properties = ""
-			  @alignedLearningObjective = ""
-			  @keyword = ""
-			  @partOf = ""
-			  @lastModifiedTime = ""
-		    @type = Caliper::Entities::EntityType::DIGITAL_RESOURCE
-	    end
-
-	    def DigitalResource.type
-		    return @type
+		    @type = EntityType::DIGITAL_RESOURCE
 	    end
     end
   end

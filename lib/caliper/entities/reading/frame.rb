@@ -1,5 +1,4 @@
 require_relative '../digital_resource'
-require_relative '../digital_resource_type'
 require_relative '../targetable'
 
 module Caliper
@@ -7,7 +6,6 @@ module Caliper
 		module Reading
 			class Frame < DigitalResource
 				include Targetable
-				include Caliper::Entities::DigitalResourceType
 
 				attr_accessor :id,
 			                :type,

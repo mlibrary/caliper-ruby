@@ -2,10 +2,13 @@
 require_relative './profile'
 require_relative '../entities/digital_resource'
 require_relative '../entities/reading/frame'
-require_relative './reading_profile_key'
 
 module Caliper
 	module Profiles
+		module ReadingActions
+			SEARCHED = "reading.searched"
+			VIEWED = "reading.viewed"
+		end
 		class ReadingProfile < Caliper::Profiles::Profile
 
 			attr_accessor :key, # String

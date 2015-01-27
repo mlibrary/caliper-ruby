@@ -1,5 +1,4 @@
 require_relative './organization'
-require_relative '../lis/organization_type'
 
 module Caliper
 	module Entities
@@ -11,7 +10,7 @@ module Caliper
 			                :label
 				def initialize
 					super
-					@type = Caliper::Entities::LIS::OrganizationType::LIS_COURSE_SECTION
+					@type = OrganizationType::LIS_COURSE_SECTION
 				end
 			end
 		end

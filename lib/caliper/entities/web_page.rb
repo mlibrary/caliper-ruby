@@ -1,14 +1,13 @@
 require_relative "digital_resource"
-require_relative "../../../lib/caliper/entities/schemadotorg/web_page"
+require_relative "../entities/schemadotorg/web_page"
 module Caliper
 	module Entities
 		class WebPage < DigitalResource
-			## include WebPage  TODO: not include the WebPage module for now
-
+			include Caliper::Entities::SchemaDotOrg::WebPage
 			attr_accessor :type
 			def initialize(type)
-				super.initialize
-				@type = type
+				super
+				@type = Caliper::Entities::DigitalResourceType::WEB_PAGE
 			end
 		end
 	end

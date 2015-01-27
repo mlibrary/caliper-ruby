@@ -1,7 +1,5 @@
 require_relative 'event'
-require_relative 'event_type'
-require_relative 'event_context'
-require_relative '../profiles/profile_actions'
+require_relative '../profiles/profile'
 
 module Caliper
   module Event
@@ -17,7 +15,7 @@ module Caliper
 	      super
 	      @context = EventContext::NAVIGATION
 	      @type = EventType::NAVIGATION
-	      @action = Caliper::Profiles::ProfileActions::NAVIGATED_TO
+	      @action = ProfileActions::NAVIGATED_TO
       end
     end
   end

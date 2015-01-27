@@ -1,6 +1,4 @@
 require_relative 'event'
-require_relative 'event_type'
-require_relative 'event_context'
 
 module Caliper
   module Event

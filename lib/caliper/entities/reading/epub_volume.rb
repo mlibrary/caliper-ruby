@@ -3,7 +3,6 @@
 # http://www.idpf.org/epub/vocab/structure/#volume
 
 require_relative '../digital_resource'
-require_relative '../digital_resource_type'
 require_relative '../entity'
 
 module Caliper
