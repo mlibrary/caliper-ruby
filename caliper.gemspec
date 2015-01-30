@@ -1,7 +1,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 require 'caliper/version'
-
+=begin
 Gem::Specification.new do |g|
 	g.name        = "caliper"
 	g.version     = Caliper::VERSION
@@ -19,4 +19,6 @@ Gem::Specification.new do |g|
 	g.add_development_dependency "simplecov", '~> 0'
 	g.add_development_dependency "simplecov-rcov", '~> 0'
 	g.add_development_dependency "mocha", '~> 0'
+	g.add_development_dependency 'atomic', '~> 1.1.99'
+=end
 end

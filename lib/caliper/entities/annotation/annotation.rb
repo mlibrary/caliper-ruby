@@ -1,4 +1,5 @@
 require_relative '../../entities/entity'
+require_relative '../../entities/schemadotorg/thing'
 
 module Caliper
 	module Entities
@@ -12,10 +13,8 @@ module Caliper
 			end
 
 			## implement the interface Thing
-			class AnnotationThing < Thing
-
-			end
-			class AnnotationThing < Entity
+			class Annotation < Entity
+				include Caliper::Entities::SchemaDotOrg::Thing
 				attr_accessor :target,
 			                :type
 

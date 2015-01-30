@@ -9,6 +9,7 @@ module Caliper
 		  MEDIA = "http://purl.imsglobal.org/ctx/caliper/v1/MediaEvent"
 		  NAVIGATION = "http://purl.imsglobal.org/ctx/caliper/v1/NavigationEvent"
 		  OUTCOME = "http://purl.imsglobal.org/ctx/caliper/v1/OutcomeEvent"
+		  SESSION = "http://purl.imsglobal.org/ctx/caliper/v1/SessionEvent"
 		  VIEW = "http://purl.imsglobal.org/ctx/caliper/v1/ViewEvent"
 	  end
 	  module EventType
@@ -20,6 +21,7 @@ module Caliper
 		  MEDIA = "http://purl.imsglobal.org/caliper/v1/MediaEvent"
 		  NAVIGATION = "http://purl.imsglobal.org/caliper/v1/NavigationEvent"
 		  OUTCOME = "http://purl.imsglobal.org/caliper/v1/OutcomeEvent"
+		  SESSION = "http://purl.imsglobal.org/caliper/v1/SessionEvent"
 		  VIEW = "http://purl.imsglobal.org/caliper/v1/ViewEvent"
 	  end
     class Event

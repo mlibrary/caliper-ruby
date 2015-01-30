@@ -15,6 +15,7 @@ module Caliper
 		  LIS_PERSON = "http://purl.imsglobal.org/caliper/v1/lis/Person"
 		  LIS_ORGANIZATION = "http://purl.imsglobal.org/caliper/v1/lis/Organization"
 		  RESULT = "http://purl.imsglobal.org/caliper/v1/Result"
+		  SESSION = "http://purl.imsglobal.org/caliper/v1/Session"
 		  SOFTWARE_APPLICATION = "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
 		  TARGET = "http://purl.imsglobal.org/caliper/v1/Target"
 		  VIEW = "http://purl.imsglobal.org/caliper/v1/View"

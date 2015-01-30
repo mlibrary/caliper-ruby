@@ -4,6 +4,7 @@ require_relative '../profiles/profile'
 module Caliper
   module Event
     class NavigationEvent < Event
+
       attr_accessor :context,
                     :type,
                     :action,
@@ -15,7 +16,7 @@ module Caliper
 	      super
 	      @context = EventContext::NAVIGATION
 	      @type = EventType::NAVIGATION
-	      @action = ProfileActions::NAVIGATED_TO
+	      @action = Caliper::Profiles::ProfileActions::NAVIGATED_TO
       end
     end
   end

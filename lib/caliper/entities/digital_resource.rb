@@ -27,7 +27,7 @@ module Caliper
 	    attr_accessor :type,
 	                  :object_types, # list of String
 	                  :learning_objectives, # a list of learning objectives
-	                  :keywords
+	                  :keywords,
 	                  :part_of
 	    # Public:
       def to_json(*a)
