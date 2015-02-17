@@ -14,9 +14,6 @@ module Caliper
 				super
 				@context = Caliper::Event::EventContext::SESSION
 				@type = Caliper::Event::EventType::SESSION
-				@action = ""
-				#session_profile = SessionProfile.new
-				#session_profile.validate_event(this)
 			end
 
 		end
