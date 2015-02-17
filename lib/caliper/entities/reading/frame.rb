@@ -10,11 +10,15 @@ module Caliper
 				attr_accessor :id,
 			                :type,
 			                :name,
+			                :description,
 			                :object_type,
-			                :aligned_learning_object,
-			                :keyword,
-			                :part_of,
-			                :last_modified_time,
+			                :aligned_learning_objective,
+			                :keywords,
+			                :is_part_of,
+			                :properties,
+			                :date_created,
+			                :date_modified,
+			                :date_published,
 			                :index
 
 				def initialize

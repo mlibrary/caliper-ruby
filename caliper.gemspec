@@ -2,7 +2,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 require 'caliper/version'
 Gem::Specification.new do |g|
-	g.name        = "caliper"
+	g.name        = "ims_caliper"
 	g.version     = Caliper::VERSION
 	g.authors     = ["Anthus Williams", "Zhen Qian"]
 	g.email       = ["aj@instructure.com", "zqian@umich.edu"]

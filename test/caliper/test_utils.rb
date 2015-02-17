@@ -30,7 +30,7 @@ module TestUtils
 		software_application = Caliper::Entities::SoftwareApplication.new
 		software_application.id = "https://github.com/readium/readium-js-viewer"
 		software_application.name = "Readium"
-		software_application.last_modified = Time.now
+		software_application.date_modified = Time.now
 
 		learning_context = Caliper::Entities::LearningContext.new
 		learning_context.ed_app = software_application
@@ -44,7 +44,7 @@ module TestUtils
 		epub_volume = Caliper::Entities::Reading::EpubVolume.new
 		epub_volume.id = "https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3)"
 		epub_volume.name = "The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)"
-		epub_volume.last_modified = Time.now
+		epub_volume.date_modified = Time.now
 
 		return epub_volume
 	end
@@ -57,7 +57,7 @@ module TestUtils
 		course_section.course_number = "AmRev-101"
 		course_section.label = "Am Rev 101"
 		course_section.name = "American Revolution 101"
-		course_section.last_modified = Time.now
+		course_section.date_modified = Time.now
 
 		return course_section
 	end
@@ -65,7 +65,7 @@ module TestUtils
 	def TestUtils.build_student_554433
 		person = Caliper::Entities::LIS::Person.new
 		person.id = "https://some-university.edu/user/554433"
-		person.last_modified = Time.now
+		person.date_modified = Time.now
 
 		return person
 	end
@@ -74,8 +74,8 @@ module TestUtils
 			web_page = Caliper::Entities::WebPage.new
 			web_page.id = "AmRev-101-landingPage"
 			web_page.name ="American Revolution 101 Landing Page"
-			web_page.part_of = build_am_rev_101_course_section
-			web_page.last_modified = Time.now
+			web_page.is_part_of = build_am_rev_101_course_section
+			web_page.date_modified = Time.now
 			return web_page
 	end
 
@@ -84,8 +84,8 @@ module TestUtils
 			epub_sub_chapter = Caliper::Entities::Reading::EpubSubChapter.new
 			epub_sub_chapter.id = "https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/1)"
 			epub_sub_chapter.name = "Key Figures: George Washington"
-			epub_sub_chapter.part_of = build_epub_volume_43
-			epub_sub_chapter.last_modified = Time.now
+			epub_sub_chapter.is_part_of = build_epub_volume_43
+			epub_sub_chapter.date_modified = Time.now
 			return epub_sub_chapter
 	end
 
@@ -115,8 +115,8 @@ module TestUtils
 		frame = Caliper::Entities::Reading::Frame.new
 		frame.id = target.id
 		frame.name = target.name
-		frame.part_of = epub
-		frame.last_modified = 1402965614516
+		frame.is_part_of = epub
+		frame.date_modified = 1402965614516
 		frame.index = 1
 		navigation_event.target = frame
 
@@ -132,7 +132,7 @@ module TestUtils
 		session.id = "https://github.com/readium/session-123456789"
 		session.name = "session-123456789"
 		session.actor = build_student_554433
-		session.last_modified = 1402965614516
+		session.date_modified = 1402965614516
 		session.started_at_time = 1402965614516
 		return session
 	end
@@ -143,7 +143,7 @@ module TestUtils
 		session.id = "https://github.com/readium/session-123456789"
 		session.name = "session-123456789"
 		session.actor = build_student_554433
-		session.last_modified = 1402965614516
+		session.date_modified = 1402965614516
 		session.started_at_time = 1402965614516
 		session.ended_at_time = 1402965614516
 		return session
@@ -154,8 +154,8 @@ module TestUtils
 		frame = Caliper::Entities::Reading::Frame.new
 		frame.id = target.id
 		frame.name = target.name
-		frame.part_of = target.part_of
-		frame.last_modified_time = 1402965614516
+		frame.is_part_of = target.is_part_of
+		frame.date_modified = 1402965614516
 		frame.index = 1
 
 		session_event = Caliper::Event::SessionEvent.new

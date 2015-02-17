@@ -9,3 +9,5 @@ gem 'atomic', '~> 1.1.99'
 
 # translation and localization
 gem 'i18n'
+
+gem 'test-unit'

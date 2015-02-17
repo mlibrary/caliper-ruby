@@ -25,13 +25,19 @@ module Caliper
 			attr_accessor :id,
 			              :type,
 			              :name,
-			              :last_modified
+			              :description,
+			              :properties,
+			              :date_created,
+			              :date_modified
 
 			def initialize()
 				@id = ""
 				@type = EntityType::ENTITY
 				@name = ""
-				@last_modified = ""
+				@description = ""
+				@properties = ""
+				@date_created = Time.now.utc
+				@date_modified = Time.now.utc
 			end
     end
   end
