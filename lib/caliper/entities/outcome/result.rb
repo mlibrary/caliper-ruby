@@ -6,14 +6,14 @@ module Caliper
 			include Generatable
 
 			attr_accessor :type, # String
-										:normalScore,
-										:penaltyScore,
-										:extraCreditScore,
-										:totalScore,
-										:curvedTotalScore,
-										:curveFactor,
+										:normal_score,
+										:penalty_score,
+										:extra_credit_score,
+										:total_score,
+										:curved_total_score,
+										:curve_factor,
 										:comment,
-										:scoredBy
+										:scored_by
 		end
 
 		def initialize

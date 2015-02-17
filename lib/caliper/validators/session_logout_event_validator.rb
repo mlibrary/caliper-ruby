@@ -20,20 +20,20 @@ module Caliper
 				                              *
 			## Validate SessionEvent.
 			# An IllegalStateException will be thrown as a defensive measure if programing
-      # errors are encountered during object construction.
-	    # Properties
-	    # context:: required
-	    # type:: required
-	    # edApp:: optional
-	    # group:: optional
-	    # actor:: required: Person
-	    # action:: required: session.loggedIn
-	    # object:: required: SoftwareApplication
-	    # target:: required: DigitalResource
-	    # generated:: required: Session
-	    # startedAtTime:: required
-	    # endedAtTime:: optional: but should not be set.
-	    # duration:: optional: but should not be set.
+			# errors are encountered during object construction.
+			# Properties
+			# context:: required
+			# type:: required
+			# edApp:: optional
+			# group:: optional
+			# actor:: required: Person
+			# action:: required: session.loggedIn
+			# object:: required: SoftwareApplication
+			# target:: required: DigitalResource
+			# generated:: required: Session
+			# startedAtTime:: required
+			# endedAtTime:: optional: but should not be set.
+			# duration:: optional: but should not be set.
 			# returns conformance violations message.
 			def validate(event)
 				context = "session"
