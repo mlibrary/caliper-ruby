@@ -1,0 +1,86 @@
+en:
+  actions:
+    annotation:
+      attached: "attached"
+      bookmarked: "bookmarked"
+      classified: "classified"
+      commented: "commented"
+      described: "described"
+      highlighted: "highlighted"
+      identified: "identified"
+      liked: "liked"
+      linked: "linked"
+      questioned: "questioned"
+      ranked: "ranked"
+      recommended: "recommended"
+      replied: "replied"
+      shared: "shared"
+      subscribed: "subscribed"
+      tagged: "tagged"
+
+    assessment:
+      paused: "paused"
+      restarted: "restarted"
+      started: "started"
+      submitted: "submitted"
+
+      item.completed: "completed"
+      item.skipped: "skipped"
+      item.started: "started"
+      item.reviewed: "reviewed"
+      item.viewed: "viewed"
+
+    assignable:
+      abandoned: "abandoned"
+      activated: "activated"
+      completed: "completed"
+      deactivated: "deactivated"
+      hid: "hid"
+      reviewed: "reviewed"
+      showed: "showed"
+      started: "started"
+
+    item:
+      downloaded: "downloaded"
+      uploaded: "uploaded"
+
+
+    media:
+      accessibility:
+        disabledClosedCaptioning: "disabled closed captioning"
+        enabledClosedCaptioning: "enabled closed captioning"
+      audio:
+        changedVolume: "changed volume"
+        muted: "muted"
+        unmuted: "unmuted"
+      playback:
+        changedSpeed: "changed speed"
+        ended: "ended"
+        forwardedTo: " forwarded to"
+        jumpedTo: "jumped to"
+        paused: "paused"
+        resumed: "resumed"
+        rewindedTo: "rewinded to"
+        started: "started"
+      viewer:
+        changedResolution: "changed resolution"
+        changedSize: "changed viewer size"
+        enteredFullScreen: "entered full screen"
+        openedPopout: "opened popout"
+        exitedFullScreen: "exited full screen"
+        closedPopout: "closed popout"
+
+    navigation:
+      navigatedTo: "navigated to"
+
+    outcome:
+      graded: "graded"
+
+    reading:
+      searched: "searched"
+      viewed: "viewed"
+
+    session:
+      loggedIn: "logged in"
+      loggedOut: "logged out"
+      timedOut: "timed out"

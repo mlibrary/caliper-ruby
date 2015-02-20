@@ -7,7 +7,7 @@ module Caliper
 			module OrganizationType
 				LIS_COURSE_SECTION = "http://purl.imsglobal.org/caliper/v1/lis/CourseSection"
 			end
-			class Organization
+			class Organization < Entity
 				include Caliper::Entities::FOAF::Agent
 				attr_accessor :type, # String
 											:parent_org # Organization

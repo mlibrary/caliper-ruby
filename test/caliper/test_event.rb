@@ -1,9 +1,9 @@
 
-require "../lib/caliper/entities/learning_context"
-require "../lib/caliper/entities/software_application"
-require "../lib/caliper/entities/digital_resource"
-require "../lib/caliper/entities/reading/epub_sub_chapter"
-require "../lib/caliper/sensor"
+require "../../lib/caliper/entities/learning_context"
+require "../../lib/caliper/entities/software_application"
+require "../../lib/caliper/entities/digital_resource"
+require "../../lib/caliper/entities/reading/epub_sub_chapter"
+require "../../lib/caliper/sensor"
 require_relative "test_utils"
 require "test/unit"
 

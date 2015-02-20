@@ -27,8 +27,10 @@ module Caliper
 	    attr_accessor :type,
 	                  :object_types, # list of String
 	                  :learning_objectives, # a list of learning objectives
-	                  :keywords
-	                  :part_of
+	                  :keywords,
+	                  :is_part_of,
+	                  :date_published
+
 	    # Public:
       def to_json(*a)
 	      {
@@ -36,7 +38,8 @@ module Caliper
 		      "objectTypes" => @object_types,
 	        "learningObjective" => @learning_objectives,
 	        "keywords" => @keywords,
-	        "partOf" => @part_of
+	        "isPartOf" => @is_part_of,
+	        "datePublished" => @date_published
 	      }.to_json(*a)
       end
 

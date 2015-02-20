@@ -9,12 +9,12 @@ module Caliper
     class LearningContext < Entity
 	    attr_accessor :ed_app, # SoftwareApplication educational app
                     :lis_organization, # Organization the LIS organization
-	                  :agent # Agent the agent
+	                  :agent # Agent the agent, since the Agent module is empty for now, use Entity type
 	    def initialize
 		    super
 		    @ed_app = SoftwareApplication.new
 		    @lis_organization = Caliper::Entities::LIS::Organization.new
-		    @agent = Caliper::Entities::FOAF::Agent.new
+		    @agent = Caliper::Entities::Entity.new
 	    end
 	  end
   end
