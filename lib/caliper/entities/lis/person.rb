@@ -6,6 +6,11 @@ module Caliper
 			class Person < Entity
 				include Caliper::Entities::FOAF::Agent
 				attr_accessor :type # String
+
+				def initialize
+					super
+					@type = EntityType::LIS_PERSON
+				end
 			end
 		end
 	end

@@ -12,8 +12,9 @@ Gem::Specification.new do |g|
 	g.license     = "http://www.imsglobal.org/copyright.html"
 
 	#g.files = Dir["{app,config,db,lib}/**/*", "Rakefile"]
-	g.files        = Dir.glob("{lib}/**/*")
-	#g.executables  = ['caliper']
+	g.files     = `git ls-files`.split($\)
+	g.executables   = g.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+	g.test_files    = g.files.grep(%r{^(test|spec|features)/})
 	g.require_path = 'lib'
 
 	#g.add_dependency "activesupport", '~> 0'
