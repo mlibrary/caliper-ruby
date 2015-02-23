@@ -11,7 +11,7 @@ module Caliper
     autoload :Base, "caliper/event/base"
   end
 
-  module Entity
+  module Entities
     autoload :Base, "caliper/entity/base"
   end
 end
