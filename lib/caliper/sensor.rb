@@ -18,15 +18,16 @@ module Caliper
 			end
 		end
 
-		# Describe a Entity that is part of the learning graph
+		# Describe a Caliper Entity
 		def describe(entity)
 			is_initialized()
 			@default_client.describe(entity)
 		end
 
+		# Send Caliper Event
 		def send(event)
 			is_initialized()
-			@default_client.describe(event)
+			@default_client.measure(event)
 		end
 
 		def get_statistics()
