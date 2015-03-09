@@ -1,4 +1,3 @@
-
 module Caliper
   class Client
     attr_accessor :api_key, :options, :stats
@@ -12,7 +11,7 @@ module Caliper
     end
 
     def measure(event, timestamp=nil)
-      raise ArgumentError, "Expecting Caliper::Event but got #{event.class.to_s}" unless event.is_a?(Caliper::Event::Base)
+      raise ArgumentError, "Expecting Caliper::Event but got #{event.class.to_s}" unless event.is_a?(Caliper::Event::Event)
       #todo ensure timestamp is iso8601
       timestamp ||= Time.now
       action = event.action

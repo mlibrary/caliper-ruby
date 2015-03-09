@@ -1,6 +1,7 @@
 require 'simplecov'
 require 'simplecov-rcov'
-require "caliper"
+require 'caliper'
+require 'caliper/event/event.rb'
 
 SimpleCov.use_merging
 SimpleCov.merge_timeout(10000)

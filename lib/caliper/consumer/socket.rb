@@ -1,6 +1,6 @@
 require 'socket'
 require 'openssl'
-require "active_support"
+# require "active_support"
 
 module Caliper
   module Consumer
