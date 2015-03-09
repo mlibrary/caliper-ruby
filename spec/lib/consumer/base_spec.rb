@@ -2,7 +2,9 @@ require 'spec_helper.rb'
 
 module Caliper
   module Consumer
+
     describe Base do
+      
       it "should validate options hash" do
         b = Base.new("Some API key")
         expect(b.validate_options({:debug= => true, :ssl => false, :on_error => lambda { "blah blah" }, :some_other_key => "This will be ignored"})).not_to include(:some_other_key)
