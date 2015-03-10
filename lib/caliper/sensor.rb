@@ -1,4 +1,5 @@
 require_relative "client"
+require_relative "options"
 
 ## create
 module Caliper
