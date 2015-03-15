@@ -1,5 +1,5 @@
 require_relative 'event'
-require_relative '../profiles/profile_actions'
+require_relative '../profiles/profile'
 
 module Caliper
   module Event

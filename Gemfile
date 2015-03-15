@@ -4,6 +4,9 @@ source "https://rubygems.org"
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 
+# require_all utility
+gem 'require_all'
+
 # the atomic lib
 gem 'atomic', '~> 1.1.99'
 

@@ -12,7 +12,7 @@ module Caliper
     it "should throw error if provided an invalid event" do
       expect(lambda{ Client.new("some API key").measure(Object.new) }).to raise_error(ArgumentError)
     end
-#
+
 #    it "should call the appropriate method on the consumer" do
 #      consumer = Consumer::Base.new("some API key")
 #      client = Client.new("some API key", :consumer => consumer)
