@@ -24,8 +24,7 @@ module Caliper
           des_student.from_json data_hash
           puts "Object from JSON = #{des_student.to_json}"
 
-          puts student.eql?(des_student)
-          # expect().not_to include(:some_other_key)
+          expect(student).to eql(des_student)
         end
 
       end

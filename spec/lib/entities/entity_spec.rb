@@ -22,8 +22,7 @@ module Caliper
         des_entity.from_json data_hash
         puts "Object from JSON = #{des_entity.to_json}"
 
-        puts entity.eql?(des_entity)
-        # expect().not_to include(:some_other_key)
+        expect(entity).to eql(des_entity)
       end
 
     end
