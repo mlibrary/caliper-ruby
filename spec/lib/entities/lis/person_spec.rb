@@ -20,7 +20,8 @@ module Caliper
           data_hash = JSON.parse(file)
           puts "JSON from file = #{data_hash}"
 
-          des_student = Person.from_json data_hash
+          des_student = Person.new
+          des_student.from_json data_hash
           puts "Object from JSON = #{des_student.to_json}"
 
           puts student.eql?(des_student)

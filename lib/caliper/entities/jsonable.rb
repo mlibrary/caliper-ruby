@@ -1,8 +1,12 @@
 require 'json'
 
-##
-##  Module that supports ser-des for Caliper Entities/JSON
-##
+#
+#  @author Prashant Nayak
+#  @copyright @copyright ©2013 IMS Global Learning Consortium, Inc.  All Rights Reserved.
+#  @license For license information contact, info@imsglobal.org
+#
+#  Module that supports ser-des for Caliper Entities/JSON
+#
 module Caliper
   module Entities
     module Jsonable

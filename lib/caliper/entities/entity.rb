@@ -1,9 +1,13 @@
 require 'json'
 require_relative './jsonable'
-
-##
-##  The base Caliper Entity.  Analogous to a schema.org Thing.
-##
+#
+#  @author Prashant Nayak
+#  @copyright @copyright ©2013 IMS Global Learning Consortium, Inc.  All Rights Reserved.
+#  @license For license information contact, info@imsglobal.org
+#
+#
+#  The base Caliper Entity.  Analogous to a schema.org Thing.
+#
 module Caliper
   module Entities
     module EntityType
@@ -43,37 +47,6 @@ module Caliper
         @date_modified = Time.now.utc
       end
 
-      # def to_json
-      #   {'@id' => @id,
-      #    '@type' => @type,
-      #    'name' => @name,
-      #    'description' => @description,
-      #    'properties' => @properties,
-      #    'dateCreated' => @date_created,
-      #    'dateModified' => @date_modified,
-      #    '@class' => self.class.name,
-      #    }.to_json
-      # end
-
-      # def self.from_json json_hash
-      #   data = json_hash
-      #   puts "Entity.from_json: json_hash = #{json_hash}"
-      #   retObj = self.new
-      #   retObj.id = data['@id']
-      #   retObj.type = data['@type']
-      #   retObj.description = data['description']
-      #   retObj.properties = data['properties']
-      #   retObj.date_created = data['dateCreated']
-      #   retObj.date_modified = data['dateModified']
-      #   return retObj
-      # end
-
-      # def eql?(other)
-      #   puts "#eql? invoked"
-      #   @id == other.id && @type == other.type 
-      #   # && @name == other.name && @description == other.description 
-      #   # && @date_created == other.date_created && @date_modified == other.date_modified
-      # end
     end
   end
 end
