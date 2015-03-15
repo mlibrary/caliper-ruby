@@ -1,3 +1,4 @@
+require 'time'
 require 'json'
 require_relative './jsonable'
 #
@@ -34,8 +35,8 @@ module Caliper
         :name,
         :description,
         :properties,
-        :date_created,
-        :date_modified
+        :dateCreated,
+        :dateModified
 
       def initialize()
         @id = ""
@@ -43,8 +44,8 @@ module Caliper
         @name = ""
         @description = ""
         @properties = ""
-        @date_created = Time.now.utc
-        @date_modified = Time.now.utc
+        @dateCreated = Time.now.utc.iso8601
+        @dateModified = Time.now.utc.iso8601
       end
 
     end

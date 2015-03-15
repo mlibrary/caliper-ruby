@@ -4,7 +4,7 @@
   "name": "test",
   "description": "description",
   "properties": {"customProp":42},
-  "dateCreated": "2015-03-15 18:34:43 UTC",
-  "dateModified": "2015-03-15 18:34:43 UTC",
+  "dateCreated": "2015-03-15T23:09:11Z",
+  "dateModified": "2015-03-15T23:09:11Z",
   "@class": "Caliper::Entities::Entity"
 }

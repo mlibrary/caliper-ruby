@@ -42,16 +42,14 @@ module Caliper
         self.name = data['name']
         json_hash.each do | key, value |
           next if (key[1..-1] == 'id' || key[1..-1] == 'type' || key[1..-1] == 'class')
+          # puts "Jsonable - adding #{key} : #{value}"
           self.instance_variable_set "@#{key}", value
         end
         return self
       end
 
       def eql?(other)
-        puts "#eql? invoked"
-        @id == other.id && @type == other.type
-        # && @name == other.name && @description == other.description
-        # && @date_created == other.date_created && @date_modified == other.date_modified
+        @id == other.id && @type == other.type && @name == other.name && @description == other.description && @dateCreated == other.dateCreated && @dateModified == other.dateModified
       end
 
     end

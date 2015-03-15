@@ -14,6 +14,8 @@ module Caliper
           student.name = 'Stu Dent'
           student.description = 'A super bright individual'
           student.properties = {'customProp' => 42}
+          student.dateCreated = '2015-03-15T23:09:11Z'
+          student.dateModified = '2015-03-15T23:09:11Z'
           puts "new student = #{student.to_json}"
 
           file = File.read('spec/lib/entities/lis/student.json')
