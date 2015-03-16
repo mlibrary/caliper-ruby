@@ -1,13 +1,17 @@
+require_relative 'event'
+require_relative '../profiles/annotation_profile'
+
 module Caliper
   module Event
-    class AnnotationEvent < Event::Event
-      attr_accessor :location
 
-      def initialize(action)
-        @context = "http://purl.imsglobal.org/ctx/caliper/v1/AnnotationEvent"
-		    @type = "http://purl.imsglobal.org/caliper/v1/AnnotationEvent"
-        # only subclasses should be instantiated
-        @action = action
+    #
+    # Annotation Event per Caliper Annotation Profile
+    #
+    class AnnotationEvent < Event
+
+      def initialize
+        @context = Caliper::Event::EventContext::ANNOTATION
+        @type = Caliper::Event::EventType::ANNOTATION
       end
     end
   end

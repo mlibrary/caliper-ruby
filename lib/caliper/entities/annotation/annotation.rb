@@ -1,9 +1,18 @@
 require_relative '../../entities/entity'
 require_relative '../../entities/schemadotorg/thing'
 
+#
+#  
+#  @copyright @copyright ©2013 IMS Global Learning Consortium, Inc.  All Rights Reserved.
+#  @license For license information contact, info@imsglobal.org
+#
+#
+#  Annotation Entity
+#
 module Caliper
 	module Entities
 		module Annotation
+
 			module AnnotationType
 				ANNOTATION = "http://purl.imsglobal.org/caliper/v1/Annotation"
 				BOOKMARK_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation"
@@ -15,15 +24,16 @@ module Caliper
 			## implement the interface Thing
 			class Annotation < Entity
 				include Caliper::Entities::SchemaDotOrg::Thing
-				attr_accessor :target,
-			                :type
+
+				attr_accessor :annotatedId
 
 				def initialize
 					super
-					type = AnnotationType::ANNOTATION
-					target = ''
+					@type = AnnotationType::ANNOTATION
+					@annotatedId = nil
 				end
 			end
+
 		end
 	end
 end

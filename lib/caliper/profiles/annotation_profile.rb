@@ -1,4 +1,3 @@
-
 require_relative './profile'
 require_relative '../entities/digital_resource'
 require_relative '../entities/annotation/annotation'
@@ -7,22 +6,22 @@ require_relative '../entities/reading/frame'
 module Caliper
   module Profiles
     module AnnotationActions
-      ATTACHED = "annotation.attached"
-      BOOKMARKED = "annotation.bookmarked"
-      CLASSIFIED = "annotation.classified"
-      COMMENTED = "annotation.commented"
-      DESCRIBED = "annotation.described"
-      HIGHLIGHTED = "annotation.highlighted"
-      IDENTIFIED = "annotation.identified"
-      LIKED = "annotation.liked"
-      LINKED = "annotation.linked"
-      RANKED = "annotation.ranked"
-      QUESTIONED = "annotation.questioned"
-      RECOMMENDED = "annotation.recommended"
-      REPLIED = "annotation.replied"
-      SHARED = "annotation.shared"
-      SUBSCRIBED = "annotation.subscribed"
-      TAGGED = "annotation.tagged"
+      ATTACHED = "attached"
+      BOOKMARKED = "bookmarked"
+      CLASSIFIED = "classified"
+      COMMENTED = "commented"
+      DESCRIBED = "described"
+      HIGHLIGHTED = "highlighted"
+      IDENTIFIED = "identified"
+      LIKED = "liked"
+      LINKED = "linked"
+      RANKED = "ranked"
+      QUESTIONED = "questioned"
+      RECOMMENDED = "recommended"
+      REPLIED = "replied"
+      SHARED = "shared"
+      SUBSCRIBED = "subscribed"
+      TAGGED = "tagged"
     end
     class ReadingProfile < Profile
       include AnnotationActions
