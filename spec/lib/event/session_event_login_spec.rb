@@ -81,6 +81,7 @@ module Caliper
         # puts "Event JSON = #{session_event.to_json}'"
 
         # Load JSON from caliper-common-fixtures for comparison
+        # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
         file = File.read('spec/fixtures/caliperSessionLoginEvent.json')
         data_hash = JSON.parse(file)
         # puts "JSON from file = #{data_hash}"
