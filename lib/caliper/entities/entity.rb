@@ -34,16 +34,16 @@ module Caliper
         :type,
         :name,
         :description,
-        :properties,
+        :extensions,
         :dateCreated,
         :dateModified
 
       def initialize()
         @id = ""
         @type = EntityType::ENTITY
-        @name = ""
-        @description = ""
-        @properties = ""
+        @name = nil
+        @description = nil
+        @extensions = {}
         @dateCreated = Time.now.utc.iso8601
         @dateModified = Time.now.utc.iso8601
       end

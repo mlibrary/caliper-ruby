@@ -12,7 +12,7 @@ module Caliper
         entity.name = 'test'
         entity.description = 'description'
         entity.id = 'https://some-university.edu/politicalScience/2014/american-revolution-101/assessment1'
-        entity.properties = {'customProp' => 42}
+        entity.extensions = {'customProp' => 42}
         entity.dateCreated = '2015-03-15T23:09:11Z'
         entity.dateModified = '2015-03-15T23:09:11Z'
         # puts "Entity JSON = #{entity.to_json}"

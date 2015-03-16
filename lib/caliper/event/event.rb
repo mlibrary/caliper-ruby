@@ -36,10 +36,10 @@ module Caliper
         :type, # String
 
         # Learning Context
-        :ed_app,  # SoftwareApplication
+        :edApp,  # SoftwareApplication
 
         # LIS organization
-        :lis_organization, # Organization
+        :lisOrganization, # Organization
 
         # Required - Agent (User, System) that performed the action
         :actor, # Agent
@@ -72,8 +72,16 @@ module Caliper
       def initialize()
         @context = EventContext::EVENT
         @type = EventType::EVENT
+        @actor = nil
+        @action = nil
+        @object = nil
+        @target = nil
+        @generated = nil
+        @edApp = nil
+        @lisOrganization = nil
         @startedAtTime = Time.now.utc.iso8601
-        @endedAtTime = Time.now.utc.iso8601
+        @endedAtTime = nil
+        @duration = nil
       end
     end
   end
