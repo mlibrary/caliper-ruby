@@ -9,7 +9,7 @@ module Caliper
     module SessionActions
       LOGGED_IN = "logged in"
       LOGGED_OUT = "logged out"
-      TIMEOUT = "timeout"
+      TIMEOUT = "timed out"
       UNRECOGNIZED = "unrecognized"
     end
     class SessionProfile < Profile
