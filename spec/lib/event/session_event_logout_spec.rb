@@ -23,7 +23,7 @@ module Caliper
         # puts "new student = #{student.to_json}"
 
         # The Action
-        action = Caliper::Profiles::SessionActions::LOGGED_IN
+        action = Caliper::Profiles::SessionActions::LOGGED_OUT
 
         # The Object (edApp)
         edApp = Caliper::Entities::SoftwareApplication.new
@@ -32,32 +32,15 @@ module Caliper
         edApp.dateCreated = '2015-01-01T06:00:00.000Z'
         edApp.dateModified = '2015-02-02T11:30:00.000Z'
 
-        # The Target (Frame)
-        ePubVolume = Caliper::Entities::Reading::EPubVolume.new
-        ePubVolume.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3)'
-        ePubVolume.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
-        ePubVolume.version = '2nd ed.'
-        ePubVolume.dateCreated = '2015-01-01T06:00:00.000Z'
-        ePubVolume.dateModified = '2015-02-02T11:30:00.000Z'
-
-        frame = Caliper::Entities::Reading::Frame.new
-        frame.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/1)'
-        frame.name = 'Key Figures: George Washington'
-        frame.version = '2nd ed.'
-        frame.dateCreated = '2015-01-01T06:00:00.000Z'
-        frame.dateModified = '2015-02-02T11:30:00.000Z'
-        frame.index = 1
-        frame.isPartOf = ePubVolume
-
-        # The Generated (Session)
+        # The Target (Session)
         session = Caliper::Entities::Session.new
         session.id = 'https://github.com/readium/session-123456789'
         session.name = 'session-123456789'
         session.description = nil
         session.actor = student
         session.startedAtTime = '2015-02-15T10:15:00.000Z'
-        session.endedAtTime = nil
-        session.duration = nil
+        session.endedAtTime = '2015-02-15T11:05:00.000Z'
+        session.duration = 'PT3000S'
         session.dateCreated = '2015-01-01T06:00:00.000Z'
         session.dateModified = '2015-02-02T11:30:00.000Z'
 
@@ -76,16 +59,18 @@ module Caliper
         session_event.actor  = student
         session_event.action = action
         session_event.object = edApp
-        session_event.target = frame
-        session_event.generated = session
+        session_event.target = session
+        session_event.generated = nil
         session_event.edApp  = edApp
         session_event.group = course
         session_event.startedAtTime = '2015-02-15T10:15:00.000Z'
+        session_event.endedAtTime = '2015-02-15T11:05:00.000Z'
+        session_event.duration = 'PT3000S'
         # puts "Event JSON = #{session_event.to_json}'"
 
         # Load JSON from caliper-common-fixtures for comparison
         # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
-        file = File.read('spec/fixtures/caliperSessionLoginEvent.json')
+        file = File.read('spec/fixtures/caliperSessionLogoutEvent.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
         session_event.to_json.should be_json_eql(expected_json)#.excluding("@class")
