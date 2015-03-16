@@ -1,5 +1,6 @@
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
+require_all 'lib/caliper/entities/session.rb'
 require_all 'lib/caliper/entities/software_application.rb'
 require_all 'lib/caliper/entities/lis/person.rb'
 require_all 'lib/caliper/entities/lis/course_section.rb'
