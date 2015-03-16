@@ -21,3 +21,4 @@ gem 'test-unit'
 gem 'simplecov', :require => false, :group => :test
 gem 'simplecov-rcov', :require => false, :group => :test
 gem 'mocha', '~> 1.1.0'
+gem 'json_spec'
