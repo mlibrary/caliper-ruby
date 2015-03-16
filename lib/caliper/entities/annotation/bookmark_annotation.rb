@@ -12,7 +12,7 @@ module Caliper
   module Entities
     module Annotation
 
-      class Bookmark < Annotation
+      class BookmarkAnnotation < Annotation
         attr_accessor :bookmarkNotes
 
         def initialize

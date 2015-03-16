@@ -4,7 +4,7 @@ require_all 'lib/caliper/entities/software_application.rb'
 require_all 'lib/caliper/entities/lis/person.rb'
 require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
-require_all 'lib/caliper/entities/annotation/bookmark_annotation.rb'
+require_all 'lib/caliper/entities/annotation/highlight_annotation.rb'
 require_all 'lib/caliper/event/annotation_event.rb'
 require_all 'lib/caliper/profiles/annotation_profile.rb'
 
@@ -23,9 +23,9 @@ module Caliper
         # puts "new student = #{student.to_json}"
 
         # The Action
-        action = Caliper::Profiles::AnnotationActions::BOOKMARKED
+        action = Caliper::Profiles::AnnotationActions::HIGHLIGHTED
 
-        # The Object of the bookmark (Frame)
+        # The Object of the highlight (Frame)
         ePubVolume = Caliper::Entities::Reading::EPubVolume.new
         ePubVolume.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3)'
         ePubVolume.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
@@ -34,23 +34,24 @@ module Caliper
         ePubVolume.dateModified = '2015-02-02T11:30:00.000Z'
 
         frame = Caliper::Entities::Reading::Frame.new
-        frame.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/2)'
-        frame.name = 'Key Figures: Lord North'
+        frame.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/1)'
+        frame.name = 'Key Figures: George Washington'
         frame.version = '2nd ed.'
         frame.dateCreated = '2015-01-01T06:00:00.000Z'
         frame.dateModified = '2015-02-02T11:30:00.000Z'
-        frame.index = 2
+        frame.index = 1
         frame.isPartOf = ePubVolume
 
         # The Generated (Annotation::BookmarkAnnotation)
-        bookmark = Caliper::Entities::Annotation::BookmarkAnnotation.new
-        bookmark.id = 'https://someEduApp.edu/bookmarks/00001'
-        bookmark.name = nil
-        bookmark.description = nil
-        bookmark.dateCreated = '2015-01-01T06:00:00.000Z'
-        bookmark.dateModified = '2015-02-02T11:30:00.000Z'
-        bookmark.annotatedId = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/2)'
-        bookmark.bookmarkNotes = 'The Intolerable Acts (1774)--bad idea Lord North'
+        highlight = Caliper::Entities::Annotation::HighlightAnnotation.new
+        highlight.id = 'https://someEduApp.edu/highlights/12345'
+        highlight.name = nil
+        highlight.description = nil
+        highlight.dateCreated = '2015-01-01T06:00:00.000Z'
+        highlight.dateModified = '2015-02-02T11:30:00.000Z'
+        highlight.annotatedId = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/1)'
+        highlight.selectionText = 'Life, Liberty and the pursuit of Happiness'
+        highlight.selection = { 'start' => '455', 'end' => '489'}
 
         # The course that is part of the Learning Context (edApp)
         edApp = Caliper::Entities::SoftwareApplication.new
@@ -75,7 +76,7 @@ module Caliper
         annotation_event.action = action
         annotation_event.object = frame
         annotation_event.target = nil
-        annotation_event.generated = bookmark
+        annotation_event.generated = highlight
         annotation_event.edApp  = edApp
         annotation_event.group = course
         annotation_event.startedAtTime = '2015-02-15T10:15:00.000Z'
@@ -85,7 +86,7 @@ module Caliper
 
         # Load JSON from caliper-common-fixtures for comparison
         # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
-        file = File.read('spec/fixtures/caliperBookmarkAnnotationEvent.json')
+        file = File.read('spec/fixtures/caliperHighlightAnnotationEvent.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
         annotation_event.to_json.should be_json_eql(expected_json)#.excluding("@class")
@@ -95,7 +96,7 @@ module Caliper
         deser_annotation_event.from_json data_hash
         # puts "AnnotationEvent from JSON = #{deser_annotation_event.to_json}"
 
-        # Ensure that the deserialized bookmark event object conforms
+        # Ensure that the deserialized highlight event object conforms
         expect(annotation_event).to eql(deser_annotation_event)
 
       end
