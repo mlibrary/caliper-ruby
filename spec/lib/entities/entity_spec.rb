@@ -13,8 +13,8 @@ module Caliper
         entity.description = 'description'
         entity.id = 'https://some-university.edu/politicalScience/2014/american-revolution-101/assessment1'
         entity.extensions = {'customProp' => 42}
-        entity.dateCreated = '2015-03-15T23:09:11Z'
-        entity.dateModified = '2015-03-15T23:09:11Z'
+        entity.dateCreated = '2015-03-15T23:09:11.000Z'
+        entity.dateModified = '2015-03-15T23:09:11.000Z'
         # puts "Entity JSON = #{entity.to_json}"
 
         file = File.read('spec/lib/entities/entity.json')

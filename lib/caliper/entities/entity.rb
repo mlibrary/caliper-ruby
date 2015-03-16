@@ -44,8 +44,8 @@ module Caliper
         @name = nil
         @description = nil
         @extensions = {}
-        @dateCreated = Time.now.utc.iso8601
-        @dateModified = Time.now.utc.iso8601
+        @dateCreated = Time.now.utc.iso8601(3)
+        @dateModified = Time.now.utc.iso8601(3)
       end
 
     end

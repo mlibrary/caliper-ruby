@@ -14,8 +14,8 @@ module Caliper
       it "should ensure that a SessionEvent (login) is correctly created and serialized" do
         student = Caliper::Entities::LIS::Person.new
         student.id = 'https://some-university.edu/user/554433'
-        student.dateCreated = '2015-01-01T06:00:00Z'
-        student.dateModified = '2015-02-02T11:30:00Z'
+        student.dateCreated = '2015-01-01T06:00:00.000Z'
+        student.dateModified = '2015-02-02T11:30:00.000Z'
         # puts "new student = #{student.to_json}"
 
         action = Caliper::Profiles::SessionActions::LOGGED_IN;
@@ -23,16 +23,16 @@ module Caliper
         edApp = Caliper::Entities::SoftwareApplication.new
         edApp.id = 'https://github.com/readium/readium-js-viewer'
         edApp.name = 'Readium'
-        edApp.dateCreated = '2015-01-01T06:00:00Z'
-        edApp.dateModified = '2015-02-02T11:30:00Z'
+        edApp.dateCreated = '2015-01-01T06:00:00.000Z'
+        edApp.dateModified = '2015-02-02T11:30:00.000Z'
 
         entity = Caliper::Entities::Entity.new
         entity.name = 'test'
         entity.description = 'description'
         entity.id = 'https://some-university.edu/politicalScience/2014/american-revolution-101/assessment1'
         entity.extensions = {'customProp' => 42}
-        entity.dateCreated = '2015-03-15T23:09:11Z'
-        entity.dateModified = '2015-03-15T23:09:11Z'
+        entity.dateCreated = '2015-03-15T23:09:11.000Z'
+        entity.dateModified = '2015-03-15T23:09:11.000Z'
         # puts "Entity JSON = #{entity.to_json}"
 
         session_event = SessionEvent.new

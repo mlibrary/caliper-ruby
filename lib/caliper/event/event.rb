@@ -79,7 +79,7 @@ module Caliper
         @generated = nil
         @edApp = nil
         @lisOrganization = nil
-        @startedAtTime = Time.now.utc.iso8601
+        @startedAtTime = Time.now.utc.iso8601(3)
         @endedAtTime = nil
         @duration = nil
       end
