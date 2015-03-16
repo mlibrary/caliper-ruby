@@ -39,7 +39,7 @@ module Caliper
         :edApp,  # SoftwareApplication
 
         # LIS organization
-        :lisOrganization, # Organization
+        :group, # Organization
 
         # Required - Agent (User, System) that performed the action
         :actor, # Agent
@@ -78,7 +78,7 @@ module Caliper
         @target = nil
         @generated = nil
         @edApp = nil
-        @lisOrganization = nil
+        @group = nil
         @startedAtTime = Time.now.utc.iso8601(3)
         @endedAtTime = nil
         @duration = nil
