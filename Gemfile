@@ -13,6 +13,9 @@ gem 'atomic', '~> 1.1.99'
 # translation and localization
 gem 'i18n'
 
+# REST client
+gem 'rest-client', '~> 1.7.3'
+
 # Gems for Testing
 gem 'test-unit'
 gem 'simplecov', :require => false, :group => :test

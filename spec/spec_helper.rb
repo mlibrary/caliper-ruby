@@ -2,7 +2,6 @@ require 'simplecov'
 require 'simplecov-rcov'
 require 'require_all'
 require_all 'lib/caliper/*.rb'
-require_all 'lib/caliper/consumer/*.rb'
 
 SimpleCov.use_merging
 SimpleCov.merge_timeout(10000)

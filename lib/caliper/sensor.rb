@@ -1,8 +1,8 @@
-require_relative "client"
+require 'rest_client'
 require_relative "options"
 
 ##
-#  
+#
 #  @copyright @copyright ©2013 IMS Global Learning Consortium, Inc.  All Rights Reserved.
 #  @license For license information contact, info@imsglobal.org
 #
@@ -13,36 +13,23 @@ module Caliper
 
   class Sensor
 
-    attr_accessor :default_client
-
-    # options to configure the behavior of Caliper client
     def initialize(options)
-      @default_client = Client.new(options)
+      @options = options
+      puts "Sensor - initializing with options = #{@options}"
     end
 
-    # Client initialization check
-    def is_initialized()
-      if default_client.nil?
-        # fail with RuntimeError
-        fail 'Caliper client is not initialized. Please call Caliper.initialize(..); before calling send or describe'
-      end
-    end
-
-    # Describe a Caliper Entity
-    def describe(entity)
-      is_initialized()
-      @default_client.describe(entity)
-    end
-
-    # Send Caliper Event
     def send(event)
-      is_initialized()
-      @default_client.send(event)
+      raise ArgumentError, "Expecting Caliper::Event but got #{event.class.to_s}" unless event.is_a?(Caliper::Event::Event)
+
+      RestClient.post @options['host'], event.to_json, :content_type => :json, :accept => :json
+
     end
 
-    def get_statistics()
-      is_initialized()
-      @default_client.getStatistics()
+    def describe(entity)
+      raise ArgumentError, "Expecting Caliper::Entity but got #{entity.class.to_s}" unless entity.is_a?(Caliper::Entity::Base)
+
+      RestClient.post @options['host'], entity.to_json, :content_type => :json, :accept => :json
+
     end
 
   end
