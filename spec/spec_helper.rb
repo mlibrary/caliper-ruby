@@ -3,9 +3,6 @@ require 'simplecov-rcov'
 require 'require_all'
 require_all 'lib/caliper/*.rb'
 require_all 'lib/caliper/consumer/*.rb'
-require_all 'lib/caliper/entities/*.rb'
-require_all 'lib/caliper/profiles/*.rb'
-require_all 'lib/caliper/event/*.rb'
 
 SimpleCov.use_merging
 SimpleCov.merge_timeout(10000)

@@ -15,7 +15,7 @@ module Caliper
         student.id = 'https://some-university.edu/user/554433'
         student.dateCreated = '2015-01-01T06:00:00Z'
         student.dateModified = '2015-02-02T11:30:00Z'
-        puts "new student = #{student.to_json}"
+        # puts "new student = #{student.to_json}"
 
         action = Caliper::Profiles::SessionActions::LOGGED_IN;
 
@@ -26,12 +26,12 @@ module Caliper
         entity.properties = {'customProp' => 42}
         entity.dateCreated = '2015-03-15T23:09:11Z'
         entity.dateModified = '2015-03-15T23:09:11Z'
-        puts "Entity JSON = #{entity.to_json}"
+        # puts "Entity JSON = #{entity.to_json}"
 
         session_event = SessionEvent.new
         session_event.actor = student
         session_event.action = action
-        puts "Event JSON = #{session_event.to_json}"
+        # puts "Event JSON = #{session_event.to_json}"
 
       end
 

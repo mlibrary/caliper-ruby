@@ -15,15 +15,15 @@ module Caliper
         entity.properties = {'customProp' => 42}
         entity.dateCreated = '2015-03-15T23:09:11Z'
         entity.dateModified = '2015-03-15T23:09:11Z'
-        puts "Entity JSON = #{entity.to_json}"
+        # puts "Entity JSON = #{entity.to_json}"
 
         file = File.read('spec/lib/entities/entity.json')
         data_hash = JSON.parse(file)
-        puts "JSON from file = #{data_hash}"
+        # puts "JSON from file = #{data_hash}"
 
         des_entity = Entity.new
         des_entity.from_json data_hash
-        puts "Object from JSON = #{des_entity.to_json}"
+        # puts "Object from JSON = #{des_entity.to_json}"
 
         expect(entity).to eql(des_entity)
       end

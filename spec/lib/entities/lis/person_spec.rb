@@ -16,15 +16,15 @@ module Caliper
           student.properties = {'customProp' => 42}
           student.dateCreated = '2015-03-15T23:09:11Z'
           student.dateModified = '2015-03-15T23:09:11Z'
-          puts "new student = #{student.to_json}"
+          # puts "new student = #{student.to_json}"
 
           file = File.read('spec/lib/entities/lis/student.json')
           data_hash = JSON.parse(file)
-          puts "JSON from file = #{data_hash}"
+          # puts "JSON from file = #{data_hash}"
 
           des_student = Person.new
           des_student.from_json data_hash
-          puts "Object from JSON = #{des_student.to_json}"
+          # puts "Object from JSON = #{des_student.to_json}"
 
           expect(student).to eql(des_student)
         end
