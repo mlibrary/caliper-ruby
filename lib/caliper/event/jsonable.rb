@@ -5,10 +5,10 @@ require 'json'
 #  @copyright @copyright ©2013 IMS Global Learning Consortium, Inc.  All Rights Reserved.
 #  @license For license information contact, info@imsglobal.org
 #
-#  Module that supports ser-des for Caliper Entities/JSON
+#  Module that supports ser-des for Caliper Event/JSON
 #
 module Caliper
-  module Entities
+  module Event
     module Jsonable
 
       def self.included(base)
@@ -21,11 +21,11 @@ module Caliper
       def to_json(*a)
         # puts 'Jsonable: to_json invoked'
         result = {}
-        result['@id'] = self.id
+        result['@context'] = self.context
         result['@type'] = self.type
         self.instance_variables.each do |key|
           # puts "got key = #{key}"
-          next if (key[1..-1] == 'id' || key[1..-1] == 'type')
+          next if (key[1..-1] == 'context' || key[1..-1] == 'type')
           value = self.instance_variable_get key
           # puts "setting #{key}: #{value}"
           result[key[1..-1]] = value
@@ -36,11 +36,10 @@ module Caliper
       def from_json json_hash
         data = json_hash
         # puts "Jsonable: from_json: json_hash = #{json_hash}"
-        self.id = data['@id']
+        self.context = data['@context']
         self.type = data['@type']
-        self.name = data['name']
         json_hash.each do | key, value |
-          next if (key[1..-1] == 'id' || key[1..-1] == 'type')
+          next if (key[1..-1] == 'context' || key[1..-1] == 'type')
           # puts "Jsonable - adding #{key} : #{value}"
           self.instance_variable_set "@#{key}", value
         end
@@ -48,7 +47,7 @@ module Caliper
       end
 
       def eql?(other)
-        @id == other.id && @type == other.type && @name == other.name && @description == other.description && @dateCreated == other.dateCreated && @dateModified == other.dateModified
+        @context == other.context && @type == other.type && @startedAtTime == other.startedAtTime && @endedAtTime == other.endedAtTime
       end
 
     end

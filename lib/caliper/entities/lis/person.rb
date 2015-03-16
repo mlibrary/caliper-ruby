@@ -1,4 +1,5 @@
 require_relative '../../entities/entity'
+require_relative '../../entities/foaf/agent.rb'
 require_relative '../../entities/jsonable'
 #
 #  @author Prashant Nayak

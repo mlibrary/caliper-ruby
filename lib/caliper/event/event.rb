@@ -1,3 +1,6 @@
+require 'json'
+require_relative './jsonable'
+
 module Caliper
   module Event
     module EventContext
@@ -25,6 +28,8 @@ module Caliper
       VIEW = "http://purl.imsglobal.org/caliper/v1/ViewEvent"
     end
     class Event
+      include Caliper::Event::Jsonable
+
       attr_accessor :context, # String Required - the JSON-LD context for the Event
 
         # Required - the type of the Event
@@ -51,11 +56,11 @@ module Caliper
         # Optional - entity "generated" as result of action - from Metric Profile
         :generated, # Generatable
 
-        # Required time in milliseconds that the event was started at
-        :started_at_time, # long
+        # Required time that the event was started at
+        :startedAtTime, # ISO-8601 date string
 
-        # An optional time in milliseconds that the event ended at
-        :ended_at_time, # long
+        # An optional time that the event ended at
+        :endedAtTime, # ISO-8601 date string
 
         # An xsd:duration (http://books.xmlschemata.org/relaxng/ch19-77073.html)
         # The format is expected to be PnYnMnDTnHnMnS
@@ -63,6 +68,13 @@ module Caliper
         # The following values are invalid: 1Y (leading P is missing), P1S (T separator is missing),
         # P-1Y (all parts must be positive), P1M2Y (parts order is significant and Y must precede M)                                                                                                * or P1Y-1M (all parts must be positive).                                                                               */
         :duration # String
+
+      def initialize()
+        @context = EventContext::EVENT
+        @type = EventType::EVENT
+        @startedAtTime = Time.now.utc.iso8601
+        @endedAtTime = Time.now.utc.iso8601
+      end
     end
   end
 end
