@@ -2,7 +2,7 @@ require_relative './organization'
 require_relative '../../entities/jsonable'
 
 #
-#  @author Prashant Nayak
+#  
 #  @copyright @copyright ©2013 IMS Global Learning Consortium, Inc.  All Rights Reserved.
 #  @license For license information contact, info@imsglobal.org
 #
