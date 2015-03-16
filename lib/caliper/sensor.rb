@@ -26,7 +26,7 @@ module Caliper
     end
 
     def describe(entity)
-      raise ArgumentError, "Expecting Caliper::Entity but got #{entity.class.to_s}" unless entity.is_a?(Caliper::Entity::Base)
+      raise ArgumentError, "Expecting Caliper::Entity but got #{entity.class.to_s}" unless entity.is_a?(Caliper::Entities::Entity)
 
       RestClient.post @options['host'], entity.to_json, :content_type => :json, :accept => :json
 
