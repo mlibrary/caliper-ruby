@@ -18,20 +18,18 @@ module Caliper
         entity.dateModified = '2015-03-15T23:09:11.000Z'
         # puts "Entity JSON = #{entity.to_json}"
 
+        # Compare JSON ouput
         file = File.read('spec/lib/entities/entity.json')
         data_hash = JSON.parse(file)
-        # puts "JSON from file = #{data_hash}"
-
-        # Compare JSON ouput
-        expected_json = data_hash.inspect
-        # entity.to_json.should be_json_eql(expected_json)#.excluding("friends")
+        expected_json = data_hash.to_json # convert hash back to JSON string after parse
+        entity.to_json.should be_json_eql(expected_json)#.excluding("@class")
 
         # Compare Deserialized JSON to desired Entity
         des_entity = Entity.new
         des_entity.from_json data_hash
         # puts "Object from JSON = #{des_entity.to_json}"
         expect(entity).to eql(des_entity)
-        
+
       end
 
     end

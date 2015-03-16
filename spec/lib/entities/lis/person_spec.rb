@@ -18,9 +18,11 @@ module Caliper
           student.dateModified = '2015-03-15T23:09:11.000Z'
           # puts "new student = #{student.to_json}"
 
+          # Compare JSON ouput
           file = File.read('spec/lib/entities/lis/student.json')
           data_hash = JSON.parse(file)
-          # puts "JSON from file = #{data_hash}"
+          expected_json = data_hash.to_json # convert hash back to JSON string after parse
+          student.to_json.should be_json_eql(expected_json)
 
           des_student = Person.new
           des_student.from_json data_hash
