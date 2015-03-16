@@ -7,10 +7,10 @@ require_relative '../entities/reading/frame'
 module Caliper
   module Profiles
     module SessionActions
-      LOGGED_IN = "session.loggedIn"
-      LOGGED_OUT = "session.loggedOut"
-      TIMEOUT = "session.timeOut"
-      UNRECOGNIZED = "action.unrecognized"
+      LOGGED_IN = "logged in"
+      LOGGED_OUT = "logged out"
+      TIMEOUT = "timeout"
+      UNRECOGNIZED = "unrecognized"
     end
     class SessionProfile < Profile
       include SessionActions

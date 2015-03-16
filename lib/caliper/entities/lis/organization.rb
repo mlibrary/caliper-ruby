@@ -9,12 +9,12 @@ module Caliper
       end
       class Organization < Entity
         include Caliper::Entities::FOAF::Agent
-        attr_accessor :type, # String
-          :parent_org # Organization
+        attr_accessor :parentOrg # Organization
 
         def initialize
           super
           @type = EntityType::LIS_ORGANIZATION
+          @parentOrg = nil
         end
       end
     end

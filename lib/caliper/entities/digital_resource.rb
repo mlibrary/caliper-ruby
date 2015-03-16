@@ -34,7 +34,8 @@ module Caliper
         :alignedLearningObjective,
         :keywords,
         :isPartOf,
-        :datePublished
+        :datePublished,
+        :version
 
       def initialize
         super
@@ -43,6 +44,8 @@ module Caliper
         @objectType = Array.new
         @keywords = Array.new
         @datePublished = nil
+        @isPartOf = nil
+        @version = nil
       end
 
     end
