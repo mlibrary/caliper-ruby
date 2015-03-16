@@ -7,7 +7,7 @@ SimpleCov.use_merging
 SimpleCov.merge_timeout(10000)
 SimpleCov.command_name('open_data_export_gem')
 SimpleCov.start('test_frameworks') do
-  SimpleCov.coverage_dir('../../coverage')
+  SimpleCov.coverage_dir('./coverage')
   SimpleCov.at_exit {
     SimpleCov.result
   }
