@@ -13,7 +13,7 @@ module Caliper
 
     describe AnnotationEvent do
 
-      it 'should ensure that a AnnotationEvent (login) is correctly created and serialized' do
+      it 'should ensure that a AnnotationEvent (Bookmarked) is correctly created and serialized' do
 
         # The Actor (Person/Student))
         student = Caliper::Entities::LIS::Person.new

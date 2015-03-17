@@ -14,7 +14,7 @@ module Caliper
 
     describe SessionEvent do
 
-      it 'should ensure that a SessionEvent (login) is correctly created and serialized' do
+      it 'should ensure that a SessionEvent (logout) is correctly created and serialized' do
 
         # The Actor (Person/Student))
         student = Caliper::Entities::LIS::Person.new
