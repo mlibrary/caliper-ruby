@@ -5,18 +5,13 @@ module Caliper
   module Event
     class NavigationEvent < Event
 
-      attr_accessor :context,
-                    :type,
-                    :action,
-                    :object,
-                    :from_resource, #the resource from which the navigation starts
-                    :target
+      attr_accessor :navigatedFrom
 
       def initialize
 	      super
 	      @context = EventContext::NAVIGATION
 	      @type = EventType::NAVIGATION
-	      @action = Caliper::Profiles::ProfileActions::NAVIGATED_TO
+        @navigatedFrom = nil
       end
     end
   end

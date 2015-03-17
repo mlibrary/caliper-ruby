@@ -8,6 +8,7 @@ module Caliper
     module ReadingActions
       SEARCHED = "searched"
       VIEWED = "viewed"
+      NAVIGATED_TO = "navigated to"
     end
 
     class ReadingProfile < Caliper::Profiles::Profile
