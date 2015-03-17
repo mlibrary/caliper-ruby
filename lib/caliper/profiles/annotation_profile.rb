@@ -5,6 +5,7 @@ require_relative '../entities/reading/frame'
 
 module Caliper
   module Profiles
+
     module AnnotationActions
       ATTACHED = "attached"
       BOOKMARKED = "bookmarked"
@@ -23,6 +24,7 @@ module Caliper
       SUBSCRIBED = "subscribed"
       TAGGED = "tagged"
     end
+    
     class ReadingProfile < Profile
       include AnnotationActions
       attr_accessor :key, # String

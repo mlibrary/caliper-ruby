@@ -3,6 +3,7 @@ require_relative '../profiles/session_profile'
 
 module Caliper
   module Event
+    
     class SessionEvent < Event
 
       #
