@@ -13,12 +13,12 @@ module Caliper
     module Annotation
 
       class SharedAnnotation < Annotation
-        attr_accessor :with_agents,# list of Agent object
+        attr_accessor :withAgents # list of Agent objects
 
         def initialize()
           super
           @type = AnnotationType::SHARED_ANNOTATION
-	        @with_agents = Array.new
+	        @withAgents = Array.new
         end
         
       end
