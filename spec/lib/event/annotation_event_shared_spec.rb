@@ -25,7 +25,7 @@ module Caliper
         # The Action
         action = Caliper::Profiles::AnnotationActions::SHARED
 
-        # The Object of the shared (Frame)
+        # The Object shared (Frame)
         ePubVolume = Caliper::Entities::Reading::EPubVolume.new
         ePubVolume.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3)'
         ePubVolume.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
