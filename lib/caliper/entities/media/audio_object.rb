@@ -5,8 +5,8 @@ require_relative 'media_object'
 # A audio object embedded in a web page..
 
 module Caliper
-	module Entities
-		module Media
+  module Entities
+    module Media
 
       class AudioObject < MediaObject
 
@@ -16,5 +16,6 @@ module Caliper
         end
 
       end
-	end
+    end
+  end
 end

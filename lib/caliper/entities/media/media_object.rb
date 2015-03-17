@@ -1,4 +1,4 @@
-require_relative '../../entities/entity'
+require_relative '../../entities/digital_resource'
 require_relative '../../entities/schemadotorg/thing'
 
 # An image, video, or audio object embedded in a web page. Note that a
@@ -21,7 +21,7 @@ module Caliper
       end
 
       ## implement the interface Thing
-      class MediaObject < Entity
+      class MediaObject < DigitalResource
         include Caliper::Entities::SchemaDotOrg::Thing
 
         attr_accessor :duration

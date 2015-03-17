@@ -5,8 +5,8 @@ require_relative 'media_object'
 # A video object embedded in a web page..
 
 module Caliper
-	module Entities
-		module Media
+  module Entities
+    module Media
 
       class VideoObject < MediaObject
 
@@ -16,5 +16,6 @@ module Caliper
         end
 
       end
-	end
+    end
+  end
 end
