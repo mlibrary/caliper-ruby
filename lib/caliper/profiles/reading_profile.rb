@@ -6,9 +6,9 @@ module Caliper
   module Profiles
 
     module ReadingActions
-      SEARCHED = "searched"
-      VIEWED = "viewed"
-      NAVIGATED_TO = "navigated to"
+      SEARCHED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Searched"
+      VIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed"
+      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
     end
 
     class ReadingProfile < Caliper::Profiles::Profile
