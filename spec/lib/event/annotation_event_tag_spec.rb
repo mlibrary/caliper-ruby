@@ -89,7 +89,7 @@ module Caliper
         file = File.read('spec/fixtures/caliperTagAnnotationEvent.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        annotation_event.to_json.should be_json_eql(expected_json)#.excluding("@class")
+        annotation_event.to_json.should be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "edApp", "group")
 
         # puts "JSON from file = #{data_hash}"
         deser_annotation_event = AnnotationEvent.new
