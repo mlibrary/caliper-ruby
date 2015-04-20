@@ -19,8 +19,8 @@ module Caliper
         # The Actor (Person/Student))
         student = Caliper::Entities::LIS::Person.new
         student.id = 'https://some-university.edu/user/554433'
-        student.dateCreated = '2015-01-01T06:00:00.000Z'
-        student.dateModified = '2015-02-02T11:30:00.000Z'
+        student.dateCreated = '2015-08-01T06:00:00.000Z'
+        student.dateModified = '2015-09-02T11:30:00.000Z'
         # puts "new student = #{student.to_json}"
 
         # The Action
@@ -31,16 +31,16 @@ module Caliper
         ePubVolume.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3)'
         ePubVolume.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
         ePubVolume.version = '2nd ed.'
-        ePubVolume.dateCreated = '2015-01-01T06:00:00.000Z'
-        ePubVolume.dateModified = '2015-02-02T11:30:00.000Z'
+        ePubVolume.dateCreated = '2015-08-01T06:00:00.000Z'
+        ePubVolume.dateModified = '2015-09-02T11:30:00.000Z'
 
         # The Target within the Object (frame)
         frame = Caliper::Entities::Reading::Frame.new
         frame.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/1)'
         frame.name = 'Key Figures: George Washington'
         frame.version = '2nd ed.'
-        frame.dateCreated = '2015-01-01T06:00:00.000Z'
-        frame.dateModified = '2015-02-02T11:30:00.000Z'
+        frame.dateCreated = '2015-08-01T06:00:00.000Z'
+        frame.dateModified = '2015-09-02T11:30:00.000Z'
         frame.index = 1
         frame.isPartOf = ePubVolume
 
@@ -48,15 +48,15 @@ module Caliper
         edApp = Caliper::Entities::SoftwareApplication.new
         edApp.id = 'https://github.com/readium/readium-js-viewer'
         edApp.name = 'Readium'
-        edApp.dateCreated = '2015-01-01T06:00:00.000Z'
-        edApp.dateModified = '2015-02-02T11:30:00.000Z'
+        edApp.dateCreated = '2015-08-01T06:00:00.000Z'
+        edApp.dateModified = '2015-09-02T11:30:00.000Z'
 
         # The LIS Course Section for the Caliper Event
         course = Caliper::Entities::LIS::CourseSection.new
         course.id = 'https://some-university.edu/politicalScience/2014/american-revolution-101'
         course.name = 'American Revolution 101'
-        course.dateCreated = '2015-01-01T06:00:00.000Z'
-        course.dateModified = '2015-02-02T11:30:00.000Z'
+        course.dateCreated = '2015-08-01T06:00:00.000Z'
+        course.dateModified = '2015-09-02T11:30:00.000Z'
         course.courseNumber = 'AmRev-101'
         course.label = 'Am Rev 101'
         course.semester = 'Spring-2014'
@@ -65,8 +65,8 @@ module Caliper
         fromPage = Caliper::Entities::WebPage.new
         fromPage.id = 'https://some-university.edu/politicalScience/2014/american-revolution-101/index.html'
         fromPage.name = 'American Revolution 101 Landing Page'
-        fromPage.dateCreated = '2015-01-01T06:00:00.000Z'
-        fromPage.dateModified = '2015-02-02T11:30:00.000Z'
+        fromPage.dateCreated = '2015-08-01T06:00:00.000Z'
+        fromPage.dateModified = '2015-09-02T11:30:00.000Z'
         fromPage.isPartOf = course
         fromPage.version = '1.0'
 
@@ -80,7 +80,7 @@ module Caliper
         navigated_event.edApp  = edApp
         navigated_event.group = course
         navigated_event.navigatedFrom = fromPage
-        navigated_event.startedAtTime = '2015-02-15T10:15:00.000Z'
+        navigated_event.startedAtTime = '2015-09-15T10:15:00.000Z'
         navigated_event.endedAtTime = nil
         navigated_event.duration = nil
         # puts "Event JSON = #{navigated_event.to_json}'"

@@ -20,8 +20,8 @@ module Caliper
         # The Actor (Person/Student))
         student = Caliper::Entities::LIS::Person.new
         student.id = 'https://some-university.edu/user/554433'
-        student.dateCreated = '2015-01-01T06:00:00.000Z'
-        student.dateModified = '2015-02-02T11:30:00.000Z'
+        student.dateCreated = '2015-08-01T06:00:00.000Z'
+        student.dateModified = '2015-09-02T11:30:00.000Z'
         # puts "new student = #{student.to_json}"
 
         # The Action
@@ -33,12 +33,12 @@ module Caliper
         video.name = 'American Revolution - Key Figures Video'
         video.version = '1.0'
         video.duration = 1420
-        video.dateCreated = '2015-01-01T06:00:00.000Z'
-        video.dateModified = '2015-02-02T11:30:00.000Z'
+        video.dateCreated = '2015-08-01T06:00:00.000Z'
+        video.dateModified = '2015-09-02T11:30:00.000Z'
 
         learnObjective = Caliper::Entities::LearningObjective.new
         learnObjective.id = 'http://americanrevolution.com/personalities/learn'
-        learnObjective.dateCreated = '2015-01-01T06:00:00.000Z'
+        learnObjective.dateCreated = '2015-08-01T06:00:00.000Z'
         learnObjective.dateModified = nil
         video.alignedLearningObjective = [learnObjective]
 
@@ -46,7 +46,7 @@ module Caliper
         videoLocation = Caliper::Entities::Media::MediaLocation.new
         videoLocation.id = 'https://com.sat/super-media-tool/video/video1'
         videoLocation.version = '1.0'
-        videoLocation.dateCreated = '2015-01-01T06:00:00.000Z'
+        videoLocation.dateCreated = '2015-08-01T06:00:00.000Z'
         videoLocation.dateModified = nil
         videoLocation.currentTime = 710
 
@@ -54,15 +54,15 @@ module Caliper
         edApp = Caliper::Entities::SoftwareApplication.new
         edApp.id = 'https://com.sat/super-media-tool'
         edApp.name = 'Super Media Tool'
-        edApp.dateCreated = '2015-01-01T06:00:00.000Z'
-        edApp.dateModified = '2015-02-02T11:30:00.000Z'
+        edApp.dateCreated = '2015-08-01T06:00:00.000Z'
+        edApp.dateModified = '2015-09-02T11:30:00.000Z'
 
         # The LIS Course Section for the Caliper Event
         course = Caliper::Entities::LIS::CourseSection.new
         course.id = 'https://some-university.edu/politicalScience/2014/american-revolution-101'
         course.name = 'American Revolution 101'
-        course.dateCreated = '2015-01-01T06:00:00.000Z'
-        course.dateModified = '2015-02-02T11:30:00.000Z'
+        course.dateCreated = '2015-08-01T06:00:00.000Z'
+        course.dateModified = '2015-09-02T11:30:00.000Z'
         course.courseNumber = 'AmRev-101'
         course.label = 'Am Rev 101'
         course.semester = 'Spring-2014'
@@ -76,7 +76,7 @@ module Caliper
         media_event.generated = nil
         media_event.edApp  = edApp
         media_event.group = course
-        media_event.startedAtTime = '2015-02-15T10:15:00.000Z'
+        media_event.startedAtTime = '2015-09-15T10:15:00.000Z'
         media_event.endedAtTime = nil
         media_event.duration = nil
         # puts "Event JSON = #{media_event.to_json}'"

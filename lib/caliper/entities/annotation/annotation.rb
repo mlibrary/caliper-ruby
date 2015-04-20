@@ -25,12 +25,12 @@ module Caliper
 			class Annotation < Entity
 				include Caliper::Entities::SchemaDotOrg::Thing
 
-				attr_accessor :annotatedId
+				attr_accessor :annotated
 
 				def initialize
 					super
 					@type = AnnotationType::ANNOTATION
-					@annotatedId = nil
+					@annotated = nil
 				end
 			end
 
