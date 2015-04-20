@@ -5,7 +5,7 @@ module Caliper
   module Entities
 	  module FOAF
       module Agent
-
+      	attr_accessor :hasMembership # Membership
       end
     end
   end

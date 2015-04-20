@@ -7,10 +7,9 @@ require_relative '../entities/reading/frame'
 module Caliper
   module Profiles
     module SessionActions
-      LOGGED_IN = "logged in"
-      LOGGED_OUT = "logged out"
-      TIMEOUT = "timed out"
-      UNRECOGNIZED = "unrecognized"
+      LOGGED_IN = 'http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn'
+      LOGGED_OUT = 'http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut'
+      TIMED_OUT = 'http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut'
     end
     class SessionProfile < Profile
       include SessionActions

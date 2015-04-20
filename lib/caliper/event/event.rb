@@ -38,8 +38,8 @@ module Caliper
         # Learning Context
         :edApp,  # SoftwareApplication
 
-        # LIS organization
-        :group, # Organization
+        # LIS Group
+        :group, # Group
 
         # Required - Agent (User, System) that performed the action
         :actor, # Agent

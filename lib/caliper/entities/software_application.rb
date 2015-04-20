@@ -2,6 +2,7 @@ require "json"
 require_relative '../entities/entity'
 require_relative '../entities/foaf/agent'
 require_relative '../entities/schemadotorg/software_application'
+require_relative '../entities/lis/organization'
 
 #
 #  
@@ -13,7 +14,7 @@ require_relative '../entities/schemadotorg/software_application'
 #
 module Caliper
   module Entities
-    class SoftwareApplication < Entity
+    class SoftwareApplication < Caliper::Entities::LIS::Organization
       include Caliper::Entities::FOAF::Agent
       include Caliper::Entities::SchemaDotOrg::SoftwareApplication
 

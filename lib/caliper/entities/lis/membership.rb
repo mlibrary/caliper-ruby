@@ -1,6 +1,5 @@
 require_relative './organization'
 require_relative '../../entities/jsonable'
-require_relative './course_offering'
 
 #
 #  
@@ -8,20 +7,23 @@ require_relative './course_offering'
 #  @license For license information contact, info@imsglobal.org
 #
 #
-#  a LIS Course Section
+#  W3C Membership
 #
 module Caliper
   module Entities
     module LIS
 
-      class CourseSection < Caliper::Entities::LIS::CourseOffering
+      class Membership < Caliper::Entities::LIS::Organization
         include Caliper::Entities::Jsonable
 
-        attr_accessor :category
+        attr_accessor :member,
+          :organization,
+          :roles,
+          :status
 
         def initialize
           super
-          @type = OrganizationType::LIS_COURSE_SECTION
+          @type = EntityType::MEMBERSHIP
         end
 
       end

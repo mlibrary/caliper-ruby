@@ -3,11 +3,17 @@ require_all 'lib/caliper/entities/entity.rb'
 require_all 'lib/caliper/entities/session.rb'
 require_all 'lib/caliper/entities/software_application.rb'
 require_all 'lib/caliper/entities/lis/person.rb'
+require_all 'lib/caliper/entities/lis/membership.rb'
+require_all 'lib/caliper/entities/lis/roles.rb'
+require_all 'lib/caliper/entities/lis/status.rb'
 require_all 'lib/caliper/entities/lis/course_section.rb'
+require_all 'lib/caliper/entities/lis/course_offering.rb'
+require_all 'lib/caliper/entities/lis/group.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/entities/reading/frame.rb'
 require_all 'lib/caliper/event/session_event.rb'
 require_all 'lib/caliper/profiles/session_profile.rb'
+require 'json_spec'
 
 module Caliper
   module Event
@@ -19,8 +25,33 @@ module Caliper
         # The Actor (Person/Student))
         student = Caliper::Entities::LIS::Person.new
         student.id = 'https://some-university.edu/user/554433'
-        student.dateCreated = '2015-01-01T06:00:00.000Z'
-        student.dateModified = '2015-02-02T11:30:00.000Z'
+        membership1 = Caliper::Entities::LIS::Membership.new
+        membership1.id = "https://some-university.edu/membership/001"
+        membership1.member = "https://some-university.edu/user/554433"
+        membership1.organization = "https://some-university.edu/politicalScience/2015/american-revolution-101"
+        membership1.roles = [Caliper::Entities::LIS::Roles::LEARNER]
+        membership1.status = Caliper::Entities::LIS::Status::ACTIVE
+        membership1.dateCreated = "2015-08-01T06:00:00.000Z"
+        membership1.dateModified = nil;
+        membership2 = Caliper::Entities::LIS::Membership.new
+        membership2.id = "https://some-university.edu/membership/002"
+        membership2.member = "https://some-university.edu/user/554433"
+        membership2.organization = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001"
+        membership2.roles = [Caliper::Entities::LIS::Roles::LEARNER]
+        membership2.status = Caliper::Entities::LIS::Status::ACTIVE
+        membership2.dateCreated = "2015-08-01T06:00:00.000Z"
+        membership2.dateModified = nil
+        membership3 = Caliper::Entities::LIS::Membership.new
+        membership3.id = "https://some-university.edu/membership/003"
+        membership3.member = "https://some-university.edu/user/554433"
+        membership3.organization = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
+        membership3.roles = [Caliper::Entities::LIS::Roles::LEARNER]
+        membership3.status = Caliper::Entities::LIS::Status::ACTIVE
+        membership3.dateCreated = "2015-08-01T06:00:00.000Z"
+        membership3.dateModified = nil
+        student.hasMembership = [membership1, membership2, membership3]
+        student.dateCreated = '2015-08-01T06:00:00.000Z'
+        student.dateModified = '2015-09-02T11:30:00.000Z'
         # puts "new student = #{student.to_json}"
 
         # The Action
@@ -30,25 +61,26 @@ module Caliper
         edApp = Caliper::Entities::SoftwareApplication.new
         edApp.id = 'https://github.com/readium/readium-js-viewer'
         edApp.name = 'Readium'
-        edApp.dateCreated = '2015-01-01T06:00:00.000Z'
-        edApp.dateModified = '2015-02-02T11:30:00.000Z'
+        edApp.hasMembership = []
+        edApp.dateCreated = '2015-08-01T06:00:00.000Z'
+        edApp.dateModified = '2015-09-02T11:30:00.000Z'
 
         # The Target (Frame)
         ePubVolume = Caliper::Entities::Reading::EPubVolume.new
         ePubVolume.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3)'
         ePubVolume.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
         ePubVolume.version = '2nd ed.'
-        ePubVolume.dateCreated = '2015-01-01T06:00:00.000Z'
-        ePubVolume.dateModified = '2015-02-02T11:30:00.000Z'
+        ePubVolume.dateCreated = '2015-08-01T06:00:00.000Z'
+        ePubVolume.dateModified = '2015-09-02T11:30:00.000Z'
 
         frame = Caliper::Entities::Reading::Frame.new
         frame.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/1)'
         frame.name = 'Key Figures: George Washington'
         frame.version = '2nd ed.'
-        frame.dateCreated = '2015-01-01T06:00:00.000Z'
-        frame.dateModified = '2015-02-02T11:30:00.000Z'
+        frame.dateCreated = '2015-08-01T06:00:00.000Z'
+        frame.dateModified = '2015-09-02T11:30:00.000Z'
         frame.index = 1
-        frame.isPartOf = ePubVolume
+        frame.isPartOf = ePubVolume.id
 
         # The Generated (Session)
         session = Caliper::Entities::Session.new
@@ -56,21 +88,43 @@ module Caliper
         session.name = 'session-123456789'
         session.description = nil
         session.actor = student
-        session.startedAtTime = '2015-02-15T10:15:00.000Z'
+        session.startedAtTime = '2015-09-15T10:15:00.000Z'
         session.endedAtTime = nil
         session.duration = nil
-        session.dateCreated = '2015-01-01T06:00:00.000Z'
-        session.dateModified = '2015-02-02T11:30:00.000Z'
+        session.dateCreated = '2015-08-01T06:00:00.000Z'
+        session.dateModified = '2015-09-02T11:30:00.000Z'
 
+        #LIS Course Offering
+        courseOffering = Caliper::Entities::LIS::CourseOffering.new
+        courseOffering.id = "https://some-university.edu/politicalScience/2015/american-revolution-101"
+        courseOffering.name = "Political Science 101: The American Revolution"
+        courseOffering.courseNumber = "POL101"
+        courseOffering.academicSession = "Fall-2015"
+        courseOffering.membership = []
+        courseOffering.subOrganizationOf = nil
+        courseOffering.dateCreated = '2015-08-01T06:00:00.000Z'
+        courseOffering.dateModified = '2015-09-02T11:30:00.000Z'
+        
         # The LIS Course Section for the Caliper Event
         course = Caliper::Entities::LIS::CourseSection.new
-        course.id = 'https://some-university.edu/politicalScience/2014/american-revolution-101'
+        course.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/section/001'
         course.name = 'American Revolution 101'
-        course.dateCreated = '2015-01-01T06:00:00.000Z'
-        course.dateModified = '2015-02-02T11:30:00.000Z'
-        course.courseNumber = 'AmRev-101'
-        course.label = 'Am Rev 101'
-        course.semester = 'Spring-2014'
+        course.courseNumber = "POL101"
+        course.academicSession = "Fall-2015"
+        course.category = nil
+        course.membership = [membership2]
+        course.subOrganizationOf = courseOffering
+        course.dateCreated = '2015-08-01T06:00:00.000Z'
+        course.dateModified = '2015-09-02T11:30:00.000Z'
+
+        # LIS Group
+        group = Caliper::Entities::LIS::Group.new
+        group.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
+        group.name = "Discussion Group 001"
+        group.membership = [membership3]
+        group.subOrganizationOf = course
+        group.dateCreated = '2015-08-01T06:00:00.000Z'
+        group.dateModified = nil
 
         # The (Session) Event
         session_event = SessionEvent.new
@@ -80,8 +134,8 @@ module Caliper
         session_event.target = frame
         session_event.generated = session
         session_event.edApp  = edApp
-        session_event.group = course
-        session_event.startedAtTime = '2015-02-15T10:15:00.000Z'
+        session_event.group = group
+        session_event.startedAtTime = '2015-09-15T10:15:00.000Z'
         # puts "Event JSON = #{session_event.to_json}'"
 
         # Load JSON from caliper-common-fixtures for comparison
@@ -89,7 +143,7 @@ module Caliper
         file = File.read('spec/fixtures/caliperSessionLoginEvent.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        session_event.to_json.should be_json_eql(expected_json)#.excluding("@class")
+        session_event.to_json.should be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "edApp", "group")
 
         # puts "JSON from file = #{data_hash}"
         deser_session_event = SessionEvent.new

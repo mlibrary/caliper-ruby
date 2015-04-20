@@ -1,6 +1,5 @@
 require_relative './organization'
 require_relative '../../entities/jsonable'
-require_relative './course_offering'
 
 #
 #  
@@ -14,14 +13,12 @@ module Caliper
   module Entities
     module LIS
 
-      class CourseSection < Caliper::Entities::LIS::CourseOffering
+      class Group < Caliper::Entities::LIS::Organization
         include Caliper::Entities::Jsonable
-
-        attr_accessor :category
 
         def initialize
           super
-          @type = OrganizationType::LIS_COURSE_SECTION
+          @type = OrganizationType::GROUP
         end
 
       end
