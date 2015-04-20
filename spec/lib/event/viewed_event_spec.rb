@@ -6,6 +6,7 @@ require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/event/view_event.rb'
 require_all 'lib/caliper/profiles/reading_profile.rb'
+require 'json_spec'
 
 module Caliper
   module Event
@@ -78,7 +79,7 @@ module Caliper
         file = File.read('spec/fixtures/caliperViewEvent.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        viewed_event.to_json.should be_json_eql(expected_json)#.excluding("@class")
+        viewed_event.to_json.should be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "edApp", "group")
 
         # puts "JSON from file = #{data_hash}"
         deser_viewed_event = Caliper::Event::ViewEvent.new

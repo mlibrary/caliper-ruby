@@ -7,6 +7,7 @@ require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/entities/annotation/shared_annotation.rb'
 require_all 'lib/caliper/event/annotation_event.rb'
 require_all 'lib/caliper/profiles/annotation_profile.rb'
+require 'json_spec'
 
 module Caliper
   module Event

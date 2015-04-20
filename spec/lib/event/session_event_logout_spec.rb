@@ -8,6 +8,7 @@ require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/entities/reading/frame.rb'
 require_all 'lib/caliper/event/session_event.rb'
 require_all 'lib/caliper/profiles/session_profile.rb'
+require 'json_spec'
 
 module Caliper
   module Event

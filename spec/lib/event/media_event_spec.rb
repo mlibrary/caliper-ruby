@@ -8,6 +8,7 @@ require_all 'lib/caliper/entities/media/video_object.rb'
 require_all 'lib/caliper/entities/media/media_location.rb'
 require_all 'lib/caliper/event/media_event.rb'
 require_all 'lib/caliper/profiles/media_profile.rb'
+require 'json_spec'
 
 module Caliper
   module Event

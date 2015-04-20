@@ -7,6 +7,7 @@ require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/event/navigation_event.rb'
 require_all 'lib/caliper/profiles/reading_profile.rb'
+require 'json_spec'
 
 module Caliper
   module Event
