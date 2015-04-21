@@ -10,7 +10,9 @@ module Caliper
     it "should ensure that we can create and send an event" do
 
       options = {
-        'host'  => 'http://requestb.in/s58ekgs5'
+        'host'  => 'http://requestb.in/1i7pr2i1',
+        'sensorId' => 'test_sensor_id',
+        'apiKey' => 'test_api_key'
       }
 
       sensor = Sensor.new options

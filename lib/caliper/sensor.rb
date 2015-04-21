@@ -1,5 +1,7 @@
 require 'rest_client'
 require_relative "options"
+require_relative "event_envelope"
+require_relative "entity_envelope"
 
 ##
 #
@@ -21,14 +23,24 @@ module Caliper
     def send(event)
       raise ArgumentError, "Expecting Caliper::Event but got #{event.class.to_s}" unless event.is_a?(Caliper::Event::Event)
 
-      RestClient.post @options['host'], event.to_json, :content_type => :json, :accept => :json
+      envelope = EventEnvelope.new
+      envelope.apiKey = @options['apiKey']
+      envelope.sensorId = @options['sensorId']
+      envelope.event = event
+
+      RestClient.post @options['host'], envelope.to_json, :content_type => :json, :accept => :json
 
     end
 
     def describe(entity)
       raise ArgumentError, "Expecting Caliper::Entity but got #{entity.class.to_s}" unless entity.is_a?(Caliper::Entities::Entity)
 
-      RestClient.post @options['host'], entity.to_json, :content_type => :json, :accept => :json
+      envelope = EntityEnvelope.new
+      envelope.apiKey = @options['apiKey']
+      envelope.sensorId = @options['sensorId']
+      envelope.entity = entity
+
+      RestClient.post @options['host'], envelope.to_json, :content_type => :json, :accept => :json
 
     end
 
