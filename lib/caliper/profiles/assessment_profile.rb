@@ -3,23 +3,27 @@ require_relative './profile'
 module Caliper
   module Profiles
 
-    module AssignableActions
-      ABANDONED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned"
-      ACTIVATED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Activated"
-      COMPLETED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Completed"
-      DEACTIVATED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Deactivated"
-      HID = "http://purl.imsglobal.org/vocab/caliper/v1/action#Hid"
-      REVIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed"
-      SHOWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Showed"
+    module AssessmentActions
+      PAUSED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused"
+      RESTARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted"
       STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
       SUBMITTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted"
       NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
     end
 
-    class AssignableProfile < Caliper::Profiles::Profile
+    module AssessmentItemActions
+      COMPLETED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Completed"
+      REVIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed"
+      SKIPPED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped"
+      STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
+      VIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed"
+      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
+    end
+
+    class AssessmentProfile < Caliper::Profiles::Profile
 
       attr_accessor :key, # String
-        :lookup # hash of AssignableActions
+        :lookup # hash of AssessmentActions
 
       # whether object if of type DigitalResource
       def validate_object(object)
