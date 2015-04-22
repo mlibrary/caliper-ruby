@@ -1,4 +1,5 @@
-
+require "require_all"
+require_all 'lib/caliper/entities/response/response_type.rb'
 #
 # Represents response text or integer/decimal/scientific numbers that completes a question
 # designed with one or more "fill in the blank" option prompts.

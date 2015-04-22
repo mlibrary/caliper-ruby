@@ -1,4 +1,5 @@
-
+require "require_all"
+require_all 'lib/caliper/entities/response/response_type.rb'
 #
 # Represents a response that identifies text from a presented paragraph or list.
 # The response is the identified string or a mapping to a logical identifier;

@@ -1,4 +1,5 @@
-
+require "require_all"
+require_all 'lib/caliper/entities/response/response_type.rb'
 #
 # Representation of a response to a multiple choice question that permits one or more options to be selected.
 #

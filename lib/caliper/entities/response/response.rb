@@ -1,4 +1,5 @@
 require "require_all"
+require_all 'lib/caliper/entities/generatable.rb'
 
 module Caliper
 	module Entities
