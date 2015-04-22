@@ -76,17 +76,17 @@ module Caliper
         # assessment.maxScore = 3.0
 
         # # The Assessment has three items
-        # assessmentItem1 = Caliper::Entities::Assessment::AssessmentItem.new
-        # assessmentItem1.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/item1"
-        # assessmentItem1.name = "Assessment Item 1"
-        # assessmentItem1.isPartOf = assessment.id
-        # assessmentItem1.maxAttempts = 2
-        # assessmentItem1.maxSubmits = 2
-        # assessmentItem1.maxScore = 1.0
-        # assessmentItem1.dateCreated = nil
-        # assessmentItem1.dateModified = nil
-        # assessmentItem1.version = "1.0"
-        # assessmentItem1.isTimeDependent = false
+        assessmentItem1 = Caliper::Entities::Assessment::AssessmentItem.new
+        assessmentItem1.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/item1"
+        assessmentItem1.name = "Assessment Item 1"
+        assessmentItem1.isPartOf = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1"#assessment.id
+        assessmentItem1.maxAttempts = 2
+        assessmentItem1.maxSubmits = 2
+        assessmentItem1.maxScore = 1.0
+        assessmentItem1.dateCreated = nil
+        assessmentItem1.dateModified = nil
+        assessmentItem1.version = "1.0"
+        assessmentItem1.isTimeDependent = false
 
         # assessmentItem2 = Caliper::Entities::Assessment::AssessmentItem.new
         # assessmentItem2.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/item2"
@@ -118,18 +118,18 @@ module Caliper
         # target = nil;
 
         # # The attempt object  = Attempt) within the Event Object
-        # attempt = Caliper::Entities::Assignable::Attempt.new
-        # attempt.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/attempt1"
-        # attempt.actor = "https://some-university.edu/user/554433"
-        # attempt.assignable = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1"
-        # attempt.dateCreated = "2015-08-01T06:00:00.000Z"
-        # attempt.dateModified = nil
-        # attempt.count = 1
-        # attempt.startedAtTime = "2015-09-15T10:15:00.000Z"
-        # attempt.duration = nil
-        # attempt.endedAtTime = nil
-        # attempt.extensions = {}
-        # attempt.name = nil
+        attempt = Caliper::Entities::Assignable::Attempt.new
+        attempt.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/item1/attempt1"
+        attempt.actor = "https://some-university.edu/user/554433"
+        attempt.assignable = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1"
+        attempt.dateCreated = "2015-08-01T06:00:00.000Z"
+        attempt.dateModified = nil
+        attempt.count = 1
+        attempt.startedAtTime = "2015-09-15T10:15:00.000Z"
+        attempt.duration = nil
+        attempt.endedAtTime = nil
+        attempt.extensions = {}
+        attempt.name = nil
 
         # The Object (edApp)
         edApp = Caliper::Entities::SoftwareApplication.new
@@ -175,9 +175,9 @@ module Caliper
         assessment_item_started_event = AssessmentItemEvent.new
         assessment_item_started_event.actor  = student
         assessment_item_started_event.action = action
-        # assessment_item_started_event.object = assessment
+        assessment_item_started_event.object = assessmentItem1
         assessment_item_started_event.target = nil
-        # assessment_item_started_event.generated = attempt
+        assessment_item_started_event.generated = attempt
         assessment_item_started_event.edApp  = edApp
         assessment_item_started_event.group = group
         assessment_item_started_event.startedAtTime = '2015-09-15T10:15:00.000Z'
@@ -190,7 +190,7 @@ module Caliper
         file = File.read('spec/fixtures/caliperAssessmentItemStartedEvent.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        # assessment_item_started_event.to_json.should be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "edApp", "group")
+        assessment_item_started_event.to_json.should be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "edApp", "group")
 
         # puts "JSON from file = #{data_hash}"
         deser_assessment_item_started_event = AssessmentItemEvent.new
@@ -198,7 +198,7 @@ module Caliper
         # puts "AssessmentItemEvent from JSON = #{deser_assessment_item_started_event.to_json}"
 
         # Ensure that the deserialized bookmark event object conforms
-        # expect(assessment_item_started_event).to eql(deser_assessment_item_started_event)
+        expect(assessment_item_started_event).to eql(deser_assessment_item_started_event)
 
       end
 

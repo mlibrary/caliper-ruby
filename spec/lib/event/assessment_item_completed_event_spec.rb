@@ -214,7 +214,7 @@ module Caliper
         # puts "AssessmentItemEvent from JSON = #{deser_assessment_event.to_json}"
 
         # Ensure that the deserialized bookmark event object conforms
-        # expect(assessment_event).to eql(deser_assessment_event)
+        expect(assessment_event).to eql(deser_assessment_event)
 
       end
 
