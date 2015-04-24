@@ -18,7 +18,7 @@
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
 require_all 'lib/caliper/entities/session.rb'
-require_all 'lib/caliper/entities/software_application.rb'
+require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
 require_all 'lib/caliper/entities/lis/roles.rb'
@@ -75,7 +75,7 @@ module Caliper
         action = Caliper::Profiles::SessionActions::LOGGED_OUT
 
         # The Object (edApp)
-        edApp = Caliper::Entities::SoftwareApplication.new
+        edApp = Caliper::Entities::Agent::SoftwareApplication.new
         edApp.id = 'https://github.com/readium/readium-js-viewer'
         edApp.name = 'Readium'
         edApp.hasMembership = []

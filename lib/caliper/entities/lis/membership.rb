@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './organization'
+require_relative '../agent/organization'
 require_relative '../../entities/jsonable'
 
 #
@@ -25,7 +25,7 @@ module Caliper
   module Entities
     module LIS
 
-      class Membership < Caliper::Entities::LIS::Organization
+      class Membership < Caliper::Entities::Agent::Organization
         include Caliper::Entities::Jsonable
 
         attr_accessor :member,

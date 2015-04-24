@@ -32,7 +32,7 @@ module Caliper
 
         def initialize
           super
-          @type = EntityType::LIS_PERSON
+          @type = EntityType::PERSON
         end
 
       end

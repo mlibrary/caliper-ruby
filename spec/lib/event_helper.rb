@@ -17,7 +17,7 @@
 
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
-require_all 'lib/caliper/entities/software_application.rb'
+require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/session.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
@@ -71,7 +71,7 @@ module Helper
     action = Caliper::Profiles::SessionActions::LOGGED_IN;
 
     # The Object (edApp)
-    edApp = Caliper::Entities::SoftwareApplication.new
+    edApp = Caliper::Entities::Agent::SoftwareApplication.new
     edApp.id = 'https://github.com/readium/readium-js-viewer'
     edApp.name = 'Readium'
     edApp.dateCreated = '2015-08-01T06:00:00.000Z'
@@ -107,7 +107,7 @@ module Helper
     session.dateModified = '2015-09-02T11:30:00.000Z'
 
     # The LIS Course Section for the Caliper Event
-    edApp = Caliper::Entities::SoftwareApplication.new
+    edApp = Caliper::Entities::Agent::SoftwareApplication.new
     edApp.id = 'https://github.com/readium/readium-js-viewer'
     edApp.name = 'Readium'
     edApp.hasMembership = []

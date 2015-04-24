@@ -15,26 +15,26 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require "json"
-require_relative '../entities/entity'
-require_relative '../entities/foaf/agent'
-require_relative '../entities/schemadotorg/software_application'
-require_relative '../entities/lis/organization'
+require_relative '../../entities/foaf/agent'
+require_relative '../../entities/entity'
 
 #
-#  Software Application (from schema.org)
+# W3C Organization
 #
 module Caliper
   module Entities
-    class SoftwareApplication < Caliper::Entities::LIS::Organization
-      include Caliper::Entities::FOAF::Agent
-      include Caliper::Entities::SchemaDotOrg::SoftwareApplication
+    module Agent
+      class Organization < Entity
+        include Caliper::Entities::FOAF::Agent
 
-      def initialize()
-        super
-        @type=EntityType::SOFTWARE_APPLICATION
+        attr_accessor :membership,
+        :subOrganizationOf
+
+        def initialize
+          super
+          @type = EntityType::ORGANIZATION
+        end
       end
-
     end
   end
 end

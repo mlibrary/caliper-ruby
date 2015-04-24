@@ -17,7 +17,7 @@
 
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
-require_all 'lib/caliper/entities/software_application.rb'
+require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
 require_all 'lib/caliper/entities/lis/roles.rb'
@@ -152,7 +152,7 @@ module Caliper
         attempt.name = nil
 
         # The edApp
-        edApp = Caliper::Entities::SoftwareApplication.new
+        edApp = Caliper::Entities::Agent::SoftwareApplication.new
         edApp.id = 'https://com.sat/super-assessment-tool'
         edApp.name = 'Super Assessment Tool'
         edApp.hasMembership = []
