@@ -15,22 +15,17 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/w3c/organization'
 require_relative '../../entities/entity'
 
 #
-# W3C Organization
+# A W3C Organization.
 #
 module Caliper
   module Entities
-    module Agent
-      class Organization < Entity
-        include Caliper::Entities::W3c::Organization
-
-        def initialize
-          super
-          @type = EntityType::ORGANIZATION
-        end
+    module W3c
+      module Organization
+        attr_accessor :membership,
+          :subOrganizationOf
       end
     end
   end
