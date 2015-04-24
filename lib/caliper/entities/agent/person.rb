@@ -24,7 +24,7 @@ require_relative '../../entities/jsonable'
 #
 module Caliper
   module Entities
-    module LIS
+    module Agent
       # Represents Person.
       # @extends Agent
       class Person < Entity

@@ -18,7 +18,7 @@
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
 require_all 'lib/caliper/entities/software_application.rb'
-require_all 'lib/caliper/entities/lis/person.rb'
+require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
 require_all 'lib/caliper/entities/lis/roles.rb'
 require_all 'lib/caliper/entities/lis/status.rb'
@@ -39,7 +39,7 @@ module Caliper
       it 'should ensure that a Shared AnnotationEvent is correctly created and serialized' do
 
         # The Actor (Person/Student))
-        student = Caliper::Entities::LIS::Person.new
+        student = Caliper::Entities::Agent::Person.new
         student.id = 'https://some-university.edu/user/554433'
         membership1 = Caliper::Entities::LIS::Membership.new
         membership1.id = "https://some-university.edu/membership/001"
@@ -99,13 +99,13 @@ module Caliper
         shared.dateModified = '2015-09-02T11:30:00.000Z'
         shared.annotated = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/3)'
 
-        classmate1 = Caliper::Entities::LIS::Person.new
+        classmate1 = Caliper::Entities::Agent::Person.new
         classmate1.id = 'https://some-university.edu/students/657585'
         classmate1.hasMembership = []
         classmate1.dateCreated = '2015-08-01T06:00:00.000Z'
         classmate1.dateModified = '2015-09-02T11:30:00.000Z'
 
-        classmate2 = Caliper::Entities::LIS::Person.new
+        classmate2 = Caliper::Entities::Agent::Person.new
         classmate2.id = 'https://some-university.edu/students/667788'
         classmate2.hasMembership = []
         classmate2.dateCreated = '2015-08-01T06:00:00.000Z'
