@@ -17,7 +17,6 @@
 
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
-require_all 'lib/caliper/entities/web_page.rb'
 require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
@@ -27,6 +26,7 @@ require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
+require_all 'lib/caliper/entities/reading/web_page.rb'
 require_all 'lib/caliper/event/navigation_event.rb'
 require_all 'lib/caliper/profiles/reading_profile.rb'
 require 'json_spec'
@@ -132,7 +132,7 @@ module Caliper
         group.dateModified = nil
 
         # The navigatedFrom property (specific to Navigation Event)
-        fromPage = Caliper::Entities::WebPage.new
+        fromPage = Caliper::Entities::Reading::WebPage.new
         fromPage.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/index.html'
         fromPage.name = 'American Revolution 101 Landing Page'
         fromPage.dateCreated = '2015-08-01T06:00:00.000Z'
