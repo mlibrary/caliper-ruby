@@ -15,29 +15,31 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './entity'
-require_relative './generatable'
-require_relative './targetable'
-require_relative './jsonable'
+require_relative '../entity'
+require_relative '../generatable'
+require_relative '../targetable'
+require_relative '../jsonable'
 
 #
 #  Session Entity.
 #
 module Caliper
   module Entities
-    class Session < Entity
-      include Generatable,
-              Targetable,
-              Caliper::Entities::Jsonable
+    module Session
+      class Session < Entity
+        include Caliper::Entities::Generatable,
+                Caliper::Entities::Targetable,
+                Caliper::Entities::Jsonable
 
-      attr_accessor :actor,
-        :startedAtTime,
-        :endedAtTime,
-        :duration
+        attr_accessor :actor,
+                      :startedAtTime,
+                      :endedAtTime,
+                      :duration
 
-      def initialize
-        super
-        @type = EntityType::SESSION
+        def initialize
+          super
+          @type = EntityType::SESSION
+        end
       end
     end
   end

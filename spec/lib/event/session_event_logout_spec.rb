@@ -17,7 +17,6 @@
 
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
-require_all 'lib/caliper/entities/session.rb'
 require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
@@ -28,6 +27,7 @@ require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/entities/reading/frame.rb'
+require_all 'lib/caliper/entities/session/session.rb'
 require_all 'lib/caliper/event/session_event.rb'
 require_all 'lib/caliper/profiles/session_profile.rb'
 require 'json_spec'
@@ -83,7 +83,7 @@ module Caliper
         edApp.dateModified = '2015-09-02T11:30:00.000Z'
 
         # The Target (Session)
-        session = Caliper::Entities::Session.new
+        session = Caliper::Entities::Session::Session.new
         session.id = 'https://github.com/readium/session-123456789'
         session.name = 'session-123456789'
         session.description = nil
