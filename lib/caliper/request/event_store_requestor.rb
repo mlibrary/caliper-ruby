@@ -25,7 +25,6 @@ module Caliper
   module Request
     class EventStoreRequestor
 
-
       def get_payload_json(caliper_event, id, send_time)
 
         list_payload = Array.new

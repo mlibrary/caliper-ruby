@@ -25,7 +25,6 @@ require_relative '../entities/reading/frame'
 #
 module Caliper
   module Profiles
-
     module AnnotationActions
       ATTACHED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Attached"
       BOOKMARKED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked"

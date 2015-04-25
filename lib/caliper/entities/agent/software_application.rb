@@ -27,14 +27,13 @@ module Caliper
   module Entities
     module Agent
       class SoftwareApplication < Entity
-        include Caliper::Entities::FOAF::Agent
-        include Caliper::Entities::SchemaDotOrg::SoftwareApplication
+        include Caliper::Entities::FOAF::Agent,
+                Caliper::Entities::SchemaDotOrg::SoftwareApplication
 
         def initialize()
           super
           @type=EntityType::SOFTWARE_APPLICATION
         end
-
       end
     end
   end

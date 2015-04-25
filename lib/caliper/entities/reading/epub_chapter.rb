@@ -25,6 +25,7 @@ module Caliper
   module Entities
     module Reading
       class EpubChapter < DigitalResource
+
         def initialize()
 	        super
           @id = id

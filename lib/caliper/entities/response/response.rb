@@ -26,6 +26,7 @@ module Caliper
 		module Response
 			class Response < Entity
 				include Generatable
+
 				attr_accessor :type,
 			                :assignable,
 			                :actor,

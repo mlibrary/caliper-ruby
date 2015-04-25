@@ -23,7 +23,6 @@ require_relative '../../entities/digital_resource'
 module Caliper
   module Entities
     module Media
-
       class MediaLocation < DigitalResource
 
         attr_accessor :currentTime
@@ -33,7 +32,6 @@ module Caliper
           @type = DigitalResourceType::MEDIA_LOCATION
           @currentTime = nil
         end
-
       end
     end
   end

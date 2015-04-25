@@ -65,7 +65,6 @@ module Caliper
         @dateCreated = Time.now.utc.iso8601(3)
         @dateModified = Time.now.utc.iso8601(3)
       end
-
     end
   end
 end

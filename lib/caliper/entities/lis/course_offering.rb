@@ -25,19 +25,17 @@ require_relative '../../entities/jsonable'
 module Caliper
   module Entities
     module LIS
-
       class CourseOffering < Entity
         include Caliper::Entities::W3c::Organization
         include Caliper::Entities::Jsonable
 
         attr_accessor :courseNumber,
-          :academicSession
+                      :academicSession
 
         def initialize
           super
           @type = EntityType::COURSE_OFFERING
         end
-
       end
     end
   end

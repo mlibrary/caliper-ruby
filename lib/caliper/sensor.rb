@@ -24,7 +24,6 @@ require_relative "entity_envelope"
 # Caliper Sensor.
 #
 module Caliper
-
   class Sensor
 
     def initialize(options)
@@ -55,6 +54,5 @@ module Caliper
       RestClient.post @options['host'], envelope.to_json, :content_type => :json, :accept => :json
 
     end
-
   end
 end

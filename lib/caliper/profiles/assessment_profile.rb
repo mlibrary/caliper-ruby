@@ -22,7 +22,6 @@ require_relative './profile'
 #
 module Caliper
   module Profiles
-
     module AssessmentActions
       PAUSED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused"
       RESTARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted"
@@ -63,6 +62,5 @@ module Caliper
         end
       end
     end
-
   end
 end

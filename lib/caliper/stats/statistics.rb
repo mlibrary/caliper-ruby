@@ -58,8 +58,6 @@ module Caliper
 			def update_failed
 				update(FAILED_KEY, val)
 			end
-
-
 		end
 	end
 end

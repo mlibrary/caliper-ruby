@@ -40,8 +40,6 @@ module Caliper
       # to a new/valid request bin or end point URL.
       
       # sensor.send event
-
     end
-
   end
 end

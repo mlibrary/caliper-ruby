@@ -30,7 +30,7 @@ module Caliper
 				def initialize()
 					super
 					@type = Caliper::Entities::DigitalResourceType::WEB_PAGE
-				end
+        end
 			end
 		end
 	end

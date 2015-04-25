@@ -24,7 +24,6 @@ require_relative '../../entities/schemadotorg/thing'
 module Caliper
 	module Entities
 		module Annotation
-
 			module AnnotationType
 				ANNOTATION = "http://purl.imsglobal.org/caliper/v1/Annotation"
 				BOOKMARK_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation"
@@ -45,7 +44,6 @@ module Caliper
 					@annotated = nil
 				end
 			end
-
 		end
 	end
 end

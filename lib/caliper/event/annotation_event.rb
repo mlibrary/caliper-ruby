@@ -19,14 +19,10 @@ require_relative 'event'
 require_relative '../profiles/annotation_profile'
 
 #
-# Annotation Event.
+# Annotation Event per Caliper Annotation Profile.
 #
 module Caliper
   module Event
-
-    #
-    # Annotation Event per Caliper Annotation Profile
-    #
     class AnnotationEvent < Event
 
       def initialize

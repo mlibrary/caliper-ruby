@@ -22,7 +22,6 @@ require_relative './profile'
 #
 module Caliper
   module Profiles
-
     module AssignableActions
       ABANDONED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned"
       ACTIVATED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Activated"
@@ -59,6 +58,5 @@ module Caliper
         end
       end
     end
-
   end
 end

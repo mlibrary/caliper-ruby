@@ -23,7 +23,6 @@ require_relative '../../entities/entity'
 module Caliper
   module Entities
     module Assignable
-
       class Attempt < Entity
 
         attr_accessor :assignable,
@@ -39,7 +38,6 @@ module Caliper
         end
 
       end
-
     end
   end
 end

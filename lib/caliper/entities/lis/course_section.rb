@@ -15,7 +15,6 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/entity'
 require_relative './course_offering'
 require_relative '../../entities/jsonable'
 
@@ -25,7 +24,6 @@ require_relative '../../entities/jsonable'
 module Caliper
   module Entities
     module LIS
-
       class CourseSection < Caliper::Entities::LIS::CourseOffering
         include Caliper::Entities::Jsonable
 
@@ -35,7 +33,6 @@ module Caliper
           super
           @type = EntityType::COURSE_SECTION
         end
-
       end
     end
   end

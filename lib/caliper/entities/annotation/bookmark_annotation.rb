@@ -23,7 +23,6 @@ require_relative 'annotation'
 module Caliper
   module Entities
     module Annotation
-
       class BookmarkAnnotation < Annotation
         attr_accessor :bookmarkNotes
 
@@ -32,7 +31,6 @@ module Caliper
           @type = AnnotationType::BOOKMARK_ANNOTATION
           @bookmarkNotes = nil
         end
-
       end
     end
   end

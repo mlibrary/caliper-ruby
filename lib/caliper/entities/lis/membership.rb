@@ -25,10 +25,9 @@ require_relative '../../entities/jsonable'
 module Caliper
   module Entities
     module LIS
-
       class Membership < Entity
-        include Caliper::Entities::W3c::Membership
-        include Caliper::Entities::Jsonable
+        include Caliper::Entities::W3c::Membership,
+                Caliper::Entities::Jsonable
 
         def initialize
           super

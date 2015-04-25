@@ -24,7 +24,6 @@ require_relative '../../entities/schemadotorg/thing'
 module Caliper
   module Entities
     module Assignable
-
       module AssignableDigitalResourceType
         ASSESSMENT = "http://purl.imsglobal.org/caliper/v1/Assessment"
         ASSESSMENT_ITEM = "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
@@ -52,7 +51,6 @@ module Caliper
           @maxSubmits = nil
           @maxScore = nil
         end
-
      end
     end
   end

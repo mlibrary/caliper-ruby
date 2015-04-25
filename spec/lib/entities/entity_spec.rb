@@ -46,9 +46,7 @@ module Caliper
         des_entity.from_json data_hash
         # puts "Object from JSON = #{des_entity.to_json}"
         expect(entity).to eql(des_entity)
-
       end
-
     end
   end
 end

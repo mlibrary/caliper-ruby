@@ -31,7 +31,7 @@ module Caliper
 
 				def initialize
 					@type = ResponseType::SELECTTEXT
-				end
+        end
 			end
 		end
 	end

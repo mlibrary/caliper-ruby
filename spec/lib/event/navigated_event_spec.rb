@@ -169,9 +169,7 @@ module Caliper
 
         # Ensure that the deserialized shared event object conforms
         expect(navigated_event).to eql(deser_navigated_event)
-
       end
-
     end
   end
 end

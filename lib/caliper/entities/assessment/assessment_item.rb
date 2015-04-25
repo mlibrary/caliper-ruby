@@ -23,7 +23,6 @@ require_relative '../../entities/assignable/assignable_digital_resource'
 module Caliper
   module Entities
     module Assessment
-
       class AssessmentItem < Caliper::Entities::Assignable::AssignableDigitalResource
 
         attr_accessor :isTimeDependent
@@ -32,7 +31,6 @@ module Caliper
           super
           @type = Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT_ITEM
         end
-
       end
     end
   end

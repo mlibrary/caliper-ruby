@@ -169,9 +169,7 @@ module Caliper
 
         # Ensure that the deserialized session event object conforms
         expect(session_event).to eql(deser_session_event)
-
       end
-
     end
   end
 end

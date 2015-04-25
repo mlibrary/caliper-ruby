@@ -23,7 +23,6 @@ require_relative 'annotation'
 module Caliper
   module Entities
     module Annotation
-
       class TagAnnotation < Annotation
         attr_accessor :tags
 
@@ -32,7 +31,6 @@ module Caliper
           @type = AnnotationType::TAG_ANNOTATION
           @tags = Array.new
         end
-        
       end
     end
   end

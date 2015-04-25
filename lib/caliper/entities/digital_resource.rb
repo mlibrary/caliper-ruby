@@ -24,7 +24,6 @@ require_relative 'entity'
 #
 module Caliper
   module Entities
-
     module DigitalResourceType
       ASSIGNABLE_DIGITAL_RESOURCE = "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource"
       EPUB_CHAPTER = "http://www.idpf.org/epub/vocab/structure/#chapter"
@@ -42,11 +41,11 @@ module Caliper
       include Caliper::Entities::Jsonable
 
       attr_accessor :objectType,
-        :alignedLearningObjective,
-        :keywords,
-        :isPartOf,
-        :datePublished,
-        :version
+                    :alignedLearningObjective,
+                    :keywords,
+                    :isPartOf,
+                    :datePublished,
+                    :version
 
       def initialize
         super
@@ -58,7 +57,6 @@ module Caliper
         @isPartOf = nil
         @version = nil
       end
-
     end
   end
 end

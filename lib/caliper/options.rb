@@ -34,5 +34,4 @@ module Caliper
 		@host = host
 		@time_out = time_out
 	end
-
 end

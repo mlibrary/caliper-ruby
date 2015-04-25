@@ -27,7 +27,6 @@ require_relative '../../entities/schemadotorg/thing'
 module Caliper
   module Entities
     module Media
-
       module MediaType
         AUDIO_OBJECT = 'http://purl.imsglobal.org/caliper/v1/AudioObject'
         IMAGE_OBJECT = 'http://purl.imsglobal.org/caliper/v1/ImageObject'
@@ -46,7 +45,6 @@ module Caliper
           @type = DigitalResourceType::MEDIA_OBJECT
           @duration = nil
         end
-
       end
     end
   end

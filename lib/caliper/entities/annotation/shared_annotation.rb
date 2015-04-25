@@ -23,7 +23,6 @@ require_relative 'annotation'
 module Caliper
   module Entities
     module Annotation
-
       class SharedAnnotation < Annotation
         attr_accessor :withAgents # list of Agent objects
 
@@ -32,7 +31,6 @@ module Caliper
           @type = AnnotationType::SHARED_ANNOTATION
 	        @withAgents = Array.new
         end
-        
       end
     end
   end

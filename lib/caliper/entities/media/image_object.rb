@@ -23,14 +23,12 @@ require_relative 'media_object'
 module Caliper
   module Entities
     module Media
-
       class ImageObject < MediaObject
 
         def initialize
           super
           @type = MediaType::IMAGE_OBJECT
         end
-
       end
     end
   end

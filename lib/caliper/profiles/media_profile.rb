@@ -22,7 +22,6 @@ require_relative './profile'
 #
 module Caliper
   module Profiles
-
     module MediaActions
       CHANGED_RESOLUTION = "http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution"
       CHANGED_SIZE = "http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize"
@@ -69,6 +68,5 @@ module Caliper
         end
       end
     end
-
   end
 end

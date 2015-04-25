@@ -25,14 +25,12 @@ require_relative './jsonable'
 #
 module Caliper
   module Entities
-
     class LearningObjective < Entity
 
       def initialize
         super
         @type = EntityType::LEARNING_OBJECTIVE
       end
-
     end
   end
 end

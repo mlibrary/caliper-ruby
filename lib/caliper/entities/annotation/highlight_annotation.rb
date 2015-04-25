@@ -26,7 +26,7 @@ module Caliper
 
       class HighlightAnnotation < Annotation
         attr_accessor :selectionText,
-          :selection
+                      :selection
 
         def initialize()
           super
@@ -34,7 +34,6 @@ module Caliper
           @selectionText = nil
           @selection = {}
         end
-
       end
     end
   end

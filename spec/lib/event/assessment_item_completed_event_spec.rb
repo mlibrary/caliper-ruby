@@ -232,9 +232,7 @@ module Caliper
 
         # Ensure that the deserialized bookmark event object conforms
         expect(assessment_event).to eql(deser_assessment_event)
-
       end
-
     end
   end
 end

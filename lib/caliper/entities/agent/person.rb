@@ -21,20 +21,19 @@ require_relative '../../entities/jsonable'
 
 #
 # An FOAF LIS Person
+# @extends Agent
 #
 module Caliper
   module Entities
     module Agent
-      # Represents Person.
-      # @extends Agent
       class Person < Entity
-        include Caliper::Entities::FOAF::Agent, Caliper::Entities::Jsonable
+        include Caliper::Entities::FOAF::Agent,
+                Caliper::Entities::Jsonable
 
         def initialize
           super
           @type = EntityType::PERSON
         end
-
       end
     end
   end

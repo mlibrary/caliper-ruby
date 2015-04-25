@@ -166,9 +166,7 @@ module Caliper
 
         # Ensure that the deserialized shared event object conforms
         expect(media_event).to eql(deser_media_event)
-
       end
-
     end
   end
 end

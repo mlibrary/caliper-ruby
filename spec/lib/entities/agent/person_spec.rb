@@ -52,7 +52,6 @@ module Caliper
 
           expect(student).to eql(des_student)
         end
-
       end
     end
   end

@@ -15,8 +15,6 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/entity'
-
 #
 # A W3C Organization.
 #
@@ -25,7 +23,7 @@ module Caliper
     module W3c
       module Organization
         attr_accessor :membership,
-          :subOrganizationOf
+                      :subOrganizationOf
       end
     end
   end

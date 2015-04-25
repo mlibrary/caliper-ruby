@@ -168,9 +168,7 @@ module Caliper
 
         # Ensure that the deserialized tag event object conforms
         expect(annotation_event).to eql(deser_annotation_event)
-
       end
-
     end
   end
 end

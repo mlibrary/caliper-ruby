@@ -23,7 +23,6 @@ require_relative 'jsonable'
 # Caliper Sensor Event Envelope.
 #
 module Caliper
-
   class EventEnvelope
     include Caliper::Jsonable
 

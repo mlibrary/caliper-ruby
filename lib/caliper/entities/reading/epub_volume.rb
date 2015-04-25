@@ -25,7 +25,6 @@ require_relative '../../entities/jsonable'
 module Caliper
   module Entities
     module Reading
-
       class EPubVolume < Caliper::Entities::DigitalResource
         include Caliper::Entities::Jsonable
 
@@ -33,7 +32,6 @@ module Caliper
 	        super
           @type = DigitalResourceType::EPUB_VOLUME
         end
-
       end
     end
   end

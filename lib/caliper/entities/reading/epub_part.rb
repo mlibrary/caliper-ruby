@@ -25,6 +25,7 @@ module Caliper
   module Entities
     module Reading
       class EpubPart < ::Caliper::Entity::DigitalResource
+
         def initialize()
 	        super
           @id = ""

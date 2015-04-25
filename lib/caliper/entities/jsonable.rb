@@ -63,7 +63,6 @@ module Caliper
       def eql?(other)
         @id == other.id && @type == other.type && @name == other.name && @description == other.description && @dateCreated == other.dateCreated && @dateModified == other.dateModified
       end
-
     end
   end
 end

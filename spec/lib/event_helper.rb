@@ -157,6 +157,5 @@ module Helper
     session_event.group = course
     session_event.startedAtTime = '2015-09-15T10:15:00.000Z'
     return session_event
-
   end
 end
