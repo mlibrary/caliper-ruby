@@ -17,7 +17,7 @@
 
 require 'time'
 require 'json'
-require_relative 'schemadotorg/thing'
+require_relative './schemadotorg/thing'
 require_relative './jsonable'
 
 #

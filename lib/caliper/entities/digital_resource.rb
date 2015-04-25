@@ -16,7 +16,8 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require "json"
-require_relative 'entity'
+require_relative './entity'
+require_relative './jsonable'
 
 #
 # Caliper representation of a CreativeWork. We add learning specific attributes, including a list of

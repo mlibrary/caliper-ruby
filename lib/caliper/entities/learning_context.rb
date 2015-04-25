@@ -16,10 +16,10 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require "json"
-require_relative 'entity'
-require_relative 'agent/software_application'
-require_relative 'agent/organization'
-require_relative 'foaf/agent'
+require_relative './entity'
+require_relative './agent/software_application'
+require_relative './agent/organization'
+require_relative './foaf/agent'
 
 #
 # Learning Context.
