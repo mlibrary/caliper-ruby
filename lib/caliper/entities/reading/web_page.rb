@@ -17,7 +17,6 @@
 
 require_relative "../../entities/digital_resource"
 require_relative "../../entities/schemadotorg/web_page"
-require_relative '../../entities/jsonable'
 
 #
 # Web Page
@@ -26,8 +25,7 @@ module Caliper
 	module Entities
 		module Reading
 			class WebPage < Caliper::Entities::DigitalResource
-				include Caliper::Entities::SchemaDotOrg::WebPage,
-                Caliper::Entities::Jsonable
+				include Caliper::Entities::SchemaDotOrg::WebPage
 
 				def initialize()
 					super

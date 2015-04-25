@@ -15,9 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/entity'
-require_relative '../../entities/w3c/membership'
-require_relative '../../entities/jsonable'
+require_relative '../entity'
+require_relative '../w3c/membership'
 
 #
 #  W3C Membership.
@@ -26,8 +25,7 @@ module Caliper
   module Entities
     module LIS
       class Membership < Entity
-        include Caliper::Entities::W3c::Membership,
-                Caliper::Entities::Jsonable
+        include Caliper::Entities::W3c::Membership
 
         def initialize
           super

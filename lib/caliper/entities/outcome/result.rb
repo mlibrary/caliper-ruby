@@ -24,7 +24,7 @@ require_relative '../generatable'
 module Caliper
 	module Entities
 		class Result < Entity
-			include Generatable
+			include Caliper::Entities::Generatable
 
 			attr_accessor :type, # String
 										:normal_score,

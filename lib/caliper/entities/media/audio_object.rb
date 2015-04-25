@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'media_object'
+require_relative './media_object'
 
 #
 # Audio object embedded in a web page.  See https://schema.org/AudioObject

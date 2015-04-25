@@ -15,9 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/entity'
-require_relative '../../entities/foaf/agent.rb'
-require_relative '../../entities/jsonable'
+require_relative '../entity'
+require_relative '../foaf/agent.rb'
 
 #
 # An FOAF LIS Person
@@ -27,8 +26,7 @@ module Caliper
   module Entities
     module Agent
       class Person < Entity
-        include Caliper::Entities::FOAF::Agent,
-                Caliper::Entities::Jsonable
+        include Caliper::Entities::FOAF::Agent
 
         def initialize
           super

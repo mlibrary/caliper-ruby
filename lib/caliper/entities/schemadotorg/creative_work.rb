@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'thing'
+require_relative './thing'
 
 #
 # The most generic kind of creative work, including books, movies,

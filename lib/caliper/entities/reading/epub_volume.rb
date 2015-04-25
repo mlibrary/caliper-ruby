@@ -16,7 +16,6 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../digital_resource'
-require_relative '../../entities/jsonable'
 
 #
 #  Public: Representation of an EPUB 3 Volume.  A component of a collection.
@@ -26,7 +25,6 @@ module Caliper
   module Entities
     module Reading
       class EPubVolume < Caliper::Entities::DigitalResource
-        include Caliper::Entities::Jsonable
 
         def initialize()
 	        super

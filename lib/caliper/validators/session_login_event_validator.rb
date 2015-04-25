@@ -15,15 +15,15 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'event_validator'
-require_relative 'error_message'
-require_relative 'property_type_check'
-require_relative 'time_check'
+require_relative './event_validator'
+require_relative './error_message'
+require_relative './property_type_check'
+require_relative './time_check'
 require_relative '../event/event'
-require_relative '../entities/agent/person'
-require_relative '../entities/digital_resource'
-require_relative '../entities/session/session'
-require_relative '../entities/schemadotorg/software_application'
+require_relative '../agent/person'
+require_relative '../digital_resource'
+require_relative '../session/session'
+require_relative '../schemadotorg/software_application'
 
 #
 # Session Login validator

@@ -15,10 +15,10 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'event_store_requestor'
-require_relative 'event_store_envelope'
 require "net/http"
 require "uri"
+require_relative './event_store_requestor'
+require_relative './event_store_envelope'
 
 module Caliper
 	module Request

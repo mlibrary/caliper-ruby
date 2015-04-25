@@ -16,7 +16,6 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './course_offering'
-require_relative '../../entities/jsonable'
 
 #
 #  LIS Course Section.
@@ -25,7 +24,6 @@ module Caliper
   module Entities
     module LIS
       class CourseSection < Caliper::Entities::LIS::CourseOffering
-        include Caliper::Entities::Jsonable
 
         attr_accessor :category
 

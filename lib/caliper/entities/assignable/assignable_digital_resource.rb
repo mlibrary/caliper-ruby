@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/digital_resource'
+require_relative '../digital_resource'
 
 #
 # AssignableDigitalResource entity. AssignableDigitalResource's prototype is set to DigitalResource.

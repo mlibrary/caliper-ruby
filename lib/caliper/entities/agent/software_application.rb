@@ -15,10 +15,9 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require "json"
-require_relative '../../entities/entity'
-require_relative '../../entities/foaf/agent'
-require_relative '../../entities/schemadotorg/software_application'
+require_relative '../entity'
+require_relative '../foaf/agent'
+require_relative '../schemadotorg/software_application'
 
 #
 #  Software Application (from schema.org)

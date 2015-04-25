@@ -16,9 +16,9 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'rest_client'
-require_relative "options"
-require_relative "event_envelope"
-require_relative "entity_envelope"
+require_relative "./options"
+require_relative "./event_envelope"
+require_relative "./entity_envelope"
 
 #
 # Caliper Sensor.

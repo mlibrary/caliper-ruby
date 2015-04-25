@@ -18,7 +18,6 @@
 require_relative '../entity'
 require_relative '../generatable'
 require_relative '../targetable'
-require_relative '../jsonable'
 
 #
 #  Session Entity.
@@ -28,8 +27,7 @@ module Caliper
     module Session
       class Session < Entity
         include Caliper::Entities::Generatable,
-                Caliper::Entities::Targetable,
-                Caliper::Entities::Jsonable
+                Caliper::Entities::Targetable
 
         attr_accessor :actor,
                       :startedAtTime,

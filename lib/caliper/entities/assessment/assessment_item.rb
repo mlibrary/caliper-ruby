@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/assignable/assignable_digital_resource'
+require_relative '../assignable/assignable_digital_resource'
 
 #
 # Assessment Item entity.

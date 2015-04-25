@@ -15,9 +15,9 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require "json"
 require_relative './entity'
-require_relative './jsonable'
+require_relative './schemadotorg/creative_work'
+require_relative './targetable'
 
 #
 # Caliper representation of a CreativeWork. We add learning specific attributes, including a list of
@@ -39,7 +39,8 @@ module Caliper
     end
 
     class DigitalResource < Entity
-      include Caliper::Entities::Jsonable
+      include Caliper::Entities::SchemaDotOrg::CreativeWork,
+              Caliper::Entities::Targetable
 
       attr_accessor :objectType,
                     :alignedLearningObjective,

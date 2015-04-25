@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'securerandom'
-require_relative 'event_store_envelope'
+require_relative './event_store_envelope'
 
 #
 # Event store requestor.

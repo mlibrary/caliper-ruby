@@ -16,9 +16,6 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './entity'
-require_relative './generatable'
-require_relative './targetable'
-require_relative './jsonable'
 
 #
 #  Learning Objective
