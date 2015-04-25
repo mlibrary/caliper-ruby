@@ -43,7 +43,6 @@ module Caliper
       SHARED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Shared"
       SUBSCRIBED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed"
       TAGGED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged"
-      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
     end
 
     class ReadingProfile < Profile

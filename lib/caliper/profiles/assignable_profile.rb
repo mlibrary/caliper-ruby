@@ -32,7 +32,6 @@ module Caliper
       SHOWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Showed"
       STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
       SUBMITTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted"
-      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
     end
 
     class AssignableProfile < Caliper::Profiles::Profile

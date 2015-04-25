@@ -33,7 +33,7 @@ require_all 'lib/caliper/entities/assignable/assignable_digital_resource.rb'
 require_all 'lib/caliper/entities/response/Response.rb'
 require_all 'lib/caliper/entities/response/fillin_blank_response.rb'
 require_all 'lib/caliper/event/assessment_item_event.rb'
-require_all 'lib/caliper/profiles/assessment_profile.rb'
+require_all 'lib/caliper/profiles/assessment_item_profile.rb'
 require 'json_spec'
 
 module Caliper

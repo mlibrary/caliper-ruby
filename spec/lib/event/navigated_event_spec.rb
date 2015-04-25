@@ -71,7 +71,7 @@ module Caliper
         # puts "new student = #{student.to_json}"
 
         # The Action
-        action = Caliper::Profiles::ReadingActions::NAVIGATED_TO
+        action = Caliper::Profiles::ProfileActions::NAVIGATED_TO
 
         # The Object navigated (ePub Volume)
         ePubVolume = Caliper::Entities::Reading::EPubVolume.new

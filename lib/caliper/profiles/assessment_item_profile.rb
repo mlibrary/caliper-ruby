@@ -16,39 +16,31 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './profile'
-require_relative '../entities/digital_resource'
-require_relative '../entities/reading/frame'
 
 #
-# Reading Profile.
+# Assessment Profile.
 #
 module Caliper
   module Profiles
-    module ReadingActions
-      SEARCHED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Searched"
+    module AssessmentItemActions
+      COMPLETED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Completed"
+      REVIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed"
+      SKIPPED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped"
+      STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
       VIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed"
     end
 
-    class ReadingProfile < Caliper::Profiles::Profile
+    class AssessmentItemProfile < Caliper::Profiles::Profile
 
       attr_accessor :key, # String
-        :lookup # hash of ReadingActions
+                    :lookup # hash of AssessmentItemActions
 
       # whether object if of type DigitalResource
       def validate_object(object)
         if (object.is_a? DigitalResource)
           return object
         else
-          fail "Object must e of type DigitalResource"
-        end
-      end
-
-      # whether target is of type Frame
-      def validate_target(target)
-        if (target is_a? frame)
-          return target
-        else
-          fail "Target must be of type Frame."
+          fail 'Object must be of type DigitalResource'
         end
       end
     end
