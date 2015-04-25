@@ -24,7 +24,6 @@ module Caliper
 	module Stats
 		class AtomicWrapper < Atomic
 
-
 			def initialize(value)
 				super.initialize(value)
 			end
@@ -99,7 +98,6 @@ module Caliper
 			def to_string()
 				return @value.to_s
 			end
-
 		end
 	end
 end

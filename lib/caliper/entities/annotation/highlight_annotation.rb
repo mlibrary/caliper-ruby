@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'annotation'
+require_relative './annotation'
 
 #
 #  Highlight Annotation entity.
@@ -26,7 +26,7 @@ module Caliper
 
       class HighlightAnnotation < Annotation
         attr_accessor :selectionText,
-          :selection
+                      :selection
 
         def initialize()
           super
@@ -34,7 +34,6 @@ module Caliper
           @selectionText = nil
           @selection = {}
         end
-
       end
     end
   end

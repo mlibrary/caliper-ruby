@@ -15,24 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'entity'
-require_relative 'generatable'
-require_relative 'targetable'
-require_relative './jsonable'
+require_relative './entity'
 
 #
 #  Learning Objective
 #
 module Caliper
   module Entities
-
     class LearningObjective < Entity
 
       def initialize
         super
         @type = EntityType::LEARNING_OBJECTIVE
       end
-
     end
   end
 end

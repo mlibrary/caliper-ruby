@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/assignable/assignable_digital_resource'
+require_relative '../assignable/assignable_digital_resource'
 
 #
 # Assessment Item entity.
@@ -23,7 +23,6 @@ require_relative '../../entities/assignable/assignable_digital_resource'
 module Caliper
   module Entities
     module Assessment
-
       class AssessmentItem < Caliper::Entities::Assignable::AssignableDigitalResource
 
         attr_accessor :isTimeDependent
@@ -32,7 +31,6 @@ module Caliper
           super
           @type = Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT_ITEM
         end
-
       end
     end
   end

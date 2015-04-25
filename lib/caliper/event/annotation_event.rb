@@ -15,18 +15,13 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'event'
-require_relative '../profiles/annotation_profile'
+require_relative './event'
 
 #
-# Annotation Event.
+# Annotation Event per Caliper Annotation Profile.
 #
 module Caliper
   module Event
-
-    #
-    # Annotation Event per Caliper Annotation Profile
-    #
     class AnnotationEvent < Event
 
       def initialize

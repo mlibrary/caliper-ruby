@@ -23,7 +23,6 @@
 module Caliper
 	module Entities
 		module Targetable
-
 		end
 	end
 end

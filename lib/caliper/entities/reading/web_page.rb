@@ -15,31 +15,23 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/foaf/agent'
-require_relative '../../entities/entity'
+require_relative "../../entities/digital_resource"
+require_relative "../../entities/schemadotorg/web_page"
 
 #
-# W3C Organization
+# Web Page
 #
 module Caliper
-  module Entities
-    module LIS
-      module OrganizationType
-        COURSE_OFFERING = "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering"
-        LIS_COURSE_SECTION = "http://purl.imsglobal.org/caliper/v1/lis/CourseSection"
-        GROUP = "http://purl.imsglobal.org/caliper/v1/lis/Group"
-      end
-      class Organization < Entity
-        include Caliper::Entities::FOAF::Agent
+	module Entities
+		module Reading
+			class WebPage < Caliper::Entities::DigitalResource
+				include Caliper::Entities::SchemaDotOrg::WebPage
 
-        attr_accessor :membership,
-        :subOrganizationOf
-
-        def initialize
-          super
-          @type = EntityType::ORGANIZATION
+				def initialize()
+					super
+					@type = Caliper::Entities::DigitalResourceType::WEB_PAGE
         end
-      end
-    end
-  end
+			end
+		end
+	end
 end

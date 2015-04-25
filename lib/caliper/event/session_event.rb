@@ -15,26 +15,20 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'event'
-require_relative '../profiles/session_profile'
+require_relative './event'
 
 #
-# Session Event.
+# Session Event per the Caliper Session Profile.
 #
 module Caliper
   module Event
-    
     class SessionEvent < Event
 
-      #
-      # Session Event per the Caliper Session Profile
-      # 
       def initialize
         super
         @context = Caliper::Event::EventContext::SESSION
         @type = Caliper::Event::EventType::SESSION
       end
-
     end
   end
 end

@@ -25,7 +25,6 @@ require_relative '../entities/reading/frame'
 #
 module Caliper
   module Profiles
-
     module AnnotationActions
       ATTACHED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Attached"
       BOOKMARKED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked"
@@ -44,7 +43,6 @@ module Caliper
       SHARED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Shared"
       SUBSCRIBED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed"
       TAGGED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged"
-      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
     end
 
     class ReadingProfile < Profile

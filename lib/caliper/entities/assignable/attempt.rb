@@ -15,7 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/entity'
+require_relative '../entity'
+require_relative '../generatable'
 
 #
 #  Attempt entity on an Assignable.
@@ -23,8 +24,8 @@ require_relative '../../entities/entity'
 module Caliper
   module Entities
     module Assignable
-
       class Attempt < Entity
+        include Caliper::Entities::Generatable
 
         attr_accessor :assignable,
           :actor,
@@ -39,7 +40,6 @@ module Caliper
         end
 
       end
-
     end
   end
 end

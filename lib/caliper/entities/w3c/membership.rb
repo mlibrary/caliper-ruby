@@ -15,22 +15,18 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative "../entities/digital_resource"
-require_relative "../entities/schemadotorg/web_page"
-
 #
-# Web Page
+#  W3C Membership.
 #
 module Caliper
-	module Entities
-
-		class WebPage < DigitalResource
-			include Caliper::Entities::SchemaDotOrg::WebPage
-			
-			def initialize()
-				super
-				@type = Caliper::Entities::DigitalResourceType::WEB_PAGE
-			end
-		end
-	end
+  module Entities
+    module W3c
+      module Membership
+        attr_accessor :member,
+                      :organization,
+                      :roles,
+                      :status
+      end
+    end
+  end
 end

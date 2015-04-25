@@ -17,15 +17,16 @@
 
 # require 'spec_helper.rb'
 require 'require_all'
-require_all 'lib/caliper/entities/*.rb'
-require_all 'lib/caliper/entities/lis/*.rb'
+require 'json_spec'
+require_all 'lib/caliper/entities/agent/person.rb'
 
 #
 # Test Person.
 #
 module Caliper
   module Entities
-    module LIS
+    module Agent
+
       describe Person do
 
         it "should ensure that a Person is correctly created and serialized" do
@@ -39,7 +40,7 @@ module Caliper
           # puts "new student = #{student.to_json}"
 
           # Compare JSON ouput
-          file = File.read('spec/lib/entities/lis/student.json')
+          file = File.read('spec/lib/entities/agent/student.json')
           data_hash = JSON.parse(file)
           expected_json = data_hash.to_json # convert hash back to JSON string after parse
           student.to_json.should be_json_eql(expected_json)
@@ -50,7 +51,6 @@ module Caliper
 
           expect(student).to eql(des_student)
         end
-
       end
     end
   end

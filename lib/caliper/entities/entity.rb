@@ -17,6 +17,7 @@
 
 require 'time'
 require 'json'
+require_relative './schemadotorg/thing'
 require_relative './jsonable'
 
 #
@@ -27,26 +28,27 @@ module Caliper
     module EntityType
       AGENT = "http://purl.imsglobal.org/caliper/v1/Agent"
       ATTEMPT = "http://purl.imsglobal.org/caliper/v1/Attempt"
+      COURSE_OFFERING = "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering"
+      COURSE_SECTION = "http://purl.imsglobal.org/caliper/v1/lis/CourseSection"
       DIGITAL_RESOURCE = "http://purl.imsglobal.org/caliper/v1/DigitalResource"
       ENTITY = "http://purl.imsglobal.org/caliper/v1/Entity"
       GENERATED = "http://purl.imsglobal.org/caliper/v1/Generated"
+      GROUP = "http://purl.imsglobal.org/caliper/v1/lis/Group"
       LEARNING_OBJECTIVE = "http://purl.imsglobal.org/caliper/v1/LearningObjective"
-      LIS_PERSON = "http://purl.imsglobal.org/caliper/v1/lis/Person"
-      # LIS_ORGANIZATION = "http://purl.imsglobal.org/caliper/v1/lis/Organization"
-      COURSE_OFFERING = "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering"
-      COURSE_SECTION = "http://purl.imsglobal.org/caliper/v1/lis/CourseSection"
       MEMBERSHIP = "http://purl.imsglobal.org/caliper/v1/lis/Membership"
       ORGANIZATION = "http://purl.imsglobal.org/caliper/v1/w3c/Organization"
+      PERSON = "http://purl.imsglobal.org/caliper/v1/lis/Person"
+      RESPONSE = "http://purl.imsglobal.org/caliper/v1/Response"
       RESULT = "http://purl.imsglobal.org/caliper/v1/Result"
       SESSION = "http://purl.imsglobal.org/caliper/v1/Session"
-      RESPONSE = "http://purl.imsglobal.org/caliper/v1/Response"
       SOFTWARE_APPLICATION = "http://purl.imsglobal.org/caliper/v1/SoftwareApplication"
       TARGET = "http://purl.imsglobal.org/caliper/v1/Target"
       VIEW = "http://purl.imsglobal.org/caliper/v1/View"
     end
 
     class Entity
-      include Caliper::Entities::Jsonable
+      include Caliper::Entities::SchemaDotOrg::Thing,
+              Caliper::Entities::Jsonable
 
       attr_accessor :id,
         :type,
@@ -65,7 +67,6 @@ module Caliper
         @dateCreated = Time.now.utc.iso8601(3)
         @dateModified = Time.now.utc.iso8601(3)
       end
-
     end
   end
 end

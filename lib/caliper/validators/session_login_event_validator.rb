@@ -15,16 +15,15 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'event_validator'
-require_relative 'error_message'
-require_relative 'property_type_check'
-require_relative 'time_check'
+require_relative './event_validator'
+require_relative './error_message'
+require_relative './property_type_check'
+require_relative './time_check'
 require_relative '../event/event'
-require_relative '../profiles/profile'
-require_relative '../entities/lis/person'
-require_relative '../entities/digital_resource'
-require_relative '../entities/session'
-require_relative '../entities/schemadotorg/software_application'
+require_relative '../agent/person'
+require_relative '../digital_resource'
+require_relative '../session/session'
+require_relative '../schemadotorg/software_application'
 
 #
 # Session Login validator
@@ -62,52 +61,52 @@ module Caliper
 				else
 					# is event context of Session
 					if (!event.context.equal?(EventType::SESSION))
-						error_message.append_text(event.context + " " + ProfileConformance::CONTEXT_ERROR)
+						error_message.append_text(event.context + " " + Conformance::CONTEXT_ERROR)
 					end
 
 					# is event type of Session
 					if (!event.type.equal?(EventType::SESSION))
-						error_message.append_text(event.type + " " + ProfileConformance::TYPE_ERROR)
+						error_message.append_text(event.type + " " + Conformance::TYPE_ERROR)
 					end
 
 					# is event actor a Person
 					if (!property_check.is_object_of_type(event.actor, Person.class))
-						error_message.append_text(event.actor.class + " " + ProfileConformance::ACTOR_NOT_PERSON)
+						error_message.append_text(event.actor.class + " " + Conformance::ACTOR_NOT_PERSON)
 					end
 
 					# is event object a SoftwareApplication
 					if (!property_check.is_object_of_type(event.object, SoftwareApplication.class))
-						error_message.append_text(event.object.class + " " + ProfileConformance::OBJECT_NOT_SOFTWAREAPP)
+						error_message.append_text(event.object.class + " " + Conformance::OBJECT_NOT_SOFTWAREAPP)
 					end
 
 					# is event target a DigitalResource
 					if (!property_check.is_object_of_type(event.target, DigitalResource.class))
-						error_message.append_text(event.object.class + " " + ProfileConformance::TARGET_NOT_DIGITALRESOURCE)
+						error_message.append_text(event.object.class + " " + Conformance::TARGET_NOT_DIGITALRESOURCE)
 					end
 
 					if (property_check.is_object_of_type(event.generated, Session.class))
 						if (event.generated.started_at_time == 0)
-							error_message.append_text(context + " " + ProfileConformance::STARTEDATTIME_IS_NULL)
+							error_message.append_text(context + " " + Conformance::STARTEDATTIME_IS_NULL)
 						elsif (event.generated.end_at_time != 0)
-							error_message.append_text(context + " " + ProfileConformance::ENDEDATTIME_SET)
+							error_message.append_text(context + " " + Conformance::ENDEDATTIME_SET)
 						end
 					else
-						error_message.append_text(ProfileConformance::GENERATED_NOT_SESSION)
+						error_message.append_text(Conformance::GENERATED_NOT_SESSION)
 					end
 
 					# start time set for event
 					if (!check_started_at_time(event.started_at_time))
-						error_message.append_text(ProfileConformance::STARTEDATTIME_IS_NULL)
+						error_message.append_text(Conformance::STARTEDATTIME_IS_NULL)
 					end
 
 					# also check the event end time
 					if (!check_ended_at_time(event.started_at_time, event.ended_at_time))
-						error_message.append_text(ProfileConformance::TIME_ERROR)
+						error_message.append_text(Conformance::TIME_ERROR)
 					end
 
 					# check duration value
 					if (check_duration(event.duration))
-						error_message.append_text(ProfileConformance::DURATION_INVALID)
+						error_message.append_text(Conformance::DURATION_INVALID)
 					end
 
 					if (error_message.length() > 0)

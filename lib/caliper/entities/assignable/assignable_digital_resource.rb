@@ -15,8 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/digital_resource'
-require_relative '../../entities/schemadotorg/thing'
+require_relative '../digital_resource'
 
 #
 # AssignableDigitalResource entity. AssignableDigitalResource's prototype is set to DigitalResource.
@@ -24,14 +23,12 @@ require_relative '../../entities/schemadotorg/thing'
 module Caliper
   module Entities
     module Assignable
-
       module AssignableDigitalResourceType
         ASSESSMENT = "http://purl.imsglobal.org/caliper/v1/Assessment"
         ASSESSMENT_ITEM = "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
       end
 
       class AssignableDigitalResource < DigitalResource
-        include Caliper::Entities::SchemaDotOrg::Thing
 
         attr_accessor :dateToActivate,
           :dateToShow,
@@ -52,7 +49,6 @@ module Caliper
           @maxSubmits = nil
           @maxScore = nil
         end
-
      end
     end
   end

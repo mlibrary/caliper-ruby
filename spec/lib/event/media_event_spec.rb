@@ -17,9 +17,9 @@
 
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
-require_all 'lib/caliper/entities/software_application.rb'
+require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/learning_objective.rb'
-require_all 'lib/caliper/entities/lis/person.rb'
+require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
 require_all 'lib/caliper/entities/lis/roles.rb'
 require_all 'lib/caliper/entities/lis/status.rb'
@@ -41,7 +41,7 @@ module Caliper
       it 'should ensure that a Paused Video MediaObjectEvent is correctly created and serialized' do
 
         # The Actor (Person/Student))
-        student = Caliper::Entities::LIS::Person.new
+        student = Caliper::Entities::Agent::Person.new
         student.id = 'https://some-university.edu/user/554433'
         membership1 = Caliper::Entities::LIS::Membership.new
         membership1.id = "https://some-university.edu/membership/001"
@@ -99,7 +99,7 @@ module Caliper
         videoLocation.currentTime = 710
 
         # The course that is part of the Learning Context (edApp)
-        edApp = Caliper::Entities::SoftwareApplication.new
+        edApp = Caliper::Entities::Agent::SoftwareApplication.new
         edApp.id = 'https://com.sat/super-media-tool'
         edApp.name = 'Super Media Tool'
         edApp.hasMembership = []
@@ -166,9 +166,7 @@ module Caliper
 
         # Ensure that the deserialized shared event object conforms
         expect(media_event).to eql(deser_media_event)
-
       end
-
     end
   end
 end

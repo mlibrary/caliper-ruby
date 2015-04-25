@@ -41,7 +41,6 @@ module Caliper
       def validate_event (event)
 
       end
-
     end
   end
 end

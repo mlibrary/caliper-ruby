@@ -15,32 +15,25 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'entity'
-require_relative 'generatable'
-require_relative 'targetable'
-require_relative './jsonable'
+require_relative '../entity'
+require_relative '../foaf/agent'
+require_relative '../schemadotorg/software_application'
 
 #
-#  Session Entity
+#  Software Application (from schema.org)
 #
 module Caliper
   module Entities
+    module Agent
+      class SoftwareApplication < Entity
+        include Caliper::Entities::FOAF::Agent,
+                Caliper::Entities::SchemaDotOrg::SoftwareApplication
 
-    class Session < Entity
-      include Generatable
-      include Targetable
-      include Caliper::Entities::Jsonable
-
-      attr_accessor :actor,
-        :startedAtTime,
-        :endedAtTime,
-        :duration
-
-      def initialize
-        super
-        @type = EntityType::SESSION
+        def initialize()
+          super
+          @type=EntityType::SOFTWARE_APPLICATION
+        end
       end
-
     end
   end
 end

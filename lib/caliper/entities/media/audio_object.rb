@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'media_object'
+require_relative './media_object'
 
 #
 # Audio object embedded in a web page.  See https://schema.org/AudioObject
@@ -23,14 +23,12 @@ require_relative 'media_object'
 module Caliper
   module Entities
     module Media
-
       class AudioObject < MediaObject
 
         def initialize
           super
           @type = MediaType::AUDIO_OBJECT
         end
-
       end
     end
   end

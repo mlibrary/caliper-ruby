@@ -17,9 +17,8 @@
 
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
-require_all 'lib/caliper/entities/web_page.rb'
-require_all 'lib/caliper/entities/software_application.rb'
-require_all 'lib/caliper/entities/lis/person.rb'
+require_all 'lib/caliper/entities/agent/software_application.rb'
+require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
 require_all 'lib/caliper/entities/lis/roles.rb'
 require_all 'lib/caliper/entities/lis/status.rb'
@@ -27,6 +26,7 @@ require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
+require_all 'lib/caliper/entities/reading/web_page.rb'
 require_all 'lib/caliper/event/navigation_event.rb'
 require_all 'lib/caliper/profiles/reading_profile.rb'
 require 'json_spec'
@@ -39,7 +39,7 @@ module Caliper
       it 'should ensure that a NavigatedTo NavigationEvent is correctly created and serialized' do
 
         # The Actor (Person/Student))
-        student = Caliper::Entities::LIS::Person.new
+        student = Caliper::Entities::Agent::Person.new
         student.id = 'https://some-university.edu/user/554433'
         membership1 = Caliper::Entities::LIS::Membership.new
         membership1.id = "https://some-university.edu/membership/001"
@@ -71,7 +71,7 @@ module Caliper
         # puts "new student = #{student.to_json}"
 
         # The Action
-        action = Caliper::Profiles::ReadingActions::NAVIGATED_TO
+        action = Caliper::Profiles::ProfileActions::NAVIGATED_TO
 
         # The Object navigated (ePub Volume)
         ePubVolume = Caliper::Entities::Reading::EPubVolume.new
@@ -92,7 +92,7 @@ module Caliper
         frame.isPartOf = ePubVolume.id
 
         # The course that is part of the Learning Context (edApp)
-        edApp = Caliper::Entities::SoftwareApplication.new
+        edApp = Caliper::Entities::Agent::SoftwareApplication.new
         edApp.id = 'https://github.com/readium/readium-js-viewer'
         edApp.name = 'Readium'
         edApp.hasMembership = []
@@ -132,7 +132,7 @@ module Caliper
         group.dateModified = nil
 
         # The navigatedFrom property (specific to Navigation Event)
-        fromPage = Caliper::Entities::WebPage.new
+        fromPage = Caliper::Entities::Reading::WebPage.new
         fromPage.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/index.html'
         fromPage.name = 'American Revolution 101 Landing Page'
         fromPage.dateCreated = '2015-08-01T06:00:00.000Z'
@@ -169,9 +169,7 @@ module Caliper
 
         # Ensure that the deserialized shared event object conforms
         expect(navigated_event).to eql(deser_navigated_event)
-
       end
-
     end
   end
 end

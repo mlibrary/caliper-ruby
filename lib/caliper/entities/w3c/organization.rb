@@ -15,26 +15,15 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/entity'
-require_relative '../../entities/foaf/agent.rb'
-require_relative '../../entities/jsonable'
-
 #
-# An FOAF LIS Person
+# A W3C Organization.
 #
 module Caliper
   module Entities
-    module LIS
-      # Represents Person.
-      # @extends Agent
-      class Person < Entity
-        include Caliper::Entities::FOAF::Agent, Caliper::Entities::Jsonable
-
-        def initialize
-          super
-          @type = EntityType::LIS_PERSON
-        end
-
+    module W3c
+      module Organization
+        attr_accessor :membership,
+                      :subOrganizationOf
       end
     end
   end

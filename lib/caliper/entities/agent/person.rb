@@ -15,18 +15,23 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './event'
+require_relative '../entity'
+require_relative '../foaf/agent.rb'
 
 #
-# View Event per the Caliper Base Profile.
+# An FOAF LIS Person
+# @extends Agent
 #
 module Caliper
-  module Event
-    class ViewEvent < Event
+  module Entities
+    module Agent
+      class Person < Entity
+        include Caliper::Entities::FOAF::Agent
 
-      def initialize
-        @type = EventType::VIEW
-        @context = EventContext::VIEW
+        def initialize
+          super
+          @type = EntityType::PERSON
+        end
       end
     end
   end

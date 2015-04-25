@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'securerandom'
-require_relative 'event_store_envelope'
+require_relative './event_store_envelope'
 
 #
 # Event store requestor.
@@ -24,7 +24,6 @@ require_relative 'event_store_envelope'
 module Caliper
   module Request
     class EventStoreRequestor
-
 
       def get_payload_json(caliper_event, id, send_time)
 

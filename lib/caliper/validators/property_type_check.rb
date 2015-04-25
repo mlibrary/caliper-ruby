@@ -15,8 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entities/lis/person'
-require_relative '../entities/schemadotorg/software_application'
+require_relative '../agent/person'
+require_relative '../schemadotorg/software_application'
 
 #
 # Type check.
@@ -24,7 +24,6 @@ require_relative '../entities/schemadotorg/software_application'
 module Caliper
 	module Validators
 		class PropertyTypeCheck
-
 			# whether the object is of wanted target class
 			def is_object_of_type(object, targetClass)
 				return !object.nil? && object.is_a?(targetClass)

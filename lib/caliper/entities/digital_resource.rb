@@ -15,8 +15,9 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require "json"
-require_relative 'entity'
+require_relative './entity'
+require_relative './schemadotorg/creative_work'
+require_relative './targetable'
 
 #
 # Caliper representation of a CreativeWork. We add learning specific attributes, including a list of
@@ -24,7 +25,6 @@ require_relative 'entity'
 #
 module Caliper
   module Entities
-
     module DigitalResourceType
       ASSIGNABLE_DIGITAL_RESOURCE = "http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource"
       EPUB_CHAPTER = "http://www.idpf.org/epub/vocab/structure/#chapter"
@@ -39,14 +39,15 @@ module Caliper
     end
 
     class DigitalResource < Entity
-      include Caliper::Entities::Jsonable
+      include Caliper::Entities::SchemaDotOrg::CreativeWork,
+              Caliper::Entities::Targetable
 
       attr_accessor :objectType,
-        :alignedLearningObjective,
-        :keywords,
-        :isPartOf,
-        :datePublished,
-        :version
+                    :alignedLearningObjective,
+                    :keywords,
+                    :isPartOf,
+                    :datePublished,
+                    :version
 
       def initialize
         super
@@ -58,7 +59,6 @@ module Caliper
         @isPartOf = nil
         @version = nil
       end
-
     end
   end
 end

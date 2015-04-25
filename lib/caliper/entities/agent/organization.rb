@@ -15,18 +15,22 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './event'
+require_relative '../entity'
+require_relative '../w3c/organization'
 
 #
-# View Event per the Caliper Base Profile.
+# W3C Organization
 #
 module Caliper
-  module Event
-    class ViewEvent < Event
+  module Entities
+    module Agent
+      class Organization < Entity
+        include Caliper::Entities::W3c::Organization
 
-      def initialize
-        @type = EventType::VIEW
-        @context = EventContext::VIEW
+        def initialize
+          super
+          @type = EntityType::ORGANIZATION
+        end
       end
     end
   end

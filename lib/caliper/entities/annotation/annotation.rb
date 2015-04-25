@@ -15,8 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/entity'
-require_relative '../../entities/schemadotorg/thing'
+require_relative '../entity'
+require_relative '../generatable'
 
 #
 #  Annotation entity.
@@ -24,7 +24,6 @@ require_relative '../../entities/schemadotorg/thing'
 module Caliper
 	module Entities
 		module Annotation
-
 			module AnnotationType
 				ANNOTATION = "http://purl.imsglobal.org/caliper/v1/Annotation"
 				BOOKMARK_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation"
@@ -35,7 +34,7 @@ module Caliper
 
 			## implement the interface Thing
 			class Annotation < Entity
-				include Caliper::Entities::SchemaDotOrg::Thing
+				include Caliper::Entities::Generatable
 
 				attr_accessor :annotated
 
@@ -45,7 +44,6 @@ module Caliper
 					@annotated = nil
 				end
 			end
-
 		end
 	end
 end

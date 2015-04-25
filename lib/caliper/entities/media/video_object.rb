@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'media_object'
+require_relative './media_object'
 
 #
 # A video object embedded in a web page.  See https://schema.org/VideoObject.
@@ -23,14 +23,12 @@ require_relative 'media_object'
 module Caliper
   module Entities
     module Media
-
       class VideoObject < MediaObject
 
         def initialize
           super
           @type = MediaType::VIDEO_OBJECT
         end
-
       end
     end
   end

@@ -17,7 +17,6 @@
 
 require_relative '../../entities/digital_resource'
 require_relative '../../entities/targetable'
-require_relative '../../entities/jsonable'
 
 #
 # A Frame
@@ -25,10 +24,8 @@ require_relative '../../entities/jsonable'
 module Caliper
 	module Entities
 		module Reading
-
-			class Frame < DigitalResource
-				include Targetable
-				include Caliper::Entities::Jsonable
+			class Frame < Caliper::Entities::DigitalResource
+				include Caliper::Entities::Targetable
 
 				attr_accessor :index
 
@@ -37,7 +34,6 @@ module Caliper
 					@type = DigitalResourceType::FRAME
 					@index = 0
 				end
-
 			end
 		end
 	end

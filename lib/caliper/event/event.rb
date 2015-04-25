@@ -35,6 +35,7 @@ module Caliper
       SESSION = "http://purl.imsglobal.org/ctx/caliper/v1/SessionEvent"
       VIEW = "http://purl.imsglobal.org/ctx/caliper/v1/ViewEvent"
     end
+
     module EventType
       ANNOTATION = "http://purl.imsglobal.org/caliper/v1/AnnotationEvent"
       ASSESSMENT = "http://purl.imsglobal.org/caliper/v1/AssessmentEvent"
@@ -47,6 +48,7 @@ module Caliper
       SESSION = "http://purl.imsglobal.org/caliper/v1/SessionEvent"
       VIEW = "http://purl.imsglobal.org/caliper/v1/ViewEvent"
     end
+
     class Event
       include Caliper::Event::Jsonable
 

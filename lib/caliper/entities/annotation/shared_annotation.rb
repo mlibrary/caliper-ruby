@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'annotation'
+require_relative './annotation'
 
 #
 #  Shared Annotation entity.
@@ -23,7 +23,6 @@ require_relative 'annotation'
 module Caliper
   module Entities
     module Annotation
-
       class SharedAnnotation < Annotation
         attr_accessor :withAgents # list of Agent objects
 
@@ -32,7 +31,6 @@ module Caliper
           @type = AnnotationType::SHARED_ANNOTATION
 	        @withAgents = Array.new
         end
-        
       end
     end
   end

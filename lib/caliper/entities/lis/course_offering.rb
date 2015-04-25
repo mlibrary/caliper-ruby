@@ -15,8 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './organization'
-require_relative '../../entities/jsonable'
+require_relative '../entity'
+require_relative '../w3c/organization'
 
 #
 #  LIS Course Offering.
@@ -24,18 +24,16 @@ require_relative '../../entities/jsonable'
 module Caliper
   module Entities
     module LIS
-
-      class CourseOffering < Caliper::Entities::LIS::Organization
-        include Caliper::Entities::Jsonable
+      class CourseOffering < Entity
+        include Caliper::Entities::W3c::Organization
 
         attr_accessor :courseNumber,
-          :academicSession
+                      :academicSession
 
         def initialize
           super
-          @type = OrganizationType::COURSE_OFFERING
+          @type = EntityType::COURSE_OFFERING
         end
-
       end
     end
   end

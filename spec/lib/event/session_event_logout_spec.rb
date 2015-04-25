@@ -17,17 +17,15 @@
 
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
-require_all 'lib/caliper/entities/session.rb'
-require_all 'lib/caliper/entities/software_application.rb'
-require_all 'lib/caliper/entities/lis/person.rb'
+require_all 'lib/caliper/entities/agent/software_application.rb'
+require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
 require_all 'lib/caliper/entities/lis/roles.rb'
 require_all 'lib/caliper/entities/lis/status.rb'
 require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
-require_all 'lib/caliper/entities/reading/epub_volume.rb'
-require_all 'lib/caliper/entities/reading/frame.rb'
+require_all 'lib/caliper/entities/session/session.rb'
 require_all 'lib/caliper/event/session_event.rb'
 require_all 'lib/caliper/profiles/session_profile.rb'
 require 'json_spec'
@@ -40,7 +38,7 @@ module Caliper
       it 'should ensure that a loggedOut SessionEvent is correctly created and serialized' do
 
         # The Actor (Person/Student))
-        student = Caliper::Entities::LIS::Person.new
+        student = Caliper::Entities::Agent::Person.new
         student.id = 'https://some-university.edu/user/554433'
         membership1 = Caliper::Entities::LIS::Membership.new
         membership1.id = "https://some-university.edu/membership/001"
@@ -75,7 +73,7 @@ module Caliper
         action = Caliper::Profiles::SessionActions::LOGGED_OUT
 
         # The Object (edApp)
-        edApp = Caliper::Entities::SoftwareApplication.new
+        edApp = Caliper::Entities::Agent::SoftwareApplication.new
         edApp.id = 'https://github.com/readium/readium-js-viewer'
         edApp.name = 'Readium'
         edApp.hasMembership = []
@@ -83,7 +81,7 @@ module Caliper
         edApp.dateModified = '2015-09-02T11:30:00.000Z'
 
         # The Target (Session)
-        session = Caliper::Entities::Session.new
+        session = Caliper::Entities::Session::Session.new
         session.id = 'https://github.com/readium/session-123456789'
         session.name = 'session-123456789'
         session.description = nil
@@ -154,9 +152,7 @@ module Caliper
 
         # Ensure that the deserialized session event object conforms
         expect(session_event).to eql(deser_session_event)
-
       end
-
     end
   end
 end

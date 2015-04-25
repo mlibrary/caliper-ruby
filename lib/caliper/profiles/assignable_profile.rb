@@ -22,7 +22,6 @@ require_relative './profile'
 #
 module Caliper
   module Profiles
-
     module AssignableActions
       ABANDONED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned"
       ACTIVATED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Activated"
@@ -33,7 +32,6 @@ module Caliper
       SHOWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Showed"
       STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
       SUBMITTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted"
-      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
     end
 
     class AssignableProfile < Caliper::Profiles::Profile
@@ -59,6 +57,5 @@ module Caliper
         end
       end
     end
-
   end
 end

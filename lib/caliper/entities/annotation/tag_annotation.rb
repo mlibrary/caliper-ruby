@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative 'annotation'
+require_relative './annotation'
 
 #
 #  Tag Annotation entity.
@@ -23,7 +23,6 @@ require_relative 'annotation'
 module Caliper
   module Entities
     module Annotation
-
       class TagAnnotation < Annotation
         attr_accessor :tags
 
@@ -32,7 +31,6 @@ module Caliper
           @type = AnnotationType::TAG_ANNOTATION
           @tags = Array.new
         end
-        
       end
     end
   end

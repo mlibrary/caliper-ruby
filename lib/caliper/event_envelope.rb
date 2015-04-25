@@ -16,14 +16,13 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'rest_client'
-require_relative "options"
-require_relative 'jsonable'
+require_relative "./options"
+require_relative './jsonable'
 
 #
 # Caliper Sensor Event Envelope.
 #
 module Caliper
-
   class EventEnvelope
     include Caliper::Jsonable
 

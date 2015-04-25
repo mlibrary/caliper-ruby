@@ -17,15 +17,14 @@
 
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
-require_all 'lib/caliper/entities/software_application.rb'
-require_all 'lib/caliper/entities/lis/person.rb'
+require_all 'lib/caliper/entities/agent/software_application.rb'
+require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
 require_all 'lib/caliper/entities/lis/roles.rb'
 require_all 'lib/caliper/entities/lis/status.rb'
 require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
-require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/entities/assessment/assessment.rb'
 require_all 'lib/caliper/entities/assessment/assessment_item.rb'
 require_all 'lib/caliper/entities/assignable/attempt.rb'
@@ -33,7 +32,7 @@ require_all 'lib/caliper/entities/assignable/assignable_digital_resource.rb'
 require_all 'lib/caliper/entities/response/Response.rb'
 require_all 'lib/caliper/entities/response/fillin_blank_response.rb'
 require_all 'lib/caliper/event/assessment_item_event.rb'
-require_all 'lib/caliper/profiles/assessment_profile.rb'
+require_all 'lib/caliper/profiles/assessment_item_profile.rb'
 require 'json_spec'
 
 module Caliper
@@ -44,7 +43,7 @@ module Caliper
       it 'should ensure that a Completed AssessmentItemEvent is correctly created and serialized' do
 
         # The Actor  = Person/Student))
-        student = Caliper::Entities::LIS::Person.new
+        student = Caliper::Entities::Agent::Person.new
         student.id = 'https://some-university.edu/user/554433'
         membership1 = Caliper::Entities::LIS::Membership.new
         membership1.id = "https://some-university.edu/membership/001"
@@ -165,7 +164,7 @@ module Caliper
         response.values = ["2 July 1776"]
 
         # The Object (edApp)
-        edApp = Caliper::Entities::SoftwareApplication.new
+        edApp = Caliper::Entities::Agent::SoftwareApplication.new
         edApp.id = 'https://com.sat/super-assessment-tool'
         edApp.name = 'Super Assessment Tool'
         edApp.hasMembership = []
@@ -232,9 +231,7 @@ module Caliper
 
         # Ensure that the deserialized bookmark event object conforms
         expect(assessment_event).to eql(deser_assessment_event)
-
       end
-
     end
   end
 end

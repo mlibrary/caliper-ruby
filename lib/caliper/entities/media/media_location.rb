@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/digital_resource'
+require_relative '../digital_resource'
 
 #
 # A time based location within a media object.
@@ -23,7 +23,6 @@ require_relative '../../entities/digital_resource'
 module Caliper
   module Entities
     module Media
-
       class MediaLocation < DigitalResource
 
         attr_accessor :currentTime
@@ -33,7 +32,6 @@ module Caliper
           @type = DigitalResourceType::MEDIA_LOCATION
           @currentTime = nil
         end
-
       end
     end
   end

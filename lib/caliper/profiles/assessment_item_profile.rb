@@ -15,18 +15,33 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './event'
+require_relative './profile'
 
 #
-# View Event per the Caliper Base Profile.
+# Assessment Profile.
 #
 module Caliper
-  module Event
-    class ViewEvent < Event
+  module Profiles
+    module AssessmentItemActions
+      COMPLETED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Completed"
+      REVIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed"
+      SKIPPED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped"
+      STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
+      VIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed"
+    end
 
-      def initialize
-        @type = EventType::VIEW
-        @context = EventContext::VIEW
+    class AssessmentItemProfile < Caliper::Profiles::Profile
+
+      attr_accessor :key, # String
+                    :lookup # hash of AssessmentItemActions
+
+      # whether object if of type DigitalResource
+      def validate_object(object)
+        if (object.is_a? DigitalResource)
+          return object
+        else
+          fail 'Object must be of type DigitalResource'
+        end
       end
     end
   end

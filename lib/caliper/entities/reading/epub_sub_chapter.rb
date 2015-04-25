@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative "../digital_resource"
+require_relative '../digital_resource'
 
 #
 # Representation of an EPUB 3 subchapter.  A major sub-division of a chapter.
@@ -25,9 +25,9 @@ module Caliper
   module Entities
     module Reading
       class EpubSubChapter < Caliper::Entities::DigitalResource
+
         def initialize()
 	        super
-          @id = ""
           @type = DigitalResourceType::EPUB_SUB_CHAPTER
         end
       end

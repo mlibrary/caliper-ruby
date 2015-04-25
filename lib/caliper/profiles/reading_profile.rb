@@ -24,11 +24,9 @@ require_relative '../entities/reading/frame'
 #
 module Caliper
   module Profiles
-
     module ReadingActions
       SEARCHED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Searched"
       VIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed"
-      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
     end
 
     class ReadingProfile < Caliper::Profiles::Profile
@@ -54,6 +52,5 @@ module Caliper
         end
       end
     end
-
   end
 end
