@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative "../digital_resource"
+require_relative '../../entities/jsonable'
 
 #
 # Representation of an EPUB 3 Part. A major structural division of a piece of writing, typically
@@ -24,11 +25,11 @@ require_relative "../digital_resource"
 module Caliper
   module Entities
     module Reading
-      class EpubPart < ::Caliper::Entity::DigitalResource
+      class EpubPart < Caliper::Entities::DigitalResource
+        include Caliper::Entities::Jsonable
 
         def initialize()
 	        super
-          @id = ""
           @type = DigitalResourceType::EPUB_PART
         end
       end

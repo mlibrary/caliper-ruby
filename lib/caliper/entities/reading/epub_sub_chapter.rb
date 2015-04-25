@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative "../digital_resource"
+require_relative '../../entities/jsonable'
 
 #
 # Representation of an EPUB 3 subchapter.  A major sub-division of a chapter.
@@ -25,10 +26,10 @@ module Caliper
   module Entities
     module Reading
       class EpubSubChapter < Caliper::Entities::DigitalResource
+        include Caliper::Entities::Jsonable
 
         def initialize()
 	        super
-          @id = ""
           @type = DigitalResourceType::EPUB_SUB_CHAPTER
         end
       end

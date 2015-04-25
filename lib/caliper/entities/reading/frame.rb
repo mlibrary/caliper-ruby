@@ -25,7 +25,7 @@ require_relative '../../entities/jsonable'
 module Caliper
 	module Entities
 		module Reading
-			class Frame < DigitalResource
+			class Frame < Caliper::Entities::DigitalResource
 				include Targetable,
 								Caliper::Entities::Jsonable
 
