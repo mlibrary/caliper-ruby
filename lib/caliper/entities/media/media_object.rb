@@ -16,7 +16,6 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../../entities/digital_resource'
-require_relative '../../entities/schemadotorg/thing'
 
 # An image, video, or audio object embedded in a web page. Note that a
 # creative work may have many media objects associated with it on the
@@ -36,7 +35,6 @@ module Caliper
 
       ## implement the interface Thing
       class MediaObject < DigitalResource
-        include Caliper::Entities::SchemaDotOrg::Thing
 
         attr_accessor :duration
 
