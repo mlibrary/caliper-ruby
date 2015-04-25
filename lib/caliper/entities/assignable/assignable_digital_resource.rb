@@ -16,7 +16,6 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../../entities/digital_resource'
-require_relative '../../entities/schemadotorg/thing'
 
 #
 # AssignableDigitalResource entity. AssignableDigitalResource's prototype is set to DigitalResource.
@@ -30,7 +29,6 @@ module Caliper
       end
 
       class AssignableDigitalResource < DigitalResource
-        include Caliper::Entities::SchemaDotOrg::Thing
 
         attr_accessor :dateToActivate,
           :dateToShow,
