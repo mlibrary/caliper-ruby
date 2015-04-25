@@ -17,6 +17,7 @@
 
 require 'time'
 require 'json'
+require_relative 'schemadotorg/thing'
 require_relative './jsonable'
 
 #
@@ -46,7 +47,8 @@ module Caliper
     end
 
     class Entity
-      include Caliper::Entities::Jsonable
+      include Caliper::Entities::SchemaDotOrg::Thing,
+              Caliper::Entities::Jsonable
 
       attr_accessor :id,
         :type,

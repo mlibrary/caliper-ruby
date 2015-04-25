@@ -16,7 +16,6 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../../entities/entity'
-require_relative '../../entities/schemadotorg/thing'
 
 #
 #  Annotation entity.
@@ -34,7 +33,6 @@ module Caliper
 
 			## implement the interface Thing
 			class Annotation < Entity
-				include Caliper::Entities::SchemaDotOrg::Thing
 
 				attr_accessor :annotated
 
