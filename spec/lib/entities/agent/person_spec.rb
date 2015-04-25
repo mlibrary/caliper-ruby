@@ -18,9 +18,7 @@
 # require 'spec_helper.rb'
 require 'require_all'
 require 'json_spec'
-require_all 'lib/caliper/entities/*.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
-require_all 'lib/caliper/entities/lis/*.rb'
 
 #
 # Test Person.
@@ -28,6 +26,7 @@ require_all 'lib/caliper/entities/lis/*.rb'
 module Caliper
   module Entities
     module Agent
+
       describe Person do
 
         it "should ensure that a Person is correctly created and serialized" do
