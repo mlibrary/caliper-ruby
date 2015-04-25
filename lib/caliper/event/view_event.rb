@@ -16,7 +16,6 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative 'event'
-require_relative '../profiles/reading_profile.rb'
 
 #
 # View Event per the Caliper Base Profile.
