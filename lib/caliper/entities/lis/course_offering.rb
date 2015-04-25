@@ -15,7 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../agent/organization'
+require_relative '../../entities/entity'
+require_relative '../../entities/w3c/organization'
 require_relative '../../entities/jsonable'
 
 #
@@ -25,7 +26,8 @@ module Caliper
   module Entities
     module LIS
 
-      class CourseOffering < Caliper::Entities::Agent::Organization
+      class CourseOffering < Entity
+        include Caliper::Entities::W3c::Organization
         include Caliper::Entities::Jsonable
 
         attr_accessor :courseNumber,
