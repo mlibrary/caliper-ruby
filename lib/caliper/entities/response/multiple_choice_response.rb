@@ -15,8 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require "require_all"
-require_all 'lib/caliper/entities/response/response_type.rb'
+require_relative './response'
+require_relative './response_type'
 
 #
 # Represents a response to a multiple choice question that permits a single option to be selected
