@@ -15,26 +15,17 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../entities/entity'
-require_relative '../../entities/w3c/membership'
-require_relative '../../entities/jsonable'
-
 #
 #  W3C Membership.
 #
 module Caliper
   module Entities
-    module LIS
-
-      class Membership < Entity
-        include Caliper::Entities::W3c::Membership
-        include Caliper::Entities::Jsonable
-
-        def initialize
-          super
-          @type = EntityType::MEMBERSHIP
-        end
-
+    module W3c
+      module Membership
+        attr_accessor :member,
+                      :organization,
+                      :roles,
+                      :status
       end
     end
   end
