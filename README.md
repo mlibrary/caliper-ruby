@@ -13,7 +13,7 @@ To set up dev environment and run specs
 #### _Note_
 To run specs, you need to clone caliper-common-fixtures at the same level as caliper-ruby.  Then please create a symlink similar to
 
-➜  caliper-ruby git:(master)  ln -s ../caliper-common-fixtures/src/test/resources/fixtures ./spec/fixtures
+➜  caliper-ruby git:(master)  ln -s ../../caliper-common-fixtures/src/test/resources/fixtures ./spec/fixtures
 
 ## generate the Ruby Gem
 
