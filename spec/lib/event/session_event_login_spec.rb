@@ -28,6 +28,7 @@ require_all 'lib/caliper/entities/lis/group.rb'
 require_all 'lib/caliper/entities/session/session.rb'
 require_all 'lib/caliper/event/session_event.rb'
 require_all 'lib/caliper/profiles/session_profile.rb'
+require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require 'json_spec'
 
 module Caliper
