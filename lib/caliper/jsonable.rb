@@ -40,7 +40,12 @@ module Caliper
         next if (key[1..-1] == 'context' || key[1..-1] == 'type')
         value = self.instance_variable_get key
         # puts "setting #{key}: #{value}"
-        result[key[1..-1]] = value
+        attribute_key = key[1..-1]
+        if (key[1..-1] == 'id' || key[1..-1] == 'type' || key[1..-1] == 'context')
+	        ## prefix with @ char for linked json data
+	        attribute_key = "@#{attribute_key}"
+        end
+        result[attribute_key] = value
       end
       result.to_json(*a)
     end

@@ -19,5 +19,5 @@
 # Version.
 #
 module Caliper
-  VERSION = "0.1.1"
+  VERSION = "0.9.0"
 end
