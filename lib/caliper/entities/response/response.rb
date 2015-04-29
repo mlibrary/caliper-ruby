@@ -36,6 +36,7 @@ module Caliper
 			                :duration
 
 				def initialize
+          super
 					@type = EntityType::RESPONSE
 				end
 			end

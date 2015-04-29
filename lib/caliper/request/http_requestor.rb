@@ -15,10 +15,9 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require "net/http"
-require "uri"
+require 'rest-client'
+require_relative './envelope'
 require_relative './event_store_requestor'
-require_relative './event_store_envelope'
 
 module Caliper
 	module Request
@@ -28,32 +27,14 @@ module Caliper
 
 			def initialize(options)
 				@options = options
-			end
+      end
 
-			def send(event)
-				status = false
+      def send(sensor, data)
+        payload = generate_payload(sensor, data)
 
-				# the option.host returns whole url string
-				uri = URI(@options.host)
-				Net::HTTP.start(uri.host, uri.port) do |http|
-					request = Net::HTTP::Post.new uri
-
-					response = http.request request # Net::HTTPResponse object
-				end
-
-				if (response.code != 200)
-					status_code = response.code
-
-					# failed call
-					status = false
-					fail "Failed: HTTP error code: " + status_code
-				else
-					# success call
-					status = true
-				end
-
-				return status
-			end
+        # What about the api key (authorization)?
+        RestClient.post @options['host'], payload, :content_type => :json, :accept => :json
+      end
 		end
 	end
 end

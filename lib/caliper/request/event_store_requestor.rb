@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'securerandom'
-require_relative './event_store_envelope'
+require_relative './envelope'
 
 #
 # Event store requestor.
@@ -25,35 +25,24 @@ module Caliper
   module Request
     class EventStoreRequestor
 
-      def get_payload_json(caliper_event, id, send_time)
-
-        list_payload = Array.new
-
-        # new event envelope
-        envelope = EventStoreEnvelope.new
-        envelope.id = id
-        envelope.type = "caliperEvent"
-        envelope.time = send_time.to_s
-        envelope.data = caliper_event
-
-        # add envelope into array
-        list_payload<< envelope
-
-        json_payload = JSON.generate(list_payload)
-        return json_payload
+      def generate_payload(sensor, data)
+        return get_payload_json(sensor, data)
       end
 
-      def generate_payload(caliper_event, id, send_time)
-        if (id.nil?)
-          id = "caliper-java_" + SecureRandom.uuid
-        end
+      def get_payload_json(sensor, data)
+        envelope = create_envelope(sensor, data)
+        return JSON.generate(envelope)
+      end
 
-        if (send_time.nil?)
-          send_time = Time.now
-        end
+      def create_envelope(sensor, data)
+        envelope = Envelope.new
+        envelope.sensor = sensor.id
+        envelope.data = to_array(data)
+        return envelope
+      end
 
-        json_payload = get_payload_json(caliper_event, id, send_time)
-
+      def to_array(data)
+        return [data] if !(data.is_a?(Array))
       end
     end
   end

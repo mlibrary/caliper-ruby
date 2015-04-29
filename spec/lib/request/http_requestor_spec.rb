@@ -26,17 +26,21 @@ require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
-require_all 'lib/caliper/entities/session/session.rb'
-require_all 'lib/caliper/event/session_event.rb'
-require_all 'lib/caliper/profiles/session_profile.rb'
+require_all 'lib/caliper/entities/reading/web_page.rb'
+require_all 'lib/caliper/event/navigation_event.rb'
+require_all 'lib/caliper/profiles/reading_profile.rb'
+require_all 'lib/caliper/options.rb'
+require_all 'lib/caliper/sensor.rb'
+require_all 'lib/caliper/request/http_requestor.rb'
+
 require 'json_spec'
 
 module Caliper
-  module Event
+  module Request
 
-    describe SessionEvent do
+    describe Envelope do
 
-      it 'should ensure that a LoggedIn SessionEvent is correctly created and serialized' do
+      it 'should ensure that a Caliper envelope comprising a NavigationEvent is correctly created and serialized' do
 
         # The Actor (Person/Student))
         student = Caliper::Entities::Agent::Person.new
@@ -71,17 +75,9 @@ module Caliper
         # puts "new student = #{student.to_json}"
 
         # The Action
-        action = Caliper::Profiles::SessionActions::LOGGED_IN
+        action = Caliper::Profiles::ProfileActions::NAVIGATED_TO
 
-        # The Object (edApp)
-        edApp = Caliper::Entities::Agent::SoftwareApplication.new
-        edApp.id = 'https://github.com/readium/readium-js-viewer'
-        edApp.name = 'Readium'
-        edApp.hasMembership = []
-        edApp.dateCreated = '2015-08-01T06:00:00.000Z'
-        edApp.dateModified = '2015-09-02T11:30:00.000Z'
-
-        # The Target (Frame)
+        # The Object navigated (ePub Volume)
         ePubVolume = Caliper::Entities::Reading::EPubVolume.new
         ePubVolume.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3)'
         ePubVolume.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
@@ -89,6 +85,7 @@ module Caliper
         ePubVolume.dateCreated = '2015-08-01T06:00:00.000Z'
         ePubVolume.dateModified = '2015-09-02T11:30:00.000Z'
 
+        # The Target within the Object (frame)
         frame = Caliper::Entities::Reading::Frame.new
         frame.id = 'https://github.com/readium/readium-js-viewer/book/34843#epubcfi(/4/3/1)'
         frame.name = 'Key Figures: George Washington'
@@ -98,17 +95,13 @@ module Caliper
         frame.index = 1
         frame.isPartOf = ePubVolume.id
 
-        # The Generated (Session)
-        session = Caliper::Entities::Session::Session.new
-        session.id = 'https://github.com/readium/session-123456789'
-        session.name = 'session-123456789'
-        session.description = nil
-        session.actor = student
-        session.startedAtTime = '2015-09-15T10:15:00.000Z'
-        session.endedAtTime = nil
-        session.duration = nil
-        session.dateCreated = '2015-08-01T06:00:00.000Z'
-        session.dateModified = '2015-09-02T11:30:00.000Z'
+        # The course that is part of the Learning Context (edApp)
+        edApp = Caliper::Entities::Agent::SoftwareApplication.new
+        edApp.id = 'https://github.com/readium/readium-js-viewer'
+        edApp.name = 'Readium'
+        edApp.hasMembership = []
+        edApp.dateCreated = '2015-08-01T06:00:00.000Z'
+        edApp.dateModified = '2015-09-02T11:30:00.000Z'
 
         #LIS Course Offering
         courseOffering = Caliper::Entities::LIS::CourseOffering.new
@@ -120,7 +113,7 @@ module Caliper
         courseOffering.subOrganizationOf = nil
         courseOffering.dateCreated = '2015-08-01T06:00:00.000Z'
         courseOffering.dateModified = '2015-09-02T11:30:00.000Z'
-        
+
         # The LIS Course Section for the Caliper Event
         course = Caliper::Entities::LIS::CourseSection.new
         course.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/section/001'
@@ -142,32 +135,53 @@ module Caliper
         group.dateCreated = '2015-08-01T06:00:00.000Z'
         group.dateModified = nil
 
-        # The (Session) Event
-        session_event = SessionEvent.new
-        session_event.actor  = student
-        session_event.action = action
-        session_event.object = edApp
-        session_event.target = frame
-        session_event.generated = session
-        session_event.edApp  = edApp
-        session_event.group = group
-        session_event.startedAtTime = '2015-09-15T10:15:00.000Z'
-        # puts "Event JSON = #{session_event.to_json}'"
+        # The navigatedFrom property (specific to Navigation Event)
+        fromPage = Caliper::Entities::Reading::WebPage.new
+        fromPage.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/index.html'
+        fromPage.name = 'American Revolution 101 Landing Page'
+        fromPage.dateCreated = '2015-08-01T06:00:00.000Z'
+        fromPage.dateModified = '2015-09-02T11:30:00.000Z'
+        fromPage.isPartOf = nil
+        fromPage.version = '1.0'
+
+        # The (Reading::BookmarkReading) Event
+        navigated_event = Caliper::Event::NavigationEvent.new
+        navigated_event.actor  = student
+        navigated_event.action = action
+        navigated_event.object = ePubVolume
+        navigated_event.target = frame
+        navigated_event.generated = nil
+        navigated_event.edApp  = edApp
+        navigated_event.group = group
+        navigated_event.navigatedFrom = fromPage
+        navigated_event.startedAtTime = '2015-09-15T10:15:00.000Z'
+        navigated_event.endedAtTime = nil
+        navigated_event.duration = nil
+        # puts "Event JSON = #{navigated_event.to_json}'"
+
+        # The Sensor
+        options = Caliper::Options.new
+        sensor = Caliper::Sensor.new("http://learning-app.some-university.edu/sensor", options)
+        requestor = Caliper::Request::HttpRequestor.new(options)
+        json_payload = requestor.generate_payload(sensor, navigated_event)
+
+        # Swap out sendTime=DateTime.now() in favor of fixture value (or test will most assuredly fail).
+        json_payload_sub = json_payload.sub(/\"sendTime\":\"[^\"]*\"/, "\"sendTime\":\"2015-09-15T11:05:01.000Z\"")
 
         # Load JSON from caliper-common-fixtures for comparison
         # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
-        file = File.read('spec/fixtures/caliperSessionLoginEvent.json')
+        file = File.read('spec/fixtures/eventStorePayload.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        session_event.to_json.should be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "edApp", "group")
+        json_payload_sub.should be_json_eql(expected_json)
 
         # puts "JSON from file = #{data_hash}"
-        deser_session_event = SessionEvent.new
-        deser_session_event.from_json data_hash
-        # puts "SessionEvent from JSON = #{deser_session_event.to_json}"
+        # deser_envelope = Caliper::Request::Envelope.new
+        # deser_envelope.from_json data_hash
+        # puts "Envelope from JSON = #{deser_envelope.to_json}"
 
-        # Ensure that the deserialized session event object conforms
-        expect(session_event).to eql(deser_session_event)
+        # Ensure that the deserialized shared event object conforms
+        # expect(json_payload_sub).to eql(deser_envelope)
       end
     end
   end

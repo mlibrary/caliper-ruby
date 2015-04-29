@@ -64,7 +64,8 @@ module Caliper
     end
 
     def eql?(other)
-      @sensorId == other.sensorId && @apiKey == other.apiKey
+      @context == other.context && @apiKey == other.apiKey
+      # @context == other.context && @sensorId == other.sensorId && @apiKey == other.apiKey
     end
   end
 end

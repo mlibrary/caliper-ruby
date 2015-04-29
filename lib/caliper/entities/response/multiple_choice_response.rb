@@ -29,6 +29,7 @@ module Caliper
 			                :values
 
 				def initialize
+          super
 					@type = ResponseType::MULTIPLECHOICE
 				end
 			end

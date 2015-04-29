@@ -15,10 +15,9 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'rest_client'
-require_relative "./options"
-require_relative "./event_envelope"
-require_relative "./entity_envelope"
+
+require_relative './options'
+require_relative './request/http_requestor'
 
 #
 # Caliper Sensor.
@@ -26,33 +25,23 @@ require_relative "./entity_envelope"
 module Caliper
   class Sensor
 
-    def initialize(options)
+    attr_accessor :id
+
+    def initialize(id, options)
+      @id = id
       @options = options
-      puts "Sensor - initializing with options = #{@options}"
-    end
-
-    def send(event)
-      raise ArgumentError, "Expecting Caliper::Event but got #{event.class.to_s}" unless event.is_a?(Caliper::Event::Event)
-
-      envelope = EventEnvelope.new
-      envelope.apiKey = @options['apiKey']
-      envelope.sensorId = @options['sensorId']
-      envelope.event = event
-
-      RestClient.post @options['host'], envelope.to_json, :content_type => :json, :accept => :json
-
     end
 
     def describe(entity)
       raise ArgumentError, "Expecting Caliper::Entity but got #{entity.class.to_s}" unless entity.is_a?(Caliper::Entities::Entity)
 
-      envelope = EntityEnvelope.new
-      envelope.apiKey = @options['apiKey']
-      envelope.sensorId = @options['sensorId']
-      envelope.entity = entity
+      HttpRequestor(@options).new.send(self, entity)
+    end
 
-      RestClient.post @options['host'], envelope.to_json, :content_type => :json, :accept => :json
+    def send(event)
+      raise ArgumentError, "Expecting Caliper::Event but got #{event.class.to_s}" unless event.is_a?(Caliper::Event::Event)
 
+      HttpRequestor(@options).new.send(self, event)
     end
   end
 end
