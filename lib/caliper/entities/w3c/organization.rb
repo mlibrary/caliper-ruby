@@ -20,8 +20,8 @@
 #
 module Caliper
   module Entities
-    module W3c
-      module Organization
+    module W3C
+      class Organization
         attr_accessor :membership,
                       :subOrganizationOf
       end

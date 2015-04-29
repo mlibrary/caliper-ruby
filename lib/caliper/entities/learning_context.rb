@@ -34,7 +34,7 @@ module Caliper
 	    def initialize
 		    super
 		    @ed_app = Caliper::Entities::Agent::SoftwareApplication.new
-		    @group = Caliper::Entities::W3c::Organization.new
+		    @group = Caliper::Entities::W3C::Organization.new
 		    @agent = Caliper::Entities::Entity.new
 	    end
 	  end

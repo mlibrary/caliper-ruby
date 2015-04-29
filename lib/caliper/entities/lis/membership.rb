@@ -25,7 +25,7 @@ module Caliper
   module Entities
     module LIS
       class Membership < Entity
-        include Caliper::Entities::W3c::Membership
+        include Caliper::Entities::W3C::Membership
 
         def initialize
           super
