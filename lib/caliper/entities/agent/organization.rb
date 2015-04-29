@@ -25,7 +25,7 @@ module Caliper
   module Entities
     module Agent
       class Organization < Entity
-        include Caliper::Entities::W3c::Organization
+        include Caliper::Entities::W3C::Organization
 
         def initialize
           super

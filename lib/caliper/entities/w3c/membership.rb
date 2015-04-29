@@ -20,8 +20,8 @@
 #
 module Caliper
   module Entities
-    module W3c
-      module Membership
+    module W3C
+      class Membership
         attr_accessor :member,
                       :organization,
                       :roles,
