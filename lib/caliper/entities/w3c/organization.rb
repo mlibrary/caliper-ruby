@@ -21,9 +21,8 @@
 module Caliper
   module Entities
     module W3C
-      class Organization
-        attr_accessor :membership,
-                      :subOrganizationOf
+      module Organization
+
       end
     end
   end

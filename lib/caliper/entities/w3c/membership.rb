@@ -21,11 +21,8 @@
 module Caliper
   module Entities
     module W3C
-      class Membership
-        attr_accessor :member,
-                      :organization,
-                      :roles,
-                      :status
+      module Membership
+
       end
     end
   end

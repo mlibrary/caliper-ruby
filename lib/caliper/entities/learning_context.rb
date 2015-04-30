@@ -17,7 +17,7 @@
 
 require_relative './entity'
 require_relative './agent/software_application'
-require_relative './w3c/organization'
+require_relative './agent/organization'
 require_relative './foaf/agent'
 
 #
@@ -34,7 +34,7 @@ module Caliper
 	    def initialize
 		    super
 		    @ed_app = Caliper::Entities::Agent::SoftwareApplication.new
-		    @group = Caliper::Entities::W3C::Organization.new
+		    @group = Caliper::Entities::Agent::Organization.new
 		    @agent = Caliper::Entities::Entity.new
 	    end
 	  end

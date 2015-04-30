@@ -27,6 +27,9 @@ module Caliper
       class Organization < Entity
         include Caliper::Entities::W3C::Organization
 
+        attr_accessor :membership,
+                      :subOrganizationOf
+
         def initialize
           super
           @type = EntityType::ORGANIZATION

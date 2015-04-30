@@ -28,8 +28,9 @@ module Caliper
         include Caliper::Entities::W3C::Organization
 
         attr_accessor :courseNumber,
-                      :academicSession
-
+                      :academicSession,
+                      :membership,
+                      :subOrganizationOf
         def initialize
           super
           @type = EntityType::COURSE_OFFERING

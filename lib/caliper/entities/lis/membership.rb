@@ -27,6 +27,11 @@ module Caliper
       class Membership < Entity
         include Caliper::Entities::W3C::Membership
 
+        attr_accessor :member,
+                      :organization,
+                      :roles,
+                      :status
+
         def initialize
           super
           @type = EntityType::MEMBERSHIP
