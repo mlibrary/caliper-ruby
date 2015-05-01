@@ -35,13 +35,13 @@ module Caliper
     def describe(entity)
       raise ArgumentError, "Expecting Caliper::Entity but got #{entity.class.to_s}" unless entity.is_a?(Caliper::Entities::Entity)
 
-      HttpRequestor(@options).new.send(self, entity)
+      HttpRequestor.new(@options).send(self, entity)
     end
 
     def send(event)
       raise ArgumentError, "Expecting Caliper::Event but got #{event.class.to_s}" unless event.is_a?(Caliper::Event::Event)
 
-      HttpRequestor(@options).new.send(self, event)
+      HttpRequestor.new(@options).send(self, event)
     end
   end
 end
