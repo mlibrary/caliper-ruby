@@ -30,6 +30,7 @@ module Caliper
 			                :values
 
 				def initialize
+          super
 					@type = ResponseType::FILLINBLANK
 				end
 			end

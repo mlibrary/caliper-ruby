@@ -26,13 +26,13 @@ module Caliper
 
     it "should ensure that we can create and send an event" do
 
+      id = 'http://learning-app.some-university.edu/sensor'
       options = {
         'host'  => 'http://requestb.in/1i7pr2i1',
-        'sensorId' => 'test_sensor_id',
         'apiKey' => 'test_api_key'
       }
 
-      sensor = Sensor.new options
+      sensor = Sensor.new id, options
       event  = session_event
       
       # NOTE: To test sending events to an actual endpoint, 

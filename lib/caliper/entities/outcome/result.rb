@@ -38,7 +38,7 @@ module Caliper
 		end
 
 		def initialize
-
+			super
 		end
 	end
 end

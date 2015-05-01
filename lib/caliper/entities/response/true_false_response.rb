@@ -30,6 +30,7 @@ module Caliper
 			                :values
 
 				def initialize
+          super
 					@type = ResponseType::TRUEFALSE
 				end
 			end

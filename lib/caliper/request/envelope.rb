@@ -15,19 +15,35 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'rest_client'
-require_relative "./options"
-require_relative './jsonable'
+require_relative './envelope_jsonable'
 
 #
-# Caliper Sensor Event Envelope.
+# Event store envelope. Contains event info.
 #
 module Caliper
-  class EventEnvelope
-    include Caliper::Jsonable
+  module Request
+    module Context
+      CONTEXT = "http://purl.imsglobal.org/caliper/ctx/v1/Envelope"
+    end
 
-    attr_accessor :apiKey,
-      :sensorId,
-      :event
+    # module Type
+    #  TYPE = "http://purl.imsglobal.org/caliper/v1/Envelope"
+    # end
+
+    class Envelope
+      include Caliper::Request::EnvelopeJsonable
+
+      attr_accessor :context,
+                    :sensor,
+                    :sendTime,
+                    :data
+
+      def initialize
+        @context = Context::CONTEXT
+        @sensor = ''
+        @sendTime = Time.now.utc.iso8601(3)
+        @data = []
+      end
+    end
   end
 end

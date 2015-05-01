@@ -20,18 +20,18 @@
 #
 module Caliper
   class Options
-    attr_accessor :api_key
     attr_accessor :host
-    attr_accessor :time_out
+    attr_accessor :api_key
+    attr_accessor :connection_request_time_out
+    attr_accessor :connection_time_out
+    attr_accessor :socket_time_out
   end
 
-	def initialize()
-		@host = Defaults.HOST
-		@time_out = Defaults.CONNECTION_TIMEOUT
-	end
-
-	def initialize(host, time_out)
-		@host = host
-		@time_out = time_out
-	end
+  def initialize(options = {})
+    self.host options[:host] || Defaults.HOST
+    self.api_key options[:api_key] || ''
+    self.connection_request_time_out options[:connection_request_time_out] || Defaults.CONNECTION_REQUEST_TIMEOUT
+    self.connection_time_out options[:connection_time_out] || Defaults.CONNECTION_TIMEOUT
+    self.socket_time_out options[:socket_time_out] || Defaults.SOCKET_TIMEOUT
+  end
 end
