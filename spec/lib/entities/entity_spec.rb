@@ -39,7 +39,7 @@ module Caliper
         file = File.read('spec/lib/entities/entity.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        entity.to_json.should be_json_eql(expected_json)#.excluding("@class")
+        expect(entity.to_json).to be_json_eql(expected_json)#.excluding("@class")
 
         # Compare Deserialized JSON to desired Entity
         des_entity = Entity.new

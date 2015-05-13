@@ -27,8 +27,7 @@ module Caliper
       class Group < Entity
         include Caliper::Entities::W3C::Organization
 
-        attr_accessor :membership,
-                      :subOrganizationOf
+        attr_accessor :subOrganizationOf
 
         def initialize
           super
