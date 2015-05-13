@@ -29,7 +29,6 @@ module Caliper
 
         attr_accessor :courseNumber,
                       :academicSession,
-                      :membership,
                       :subOrganizationOf
         def initialize
           super

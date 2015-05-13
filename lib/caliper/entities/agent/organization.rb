@@ -25,10 +25,10 @@ module Caliper
   module Entities
     module Agent
       class Organization < Entity
-        include Caliper::Entities::W3C::Organization
+        include Caliper::Entities::FOAF::Agent,
+                Caliper::Entities::W3C::Organization
 
-        attr_accessor :membership,
-                      :subOrganizationOf
+        attr_accessor :subOrganizationOf
 
         def initialize
           super

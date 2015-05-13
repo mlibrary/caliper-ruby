@@ -25,8 +25,6 @@ module Caliper
     module Assessment
       class Assessment < Caliper::Entities::Assignable::AssignableDigitalResource
 
-        attr_accessor :assessmentItems
-
         def initialize
           super
           @type = Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT

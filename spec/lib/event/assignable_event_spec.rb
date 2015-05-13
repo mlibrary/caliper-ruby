@@ -40,46 +40,25 @@ module Caliper
 
       it 'should ensure that an AssignableEvent is correctly created and serialized' do
 
-        # The Actor  = Person/Student))
-        student = Caliper::Entities::Agent::Person.new
-        student.id = 'https://some-university.edu/user/554433'
+        # EdApp
+        ed_app = Caliper::Entities::Agent::SoftwareApplication.new
+        ed_app.id = 'https://com.sat/super-assessment-tool'
+        ed_app.name = 'Super Assessment Tool'
+        ed_app.roles = []
+        ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
+        ed_app.dateModified = nil
+        
+        # Actor
+        actor = Caliper::Entities::Agent::Person.new
+        actor.id = 'https://some-university.edu/user/554433'
+        actor.roles = [Caliper::Entities::LIS::Roles::LEARNER]
+        actor.dateCreated = '2015-08-01T06:00:00.000Z'
+        actor.dateModified = '2015-09-02T11:30:00.000Z'
 
-        membership1 = Caliper::Entities::LIS::Membership.new
-        membership1.id = "https://some-university.edu/membership/001"
-        membership1.member = "https://some-university.edu/user/554433"
-        membership1.organization = "https://some-university.edu/politicalScience/2015/american-revolution-101"
-        membership1.roles = [Caliper::Entities::LIS::Roles::LEARNER]
-        membership1.status = Caliper::Entities::LIS::Status::ACTIVE
-        membership1.dateCreated = "2015-08-01T06:00:00.000Z"
-        membership1.dateModified = nil;
-
-        membership2 = Caliper::Entities::LIS::Membership.new
-        membership2.id = "https://some-university.edu/membership/002"
-        membership2.member = "https://some-university.edu/user/554433"
-        membership2.organization = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001"
-        membership2.roles = [Caliper::Entities::LIS::Roles::LEARNER]
-        membership2.status = Caliper::Entities::LIS::Status::ACTIVE
-        membership2.dateCreated = "2015-08-01T06:00:00.000Z"
-        membership2.dateModified = nil
-
-        membership3 = Caliper::Entities::LIS::Membership.new
-        membership3.id = "https://some-university.edu/membership/003"
-        membership3.member = "https://some-university.edu/user/554433"
-        membership3.organization = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
-        membership3.roles = [Caliper::Entities::LIS::Roles::LEARNER]
-        membership3.status = Caliper::Entities::LIS::Status::ACTIVE
-        membership3.dateCreated = "2015-08-01T06:00:00.000Z"
-        membership3.dateModified = nil
-
-        student.hasMembership = [membership1, membership2, membership3]
-        student.dateCreated = '2015-08-01T06:00:00.000Z'
-        student.dateModified = '2015-09-02T11:30:00.000Z'
-        # puts "new student = #{student.to_json}"
-
-        # The Action
+        # Action
         action = Caliper::Profiles::AssignableActions::ACTIVATED
 
-        # The Object (Assessment)
+        # Object
         assessment = Caliper::Entities::Assessment::Assessment.new
         assessment.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1"
         assessment.name = "American Revolution - Key Figures Assessment"
@@ -95,49 +74,7 @@ module Caliper
         assessment.maxSubmits = 2
         assessment.maxScore = 3.0
 
-        # The Assessment has three items
-        assessmentItem1 = Caliper::Entities::Assessment::AssessmentItem.new
-        assessmentItem1.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/item1"
-        assessmentItem1.name = "Assessment Item 1"
-        assessmentItem1.isPartOf = assessment.id
-        assessmentItem1.maxAttempts = 2
-        assessmentItem1.maxSubmits = 2
-        assessmentItem1.maxScore = 1.0
-        assessmentItem1.dateCreated = nil
-        assessmentItem1.dateModified = nil
-        assessmentItem1.version = "1.0"
-        assessmentItem1.isTimeDependent = false
-
-        assessmentItem2 = Caliper::Entities::Assessment::AssessmentItem.new
-        assessmentItem2.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/item2"
-        assessmentItem2.name = "Assessment Item 2"
-        assessmentItem2.isPartOf = assessment.id
-        assessmentItem2.maxAttempts = 2
-        assessmentItem2.maxSubmits = 2
-        assessmentItem2.maxScore = 1.0
-        assessmentItem2.dateCreated = nil
-        assessmentItem2.dateModified = nil
-        assessmentItem2.version = "1.0"
-        assessmentItem2.isTimeDependent = false
-
-        assessmentItem3 = Caliper::Entities::Assessment::AssessmentItem.new
-        assessmentItem3.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/item3"
-        assessmentItem3.name = "Assessment Item 3"
-        assessmentItem3.isPartOf = assessment.id
-        assessmentItem3.maxAttempts = 2
-        assessmentItem3.maxSubmits = 2
-        assessmentItem3.maxScore = 1.0
-        assessmentItem3.dateCreated = nil
-        assessmentItem3.dateModified = nil
-        assessmentItem3.version = "1.0"
-        assessmentItem3.isTimeDependent = false
-
-        assessment.assessmentItems = [assessmentItem1, assessmentItem2, assessmentItem3]
-
-        # The Event target
-        target = nil;
-
-        # The generated attempt
+        # Generated attempt
         attempt = Caliper::Entities::Assignable::Attempt.new
         attempt.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/attempt1"
         attempt.actor = "https://some-university.edu/user/554433"
@@ -151,74 +88,63 @@ module Caliper
         attempt.extensions = {}
         attempt.name = nil
 
-        # The edApp
-        edApp = Caliper::Entities::Agent::SoftwareApplication.new
-        edApp.id = 'https://com.sat/super-assessment-tool'
-        edApp.name = 'Super Assessment Tool'
-        edApp.hasMembership = []
-        edApp.dateCreated = '2015-08-01T06:00:00.000Z'
-        edApp.dateModified = nil
-
-        #LIS Course Offering
-        courseOffering = Caliper::Entities::LIS::CourseOffering.new
-        courseOffering.id = "https://some-university.edu/politicalScience/2015/american-revolution-101"
-        courseOffering.name = "Political Science 101: The American Revolution"
-        courseOffering.courseNumber = "POL101"
-        courseOffering.academicSession = "Fall-2015"
-        courseOffering.membership = []
-        courseOffering.subOrganizationOf = nil
-        courseOffering.dateCreated = '2015-08-01T06:00:00.000Z'
-        courseOffering.dateModified = '2015-09-02T11:30:00.000Z'
-
-        # The LIS Course Section for the Caliper Event
-        course = Caliper::Entities::LIS::CourseSection.new
-        course.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/section/001'
-        course.name = 'American Revolution 101'
+        # LIS Course Offering
+        course = Caliper::Entities::LIS::CourseOffering.new
+        course.id = "https://some-university.edu/politicalScience/2015/american-revolution-101"
+        course.name = "Political Science 101: The American Revolution"
         course.courseNumber = "POL101"
         course.academicSession = "Fall-2015"
-        course.category = nil
-        course.membership = [membership2]
-        course.subOrganizationOf = courseOffering
+        course.subOrganizationOf = nil
         course.dateCreated = '2015-08-01T06:00:00.000Z'
         course.dateModified = '2015-09-02T11:30:00.000Z'
+
+        # LIS Course Section
+        section = Caliper::Entities::LIS::CourseSection.new
+        section.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/section/001'
+        section.name = 'American Revolution 101'
+        section.courseNumber = "POL101"
+        section.academicSession = "Fall-2015"
+        section.category = nil
+        section.subOrganizationOf = course
+        section.dateCreated = '2015-08-01T06:00:00.000Z'
+        section.dateModified = '2015-09-02T11:30:00.000Z'
 
         # LIS Group
         group = Caliper::Entities::LIS::Group.new
         group.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
         group.name = "Discussion Group 001"
-        group.membership = [membership3]
-        group.subOrganizationOf = course
+        group.subOrganizationOf = section
         group.dateCreated = '2015-08-01T06:00:00.000Z'
         group.dateModified = nil
 
-        # The Assignable Event
-        assignable_event = AssignableEvent.new
-        assignable_event.actor  = student
-        assignable_event.action = action
-        assignable_event.object = assessment
-        assignable_event.target = nil
-        assignable_event.generated = attempt
-        assignable_event.edApp  = edApp
-        assignable_event.group = group
-        assignable_event.startedAtTime = '2015-09-15T10:15:00.000Z'
-        assignable_event.endedAtTime = nil
-        assignable_event.duration = nil
-        # puts "Event JSON = #{assignable_event.to_json}'"
+        # Create the Event
+        event = AssignableEvent.new
+        event.actor  = actor
+        event.action = action
+        event.object = assessment
+        event.target = nil
+        event.generated = attempt
+        event.edApp = ed_app
+        event.group = group
+        event.startedAtTime = '2015-09-15T10:15:00.000Z'
+        event.endedAtTime = nil
+        event.duration = nil
+        # puts "Event JSON = #{event.to_json}'"
 
         # Load JSON from caliper-common-fixtures for comparison
         # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
         file = File.read('spec/fixtures/caliperAssignableEvent.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        assignable_event.to_json.should be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "edApp", "group")
+        expect(event.to_json).to be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "edApp", "group")
 
         # puts "JSON from file = #{data_hash}"
-        deser_assignable_event = AssignableEvent.new
-        deser_assignable_event.from_json data_hash
-        # puts "AssignableEvent from JSON = #{deser_assignable_event.to_json}"
+        deser_event = AssignableEvent.new
+        deser_event.from_json data_hash
+        # puts "AssignableEvent from JSON = #{deser_event.to_json}"
 
         # Ensure that the deserialized bookmark event object conforms
-        expect(assignable_event).to eql(deser_assignable_event)
+        expect(event).to eql(deser_event)
       end
     end
   end
