@@ -21,7 +21,7 @@
 module Caliper
   module Entities
     module LIS
-      module Roles
+      module Role
         LEARNER = 'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
         EXTERNAL_LEARNER = 'http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#ExternalLearner'
         GUEST_LEARNER = 'http://purl.imsglobal.org/vocab/lis/v2/membership/Learner#GuestLearner'

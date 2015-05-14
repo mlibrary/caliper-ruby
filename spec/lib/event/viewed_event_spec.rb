@@ -20,7 +20,7 @@ require_all 'lib/caliper/entities/entity.rb'
 require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
-require_all 'lib/caliper/entities/lis/roles.rb'
+require_all 'lib/caliper/entities/lis/role.rb'
 require_all 'lib/caliper/entities/lis/status.rb'
 require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/lis/course_offering.rb'
@@ -37,18 +37,9 @@ module Caliper
 
       it 'should ensure that a ViewedEvent is correctly created and serialized' do
 
-        # EdApp
-        ed_app = Caliper::Entities::Agent::SoftwareApplication.new
-        ed_app.id = 'https://github.com/readium/readium-js-viewer'
-        ed_app.name = 'Readium'
-        ed_app.roles = []
-        ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
-        ed_app.dateModified = '2015-09-02T11:30:00.000Z'
-
         # Actor
         actor = Caliper::Entities::Agent::Person.new
         actor.id = 'https://some-university.edu/user/554433'
-        actor.roles = [Caliper::Entities::LIS::Roles::LEARNER]
         actor.dateCreated = '2015-08-01T06:00:00.000Z'
         actor.dateModified = '2015-09-02T11:30:00.000Z'
 
@@ -72,6 +63,13 @@ module Caliper
         frame.index = 1
         frame.dateCreated = '2015-08-01T06:00:00.000Z'
         frame.dateModified = '2015-09-02T11:30:00.000Z'
+
+        # EdApp
+        ed_app = Caliper::Entities::Agent::SoftwareApplication.new
+        ed_app.id = 'https://github.com/readium/readium-js-viewer'
+        ed_app.name = 'Readium'
+        ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
+        ed_app.dateModified = '2015-09-02T11:30:00.000Z'
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
@@ -102,6 +100,17 @@ module Caliper
         group.dateCreated = '2015-08-01T06:00:00.000Z'
         group.dateModified = nil
 
+        membership = Caliper::Entities::LIS::Membership.new
+        membership.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/roster/554433"
+        membership.name = "American Revolution 101"
+        membership.description = "Roster entry"
+        membership.member = "https://some-university.edu/user/554433"
+        membership.organization = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001"
+        membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
+        membership.status = Caliper::Entities::LIS::Status::ACTIVE
+        membership.dateCreated = "2015-08-01T06:00:00.000Z"
+        membership.dateModified = nil
+
         # Create Event
         event = Caliper::Event::ViewEvent.new
         event.actor  = actor
@@ -109,11 +118,12 @@ module Caliper
         event.object = obj
         event.target = frame
         event.generated = nil
-        event.edApp  = ed_app
-        event.group = group
         event.startedAtTime = '2015-09-15T10:15:00.000Z'
         event.endedAtTime = nil
         event.duration = nil
+        event.edApp = ed_app
+        event.group = group
+        event.membership = membership
         # puts "Event JSON = #{event.to_json}'"
 
         # Load JSON from caliper-common-fixtures for comparison

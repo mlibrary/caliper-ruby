@@ -24,7 +24,7 @@ module Caliper
   module Entities
 	  module FOAF
       module Agent
-      	attr_accessor :roles
+
       end
     end
   end

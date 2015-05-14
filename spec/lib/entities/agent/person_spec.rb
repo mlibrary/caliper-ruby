@@ -34,7 +34,6 @@ module Caliper
           student.id = 'https://some-university.edu/students/dent_stu'
           student.name = 'Stu Dent'
           student.description = 'A super bright individual'
-          student.roles = [Caliper::Entities::LIS::Roles::LEARNER]
           student.extensions = {'customProp' => 42}
           student.dateCreated = '2015-03-15T23:09:11.000Z'
           student.dateModified = '2015-03-15T23:09:11.000Z'
