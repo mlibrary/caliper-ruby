@@ -55,41 +55,44 @@ module Caliper
       attr_accessor :context, # String Required - the JSON-LD context for the Event
 
         # Required - the type of the Event
-        :type, # String
-
-        # Learning Context
-        :edApp,  # SoftwareApplication
-
-        # LIS Group
-        :group, # Group
+        :type,
 
         # Required - Agent (User, System) that performed the action
-        :actor, # Agent
+        :actor,
 
-        # Required - Action performed by Agent From Metric Profile
-        :action, # String
+        # Required - Action performed by Agent From Metric Profile (String)
+        :action,
 
-        # Required - "Activity Context" from Metric Profile
-        :object, # Object
+        # Required - Object
+        :object,
 
-        # Optional - "target" from Metric Profile
-        :target, # Targetable
+        # Optional - Targeted object (Targetable)
+        :target,
 
-        # Optional - entity "generated" as result of action - from Metric Profile
-        :generated, # Generatable
+        # Optional - Generated object (Generatable)
+        :generated,
 
-        # Required time that the event was started at
-        :startedAtTime, # ISO-8601 date string
+        # Required time that the event was started at (ISO-8601 date string)
+        :startedAtTime,
 
-        # An optional time that the event ended at
-        :endedAtTime, # ISO-8601 date string
+        # An optional time that the event ended at (ISO-8601 date string)
+        :endedAtTime,
 
         # An xsd:duration (http://books.xmlschemata.org/relaxng/ch19-77073.html)
-        # The format is expected to be PnYnMnDTnHnMnS
+        # The String format is expected to be PnYnMnDTnHnMnS
         # Valid values include PT1004199059S, PT130S, PT2M10S, P1DT2S, -P1Y, or P1Y2M3DT5H20M30.123S.
         # The following values are invalid: 1Y (leading P is missing), P1S (T separator is missing),
         # P-1Y (all parts must be positive), P1M2Y (parts order is significant and Y must precede M)                                                                                                * or P1Y-1M (all parts must be positive).                                                                               */
-        :duration # String
+        :duration,
+
+        # edApp
+        :edApp,
+
+        # Group
+        :group,
+
+        # Membership
+        :membership
 
       def initialize()
         @context = EventContext::EVENT
@@ -99,11 +102,12 @@ module Caliper
         @object = nil
         @target = nil
         @generated = nil
-        @edApp = nil
-        @group = nil
         @startedAtTime = Time.now.utc.iso8601(3)
         @endedAtTime = nil
         @duration = nil
+        @edApp = nil
+        @group = nil
+        @membership = nil
       end
     end
   end

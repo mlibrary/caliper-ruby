@@ -3,7 +3,6 @@
   "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
   "name": "Stu Dent",
   "description": "A super bright individual",
-  "roles": ["http://purl.imsglobal.org/vocab/lis/v2/membership#Learner"],
   "extensions": {
     "customProp": 42
   },
