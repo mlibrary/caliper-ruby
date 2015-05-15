@@ -50,26 +50,23 @@ module Caliper
         # Action
         action = Caliper::Profiles::SessionActions::TIMED_OUT
 
-        # Object (edApp)
-        obj = ed_app
-
-        # Target session actor (session.actor)
+        # Object session actor (session.actor)
         student = Caliper::Entities::Agent::Person.new
         student.id = 'https://some-university.edu/user/554433'
         student.dateCreated = '2015-08-01T06:00:00.000Z'
         student.dateModified = '2015-09-02T11:30:00.000Z'
 
-        # Target session
-        session = Caliper::Entities::Session::Session.new
-        session.id = 'https://github.com/readium/session-123456789'
-        session.name = 'session-123456789'
-        session.description = nil
-        session.actor = student
-        session.startedAtTime = '2015-09-15T10:15:00.000Z'
-        session.endedAtTime = '2015-09-15T11:05:00.000Z'
-        session.duration = 'PT3000S'
-        session.dateCreated = '2015-08-01T06:00:00.000Z'
-        session.dateModified = '2015-09-02T11:30:00.000Z'
+        # Object
+        obj = Caliper::Entities::Session::Session.new
+        obj.id = 'https://github.com/readium/session-123456789'
+        obj.name = 'session-123456789'
+        obj.description = nil
+        obj.actor = student
+        obj.startedAtTime = '2015-09-15T10:15:00.000Z'
+        obj.endedAtTime = '2015-09-15T11:05:00.000Z'
+        obj.duration = 'PT3000S'
+        obj.dateCreated = '2015-08-01T06:00:00.000Z'
+        obj.dateModified = '2015-09-02T11:30:00.000Z'
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
@@ -105,7 +102,7 @@ module Caliper
         event.actor  = ed_app
         event.action = action
         event.object = obj
-        event.target = session
+        event.target = nil
         event.generated = nil
         event.startedAtTime = '2015-09-15T10:15:00.000Z'
         event.endedAtTime = '2015-09-15T11:05:00.000Z'
