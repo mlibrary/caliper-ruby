@@ -153,6 +153,7 @@ module Caliper
         event.edApp = ed_app
         event.group = group
         event.membership = membership
+        event.federatedSession = nil
         # puts "Event JSON = #{event.to_json}'"
 
         # Load JSON from caliper-common-fixtures for comparison

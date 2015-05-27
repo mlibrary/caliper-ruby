@@ -52,47 +52,9 @@ module Caliper
     class Event
       include Caliper::Event::Jsonable
 
-      attr_accessor :context, # String Required - the JSON-LD context for the Event
-
-        # Required - the type of the Event
-        :type,
-
-        # Required - Agent (User, System) that performed the action
-        :actor,
-
-        # Required - Action performed by Agent From Metric Profile (String)
-        :action,
-
-        # Required - Object
-        :object,
-
-        # Optional - Targeted object (Targetable)
-        :target,
-
-        # Optional - Generated object (Generatable)
-        :generated,
-
-        # Required time that the event was started at (ISO-8601 date string)
-        :startedAtTime,
-
-        # An optional time that the event ended at (ISO-8601 date string)
-        :endedAtTime,
-
-        # An xsd:duration (http://books.xmlschemata.org/relaxng/ch19-77073.html)
-        # The String format is expected to be PnYnMnDTnHnMnS
-        # Valid values include PT1004199059S, PT130S, PT2M10S, P1DT2S, -P1Y, or P1Y2M3DT5H20M30.123S.
-        # The following values are invalid: 1Y (leading P is missing), P1S (T separator is missing),
-        # P-1Y (all parts must be positive), P1M2Y (parts order is significant and Y must precede M)                                                                                                * or P1Y-1M (all parts must be positive).                                                                               */
-        :duration,
-
-        # edApp
-        :edApp,
-
-        # Group
-        :group,
-
-        # Membership
-        :membership
+      attr_accessor :context, :type, :actor, :action, :object,
+                    :target, :generated, :startedAtTime, :endedAtTime, :duration,
+                    :edApp, :group, :membership, :federatedSession
 
       def initialize()
         @context = EventContext::EVENT
@@ -108,6 +70,7 @@ module Caliper
         @edApp = nil
         @group = nil
         @membership = nil
+        @federatedSession = nil
       end
     end
   end
