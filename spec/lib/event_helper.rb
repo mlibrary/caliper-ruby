@@ -135,6 +135,7 @@ module Helper
     event.edApp  = ed_app
     event.group = course
     event.membership = membership
+    event.federatedSession = nil
 
     return event
   end

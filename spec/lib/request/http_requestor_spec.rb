@@ -27,6 +27,7 @@ require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/entities/reading/web_page.rb'
+require_all 'lib/caliper/entities/session/session.rb'
 require_all 'lib/caliper/event/navigation_event.rb'
 require_all 'lib/caliper/profiles/reading_profile.rb'
 require_all 'lib/caliper/options.rb'
@@ -48,12 +49,19 @@ module Caliper
         ed_app.name = 'Readium'
         ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
         ed_app.dateModified = '2015-09-02T11:30:00.000Z'
-        
+
         # Actor
-        student = Caliper::Entities::Agent::Person.new
-        student.id = 'https://some-university.edu/user/554433'
-        student.dateCreated = '2015-08-01T06:00:00.000Z'
-        student.dateModified = '2015-09-02T11:30:00.000Z'
+        actor = Caliper::Entities::Agent::Person.new
+        actor.id = 'https://some-university.edu/user/554433'
+        actor.dateCreated = '2015-08-01T06:00:00.000Z'
+        actor.dateModified = '2015-09-02T11:30:00.000Z'
+
+        # LTI federated session
+        session = Caliper::Entities::Session::Session.new
+        session.id = 'https://learning-platform.some-university.edu/federatedSession/123456789'
+        session.actor = actor
+        session.dateCreated = '2015-08-01T06:00:00.000Z'
+        session.startedAtTime = '2015-09-15T10:15:00.000Z'
 
         # Action
         action = Caliper::Profiles::ProfileActions::NAVIGATED_TO
@@ -127,7 +135,7 @@ module Caliper
 
         # Create the Event
         event = Caliper::Event::NavigationEvent.new
-        event.actor  = student
+        event.actor  = actor
         event.action = action
         event.object = obj
         event.target = frame
@@ -139,6 +147,7 @@ module Caliper
         event.edApp = ed_app
         event.group = group
         event.membership = membership
+        event.federatedSession = session.id
         # puts "Event JSON = #{event.to_json}'"
 
         # The Sensor
