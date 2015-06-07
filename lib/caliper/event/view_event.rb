@@ -27,7 +27,6 @@ module Caliper
       def initialize
         super
         @type = EventType::VIEW
-        @context = EventContext::VIEW
       end
     end
   end

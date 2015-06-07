@@ -26,7 +26,6 @@ module Caliper
 
       def initialize
         super
-        @context = Caliper::Event::EventContext::SESSION
         @type = Caliper::Event::EventType::SESSION
       end
     end

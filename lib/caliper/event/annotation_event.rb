@@ -26,7 +26,6 @@ module Caliper
 
       def initialize
         super
-        @context = Caliper::Event::EventContext::ANNOTATION
         @type = Caliper::Event::EventType::ANNOTATION
       end
     end

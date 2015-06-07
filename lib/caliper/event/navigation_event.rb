@@ -28,7 +28,6 @@ module Caliper
 
       def initialize
 	      super
-	      @context = EventContext::NAVIGATION
 	      @type = EventType::NAVIGATION
         @navigatedFrom = nil
       end
