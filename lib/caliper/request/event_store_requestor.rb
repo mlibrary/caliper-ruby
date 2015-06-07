@@ -35,7 +35,7 @@ module Caliper
       end
 
       def create_envelope(sensor, data)
-        envelope = Envelope.new
+        envelope = Caliper::Request::Envelope.new
         envelope.sensor = sensor.id
         envelope.data = to_array(data)
         return envelope

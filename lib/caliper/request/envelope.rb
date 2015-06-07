@@ -15,7 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './envelope_jsonable'
+require 'json'
+require_relative './jsonable'
 
 #
 # Event store envelope. Contains event info.
@@ -23,7 +24,7 @@ require_relative './envelope_jsonable'
 module Caliper
   module Request
     class Envelope
-      include Caliper::Request::EnvelopeJsonable
+      include Caliper::Request::Jsonable
 
       attr_accessor :sensor, :sendTime, :data
 
