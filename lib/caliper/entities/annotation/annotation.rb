@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../entity'
+require_relative '../entity_type'
 require_relative '../generatable'
 
 #
@@ -24,15 +25,6 @@ require_relative '../generatable'
 module Caliper
 	module Entities
 		module Annotation
-			module AnnotationType
-				ANNOTATION = "http://purl.imsglobal.org/caliper/v1/Annotation"
-				BOOKMARK_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation"
-				HIGHLIGHT_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation"
-				SHARED_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/SharedAnnotation"
-				TAG_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/TagAnnotation"
-			end
-
-			## implement the interface Thing
 			class Annotation < Entity
 				include Caliper::Entities::Generatable
 
@@ -40,7 +32,7 @@ module Caliper
 
 				def initialize
 					super
-					@type = AnnotationType::ANNOTATION
+					@type = Caliper::Entities::EntityType::ANNOTATION
 					@annotated = nil
 				end
 			end

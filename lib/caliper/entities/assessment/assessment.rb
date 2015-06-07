@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../assignable/assignable_digital_resource'
-
+require_relative '../assignable/assignable_digital_resource_type'
 #
 # Assessment entity.
 #

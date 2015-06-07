@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../entity'
+require_relative '../entity_type'
 require_relative '../w3c/organization'
 
 #
@@ -27,12 +28,11 @@ module Caliper
       class CourseOffering < Entity
         include Caliper::Entities::W3C::Organization
 
-        attr_accessor :courseNumber,
-                      :academicSession,
-                      :subOrganizationOf
+        attr_accessor :courseNumber, :academicSession, :subOrganizationOf
+
         def initialize
           super
-          @type = EntityType::COURSE_OFFERING
+          @type = Caliper::Entities::EntityType::COURSE_OFFERING
         end
       end
     end

@@ -26,9 +26,9 @@ module Caliper
     describe Entity do
 
       it "should ensure that a base entity is correctly created and serialized" do
-        entity = Entity.new
-        entity.id = 'https://some-university.edu/politicalScience/2014/american-revolution-101/assessment1'
-        entity.name = 'test'
+        entity = Caliper::Entities::Entity.new
+        entity.id = 'https://example.edu/politicalScience/2014/american-revolution-101/assessment/001'
+        entity.name = 'Assessment 001'
         entity.description = 'description'
         entity.extensions = {'customProp' => 42}
         entity.dateCreated = '2015-03-15T23:09:11.000Z'
@@ -42,7 +42,7 @@ module Caliper
         expect(entity.to_json).to be_json_eql(expected_json)#.excluding("@class")
 
         # Compare Deserialized JSON to desired Entity
-        des_entity = Entity.new
+        des_entity = Caliper::Entities::Entity.new
         des_entity.from_json data_hash
         # puts "Object from JSON = #{des_entity.to_json}"
         expect(entity).to eql(des_entity)

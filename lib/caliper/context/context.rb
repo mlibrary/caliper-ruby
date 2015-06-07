@@ -15,31 +15,17 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
-require_relative '../digital_resource_type'
+#
+# JSON-LD context.
+#
 
-#
-# AssignableDigitalResource entity. AssignableDigitalResource's prototype is set to DigitalResource.
-#
 module Caliper
-  module Entities
-    module Assignable
-      class AssignableDigitalResource < DigitalResource
-
-        attr_accessor :dateToActivate, :dateToShow, :dateToStartOn, :dateToSubmit, :maxAttempts, :maxSubmits, :maxScore
-
-        def initialize
-          super
-          @type = Caliper::Entities::DigitalResourceType::ASSIGNABLE_DIGITAL_RESOURCE
-          @dateToActivate = nil
-          @dateToShow = nil
-          @dateToStartOn = nil
-          @dateToSubmit = nil
-          @maxAttempts = nil
-          @maxSubmits = nil
-          @maxScore = nil
-        end
-     end
+  module Context
+    module Context
+      CONTEXT = "http://purl.imsglobal.org/ctx/caliper/v1/Context"
+      # ENTITY = "http://purl.imsglobal.org/ctx/caliper/v1/Entity"
+      # ENVELOPE = "http://purl.imsglobal.org/caliper/ctx/v1/Envelope"
+      # EVENT = "http://purl.imsglobal.org/ctx/caliper/v1/Event"
     end
   end
 end

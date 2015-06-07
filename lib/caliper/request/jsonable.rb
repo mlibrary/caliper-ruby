@@ -18,11 +18,11 @@
 require 'json'
 
 #
-#  Module that supports ser-des for Caliper Envelope
+#  Module that supports ser-des for Caliper Event/JSON
 #
 module Caliper
   module Request
-    module EnvelopeJsonable
+    module Jsonable
 
       def self.included(base)
         base.extend ClassMethods
@@ -34,12 +34,11 @@ module Caliper
       def to_json(*a)
         # puts 'Jsonable: to_json invoked'
         result = {}
-        result['@context'] = self.context
-        # result['@type'] = self.type
+        #result['@context'] = self.context
+        #result['@type'] = self.type
         self.instance_variables.each do |key|
           # puts "got key = #{key}"
-          next if (key[1..-1] == 'context')
-          # next if (key[1..-1] == 'context' || key[1..-1] == 'type')
+          next if (key[1..-1] == 'context' || key[1..-1] == 'type')
           value = self.instance_variable_get key
           # puts "setting #{key}: #{value}"
           result[key[1..-1]] = value
@@ -50,11 +49,10 @@ module Caliper
       def from_json json_hash
         data = json_hash
         # puts "Jsonable: from_json: json_hash = #{json_hash}"
-        self.context = data['@context']
-        # self.type = data['@type']
+        #self.context = data['@context']
+        #self.type = data['@type']
         json_hash.each do | key, value |
-          next if (key[1..-1] == 'context')
-          # next if (key[1..-1] == 'context' || key[1..-1] == 'type')
+          next if (key[1..-1] == 'context' || key[1..-1] == 'type')
           # puts "Jsonable - adding #{key} : #{value}"
           self.instance_variable_set "@#{key}", value
         end
@@ -62,7 +60,7 @@ module Caliper
       end
 
       def eql?(other)
-        @context == other.context
+        @sensor == other.sensor && @sendTime == other.sendTime && @data == other.data
       end
     end
   end

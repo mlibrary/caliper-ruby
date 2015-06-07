@@ -25,12 +25,12 @@ module Caliper
 	module Entities
 		module Response
 			class MultipleResponseResponse < Response
-				attr_accessor :type,
-			                :values
+
+				attr_accessor :values
 
 				def initialize
           super
-					@type = ResponseType::MULTIPLERESPONSE
+					@type = Caliper::Entities::Response::ResponseType::MULTIPLERESPONSE
 				end
 			end
 		end

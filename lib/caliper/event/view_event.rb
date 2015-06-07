@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './event'
+require_relative './eventType'
 
 #
 # View Event per the Caliper Base Profile.
@@ -26,8 +27,7 @@ module Caliper
 
       def initialize
         super
-        @type = EventType::VIEW
-        @context = EventContext::VIEW
+        @type = Caliper::Event::EventType::VIEW
       end
     end
   end

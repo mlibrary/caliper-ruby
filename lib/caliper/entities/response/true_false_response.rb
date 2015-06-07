@@ -26,12 +26,11 @@ module Caliper
 	module Entities
 		module Response
 			class TrueFalseResponse < Response
-				attr_accessor :type,
-			                :values
+				attr_accessor :values
 
 				def initialize
           super
-					@type = ResponseType::TRUEFALSE
+					@type = Caliper::Entities::Response::ResponseType::TRUEFALSE
 				end
 			end
 		end

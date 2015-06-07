@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../entity'
+require_relative '../entity_type'
 require_relative '../generatable'
 
 #
@@ -27,16 +28,11 @@ module Caliper
       class Attempt < Entity
         include Caliper::Entities::Generatable
 
-        attr_accessor :assignable,
-          :actor,
-          :count,
-          :startedAtTime,
-          :endedAtTime,
-          :duration
+        attr_accessor :assignable, :actor, :count, :startedAtTime, :endedAtTime, :duration
 
         def initialize
           super
-          @type = EntityType::ATTEMPT
+          @type = Caliper::Entities::EntityType::ATTEMPT
         end
 
       end

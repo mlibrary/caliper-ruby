@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../digital_resource'
+require_relative '../digital_resource_type'
 
 #
 #  Public: Representation of an EPUB 3 Volume.  A component of a collection.
@@ -28,7 +29,7 @@ module Caliper
 
         def initialize()
 	        super
-          @type = DigitalResourceType::EPUB_VOLUME
+          @type = Caliper::Entities::DigitalResourceType::EPUB_VOLUME
         end
       end
     end

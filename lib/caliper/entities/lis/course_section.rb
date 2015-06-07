@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './course_offering'
+require_relative '../entity_type'
 
 #
 #  LIS Course Section.
@@ -29,7 +30,7 @@ module Caliper
 
         def initialize
           super
-          @type = EntityType::COURSE_SECTION
+          @type = Caliper::Entities::EntityType::COURSE_SECTION
         end
       end
     end

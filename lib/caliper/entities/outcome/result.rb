@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../entity'
+require_relative '../entity_type'
 require_relative '../generatable'
 
 #
@@ -26,19 +27,13 @@ module Caliper
 		class Result < Entity
 			include Caliper::Entities::Generatable
 
-			attr_accessor :type, # String
-										:normal_score,
-										:penalty_score,
-										:extra_credit_score,
-										:total_score,
-										:curved_total_score,
-										:curve_factor,
-										:comment,
-										:scored_by
+			attr_accessor :type, :normal_score, :penalty_score, :extra_credit_score, :total_score,
+										:curved_total_score, :curve_factor, :comment, :scored_by
 		end
 
 		def initialize
 			super
+      @type = Caliper::Entities::EntityType::RESULT
 		end
 	end
 end

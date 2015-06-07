@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../entity'
+require_relative '../entity_type'
 require_relative '../generatable'
 require_relative '../targetable'
 
@@ -29,14 +30,11 @@ module Caliper
         include Caliper::Entities::Generatable,
                 Caliper::Entities::Targetable
 
-        attr_accessor :actor,
-                      :startedAtTime,
-                      :endedAtTime,
-                      :duration
+        attr_accessor :actor, :startedAtTime, :endedAtTime, :duration
 
         def initialize
           super
-          @type = EntityType::SESSION
+          @type = Caliper::Entities::EntityType::SESSION
         end
       end
     end

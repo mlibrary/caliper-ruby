@@ -42,7 +42,7 @@ module Caliper
 
         # Actor
         actor = Caliper::Entities::Agent::Person.new
-        actor.id = 'https://some-university.edu/user/554433'
+        actor.id = 'https://example.edu/user/554433'
         actor.dateCreated = '2015-08-01T06:00:00.000Z'
         actor.dateModified = '2015-09-02T11:30:00.000Z'
 
@@ -51,7 +51,7 @@ module Caliper
 
         # Object
         assessment = Caliper::Entities::Assessment::Assessment.new
-        assessment.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1"
+        assessment.id = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001"
         assessment.name = "American Revolution - Key Figures Assessment"
         assessment.dateModified =  '2015-09-02T11:30:00.000Z'
         assessment.dateCreated =  '2015-08-01T06:00:00.000Z'
@@ -67,9 +67,9 @@ module Caliper
 
         # Generated attempt
         attempt = Caliper::Entities::Assignable::Attempt.new
-        attempt.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1/attempt1"
-        attempt.actor = "https://some-university.edu/user/554433"
-        attempt.assignable = "https://some-university.edu/politicalScience/2015/american-revolution-101/assessment1"
+        attempt.id = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001/attempt/5678"
+        attempt.actor = "https://example.edu/user/554433"
+        attempt.assignable = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001"
         attempt.dateCreated = "2015-08-01T06:00:00.000Z"
         attempt.dateModified = nil
         attempt.count = 1
@@ -81,14 +81,14 @@ module Caliper
 
         # ed_app
         ed_app = Caliper::Entities::Agent::SoftwareApplication.new
-        ed_app.id = 'https://com.sat/super-assessment-tool'
+        ed_app.id = 'https://example.com/super-assessment-tool'
         ed_app.name = 'Super Assessment Tool'
         ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
         ed_app.dateModified = nil
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
-        course.id = "https://some-university.edu/politicalScience/2015/american-revolution-101"
+        course.id = "https://example.edu/politicalScience/2015/american-revolution-101"
         course.name = "Political Science 101: The American Revolution"
         course.courseNumber = "POL101"
         course.academicSession = "Fall-2015"
@@ -98,7 +98,7 @@ module Caliper
 
         # LIS Course Section
         section = Caliper::Entities::LIS::CourseSection.new
-        section.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/section/001'
+        section.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
         section.name = 'American Revolution 101'
         section.courseNumber = "POL101"
         section.academicSession = "Fall-2015"
@@ -109,18 +109,18 @@ module Caliper
 
         # LIS Group
         group = Caliper::Entities::LIS::Group.new
-        group.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
+        group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
         group.name = "Discussion Group 001"
         group.subOrganizationOf = section
         group.dateCreated = '2015-08-01T06:00:00.000Z'
         group.dateModified = nil
 
         membership = Caliper::Entities::LIS::Membership.new
-        membership.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/roster/554433"
+        membership.id = "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433"
         membership.name = "American Revolution 101"
         membership.description = "Roster entry"
-        membership.member = "https://some-university.edu/user/554433"
-        membership.organization = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001"
+        membership.member = "https://example.edu/user/554433"
+        membership.organization = "https://example.edu/politicalScience/2015/american-revolution-101/section/001"
         membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
         membership.status = Caliper::Entities::LIS::Status::ACTIVE
         membership.dateCreated = "2015-08-01T06:00:00.000Z"

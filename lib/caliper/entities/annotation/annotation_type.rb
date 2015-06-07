@@ -15,31 +15,18 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
-require_relative '../digital_resource_type'
-
 #
-# AssignableDigitalResource entity. AssignableDigitalResource's prototype is set to DigitalResource.
+# Annotation types.
 #
 module Caliper
   module Entities
-    module Assignable
-      class AssignableDigitalResource < DigitalResource
-
-        attr_accessor :dateToActivate, :dateToShow, :dateToStartOn, :dateToSubmit, :maxAttempts, :maxSubmits, :maxScore
-
-        def initialize
-          super
-          @type = Caliper::Entities::DigitalResourceType::ASSIGNABLE_DIGITAL_RESOURCE
-          @dateToActivate = nil
-          @dateToShow = nil
-          @dateToStartOn = nil
-          @dateToSubmit = nil
-          @maxAttempts = nil
-          @maxSubmits = nil
-          @maxScore = nil
-        end
-     end
+    module Annotation
+      module AnnotationType
+        BOOKMARK_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation"
+        HIGHLIGHT_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation"
+        SHARED_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/SharedAnnotation"
+        TAG_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/TagAnnotation"
+      end
     end
   end
 end

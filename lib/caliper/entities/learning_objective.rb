@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './entity'
+require_relative './entity_type'
 
 #
 #  Learning Objective
@@ -26,7 +27,7 @@ module Caliper
 
       def initialize
         super
-        @type = EntityType::LEARNING_OBJECTIVE
+        @type = Caliper::Entities::EntityType::LEARNING_OBJECTIVE
       end
     end
   end

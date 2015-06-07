@@ -30,22 +30,21 @@ module Caliper
       describe Person do
 
         it "should ensure that a Person is correctly created and serialized" do
-          student = Person.new
-          student.id = 'https://some-university.edu/students/dent_stu'
-          student.name = 'Stu Dent'
-          student.description = 'A super bright individual'
+          student = Caliper::Entities::Agent::Person.new
+          student.id = 'https://example.edu/user/123456789'
+          student.description = 'A bright individual'
           student.extensions = {'customProp' => 42}
           student.dateCreated = '2015-03-15T23:09:11.000Z'
           student.dateModified = '2015-03-15T23:09:11.000Z'
           # puts "new student = #{student.to_json}"
 
           # Compare JSON ouput
-          file = File.read('spec/lib/entities/agent/student.json')
+          file = File.read('spec/lib/entities/agent/person.json')
           data_hash = JSON.parse(file)
           expected_json = data_hash.to_json # convert hash back to JSON string after parse
           expect(student.to_json).to be_json_eql(expected_json)
 
-          des_student = Person.new
+          des_student = Caliper::Entities::Agent::Person.new
           des_student.from_json data_hash
           # puts "Object from JSON = #{des_student.to_json}"
 

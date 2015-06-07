@@ -1,8 +1,9 @@
 {
-  "@id": "https://some-university.edu/students/dent_stu",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/user/123456789",
   "@type": "http://purl.imsglobal.org/caliper/v1/lis/Person",
-  "name": "Stu Dent",
-  "description": "A super bright individual",
+  "name": null,
+  "description": "A bright individual",
   "extensions": {
     "customProp": 42
   },

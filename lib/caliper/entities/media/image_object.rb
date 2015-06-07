@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './media_object'
+require_relative './media_object_type'
 
 #
 # A image object embedded in a web page.  See https://schema.org/ImageObject
@@ -27,7 +28,7 @@ module Caliper
 
         def initialize
           super
-          @type = MediaType::IMAGE_OBJECT
+          @type = Caliper::Entities::Media::MediaObjectType::IMAGE_OBJECT
         end
       end
     end

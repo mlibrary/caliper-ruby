@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './event'
+require_relative './eventType'
 
 #
 # Outcome Event.
@@ -23,16 +24,10 @@ require_relative './event'
 module Caliper
   module Event
     class OutcomeEvent < Event
-      attr_accessor :context,
-                    :type,
-                    :action,
-                    :object,
-                    :generated
 
       def initialize
 	      super
-	      @context = EventContext::OUTCOME
-	      @type = EventType::OUTCOME
+	      @type = Caliper::Event::EventType::OUTCOME
       end
     end
   end

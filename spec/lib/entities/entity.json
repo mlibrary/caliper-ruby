@@ -1,7 +1,8 @@
 {
-  "@id": "https://some-university.edu/politicalScience/2014/american-revolution-101/assessment1",
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/politicalScience/2014/american-revolution-101/assessment/001",
   "@type": "http://purl.imsglobal.org/caliper/v1/Entity",
-  "name": "test",
+  "name": "Assessment 001",
   "description": "description",
   "extensions": {"customProp":42},
   "dateCreated": "2015-03-15T23:09:11.000Z",

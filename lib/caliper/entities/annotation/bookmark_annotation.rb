@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './annotation'
+require_relative './annotation_type'
 
 #
 #  Bookmark Annotation entity.
@@ -24,11 +25,12 @@ module Caliper
   module Entities
     module Annotation
       class BookmarkAnnotation < Annotation
+
         attr_accessor :bookmarkNotes
 
         def initialize
           super
-          @type = AnnotationType::BOOKMARK_ANNOTATION
+          @type = Caliper::Entities::Annotation::AnnotationType::BOOKMARK_ANNOTATION
           @bookmarkNotes = nil
         end
       end

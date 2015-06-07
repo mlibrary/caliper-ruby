@@ -39,14 +39,14 @@ module Caliper
 
         # EdApp
         ed_app = Caliper::Entities::Agent::SoftwareApplication.new
-        ed_app.id = 'https://github.com/readium/readium-js-viewer'
-        ed_app.name = 'Readium'
+        ed_app.id = 'https://example.com/viewer'
+        ed_app.name = 'ePub'
         ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
         ed_app.dateModified = '2015-09-02T11:30:00.000Z'
 
         # Actor
         actor = Caliper::Entities::Agent::Person.new
-        actor.id = 'https://some-university.edu/user/554433'
+        actor.id = 'https://example.edu/user/554433'
         actor.dateCreated = '2015-08-01T06:00:00.000Z'
         actor.dateModified = '2015-09-02T11:30:00.000Z'
 
@@ -58,7 +58,7 @@ module Caliper
 
         # Target session
         session = Caliper::Entities::Session::Session.new
-        session.id = 'https://github.com/readium/session-123456789'
+        session.id = 'https://example.com/viewer/session-123456789'
         session.name = 'session-123456789'
         session.description = nil
         session.actor = actor
@@ -70,7 +70,7 @@ module Caliper
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
-        course.id = "https://some-university.edu/politicalScience/2015/american-revolution-101"
+        course.id = "https://example.edu/politicalScience/2015/american-revolution-101"
         course.name = "Political Science 101: The American Revolution"
         course.courseNumber = "POL101"
         course.academicSession = "Fall-2015"
@@ -80,7 +80,7 @@ module Caliper
 
         # LIS Course Section
         section = Caliper::Entities::LIS::CourseSection.new
-        section.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/section/001'
+        section.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
         section.name = 'American Revolution 101'
         section.courseNumber = "POL101"
         section.academicSession = "Fall-2015"
@@ -91,18 +91,18 @@ module Caliper
 
         # LIS Group
         group = Caliper::Entities::LIS::Group.new
-        group.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
+        group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
         group.name = "Discussion Group 001"
         group.subOrganizationOf = section
         group.dateCreated = '2015-08-01T06:00:00.000Z'
         group.dateModified = nil
 
         membership = Caliper::Entities::LIS::Membership.new
-        membership.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/roster/554433"
+        membership.id = "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433"
         membership.name = "American Revolution 101"
         membership.description = "Roster entry"
-        membership.member = "https://some-university.edu/user/554433"
-        membership.organization = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001"
+        membership.member = "https://example.edu/user/554433"
+        membership.organization = "https://example.edu/politicalScience/2015/american-revolution-101/section/001"
         membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
         membership.status = Caliper::Entities::LIS::Status::ACTIVE
         membership.dateCreated = "2015-08-01T06:00:00.000Z"

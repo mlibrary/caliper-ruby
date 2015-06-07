@@ -15,8 +15,6 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity'
-
 #
 # An agent (eg. person, group, software or physical artifact). See http://xmlns.com/foaf/spec/#term_Agent.
 #

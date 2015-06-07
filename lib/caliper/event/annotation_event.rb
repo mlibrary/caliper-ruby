@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './event'
+require_relative './eventType'
 
 #
 # Annotation Event per Caliper Annotation Profile.
@@ -26,7 +27,6 @@ module Caliper
 
       def initialize
         super
-        @context = Caliper::Event::EventContext::ANNOTATION
         @type = Caliper::Event::EventType::ANNOTATION
       end
     end

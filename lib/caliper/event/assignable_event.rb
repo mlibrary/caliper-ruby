@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './event'
+require_relative './eventType'
 
 #
 # Assignable Event.
@@ -23,16 +24,10 @@ require_relative './event'
 module Caliper
   module Event
     class AssignableEvent < Event
-      attr_accessor :context,
-        :type,
-        :action,
-        :object,
-        :target
 
       def initialize
         super
-        @context = EventContext::ASSIGNABLE
-        @type = EventType::ASSIGNABLE
+        @type = Caliper::Event::EventType::ASSIGNABLE
       end
     end
   end

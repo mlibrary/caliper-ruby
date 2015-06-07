@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './event'
+require_relative './eventType'
 
 #
 # AssessmentItem Event.
@@ -23,16 +24,10 @@ require_relative './event'
 module Caliper
   module Event
     class AssessmentItemEvent < Event
-      attr_accessor :context,
-        :type,
-        :action,
-        :object,
-        :target
 
       def initialize
         super
-        @context = EventContext::ASSESSMENT_ITEM
-        @type = EventType::ASSESSMENT_ITEM
+        @type = Caliper::Event::EventType::ASSESSMENT_ITEM
       end
     end
   end

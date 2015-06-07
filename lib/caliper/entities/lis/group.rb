@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../entity'
+require_relative '../entity_type'
 require_relative '../w3c/organization'
 
 #
@@ -31,7 +32,7 @@ module Caliper
 
         def initialize
           super
-          @type = EntityType::GROUP
+          @type = Caliper::Entities::EntityType::GROUP
         end
       end
     end

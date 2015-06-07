@@ -26,7 +26,7 @@ module Caliper
 
     it "should ensure that we can create and send an event" do
 
-      id = 'http://learning-app.some-university.edu/sensor'
+      id = 'https://example.edu/sensor/001'
       options = {
         'host'  => 'http://requestb.in/1i7pr2i1',
         'apiKey' => 'test_api_key'

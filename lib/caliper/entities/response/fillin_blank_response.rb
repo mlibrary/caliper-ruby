@@ -26,12 +26,12 @@ module Caliper
 	module Entities
 		module Response
 			class FillinBlankResponse < Response
-				attr_accessor :type,
-			                :values
+
+				attr_accessor :values
 
 				def initialize
           super
-					@type = ResponseType::FILLINBLANK
+					@type = Caliper::Entities::Response::ResponseType::FILLINBLANK
 				end
 			end
 		end

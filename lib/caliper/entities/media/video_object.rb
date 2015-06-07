@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './media_object'
+require_relative './media_object_type'
 
 #
 # A video object embedded in a web page.  See https://schema.org/VideoObject.
@@ -27,7 +28,7 @@ module Caliper
 
         def initialize
           super
-          @type = MediaType::VIDEO_OBJECT
+          @type = Caliper::Entities::Media::MediaObjectType::VIDEO_OBJECT
         end
       end
     end
