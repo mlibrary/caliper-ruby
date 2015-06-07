@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../digital_resource'
+require_relative '../digital_resource_type'
 
 # An image, video, or audio object embedded in a web page. Note that a
 # creative work may have many media objects associated with it on the
@@ -26,21 +27,13 @@ require_relative '../digital_resource'
 module Caliper
   module Entities
     module Media
-      module MediaType
-        AUDIO_OBJECT = 'http://purl.imsglobal.org/caliper/v1/AudioObject'
-        IMAGE_OBJECT = 'http://purl.imsglobal.org/caliper/v1/ImageObject'
-        VIDEO_OBJECT = 'http://purl.imsglobal.org/caliper/v1/VideoObject'
-        MEDIA_LOCATION = 'http://purl.imsglobal.org/caliper/v1/MediaLocation'
-      end
-
-      ## implement the interface Thing
       class MediaObject < DigitalResource
 
         attr_accessor :duration
 
         def initialize
           super
-          @type = DigitalResourceType::MEDIA_OBJECT
+          @type = Caliper::Entities::DigitalResourceType::MEDIA_OBJECT
           @duration = nil
         end
       end

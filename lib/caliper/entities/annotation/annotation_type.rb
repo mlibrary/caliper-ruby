@@ -15,11 +15,13 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+#
+# Annotation types.
+#
 module Caliper
   module Entities
     module Annotation
       module AnnotationType
-        ANNOTATION = "http://purl.imsglobal.org/caliper/v1/Annotation"
         BOOKMARK_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation"
         HIGHLIGHT_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation"
         SHARED_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/SharedAnnotation"

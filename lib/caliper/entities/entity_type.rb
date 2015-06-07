@@ -19,6 +19,7 @@ module Caliper
   module Entities
     module EntityType
       AGENT = "http://purl.imsglobal.org/caliper/v1/Agent"
+      ANNOTATION = "http://purl.imsglobal.org/caliper/v1/Annotation"
       ATTEMPT = "http://purl.imsglobal.org/caliper/v1/Attempt"
       COURSE_OFFERING = "http://purl.imsglobal.org/caliper/v1/lis/CourseOffering"
       COURSE_SECTION = "http://purl.imsglobal.org/caliper/v1/lis/CourseSection"

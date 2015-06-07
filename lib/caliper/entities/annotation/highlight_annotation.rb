@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './annotation'
+require_relative './annotation_type'
 
 #
 #  Highlight Annotation entity.
@@ -23,14 +24,13 @@ require_relative './annotation'
 module Caliper
   module Entities
     module Annotation
-
       class HighlightAnnotation < Annotation
-        attr_accessor :selectionText,
-                      :selection
+
+        attr_accessor :selectionText, :selection
 
         def initialize()
           super
-          @type = AnnotationType::HIGHLIGHT_ANNOTATION
+          @type = Caliper::Entities::Annotation::AnnotationType::HIGHLIGHT_ANNOTATION
           @selectionText = nil
           @selection = {}
         end

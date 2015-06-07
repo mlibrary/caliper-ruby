@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../entity'
+require_relative '../entity_type'
 require_relative '../w3c/membership'
 
 #
@@ -27,14 +28,11 @@ module Caliper
       class Membership < Entity
         include Caliper::Entities::W3C::Membership
 
-        attr_accessor :member,
-                      :organization,
-                      :roles,
-                      :status
+        attr_accessor :member, :organization, :roles, :status
 
         def initialize
           super
-          @type = EntityType::MEMBERSHIP
+          @type = Caliper::Entities::EntityType::MEMBERSHIP
         end
 
       end

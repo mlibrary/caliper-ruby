@@ -15,8 +15,9 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative "../../entities/digital_resource"
-require_relative "../../entities/schemadotorg/web_page"
+require_relative '../digital_resource'
+require_relative '../digital_resource_type'
+require_relative '../schemadotorg/web_page'
 
 #
 # Web Page

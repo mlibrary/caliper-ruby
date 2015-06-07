@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../digital_resource'
+require_relative '../digital_resource_type'
 
 #
 # AssignableDigitalResource entity. AssignableDigitalResource's prototype is set to DigitalResource.
@@ -23,24 +24,13 @@ require_relative '../digital_resource'
 module Caliper
   module Entities
     module Assignable
-      module AssignableDigitalResourceType
-        ASSESSMENT = "http://purl.imsglobal.org/caliper/v1/Assessment"
-        ASSESSMENT_ITEM = "http://purl.imsglobal.org/caliper/v1/AssessmentItem"
-      end
-
       class AssignableDigitalResource < DigitalResource
 
-        attr_accessor :dateToActivate,
-          :dateToShow,
-          :dateToStartOn,
-          :dateToSubmit,
-          :maxAttempts,
-          :maxSubmits,
-          :maxScore
+        attr_accessor :dateToActivate, :dateToShow, :dateToStartOn, :dateToSubmit, :maxAttempts, :maxSubmits, :maxScore
 
         def initialize
           super
-          @type = DigitalResourceType::ASSIGNABLE_DIGITAL_RESOURCE
+          @type = Caliper::Entities::DigitalResourceType::ASSIGNABLE_DIGITAL_RESOURCE
           @dateToActivate = nil
           @dateToShow = nil
           @dateToStartOn = nil

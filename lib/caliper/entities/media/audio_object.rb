@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './media_object'
+require_relative './media_object_type'
 
 #
 # Audio object embedded in a web page.  See https://schema.org/AudioObject
@@ -27,7 +28,7 @@ module Caliper
 
         def initialize
           super
-          @type = MediaType::AUDIO_OBJECT
+          @type = Caliper::Entities::Media::MediaObjectType::AUDIO_OBJECT
         end
       end
     end

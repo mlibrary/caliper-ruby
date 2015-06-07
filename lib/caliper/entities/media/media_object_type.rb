@@ -15,14 +15,16 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+#
+# Media Object types.
+#
 module Caliper
   module Entities
     module Media
-      module MediaType
+      module MediaObjectType
         AUDIO_OBJECT = 'http://purl.imsglobal.org/caliper/v1/AudioObject'
         IMAGE_OBJECT = 'http://purl.imsglobal.org/caliper/v1/ImageObject'
         VIDEO_OBJECT = 'http://purl.imsglobal.org/caliper/v1/VideoObject'
-        MEDIA_LOCATION = 'http://purl.imsglobal.org/caliper/v1/MediaLocation'
       end
     end
   end

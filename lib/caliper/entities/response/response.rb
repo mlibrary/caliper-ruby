@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../entity'
+require_relative '../entity_type'
 require_relative '../generatable'
 
 #
@@ -27,17 +28,11 @@ module Caliper
 			class Response < Entity
 				include Caliper::Entities::Generatable
 
-				attr_accessor :type,
-			                :assignable,
-			                :actor,
-			                :attempt,
-			                :startedAtTime,
-			                :endedAtTime,
-			                :duration
+				attr_accessor :assignable, :actor, :attempt, :startedAtTime, :endedAtTime, :duration
 
 				def initialize
           super
-					@type = EntityType::RESPONSE
+					@type = Caliper::Entities::EntityType::RESPONSE
 				end
 			end
 		end

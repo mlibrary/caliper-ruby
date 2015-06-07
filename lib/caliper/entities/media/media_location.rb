@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../digital_resource'
+require_relative '../digital_resource_type'
 
 #
 # A time based location within a media object.
@@ -29,7 +30,7 @@ module Caliper
 
         def initialize
           super
-          @type = DigitalResourceType::MEDIA_LOCATION
+          @type = Caliper::Entities::DigitalResourceType::MEDIA_LOCATION
           @currentTime = nil
         end
       end

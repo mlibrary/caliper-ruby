@@ -15,7 +15,6 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './entity'
 require_relative './agent/software_application'
 require_relative './agent/organization'
 require_relative './foaf/agent'
@@ -25,14 +24,11 @@ require_relative './foaf/agent'
 #
 module Caliper
   module Entities
-    class LearningContext < Entity
+    class LearningContext
 
-	    attr_accessor :ed_app, # SoftwareApplication educational app
-                    :group, # W3C Organization
-	                  :agent # Agent the agent, since the Agent module is empty for now, use Entity type
+	    attr_accessor :ed_app, :group, :agent
 
 	    def initialize
-		    super
 		    @ed_app = Caliper::Entities::Agent::SoftwareApplication.new
 		    @group = Caliper::Entities::Agent::Organization.new
 		    @agent = Caliper::Entities::Entity.new

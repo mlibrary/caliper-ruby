@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../digital_resource'
+require_relative '../digital_resource_type'
 
 #
 # Representation of an EPUB 3 Part. A major structural division of a piece of writing, typically
@@ -28,7 +29,7 @@ module Caliper
 
         def initialize()
 	        super
-          @type = DigitalResourceType::EPUB_PART
+          @type = Caliper::Entities::DigitalResourceType::EPUB_PART
         end
       end
     end

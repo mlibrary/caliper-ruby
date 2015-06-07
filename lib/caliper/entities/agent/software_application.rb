@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative '../entity'
+require_relative '../entity_type'
 require_relative '../foaf/agent'
 require_relative '../schemadotorg/software_application'
 
@@ -31,7 +32,7 @@ module Caliper
 
         def initialize()
           super
-          @type=EntityType::SOFTWARE_APPLICATION
+          @type = Caliper::Entities::EntityType::SOFTWARE_APPLICATION
         end
       end
     end
