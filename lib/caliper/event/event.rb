@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'json'
+require_relative './eventType'
 require_relative './jsonable'
 
 #
@@ -23,19 +24,6 @@ require_relative './jsonable'
 #
 module Caliper
   module Event
-    module EventType
-      ANNOTATION = "http://purl.imsglobal.org/caliper/v1/AnnotationEvent"
-      ASSESSMENT = "http://purl.imsglobal.org/caliper/v1/AssessmentEvent"
-      ASSESSMENT_ITEM = "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent"
-      ASSIGNABLE = "http://purl.imsglobal.org/caliper/v1/AssignableEvent"
-      EVENT = "http://purl.imsglobal.org/caliper/v1/Event"
-      MEDIA = "http://purl.imsglobal.org/caliper/v1/MediaEvent"
-      NAVIGATION = "http://purl.imsglobal.org/caliper/v1/NavigationEvent"
-      OUTCOME = "http://purl.imsglobal.org/caliper/v1/OutcomeEvent"
-      SESSION = "http://purl.imsglobal.org/caliper/v1/SessionEvent"
-      VIEW = "http://purl.imsglobal.org/caliper/v1/ViewEvent"
-    end
-
     class Event
       include Caliper::Event::Jsonable
 
@@ -45,7 +33,7 @@ module Caliper
 
       def initialize()
         @context = Caliper::Context::Context::CONTEXT
-        @type = EventType::EVENT
+        @type = Caliper::Event::EventType::EVENT
         @actor = nil
         @action = nil
         @object = nil

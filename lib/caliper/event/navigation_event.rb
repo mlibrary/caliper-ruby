@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './event'
+require_relative './eventType'
 
 #
 # Navigation Event.
@@ -28,7 +29,7 @@ module Caliper
 
       def initialize
 	      super
-	      @type = EventType::NAVIGATION
+	      @type = Caliper::Event::EventType::NAVIGATION
         @navigatedFrom = nil
       end
     end

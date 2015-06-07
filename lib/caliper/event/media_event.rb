@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './event'
+require_relative './eventType'
 
 #
 # Media Event.
@@ -26,7 +27,7 @@ module Caliper
 
       def initialize
 	      super
-	      @type = EventType::MEDIA
+	      @type = Caliper::Event::EventType::MEDIA
       end
     end
   end

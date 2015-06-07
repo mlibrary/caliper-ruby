@@ -15,20 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './event'
-require_relative './eventType'
-
-#
-# Outcome Event.
-#
 module Caliper
   module Event
-    class OutcomeEvent < Event
-
-      def initialize
-	      super
-	      @type = Caliper::Event::EventType::OUTCOME
-      end
+    module EventType
+      ANNOTATION = "http://purl.imsglobal.org/caliper/v1/AnnotationEvent"
+      ASSESSMENT = "http://purl.imsglobal.org/caliper/v1/AssessmentEvent"
+      ASSESSMENT_ITEM = "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent"
+      ASSIGNABLE = "http://purl.imsglobal.org/caliper/v1/AssignableEvent"
+      EVENT = "http://purl.imsglobal.org/caliper/v1/Event"
+      MEDIA = "http://purl.imsglobal.org/caliper/v1/MediaEvent"
+      NAVIGATION = "http://purl.imsglobal.org/caliper/v1/NavigationEvent"
+      OUTCOME = "http://purl.imsglobal.org/caliper/v1/OutcomeEvent"
+      SESSION = "http://purl.imsglobal.org/caliper/v1/SessionEvent"
+      VIEW = "http://purl.imsglobal.org/caliper/v1/ViewEvent"
     end
   end
 end

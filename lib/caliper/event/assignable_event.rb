@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './event'
+require_relative './eventType'
 
 #
 # Assignable Event.
@@ -26,7 +27,7 @@ module Caliper
 
       def initialize
         super
-        @type = EventType::ASSIGNABLE
+        @type = Caliper::Event::EventType::ASSIGNABLE
       end
     end
   end

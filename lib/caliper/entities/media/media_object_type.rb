@@ -15,19 +15,14 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './event'
-require_relative './eventType'
-
-#
-# Outcome Event.
-#
 module Caliper
-  module Event
-    class OutcomeEvent < Event
-
-      def initialize
-	      super
-	      @type = Caliper::Event::EventType::OUTCOME
+  module Entities
+    module Media
+      module MediaType
+        AUDIO_OBJECT = 'http://purl.imsglobal.org/caliper/v1/AudioObject'
+        IMAGE_OBJECT = 'http://purl.imsglobal.org/caliper/v1/ImageObject'
+        VIDEO_OBJECT = 'http://purl.imsglobal.org/caliper/v1/VideoObject'
+        MEDIA_LOCATION = 'http://purl.imsglobal.org/caliper/v1/MediaLocation'
       end
     end
   end
