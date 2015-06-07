@@ -23,19 +23,6 @@ require_relative './jsonable'
 #
 module Caliper
   module Event
-    module EventContext
-      ANNOTATION = "http://purl.imsglobal.org/ctx/caliper/v1/AnnotationEvent"
-      ASSESSMENT = "http://purl.imsglobal.org/ctx/caliper/v1/AssessmentEvent"
-      ASSESSMENT_ITEM = "http://purl.imsglobal.org/ctx/caliper/v1/AssessmentItemEvent"
-      ASSIGNABLE = "http://purl.imsglobal.org/ctx/caliper/v1/AssignableEvent"
-      EVENT = "http://purl.imsglobal.org/ctx/caliper/v1/Event"
-      MEDIA = "http://purl.imsglobal.org/ctx/caliper/v1/MediaEvent"
-      NAVIGATION = "http://purl.imsglobal.org/ctx/caliper/v1/NavigationEvent"
-      OUTCOME = "http://purl.imsglobal.org/ctx/caliper/v1/OutcomeEvent"
-      SESSION = "http://purl.imsglobal.org/ctx/caliper/v1/SessionEvent"
-      VIEW = "http://purl.imsglobal.org/ctx/caliper/v1/ViewEvent"
-    end
-
     module EventType
       ANNOTATION = "http://purl.imsglobal.org/caliper/v1/AnnotationEvent"
       ASSESSMENT = "http://purl.imsglobal.org/caliper/v1/AssessmentEvent"
@@ -57,7 +44,7 @@ module Caliper
                     :edApp, :group, :membership, :federatedSession
 
       def initialize()
-        @context = EventContext::EVENT
+        @context = Caliper::Context::Context::CONTEXT
         @type = EventType::EVENT
         @actor = nil
         @action = nil

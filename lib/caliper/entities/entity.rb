@@ -17,6 +17,7 @@
 
 require 'time'
 require 'json'
+require_relative '../context/context'
 require_relative './schemadotorg/thing'
 require_relative './jsonable'
 
@@ -50,22 +51,17 @@ module Caliper
       include Caliper::Entities::SchemaDotOrg::Thing,
               Caliper::Entities::Jsonable
 
-      attr_accessor :id,
-        :type,
-        :name,
-        :description,
-        :extensions,
-        :dateCreated,
-        :dateModified
+      attr_accessor :context, :id, :type, :name, :description, :extensions, :dateCreated, :dateModified
 
       def initialize()
-        @id = ""
+        @context = Caliper::Context::Context::CONTEXT
+        @id = ''
         @type = EntityType::ENTITY
         @name = nil
         @description = nil
         @extensions = {}
-        @dateCreated = Time.now.utc.iso8601(3)
-        @dateModified = Time.now.utc.iso8601(3)
+        @dateCreated = nil
+        @dateModified = nil
       end
     end
   end
