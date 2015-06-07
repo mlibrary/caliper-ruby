@@ -39,8 +39,8 @@ module Caliper
 
         # EdApp
         ed_app = Caliper::Entities::Agent::SoftwareApplication.new
-        ed_app.id = 'https://github.com/readium/readium-js-viewer'
-        ed_app.name = 'Readium'
+        ed_app.id = 'https://example.com/viewer'
+        ed_app.name = 'ePub'
         ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
         ed_app.dateModified = '2015-09-02T11:30:00.000Z'
 
@@ -52,13 +52,13 @@ module Caliper
 
         # Object session actor (session.actor)
         student = Caliper::Entities::Agent::Person.new
-        student.id = 'https://some-university.edu/user/554433'
+        student.id = 'https://example.edu/user/554433'
         student.dateCreated = '2015-08-01T06:00:00.000Z'
         student.dateModified = '2015-09-02T11:30:00.000Z'
 
         # Object
         obj = Caliper::Entities::Session::Session.new
-        obj.id = 'https://github.com/readium/session-123456789'
+        obj.id = 'https://example.com/viewer/session-123456789'
         obj.name = 'session-123456789'
         obj.description = nil
         obj.actor = student
@@ -70,7 +70,7 @@ module Caliper
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
-        course.id = "https://some-university.edu/politicalScience/2015/american-revolution-101"
+        course.id = "https://example.edu/politicalScience/2015/american-revolution-101"
         course.name = "Political Science 101: The American Revolution"
         course.courseNumber = "POL101"
         course.academicSession = "Fall-2015"
@@ -80,7 +80,7 @@ module Caliper
 
         # LIS Course Section
         section = Caliper::Entities::LIS::CourseSection.new
-        section.id = 'https://some-university.edu/politicalScience/2015/american-revolution-101/section/001'
+        section.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
         section.name = 'American Revolution 101'
         section.courseNumber = "POL101"
         section.academicSession = "Fall-2015"
@@ -91,7 +91,7 @@ module Caliper
 
         # LIS Group
         group = Caliper::Entities::LIS::Group.new
-        group.id = "https://some-university.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
+        group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
         group.name = "Discussion Group 001"
         group.subOrganizationOf = section
         group.dateCreated = '2015-08-01T06:00:00.000Z'
