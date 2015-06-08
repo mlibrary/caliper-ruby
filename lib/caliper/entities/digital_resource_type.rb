@@ -26,7 +26,7 @@ module Caliper
       FRAME = "http://purl.imsglobal.org/caliper/v1/Frame"
       MEDIA_LOCATION = "http://purl.imsglobal.org/caliper/v1/MediaLocation"
       MEDIA_OBJECT = "http://purl.imsglobal.org/caliper/v1/MediaObject"
-      READING = "http://www.idpf.org/epub/vocab/structure"
+      READING = "http://purl.imsglobal.org/caliper/v1/Reading"
       WEB_PAGE = "http://purl.imsglobal.org/caliper/v1/WebPage"
     end
   end
