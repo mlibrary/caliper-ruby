@@ -15,33 +15,14 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './profile'
+#
+# Profile actions.
+#
 
-#
-# Assessment Profile.
-#
 module Caliper
-  module Profiles
-    module AssessmentActions
-      PAUSED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused"
-      RESTARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted"
-      STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
-      SUBMITTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted"
-    end
-
-    class AssessmentProfile < Caliper::Profiles::Profile
-
-      attr_accessor :key, # String
-        :lookup # hash of AssessmentActions
-
-      # whether object if of type DigitalResource
-      def validate_object(object)
-        if (object.is_a? DigitalResource)
-          return object
-        else
-          fail 'Object must be of type DigitalResource'
-        end
-      end
+  module Actions
+    module NavigationActions
+      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
     end
   end
 end

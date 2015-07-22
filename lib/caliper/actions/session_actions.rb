@@ -15,32 +15,16 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './profile'
-require_relative '../entities/digital_resource'
-require_relative '../entities/annotation/annotation'
-require_relative '../entities/reading/frame'
+#
+# Session actions.
+#
 
-#
-# Session Profile.
-#
 module Caliper
-  module Profiles
+  module Actions
     module SessionActions
       LOGGED_IN = 'http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn'
       LOGGED_OUT = 'http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut'
       TIMED_OUT = 'http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut'
-    end
-    class SessionProfile < Profile
-      include SessionActions
-
-      def initialize
-        super
-      end
-
-      # whether object if of type DigitalResource
-      def validate_event (event)
-
-      end
     end
   end
 end

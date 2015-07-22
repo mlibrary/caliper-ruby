@@ -29,7 +29,6 @@ require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/entities/reading/frame.rb'
 require_all 'lib/caliper/entities/session/session.rb'
 require_all 'lib/caliper/event/session_event.rb'
-require_all 'lib/caliper/profiles/session_profile.rb'
 
 module Helper
 
@@ -49,7 +48,7 @@ module Helper
     actor.dateModified = '2015-09-02T11:30:00.000Z'
 
     # Action
-    action = Caliper::Profiles::SessionActions::LOGGED_IN;
+    action = Caliper::Actions::SessionActions::LOGGED_IN;
 
     # Object
     obj = ed_app

@@ -16,21 +16,20 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'require_all'
+require_all 'lib/caliper/actions/assessment_actions.rb'
 require_all 'lib/caliper/entities/entity.rb'
 require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
+require_all 'lib/caliper/entities/assessment/assessment.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
 require_all 'lib/caliper/entities/lis/role.rb'
 require_all 'lib/caliper/entities/lis/status.rb'
 require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
-require_all 'lib/caliper/entities/assessment/assessment.rb'
-require_all 'lib/caliper/entities/assessment/assessment_item.rb'
 require_all 'lib/caliper/entities/assignable/attempt.rb'
 require_all 'lib/caliper/entities/assignable/assignable_digital_resource.rb'
 require_all 'lib/caliper/event/assessment_event.rb'
-require_all 'lib/caliper/profiles/assessment_profile.rb'
 require 'json_spec'
 
 module Caliper
@@ -47,7 +46,7 @@ module Caliper
         actor.dateModified = '2015-09-02T11:30:00.000Z'
 
         # Action
-        action = Caliper::Profiles::AssessmentActions::STARTED
+        action = Caliper::Actions::AssessmentActions::STARTED
 
         # Object
         assessment = Caliper::Entities::Assessment::Assessment.new

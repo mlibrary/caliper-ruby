@@ -15,13 +15,12 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './profile'
+#
+# Media actions.
+#
 
-#
-# Media Profile.
-#
 module Caliper
-  module Profiles
+  module Actions
     module MediaActions
       CHANGED_RESOLUTION = "http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedResolution"
       CHANGED_SIZE = "http://purl.imsglobal.org/vocab/caliper/v1/action#ChangedSize"
@@ -42,30 +41,6 @@ module Caliper
       REWOUND = "http://purl.imsglobal.org/vocab/caliper/v1/action#Rewound"
       STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
       UNMUTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted"
-    end
-
-    class MediaProfile < Caliper::Profiles::Profile
-
-      attr_accessor :key, # String
-        :lookup # hash of MediaActions
-
-      # whether object if of type DigitalResource
-      def validate_object(object)
-        if (object.is_a? DigitalResource)
-          return object
-        else
-          fail "Object must e of type DigitalResource"
-        end
-      end
-
-      # whether target is of type Frame
-      def validate_target(target)
-        if (target is_a? frame)
-          return target
-        else
-          fail "Target must be of type Frame."
-        end
-      end
     end
   end
 end

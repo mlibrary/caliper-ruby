@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'require_all'
+require_all 'lib/caliper/actions/reading_actions.rb'
 require_all 'lib/caliper/entities/entity.rb'
 require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
@@ -27,7 +28,6 @@ require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/event/view_event.rb'
-require_all 'lib/caliper/profiles/reading_profile.rb'
 require 'json_spec'
 
 module Caliper
@@ -44,7 +44,7 @@ module Caliper
         actor.dateModified = '2015-09-02T11:30:00.000Z'
 
         # Action
-        action = Caliper::Profiles::ReadingActions::VIEWED
+        action = Caliper::Actions::ReadingActions::VIEWED
 
         # Object
         obj = Caliper::Entities::Reading::EPubVolume.new

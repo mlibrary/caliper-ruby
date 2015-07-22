@@ -15,13 +15,12 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './profile'
+#
+# Assignable actions.
+#
 
-#
-# Assignable Profile.
-#
 module Caliper
-  module Profiles
+  module Actions
     module AssignableActions
       ABANDONED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Abandoned"
       ACTIVATED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Activated"
@@ -32,30 +31,6 @@ module Caliper
       SHOWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Showed"
       STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
       SUBMITTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted"
-    end
-
-    class AssignableProfile < Caliper::Profiles::Profile
-
-      attr_accessor :key, # String
-        :lookup # hash of AssignableActions
-
-      # whether object if of type DigitalResource
-      def validate_object(object)
-        if (object.is_a? DigitalResource)
-          return object
-        else
-          fail 'Object must e of type DigitalResource'
-        end
-      end
-
-      # whether target is of type Frame
-      def validate_target(target)
-        if (target is_a? frame)
-          return target
-        else
-          fail 'Target must be of type Frame'
-        end
-      end
     end
   end
 end

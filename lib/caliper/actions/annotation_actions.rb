@@ -15,16 +15,12 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './profile'
-require_relative '../entities/digital_resource'
-require_relative '../entities/annotation/annotation'
-require_relative '../entities/reading/frame'
+#
+# Annotation actions.
+#
 
-#
-# Annotation Profile.
-#
 module Caliper
-  module Profiles
+  module Actions
     module AnnotationActions
       ATTACHED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Attached"
       BOOKMARKED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Bookmarked"
@@ -43,40 +39,6 @@ module Caliper
       SHARED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Shared"
       SUBSCRIBED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Subscribed"
       TAGGED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged"
-    end
-
-    class ReadingProfile < Profile
-      include AnnotationActions
-      attr_accessor :key, # String
-        :lookup # hash of ReadingActions
-
-      # whether object if of type DigitalResource
-      def validate_object (object)
-        if  (object.is_a? AnnotationType::BOOKMARK_ANNOTATION)
-          ## TODO check required properties
-          return object
-        elsif (object.is_a? AnnotationType::HIGHLIGHT_ANNOTATION)
-          ## TODO check required properties
-          return object
-        elsif  (object.is_a? AnnotationType::SHARED_ANNOTATION)
-          ## TODO check required properties
-          return object
-        elsif  (object.is_a? AnnotationType::TAG_ANNOTATION)
-          ## TODO check required properties
-          return object
-        else
-          fail "Object must be of type Annotation"
-        end
-      end
-
-      # whether target is of type Frame
-      def validate_target(target)
-        if (target is_a? Frame)
-          return target
-        else
-          fail "Target must be of type Frame."
-        end
-      end
     end
   end
 end
