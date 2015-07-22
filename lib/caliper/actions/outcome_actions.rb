@@ -15,28 +15,14 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'i18n'
+#
+# Outcome actions.
+#
 
-#
-# Base Profile.
-#
 module Caliper
-  module Profiles
-    module ProfileActions
-      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
-    end
-
-    class Profile
-      include ProfileActions
-
-      def initialize()
-      end
-
-      def get_navigated_to_action_from_bundle(key)
-        if key.equal? ProfileActions::NAVIGATED_TO
-          return I18n.translate :action
-        end
-      end
+  module Actions
+    module OutcomeActions
+      GRADED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded"
     end
   end
 end
