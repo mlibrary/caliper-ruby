@@ -16,6 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'require_all'
+require_all 'lib/caliper/actions/media_actions.rb'
 require_all 'lib/caliper/entities/entity.rb'
 require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/learning_objective.rb'
@@ -30,7 +31,6 @@ require_all 'lib/caliper/entities/media/media_object.rb'
 require_all 'lib/caliper/entities/media/video_object.rb'
 require_all 'lib/caliper/entities/media/media_location.rb'
 require_all 'lib/caliper/event/media_event.rb'
-require_all 'lib/caliper/profiles/media_profile.rb'
 require 'json_spec'
 
 module Caliper
@@ -47,7 +47,7 @@ module Caliper
         actor.dateModified = '2015-09-02T11:30:00.000Z'
 
         # Action
-        action = Caliper::Profiles::MediaActions::PAUSED
+        action = Caliper::Actions::MediaActions::PAUSED
 
         # Learning Objective (video.alignedLearningObjective)
         learnObjective = Caliper::Entities::LearningObjective.new

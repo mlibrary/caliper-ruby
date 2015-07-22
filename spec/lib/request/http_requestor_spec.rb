@@ -29,7 +29,6 @@ require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/entities/reading/web_page.rb'
 require_all 'lib/caliper/entities/session/session.rb'
 require_all 'lib/caliper/event/navigation_event.rb'
-require_all 'lib/caliper/profiles/reading_profile.rb'
 require_all 'lib/caliper/options.rb'
 require_all 'lib/caliper/request/http_requestor.rb'
 require_all 'lib/caliper/sensor.rb'
@@ -64,7 +63,7 @@ module Caliper
         session.startedAtTime = '2015-09-15T10:15:00.000Z'
 
         # Action
-        action = Caliper::Profiles::ProfileActions::NAVIGATED_TO
+        action = Caliper::Actions::NavigationActions::NAVIGATED_TO
 
         # Object
         obj = Caliper::Entities::Reading::EPubVolume.new
