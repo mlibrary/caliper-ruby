@@ -60,7 +60,7 @@ module Caliper
       end
 
       def eql?(other)
-        @context == other.context && @type == other.type && @startedAtTime == other.startedAtTime && @endedAtTime == other.endedAtTime
+        @context == other.context && @type == other.type && @eventTime == other.eventTime
       end
     end
   end

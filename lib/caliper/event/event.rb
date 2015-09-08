@@ -28,7 +28,7 @@ module Caliper
       include Caliper::Event::Jsonable
 
       attr_accessor :context, :type, :actor, :action, :object,
-                    :target, :generated, :startedAtTime, :endedAtTime, :duration,
+                    :target, :generated, :eventTime,
                     :edApp, :group, :membership, :federatedSession
 
       def initialize()
@@ -39,9 +39,7 @@ module Caliper
         @object = nil
         @target = nil
         @generated = nil
-        @startedAtTime = Time.now.utc.iso8601(3)
-        @endedAtTime = nil
-        @duration = nil
+        @eventTime = nil
         @edApp = nil
         @group = nil
         @membership = nil

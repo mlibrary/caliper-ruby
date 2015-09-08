@@ -41,8 +41,8 @@ module Caliper
         # Actor
         actor = Caliper::Entities::Agent::Person.new
         actor.id = 'https://example.edu/user/554433'
-        actor.dateCreated = '2015-08-01T06:00:00.000Z'
-        actor.dateModified = '2015-09-02T11:30:00.000Z'
+        actor.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        actor.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # Action
         action = Caliper::Actions::NavigationActions::NAVIGATED_TO
@@ -52,8 +52,8 @@ module Caliper
         obj.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3)'
         obj.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
         obj.version = '2nd ed.'
-        obj.dateCreated = '2015-08-01T06:00:00.000Z'
-        obj.dateModified = '2015-09-02T11:30:00.000Z'
+        obj.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        obj.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # Target frame
         target = Caliper::Entities::Reading::Frame.new
@@ -62,24 +62,23 @@ module Caliper
         target.isPartOf = obj
         target.version = obj.version
         target.index = 1
-        target.dateCreated = '2015-08-01T06:00:00.000Z'
-        target.dateModified = '2015-09-02T11:30:00.000Z'
+        target.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        target.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # NavigatedFrom property (specific to Navigation Event)
         from = Caliper::Entities::Reading::WebPage.new
         from.id = 'https://example.edu/politicalScience/2015/american-revolution-101/index.html'
         from.name = 'American Revolution 101 Landing Page'
-        from.dateCreated = '2015-08-01T06:00:00.000Z'
-        from.dateModified = '2015-09-02T11:30:00.000Z'
-        from.isPartOf = nil
+        from.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        from.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
         from.version = '1.0'
 
         # EdApp
         ed_app = Caliper::Entities::Agent::SoftwareApplication.new
         ed_app.id = 'https://example.com/viewer'
         ed_app.name = 'ePub'
-        ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
-        ed_app.dateModified = '2015-09-02T11:30:00.000Z'
+        ed_app.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        ed_app.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
@@ -87,9 +86,8 @@ module Caliper
         course.name = "Political Science 101: The American Revolution"
         course.courseNumber = "POL101"
         course.academicSession = "Fall-2015"
-        course.subOrganizationOf = nil
-        course.dateCreated = '2015-08-01T06:00:00.000Z'
-        course.dateModified = '2015-09-02T11:30:00.000Z'
+        course.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        course.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Course Section
         section = Caliper::Entities::LIS::CourseSection.new
@@ -97,18 +95,16 @@ module Caliper
         section.name = 'American Revolution 101'
         section.courseNumber = "POL101"
         section.academicSession = "Fall-2015"
-        section.category = nil
         section.subOrganizationOf = course
-        section.dateCreated = '2015-08-01T06:00:00.000Z'
-        section.dateModified = '2015-09-02T11:30:00.000Z'
+        section.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        section.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Group
         group = Caliper::Entities::LIS::Group.new
         group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
         group.name = "Discussion Group 001"
         group.subOrganizationOf = section
-        group.dateCreated = '2015-08-01T06:00:00.000Z'
-        group.dateModified = nil
+        group.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         membership = Caliper::Entities::LIS::Membership.new
         membership.id = "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433"
@@ -118,8 +114,7 @@ module Caliper
         membership.organization = "https://example.edu/politicalScience/2015/american-revolution-101/section/001"
         membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
         membership.status = Caliper::Entities::LIS::Status::ACTIVE
-        membership.dateCreated = "2015-08-01T06:00:00.000Z"
-        membership.dateModified = nil
+        membership.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         # Create the Event
         event = Caliper::Event::NavigationEvent.new
@@ -127,16 +122,11 @@ module Caliper
         event.action = action
         event.object = obj
         event.target = target
-        event.generated = nil
         event.navigatedFrom = from
-        event.startedAtTime = '2015-09-15T10:15:00.000Z'
-        event.endedAtTime = nil
-        event.duration = nil
+        event.eventTime = Time.utc(2015,9,15,10,15,0).iso8601(3)
         event.edApp = ed_app
         event.group = group
         event.membership = membership
-        event.federatedSession = nil
-        # puts "Event JSON = #{event.to_json}'"
 
         # Load JSON from caliper-common-fixtures for comparison
         # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures

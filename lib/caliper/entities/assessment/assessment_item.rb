@@ -31,6 +31,7 @@ module Caliper
         def initialize
           super
           @type = Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT_ITEM
+          @isTimeDependent = false
         end
       end
     end

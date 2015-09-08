@@ -35,6 +35,9 @@ module Caliper
         def initialize
           super
           @type = Caliper::Entities::EntityType::SESSION
+          @startedAtTime = nil
+          @endedAtTime = nil
+          @duration = nil
         end
       end
     end
