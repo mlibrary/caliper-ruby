@@ -31,6 +31,7 @@ module Caliper
         def initialize
           super
           @type = Caliper::Entities::EntityType::COURSE_SECTION
+          @category = nil
         end
       end
     end

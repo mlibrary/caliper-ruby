@@ -42,8 +42,8 @@ module Caliper
         # Actor
         actor = Caliper::Entities::Agent::Person.new
         actor.id = 'https://example.edu/user/554433'
-        actor.dateCreated = '2015-08-01T06:00:00.000Z'
-        actor.dateModified = '2015-09-02T11:30:00.000Z'
+        actor.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        actor.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # Action
         action = Caliper::Actions::AssignableActions::ACTIVATED
@@ -52,14 +52,14 @@ module Caliper
         assessment = Caliper::Entities::Assessment::Assessment.new
         assessment.id = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001"
         assessment.name = "American Revolution - Key Figures Assessment"
-        assessment.dateModified =  '2015-09-02T11:30:00.000Z'
-        assessment.dateCreated =  '2015-08-01T06:00:00.000Z'
-        assessment.datePublished =  '2015-08-15T09:30:00.000Z'
+        assessment.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
+        assessment.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        assessment.datePublished = Time.utc(2015,8,15,9,30,0).iso8601(3)
         assessment.version = "1.0"
-        assessment.dateToActivate = '2015-08-16T05:00:00.000Z'
-        assessment.dateToShow =  '2015-08-16T05:00:00.000Z'
-        assessment.dateToStartOn = "2015-08-16T05:00:00.000Z"
-        assessment.dateToSubmit = "2015-09-28T11:59:59.000Z"
+        assessment.dateToActivate = Time.utc(2015,8,16,5,0,0).iso8601(3)
+        assessment.dateToShow = Time.utc(2015,8,16,5,0,0).iso8601(3)
+        assessment.dateToStartOn = Time.utc(2015,8,16,5,0,0).iso8601(3)
+        assessment.dateToSubmit = Time.utc(2015,9,28,11,59,59).iso8601(3)
         assessment.maxAttempts = 2
         assessment.maxSubmits = 2
         assessment.maxScore = 3.0
@@ -69,21 +69,15 @@ module Caliper
         attempt.id = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001/attempt/5678"
         attempt.actor = "https://example.edu/user/554433"
         attempt.assignable = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001"
-        attempt.dateCreated = "2015-08-01T06:00:00.000Z"
-        attempt.dateModified = nil
+        attempt.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
         attempt.count = 1
-        attempt.startedAtTime = "2015-09-15T10:15:00.000Z"
-        attempt.duration = nil
-        attempt.endedAtTime = nil
-        attempt.extensions = {}
-        attempt.name = nil
+        attempt.startedAtTime = Time.utc(2015,9,15,10,15,0).iso8601(3)
 
         # EdApp
         ed_app = Caliper::Entities::Agent::SoftwareApplication.new
         ed_app.id = 'https://example.com/super-assessment-tool'
         ed_app.name = 'Super Assessment Tool'
-        ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
-        ed_app.dateModified = nil
+        ed_app.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
@@ -91,9 +85,8 @@ module Caliper
         course.name = "Political Science 101: The American Revolution"
         course.courseNumber = "POL101"
         course.academicSession = "Fall-2015"
-        course.subOrganizationOf = nil
-        course.dateCreated = '2015-08-01T06:00:00.000Z'
-        course.dateModified = '2015-09-02T11:30:00.000Z'
+        course.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        course.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Course Section
         section = Caliper::Entities::LIS::CourseSection.new
@@ -101,18 +94,16 @@ module Caliper
         section.name = 'American Revolution 101'
         section.courseNumber = "POL101"
         section.academicSession = "Fall-2015"
-        section.category = nil
         section.subOrganizationOf = course
-        section.dateCreated = '2015-08-01T06:00:00.000Z'
-        section.dateModified = '2015-09-02T11:30:00.000Z'
+        section.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        section.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Group
         group = Caliper::Entities::LIS::Group.new
         group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
         group.name = "Discussion Group 001"
         group.subOrganizationOf = section
-        group.dateCreated = '2015-08-01T06:00:00.000Z'
-        group.dateModified = nil
+        group.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         membership = Caliper::Entities::LIS::Membership.new
         membership.id = "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433"
@@ -122,24 +113,18 @@ module Caliper
         membership.organization = "https://example.edu/politicalScience/2015/american-revolution-101/section/001"
         membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
         membership.status = Caliper::Entities::LIS::Status::ACTIVE
-        membership.dateCreated = "2015-08-01T06:00:00.000Z"
-        membership.dateModified = nil
+        membership.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         # Create the Event
         event = AssignableEvent.new
         event.actor  = actor
         event.action = action
         event.object = assessment
-        event.target = nil
         event.generated = attempt
-        event.startedAtTime = '2015-09-15T10:15:00.000Z'
-        event.endedAtTime = nil
-        event.duration = nil
+        event.eventTime = Time.utc(2015,9,15,10,15,0).iso8601(3)
         event.edApp = ed_app
         event.group = group
         event.membership = membership
-        event.federatedSession = nil
-        # puts "Event JSON = #{event.to_json}'"
 
         # Load JSON from caliper-common-fixtures for comparison
         # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures

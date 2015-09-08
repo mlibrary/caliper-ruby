@@ -43,8 +43,8 @@ module Caliper
         # Actor
         actor = Caliper::Entities::Agent::Person.new
         actor.id = 'https://example.edu/user/554433'
-        actor.dateCreated = '2015-08-01T06:00:00.000Z'
-        actor.dateModified = '2015-09-02T11:30:00.000Z'
+        actor.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        actor.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # Action
         action = Caliper::Actions::MediaActions::PAUSED
@@ -52,8 +52,7 @@ module Caliper
         # Learning Objective (video.alignedLearningObjective)
         learnObjective = Caliper::Entities::LearningObjective.new
         learnObjective.id = 'https://example.edu/american-revolution-101/personalities/learn'
-        learnObjective.dateCreated = '2015-08-01T06:00:00.000Z'
-        learnObjective.dateModified = nil
+        learnObjective.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         # Object
         video = Caliper::Entities::Media::VideoObject.new
@@ -61,24 +60,23 @@ module Caliper
         video.name = 'American Revolution - Key Figures Video'
         video.version = '1.0'
         video.duration = 1420
-        video.dateCreated = '2015-08-01T06:00:00.000Z'
-        video.dateModified = '2015-09-02T11:30:00.000Z'
+        video.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        video.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
         video.alignedLearningObjective = [learnObjective]
 
         # Target coordinates
         target = Caliper::Entities::Media::MediaLocation.new
         target.id = 'https://example.com/super-media-tool/video/1225'
         target.version = '1.0'
-        target.dateCreated = '2015-08-01T06:00:00.000Z'
-        target.dateModified = nil
+        target.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
         target.currentTime = 710
 
         # ed_app
         ed_app = Caliper::Entities::Agent::SoftwareApplication.new
         ed_app.id = 'https://example.com/super-media-tool'
         ed_app.name = 'Super Media Tool'
-        ed_app.dateCreated = '2015-08-01T06:00:00.000Z'
-        ed_app.dateModified = '2015-09-02T11:30:00.000Z'
+        ed_app.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        ed_app.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
@@ -86,9 +84,8 @@ module Caliper
         course.name = "Political Science 101: The American Revolution"
         course.courseNumber = "POL101"
         course.academicSession = "Fall-2015"
-        course.subOrganizationOf = nil
-        course.dateCreated = '2015-08-01T06:00:00.000Z'
-        course.dateModified = '2015-09-02T11:30:00.000Z'
+        course.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        course.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Course Section
         section = Caliper::Entities::LIS::CourseSection.new
@@ -96,18 +93,16 @@ module Caliper
         section.name = 'American Revolution 101'
         section.courseNumber = "POL101"
         section.academicSession = "Fall-2015"
-        section.category = nil
         section.subOrganizationOf = course
-        section.dateCreated = '2015-08-01T06:00:00.000Z'
-        section.dateModified = '2015-09-02T11:30:00.000Z'
+        section.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        section.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Group
         group = Caliper::Entities::LIS::Group.new
         group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
         group.name = "Discussion Group 001"
         group.subOrganizationOf = section
-        group.dateCreated = '2015-08-01T06:00:00.000Z'
-        group.dateModified = nil
+        group.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         membership = Caliper::Entities::LIS::Membership.new
         membership.id = "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433"
@@ -117,8 +112,7 @@ module Caliper
         membership.organization = "https://example.edu/politicalScience/2015/american-revolution-101/section/001"
         membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
         membership.status = Caliper::Entities::LIS::Status::ACTIVE
-        membership.dateCreated = "2015-08-01T06:00:00.000Z"
-        membership.dateModified = nil
+        membership.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         # Create the Event
         event = Caliper::Event::MediaEvent.new
@@ -126,15 +120,10 @@ module Caliper
         event.action = action
         event.object = video
         event.target = target
-        event.generated = nil
-        event.startedAtTime = '2015-09-15T10:15:00.000Z'
-        event.endedAtTime = nil
-        event.duration = nil
+        event.eventTime = Time.utc(2015,9,15,10,15,0).iso8601(3)
         event.edApp = ed_app
         event.group = group
         event.membership = membership
-        event.federatedSession = nil
-        # puts "Event JSON = #{event.to_json}'"
 
         # Load JSON from caliper-common-fixtures for comparison
         # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures

@@ -33,6 +33,7 @@ module Caliper
         def initialize
           super
           @type = Caliper::Entities::EntityType::GROUP
+          @subOrganizationOf = nil
         end
       end
     end

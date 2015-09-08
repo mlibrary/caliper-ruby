@@ -33,6 +33,9 @@ module Caliper
         def initialize
           super
           @type = Caliper::Entities::EntityType::COURSE_OFFERING
+          @courseNumber = nil
+          @academicSession = nil
+          @subOrganizationOf = nil
         end
       end
     end

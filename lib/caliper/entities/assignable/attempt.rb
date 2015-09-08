@@ -33,6 +33,9 @@ module Caliper
         def initialize
           super
           @type = Caliper::Entities::EntityType::ATTEMPT
+          @startedAtTime = nil
+          @endedAtTime = nil
+          @duration = nil
         end
 
       end
