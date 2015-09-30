@@ -17,7 +17,8 @@
 
 require_relative './agent/software_application'
 require_relative './agent/organization'
-require_relative './foaf/agent'
+require_relative './lis/membership'
+require_relative './session/session'
 
 #
 # Learning Context.
@@ -26,12 +27,13 @@ module Caliper
   module Entities
     class LearningContext
 
-	    attr_accessor :ed_app, :group, :agent
+	    attr_accessor :ed_app, :group, :membership, :federatedSession
 
 	    def initialize
 		    @ed_app = Caliper::Entities::Agent::SoftwareApplication.new
 		    @group = Caliper::Entities::Agent::Organization.new
-		    @agent = Caliper::Entities::Entity.new
+		    @membership = Caliper::Entities::Lis::Membership.new
+				@federatedSession = Caliper::Entities::Session::Session.new
 	    end
 	  end
   end
