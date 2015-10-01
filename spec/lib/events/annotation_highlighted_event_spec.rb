@@ -140,7 +140,7 @@ module Caliper
         deser_event.from_json data_hash
         # puts "AnnotationEvent from JSON = #{deser_event.to_json}"
 
-        # Ensure that the deserialized highlight events object conforms
+        # Ensure that the deserialized highlight event object conforms
         expect(event).to eql(deser_event)
       end
     end

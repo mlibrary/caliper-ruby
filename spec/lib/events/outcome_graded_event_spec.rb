@@ -155,7 +155,7 @@ module Caliper
         deser_event.from_json data_hash
         # puts "AssessmentEvent from JSON = #{deser_event.to_json}"
 
-        # Ensure that the deserialized bookmark events object conforms
+        # Ensure that the deserialized bookmark event object conforms
         expect(event).to eql(deser_event)
       end
     end

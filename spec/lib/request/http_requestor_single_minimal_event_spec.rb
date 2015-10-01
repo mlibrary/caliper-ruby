@@ -76,7 +76,7 @@ module Caliper
         # deser_envelope.from_json data_hash
         # puts "Envelope from JSON = #{deser_envelope.to_json}"
 
-        # Ensure that the deserialized shared events object conforms
+        # Ensure that the deserialized shared event object conforms
         # expect(json_payload_sub).to eql(deser_envelope)
       end
     end

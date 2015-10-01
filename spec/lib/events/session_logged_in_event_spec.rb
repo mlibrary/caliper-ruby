@@ -148,7 +148,7 @@ module Caliper
         deser_event.from_json data_hash
         # puts "SessionEvent from JSON = #{deser_event.to_json}"
 
-        # Ensure that the deserialized session events object conforms
+        # Ensure that the deserialized session event object conforms
         expect(event).to eql(deser_event)
       end
     end
