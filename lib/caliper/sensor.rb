@@ -39,7 +39,7 @@ module Caliper
     end
 
     def send(event)
-      raise ArgumentError, "Expecting Caliper::Event but got #{event.class.to_s}" unless event.is_a?(Caliper::Event::Event)
+      raise ArgumentError, "Expecting Caliper::Event but got #{event.class.to_s}" unless event.is_a?(Caliper::Events::Event)
 
       HttpRequestor.new(@options).send(self, event)
     end

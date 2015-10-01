@@ -15,29 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
-require_relative '../entity_type'
-require_relative '../generatable'
-
-#
-# A Response
-#
 module Caliper
-	module Entities
-		module Response
-			class Response < EntityBase
-				include Caliper::Entities::Generatable
-
-				attr_accessor :assignable, :actor, :attempt, :startedAtTime, :endedAtTime, :duration
-
-				def initialize
-          super
-					@type = Caliper::Entities::EntityType::RESPONSE
-					@startedAtTime = nil
-					@endedAtTime = nil
-					@duration = nil
-				end
-			end
-		end
-	end
+  module Events
+    module EventType
+      ANNOTATION = "http://purl.imsglobal.org/caliper/v1/AnnotationEvent"
+      ASSESSMENT = "http://purl.imsglobal.org/caliper/v1/AssessmentEvent"
+      ASSESSMENT_ITEM = "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent"
+      ASSIGNABLE = "http://purl.imsglobal.org/caliper/v1/AssignableEvent"
+      EVENT = "http://purl.imsglobal.org/caliper/v1/Event"
+      MEDIA = "http://purl.imsglobal.org/caliper/v1/MediaEvent"
+      NAVIGATION = "http://purl.imsglobal.org/caliper/v1/NavigationEvent"
+      OUTCOME = "http://purl.imsglobal.org/caliper/v1/OutcomeEvent"
+      SESSION = "http://purl.imsglobal.org/caliper/v1/SessionEvent"
+      VIEW = "http://purl.imsglobal.org/caliper/v1/ViewEvent"
+    end
+  end
 end

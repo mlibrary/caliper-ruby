@@ -15,29 +15,32 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
-require_relative '../entity_type'
-require_relative '../generatable'
+require 'time'
+require 'json'
+require_relative './entity'
+require_relative './entity_type'
+require_relative '../context/context'
+require_relative './schemadotorg/thing'
+require_relative './jsonable'
 
 #
-# A Response
+#  The base Caliper Entity.  Analogous to a schema.org Thing.
 #
 module Caliper
-	module Entities
-		module Response
-			class Response < EntityBase
-				include Caliper::Entities::Generatable
+  module Entities
+    class EntityBase < Entity
+      include Caliper::Entities::SchemaDotOrg::Thing, Caliper::Entities::Jsonable
 
-				attr_accessor :assignable, :actor, :attempt, :startedAtTime, :endedAtTime, :duration
+      attr_accessor :name, :description, :extensions, :dateCreated, :dateModified
 
-				def initialize
-          super
-					@type = Caliper::Entities::EntityType::RESPONSE
-					@startedAtTime = nil
-					@endedAtTime = nil
-					@duration = nil
-				end
-			end
-		end
-	end
+      def initialize()
+        super
+        @name = nil
+        @description = nil
+        @extensions = {}
+        @dateCreated = nil
+        @dateModified = nil
+      end
+    end
+  end
 end

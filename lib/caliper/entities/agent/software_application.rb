@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity'
+require_relative '../entity_base'
 require_relative '../entity_type'
 require_relative '../foaf/agent'
 require_relative '../schemadotorg/software_application'
@@ -26,7 +26,7 @@ require_relative '../schemadotorg/software_application'
 module Caliper
   module Entities
     module Agent
-      class SoftwareApplication < Entity
+      class SoftwareApplication < EntityBase
         include Caliper::Entities::FOAF::Agent,
                 Caliper::Entities::SchemaDotOrg::SoftwareApplication
 

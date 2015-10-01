@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './entity'
+require_relative './entity_base'
 require_relative './entity_type'
 require_relative './schemadotorg/creative_work'
 require_relative './targetable'
@@ -26,7 +26,7 @@ require_relative './targetable'
 #
 module Caliper
   module Entities
-    class DigitalResource < Entity
+    class DigitalResource < EntityBase
       include Caliper::Entities::SchemaDotOrg::CreativeWork,
               Caliper::Entities::Targetable
 
