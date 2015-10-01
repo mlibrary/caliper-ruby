@@ -147,7 +147,7 @@ module Caliper
         file = File.read('spec/fixtures/caliperAssessmentOutcomeEvent.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        puts "JSON= #{event.to_json}"
+        #puts "JSON= #{event.to_json}"
         expect(event.to_json).to be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "ed_app", "group")
 
         # puts "JSON from file = #{data_hash}"
