@@ -15,29 +15,28 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
-require_relative '../entity_type'
-require_relative '../generatable'
+require_relative './event'
+require_relative './event_context'
+require_relative './event_type'
 
 #
-# A Response
+# Assessment Event.
 #
 module Caliper
-	module Entities
-		module Response
-			class Response < EntityBase
-				include Caliper::Entities::Generatable
+  module Events
+    class AssessmentEvent < Event
+      include Caliper::Events::EventContext
 
-				attr_accessor :assignable, :actor, :attempt, :startedAtTime, :endedAtTime, :duration
-
-				def initialize
-          super
-					@type = Caliper::Entities::EntityType::RESPONSE
-					@startedAtTime = nil
-					@endedAtTime = nil
-					@duration = nil
-				end
-			end
-		end
-	end
+      def initialize
+        super
+        @type = Caliper::Events::EventType::ASSESSMENT
+        @target = nil
+        @generated = nil
+        @edApp = nil
+        @group = nil
+        @membership = nil
+        @federatedSession = nil
+      end
+    end
+  end
 end

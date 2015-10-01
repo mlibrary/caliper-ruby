@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'require_all'
-require_all 'lib/caliper/entities/entity.rb'
+require_all 'lib/caliper/entities/entity_base.rb'
 require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
@@ -28,7 +28,7 @@ require_all 'lib/caliper/entities/lis/group.rb'
 require_all 'lib/caliper/entities/reading/epub_volume.rb'
 require_all 'lib/caliper/entities/reading/frame.rb'
 require_all 'lib/caliper/entities/session/session.rb'
-require_all 'lib/caliper/event/session_event.rb'
+require_all 'lib/caliper/events/session_event.rb'
 
 module Helper
 
@@ -117,7 +117,7 @@ module Helper
     membership.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
     # Create the Event
-    event = Caliper::Event::SessionEvent.new
+    event = Caliper::Events::SessionEvent.new
     event.actor  = actor
     event.action = action
     event.object = obj

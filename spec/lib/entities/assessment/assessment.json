@@ -1,0 +1,23 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1/Context",
+  "@id": "https://example.edu/politicalScience/2014/american-revolution-101/assessment/001",
+  "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
+  "name": "Assessment 001",
+  "description": "description",
+  "objectType": [],
+  "alignedLearningObjective": [],
+  "keywords": [],
+  "isPartOf": null,
+  "extensions": {"isPracticeTest": true},
+  "dateCreated": "2015-03-15T23:09:11.000Z",
+  "dateModified": "2015-03-15T23:09:11.000Z",
+  "datePublished": null,
+  "version": null,
+  "dateToActivate": null,
+  "dateToShow": null,
+  "dateToStartOn": null,
+  "dateToSubmit": null,
+  "maxAttempts": null,
+  "maxScore": null,
+  "maxSubmits": null
+}

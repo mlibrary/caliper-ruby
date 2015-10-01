@@ -19,7 +19,7 @@ require 'json'
 require_relative './jsonable'
 
 #
-# Event store envelope. Contains event info.
+# Event store envelope. Contains events info.
 #
 module Caliper
   module Request

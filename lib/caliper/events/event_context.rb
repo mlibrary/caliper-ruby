@@ -15,29 +15,10 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
-require_relative '../entity_type'
-require_relative '../generatable'
-
-#
-# A Response
-#
 module Caliper
-	module Entities
-		module Response
-			class Response < EntityBase
-				include Caliper::Entities::Generatable
-
-				attr_accessor :assignable, :actor, :attempt, :startedAtTime, :endedAtTime, :duration
-
-				def initialize
-          super
-					@type = Caliper::Entities::EntityType::RESPONSE
-					@startedAtTime = nil
-					@endedAtTime = nil
-					@duration = nil
-				end
-			end
-		end
-	end
+  module Events
+    module EventContext
+      attr_accessor :target, :generated, :edApp, :group, :membership, :federatedSession
+    end
+  end
 end

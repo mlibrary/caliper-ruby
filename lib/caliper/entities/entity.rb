@@ -28,20 +28,14 @@ require_relative './jsonable'
 module Caliper
   module Entities
     class Entity
-      include Caliper::Entities::SchemaDotOrg::Thing,
-              Caliper::Entities::Jsonable
+      include Caliper::Entities::SchemaDotOrg::Thing, Caliper::Entities::Jsonable
 
-      attr_accessor :context, :id, :type, :name, :description, :extensions, :dateCreated, :dateModified
+      attr_accessor :context, :id, :type
 
       def initialize()
         @context = Caliper::Context::Context::CONTEXT
-        @id = ''
+        @id = nil
         @type = Caliper::Entities::EntityType::ENTITY
-        @name = nil
-        @description = nil
-        @extensions = {}
-        @dateCreated = nil
-        @dateModified = nil
       end
     end
   end

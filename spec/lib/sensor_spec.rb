@@ -24,7 +24,7 @@ module Caliper
   describe Sensor do
   	include Helper
 
-    it "should ensure that we can create and send an event" do
+    it "should ensure that we can create and send an events" do
 
       id = 'https://example.edu/sensor/001'
       options = {
@@ -39,7 +39,7 @@ module Caliper
       # for now, uncomment the line below after setting options.host above
       # to a new/valid request bin or end point URL.
       
-      # sensor.send event
+      # sensor.send events
     end
   end
 end

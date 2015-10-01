@@ -15,29 +15,28 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
-require_relative '../entity_type'
-require_relative '../generatable'
+require 'json'
+require_relative './event_type'
+require_relative './jsonable'
 
 #
-# A Response
+# Base event.
 #
 module Caliper
-	module Entities
-		module Response
-			class Response < EntityBase
-				include Caliper::Entities::Generatable
+  module Events
+    class Event
+      include Caliper::Events::Jsonable
 
-				attr_accessor :assignable, :actor, :attempt, :startedAtTime, :endedAtTime, :duration
+      attr_accessor :context, :type, :actor, :action, :object, :eventTime
 
-				def initialize
-          super
-					@type = Caliper::Entities::EntityType::RESPONSE
-					@startedAtTime = nil
-					@endedAtTime = nil
-					@duration = nil
-				end
-			end
-		end
-	end
+      def initialize()
+        @context = Caliper::Context::Context::CONTEXT
+        @type = Caliper::Events::EventType::EVENT
+        @actor = nil
+        @action = nil
+        @object = nil
+        @eventTime = nil
+      end
+    end
+  end
 end
