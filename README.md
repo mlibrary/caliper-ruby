@@ -1,7 +1,7 @@
 IMS Global caliper-ruby
 ===================
 
-caliper-ruby is a Ruby client for [Caliper](http://www.imsglobal.org) that provides an implementation of the Caliper SensorAPI™.
+caliper-ruby is a Ruby client for [Caliper](http://www.imsglobal.org/caliper) that provides an implementation of the Caliper SensorAPI™.
 
 ## development notes
 To set up dev environment and run specs
@@ -21,7 +21,7 @@ gem build caliper.gemspec
 
 ## Documentation
 
-Documentation is available at [http://imsglobal.org/caliper/java](https://imsglobal.org/caliper/java).
+Documentation is available at [http://www.imsglobal.org/caliper](https://www.imsglobal.org/caliper).
 
 ©2015 IMS Global Learning Consortium, Inc. All Rights Reserved.
 Trademark Information - http://www.imsglobal.org/copyright.html
