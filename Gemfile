@@ -7,8 +7,8 @@ source "https://rubygems.org"
 # require_all utility
 gem 'require_all'
 
-# the atomic lib
-gem 'atomic', '~> 1.1.99'
+# the Concurrent::Atomic lib
+gem 'concurrent-ruby'
 
 # translation and localization
 gem 'i18n'

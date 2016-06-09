@@ -15,14 +15,14 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'atomic'
+require 'concurrent'
 
 #
 # Extends the atomic class with several new functions.
 #
 module Caliper
 	module Stats
-		class AtomicWrapper < Atomic
+		class AtomicWrapper < Concurrent::Atomic
 
 			def initialize(value)
 				super.initialize(value)
