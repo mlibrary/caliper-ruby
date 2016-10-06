@@ -36,7 +36,7 @@ module Caliper
         actor = Caliper::Entities::Entity.new
         actor.context = nil
         actor.id = 'https://example.edu/user/554433'
-        actor.type = 'http://purl.imsglobal.org/caliper/v1/lis/Person'
+        actor.type = 'http://purl.imsglobal.org/caliper/v1/Person'
         # puts "new minimal actor entity = #{actor.to_json}"
 
         # Action
