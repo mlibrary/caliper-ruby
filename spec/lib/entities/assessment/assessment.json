@@ -4,7 +4,6 @@
   "@type": "http://purl.imsglobal.org/caliper/v1/Assessment",
   "name": "Assessment 001",
   "description": "description",
-  "objectType": [],
   "alignedLearningObjective": [],
   "keywords": [],
   "isPartOf": null,
