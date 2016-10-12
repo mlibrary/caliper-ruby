@@ -30,13 +30,12 @@ module Caliper
       include Caliper::Entities::SchemaDotOrg::CreativeWork,
               Caliper::Entities::Targetable
 
-      attr_accessor :objectType, :alignedLearningObjective, :keywords, :isPartOf, :datePublished, :version
+      attr_accessor :alignedLearningObjective, :keywords, :isPartOf, :datePublished, :version
 
       def initialize
         super
         @type = Caliper::Entities::EntityType::DIGITAL_RESOURCE
         @alignedLearningObjective = Array.new
-        @objectType = Array.new
         @keywords = Array.new
         @datePublished = nil
         @isPartOf = nil
