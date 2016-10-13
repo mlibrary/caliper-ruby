@@ -19,16 +19,16 @@ require_relative '../digital_resource'
 require_relative '../digital_resource_type'
 
 #
-#  Public: Representation of an EPUB 3 Volume.  A component of a collection.
-#  See http://www.idpf.org/epub/vocab/structure/#volume
+# Representation of an EPUB 3 Volume. A component of a collection.
+# See http://www.idpf.org/epub/vocab/structure/#volume
 #
 module Caliper
   module Entities
     module Reading
       class EPubVolume < Caliper::Entities::DigitalResource
 
-        def initialize()
-	        super
+        def initialize
+          super
           @type = Caliper::Entities::DigitalResourceType::EPUB_VOLUME
         end
       end

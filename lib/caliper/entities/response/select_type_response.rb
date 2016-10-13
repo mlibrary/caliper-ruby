@@ -23,17 +23,17 @@ require_relative './response_type'
 # The response is the identified string or a mapping to a logical identifier.
 #
 module Caliper
-	module Entities
-		module Response
-			class SelectTextResponse < Response
+  module Entities
+    module Response
+      class SelectTextResponse < Response
 
-				attr_accessor :values
+        attr_accessor :values
 
-				def initialize
+        def initialize
           super
-					@type = Caliper::Entities::Response::ResponseType::SELECTTEXT
+          @type = Caliper::Entities::Response::ResponseType::SELECTTEXT
         end
-			end
-		end
-	end
+      end
+    end
+  end
 end

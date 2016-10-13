@@ -22,7 +22,7 @@ require_relative '../digital_resource_type'
 # creative work may have many media objects associated with it on the
 # same web page. For example, a page about a single song (MusicRecording)
 # may have a music video (VideoObject), and a high and low bandwidth audio
-# stream (2 AudioObject's).  See From https://schema.org/MediaObject.
+# stream (2 AudioObject's). See From https://schema.org/MediaObject.
 #
 module Caliper
   module Entities

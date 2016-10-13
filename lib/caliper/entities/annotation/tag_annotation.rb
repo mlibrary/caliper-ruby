@@ -19,7 +19,7 @@ require_relative './annotation'
 require_relative './annotation_type'
 
 #
-#  Tag Annotation entity.
+# Tag Annotation entity.
 #
 module Caliper
   module Entities
@@ -28,7 +28,7 @@ module Caliper
 
         attr_accessor :tags
 
-        def initialize()
+        def initialize
           super
           @type = Caliper::Entities::Annotation::AnnotationType::TAG_ANNOTATION
           @tags = Array.new

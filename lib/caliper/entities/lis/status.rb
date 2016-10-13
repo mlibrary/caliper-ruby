@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 #
-# LIS Status
+# LIS Status.
 #
 module Caliper
   module Entities

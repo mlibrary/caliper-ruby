@@ -19,7 +19,7 @@ require_relative './media_object'
 require_relative './media_object_type'
 
 #
-# A video object embedded in a web page.  See https://schema.org/VideoObject.
+# A video object embedded in a web page. See https://schema.org/VideoObject.
 #
 module Caliper
   module Entities

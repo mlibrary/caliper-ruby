@@ -21,8 +21,8 @@
 # than at runtime if a marker annotation was defined instead.
 #
 module Caliper
-	module Entities
-		module Generatable
-		end
-	end
+  module Entities
+    module Generatable
+    end
+  end
 end

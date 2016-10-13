@@ -23,16 +23,16 @@ require_relative './response_type'
 # 'agree or disagree', etc.
 #
 module Caliper
-	module Entities
-		module Response
-			class TrueFalseResponse < Response
-				attr_accessor :values
+  module Entities
+    module Response
+      class TrueFalseResponse < Response
+        attr_accessor :values
 
-				def initialize
+        def initialize
           super
-					@type = Caliper::Entities::Response::ResponseType::TRUEFALSE
-				end
-			end
-		end
-	end
+          @type = Caliper::Entities::Response::ResponseType::TRUEFALSE
+        end
+      end
+    end
+  end
 end

@@ -17,6 +17,7 @@
 
 require_relative '../assignable/assignable_digital_resource'
 require_relative '../assignable/assignable_digital_resource_type'
+
 #
 # Assessment entity.
 #

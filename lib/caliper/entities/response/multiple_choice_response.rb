@@ -19,20 +19,20 @@ require_relative './response'
 require_relative './response_type'
 
 #
-# Represents a response to a multiple choice question that permits a single option to be selected
+# Represents a response to a multiple choice question that permits a single option to be selected.
 #
 module Caliper
-	module Entities
-		module Response
-			class MultipleChoiceResponse < Response
+  module Entities
+    module Response
+      class MultipleChoiceResponse < Response
 
-				attr_accessor :values
+        attr_accessor :values
 
-				def initialize
+        def initialize
           super
-					@type = Caliper::Entities::Response::ResponseType::MULTIPLECHOICE
-				end
-			end
-		end
-	end
+          @type = Caliper::Entities::Response::ResponseType::MULTIPLECHOICE
+        end
+      end
+    end
+  end
 end

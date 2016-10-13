@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 #
-#  W3C Membership.
+# A W3C Membership.
 #
 module Caliper
   module Entities

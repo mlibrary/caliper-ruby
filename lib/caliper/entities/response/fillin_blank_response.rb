@@ -23,17 +23,17 @@ require_relative './response_type'
 # designed with one or more "fill in the blank" option prompts.
 #
 module Caliper
-	module Entities
-		module Response
-			class FillinBlankResponse < Response
+  module Entities
+    module Response
+      class FillinBlankResponse < Response
 
-				attr_accessor :values
+        attr_accessor :values
 
-				def initialize
+        def initialize
           super
-					@type = Caliper::Entities::Response::ResponseType::FILLINBLANK
-				end
-			end
-		end
-	end
+          @type = Caliper::Entities::Response::ResponseType::FILLINBLANK
+        end
+      end
+    end
+  end
 end

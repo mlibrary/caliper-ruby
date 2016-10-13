@@ -19,7 +19,7 @@ require_relative './entity_base'
 require_relative './entity_type'
 
 #
-#  Learning Objective
+# A learning objective.
 #
 module Caliper
   module Entities

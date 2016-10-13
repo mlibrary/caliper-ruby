@@ -22,10 +22,10 @@ module Caliper
   module Entities
     module Annotation
       module AnnotationType
-        BOOKMARK_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation"
-        HIGHLIGHT_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/HighlightAnnotation"
-        SHARED_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/SharedAnnotation"
-        TAG_ANNOTATION = "http://purl.imsglobal.org/caliper/v1/TagAnnotation"
+        BOOKMARK_ANNOTATION = 'http://purl.imsglobal.org/caliper/v1/BookmarkAnnotation'
+        HIGHLIGHT_ANNOTATION = 'http://purl.imsglobal.org/caliper/v1/HighlightAnnotation'
+        SHARED_ANNOTATION = 'http://purl.imsglobal.org/caliper/v1/SharedAnnotation'
+        TAG_ANNOTATION = 'http://purl.imsglobal.org/caliper/v1/TagAnnotation'
       end
     end
   end

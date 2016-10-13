@@ -18,17 +18,10 @@
 require 'json'
 
 #
-#  Module that supports ser-des for Caliper Envelope
+#  Module that supports serialization/deserialization for Caliper Envelope.
 #
 module Caliper
   module Jsonable
-
-    def self.included(base)
-      base.extend ClassMethods
-    end
-
-    module ClassMethods
-    end
 
     def to_json(*a)
       # puts 'Jsonable: to_json invoked'
@@ -42,16 +35,15 @@ module Caliper
         # puts "setting #{key}: #{value}"
         attribute_key = key[1..-1]
         if (key[1..-1] == 'id' || key[1..-1] == 'type' || key[1..-1] == 'context')
-	        ## prefix with @ char for linked json data
-	        attribute_key = "@#{attribute_key}"
+          # prefix with @ char for linked json data
+          attribute_key = "@#{attribute_key}"
         end
         result[attribute_key] = value
       end
       result.to_json(*a)
     end
 
-    def from_json json_hash
-      data = json_hash
+    def from_json(json_hash)
       # puts "Jsonable: from_json: json_hash = #{json_hash}"
       # self.context = data['@context']
       # self.type = data['@type']
@@ -60,12 +52,11 @@ module Caliper
         # puts "Jsonable - adding #{key} : #{value}"
         self.instance_variable_set "@#{key}", value
       end
-      return self
+      self
     end
 
     def eql?(other)
       @context == other.context && @apiKey == other.apiKey
-      # @context == other.context && @sensorId == other.sensorId && @apiKey == other.apiKey
     end
   end
 end

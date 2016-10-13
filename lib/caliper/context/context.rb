@@ -18,14 +18,13 @@
 #
 # JSON-LD context.
 #
-
 module Caliper
   module Context
     module Context
-      CONTEXT = "http://purl.imsglobal.org/ctx/caliper/v1/Context"
-      # ENTITY = "http://purl.imsglobal.org/ctx/caliper/v1/Entity"
-      # ENVELOPE = "http://purl.imsglobal.org/caliper/ctx/v1/Envelope"
-      # EVENT = "http://purl.imsglobal.org/ctx/caliper/v1/Event"
+      CONTEXT = 'http://purl.imsglobal.org/ctx/caliper/v1/Context'
+      # ENTITY = 'http://purl.imsglobal.org/ctx/caliper/v1/Entity'
+      # ENVELOPE = 'http://purl.imsglobal.org/caliper/ctx/v1/Envelope'
+      # EVENT = 'http://purl.imsglobal.org/ctx/caliper/v1/Event'
     end
   end
 end

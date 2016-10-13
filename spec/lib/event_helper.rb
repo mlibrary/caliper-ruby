@@ -82,10 +82,10 @@ module Helper
 
     # LIS Course Offering
     course = Caliper::Entities::LIS::CourseOffering.new
-    course.id = "https://example.edu/politicalScience/2015/american-revolution-101"
-    course.name = "Political Science 101: The American Revolution"
-    course.courseNumber = "POL101"
-    course.academicSession = "Fall-2015"
+    course.id = 'https://example.edu/politicalScience/2015/american-revolution-101'
+    course.name = 'Political Science 101: The American Revolution'
+    course.courseNumber = 'POL101'
+    course.academicSession = 'Fall-2015'
     course.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
     course.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
@@ -93,25 +93,25 @@ module Helper
     section = Caliper::Entities::LIS::CourseSection.new
     section.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
     section.name = 'American Revolution 101'
-    section.courseNumber = "POL101"
-    section.academicSession = "Fall-2015"
+    section.courseNumber = 'POL101'
+    section.academicSession = 'Fall-2015'
     section.subOrganizationOf = course
     section.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
     section.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
     # LIS Group
     group = Caliper::Entities::LIS::Group.new
-    group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
-    group.name = "Discussion Group 001"
+    group.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001'
+    group.name = 'Discussion Group 001'
     group.subOrganizationOf = section
     group.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
     membership = Caliper::Entities::LIS::Membership.new
-    membership.id = "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433"
-    membership.name = "American Revolution 101"
-    membership.description = "Roster entry"
-    membership.member = "https://example.edu/user/554433"
-    membership.organization = "https://example.edu/politicalScience/2015/american-revolution-101/section/001"
+    membership.id = 'https://example.edu/politicalScience/2015/american-revolution-101/roster/554433'
+    membership.name = 'American Revolution 101'
+    membership.description = 'Roster entry'
+    membership.member = 'https://example.edu/user/554433'
+    membership.organization = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
     membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
     membership.status = Caliper::Entities::LIS::Status::ACTIVE
     membership.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)

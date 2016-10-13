@@ -20,10 +20,10 @@ require_relative '../entity_type'
 require_relative '../generatable'
 
 #
-# LIS Result
+# LIS Result.
 #
 module Caliper
-	module Entities
+  module Entities
     module Outcome
       class Result < EntityBase
         include Caliper::Entities::Generatable
@@ -47,5 +47,5 @@ module Caliper
         end
       end
     end
-	end
+  end
 end

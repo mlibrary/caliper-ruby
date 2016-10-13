@@ -20,7 +20,7 @@ require_relative '../entity_type'
 require_relative '../generatable'
 
 #
-#  Attempt entity on an Assignable.
+# Attempt entity on an Assignable.
 #
 module Caliper
   module Entities
@@ -37,7 +37,6 @@ module Caliper
           @endedAtTime = nil
           @duration = nil
         end
-
       end
     end
   end

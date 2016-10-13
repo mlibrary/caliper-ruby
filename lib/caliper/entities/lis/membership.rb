@@ -20,7 +20,7 @@ require_relative '../entity_type'
 require_relative '../w3c/membership'
 
 #
-#  W3C Membership.
+# W3C Membership.
 #
 module Caliper
   module Entities
@@ -34,7 +34,6 @@ module Caliper
           super
           @type = Caliper::Entities::EntityType::MEMBERSHIP
         end
-
       end
     end
   end

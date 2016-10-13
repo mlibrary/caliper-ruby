@@ -19,14 +19,17 @@ require 'rest-client'
 require_relative './envelope'
 require_relative './event_store_requestor'
 
+#
+# HTTP requestor.
+#
 module Caliper
-	module Request
-		class HttpRequestor < Caliper::Request::EventStoreRequestor
+  module Request
+    class HttpRequestor < Caliper::Request::EventStoreRequestor
 
-			attr_accessor :options
+      attr_accessor :options
 
-			def initialize(options)
-				@options = options
+      def initialize(options)
+        @options = options
       end
 
       def send(sensor, data)
@@ -35,6 +38,6 @@ module Caliper
         # What about the api key (authorization)?
         RestClient.post @options['host'], payload, :content_type => :json, :accept => :json
       end
-		end
-	end
+    end
+  end
 end
