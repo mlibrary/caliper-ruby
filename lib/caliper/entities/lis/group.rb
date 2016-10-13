@@ -20,7 +20,7 @@ require_relative '../entity_type'
 require_relative '../w3c/organization'
 
 #
-#  LIS Group.
+# LIS Group.
 #
 module Caliper
   module Entities

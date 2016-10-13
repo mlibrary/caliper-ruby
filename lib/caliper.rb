@@ -16,19 +16,19 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 module Caliper
-  autoload :Client, "caliper/client"
-  
+  autoload :Client, 'caliper/client'
+
   module Consumer
-    autoload :Base, "caliper/consumer/base"
-    autoload :Queue, "caliper/consumer/queue"
-    autoload :Socket, "caliper/consumer/socket"
+    autoload :Base, 'caliper/consumer/base'
+    autoload :Queue, 'caliper/consumer/queue'
+    autoload :Socket, 'caliper/consumer/socket'
   end
 
   module Event
-    autoload :Base, "caliper/events/base"
+    autoload :Base, 'caliper/events/base'
   end
 
   module Entities
-    autoload :Base, "caliper/entity/base"
+    autoload :Base, 'caliper/entity/base'
   end
 end

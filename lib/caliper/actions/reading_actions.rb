@@ -18,12 +18,11 @@
 #
 # Reading actions.
 #
-
 module Caliper
   module Actions
     module ReadingActions
-      SEARCHED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Searched"
-      VIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed"
+      SEARCHED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Searched'
+      VIEWED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed'
     end
   end
 end

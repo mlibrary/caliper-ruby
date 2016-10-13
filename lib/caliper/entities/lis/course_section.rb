@@ -19,7 +19,7 @@ require_relative './course_offering'
 require_relative '../entity_type'
 
 #
-#  LIS Course Section.
+# LIS Course Section.
 #
 module Caliper
   module Entities

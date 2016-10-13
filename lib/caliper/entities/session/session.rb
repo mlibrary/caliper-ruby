@@ -21,7 +21,7 @@ require_relative '../generatable'
 require_relative '../targetable'
 
 #
-#  Session Entity.
+# A session.
 #
 module Caliper
   module Entities

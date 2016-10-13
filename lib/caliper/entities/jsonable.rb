@@ -19,18 +19,11 @@ require 'json'
 require_relative './entity_type'
 
 #
-#  Module that supports ser-des for Caliper Entities/JSON
+# Module that supports serialization/deserialization for Caliper Entities/JSON.
 #
 module Caliper
   module Entities
     module Jsonable
-
-      def self.included(base)
-        base.extend ClassMethods
-      end
-
-      module ClassMethods
-      end
 
       def to_json(*a)
         # puts 'Jsonable: to_json invoked'
@@ -56,7 +49,7 @@ module Caliper
         result.to_json(*a)
       end
 
-      def from_json json_hash
+      def from_json(json_hash)
         data = json_hash
         # puts "Jsonable: from_json: json_hash = #{json_hash}"
         self.context = data['@context']
@@ -68,7 +61,7 @@ module Caliper
           # puts "Jsonable - adding #{key} : #{value}"
           self.instance_variable_set "@#{key}", value
         end
-        return self
+        self
       end
 
       def eql?(other)

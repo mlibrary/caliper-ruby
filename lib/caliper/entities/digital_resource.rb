@@ -22,7 +22,7 @@ require_relative './targetable'
 
 #
 # Caliper representation of a CreativeWork. We add learning specific attributes, including a list of
-# LearningObjective learning objectives and a list of String keywords.  See https://schema.org/CreativeWork.
+# LearningObjective learning objectives and a list of String keywords. See https://schema.org/CreativeWork.
 #
 module Caliper
   module Entities

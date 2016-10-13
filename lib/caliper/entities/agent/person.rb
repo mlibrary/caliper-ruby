@@ -20,8 +20,7 @@ require_relative '../entity_type'
 require_relative '../foaf/agent.rb'
 
 #
-# An FOAF LIS Person
-# @extends Agent
+# An FOAF LIS Person.
 #
 module Caliper
   module Entities

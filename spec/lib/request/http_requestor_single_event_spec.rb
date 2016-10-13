@@ -93,10 +93,10 @@ module Caliper
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
-        course.id = "https://example.edu/politicalScience/2015/american-revolution-101"
-        course.name = "Political Science 101: The American Revolution"
-        course.courseNumber = "POL101"
-        course.academicSession = "Fall-2015"
+        course.id = 'https://example.edu/politicalScience/2015/american-revolution-101'
+        course.name = 'Political Science 101: The American Revolution'
+        course.courseNumber = 'POL101'
+        course.academicSession = 'Fall-2015'
         course.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
         course.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
@@ -104,25 +104,25 @@ module Caliper
         section = Caliper::Entities::LIS::CourseSection.new
         section.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
         section.name = 'American Revolution 101'
-        section.courseNumber = "POL101"
-        section.academicSession = "Fall-2015"
+        section.courseNumber = 'POL101'
+        section.academicSession = 'Fall-2015'
         section.subOrganizationOf = course
         section.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
         section.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Group
         group = Caliper::Entities::LIS::Group.new
-        group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
-        group.name = "Discussion Group 001"
+        group.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001'
+        group.name = 'Discussion Group 001'
         group.subOrganizationOf = section
         group.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         membership = Caliper::Entities::LIS::Membership.new
-        membership.id = "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433"
-        membership.name = "American Revolution 101"
-        membership.description = "Roster entry"
-        membership.member = "https://example.edu/user/554433"
-        membership.organization = "https://example.edu/politicalScience/2015/american-revolution-101/section/001"
+        membership.id = 'https://example.edu/politicalScience/2015/american-revolution-101/roster/554433'
+        membership.name = 'American Revolution 101'
+        membership.description = 'Roster entry'
+        membership.member = 'https://example.edu/user/554433'
+        membership.organization = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
         membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
         membership.status = Caliper::Entities::LIS::Status::ACTIVE
         membership.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
@@ -142,12 +142,12 @@ module Caliper
 
         # The Sensor
         options = Caliper::Options.new
-        sensor = Caliper::Sensor.new("https://example.edu/sensor/001", options)
+        sensor = Caliper::Sensor.new('https://example.edu/sensor/001', options)
         requestor = Caliper::Request::HttpRequestor.new(options)
         json_payload = requestor.generate_payload(sensor, event)
 
         # Swap out sendTime=DateTime.now() in favor of fixture value (or test will most assuredly fail).
-        json_payload_sub = json_payload.sub(/\"sendTime\":\"[^\"]*\"/, "\"sendTime\":\"2015-09-15T11:05:01.000Z\"")
+        json_payload_sub = json_payload.sub(/\'sendTime\':\'[^\']*\'/, '\'sendTime\':\'2015-09-15T11:05:01.000Z\'')
 
         # Load JSON from caliper-common-fixtures for comparison
         # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
@@ -156,10 +156,10 @@ module Caliper
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
         expect(json_payload_sub).to be_json_eql(expected_json)
 
-        # puts "JSON from file = #{data_hash}"
+        # puts 'JSON from file = #{data_hash}'
         # deser_envelope = Caliper::Request::Envelope.new
         # deser_envelope.from_json data_hash
-        # puts "Envelope from JSON = #{deser_envelope.to_json}"
+        # puts 'Envelope from JSON = #{deser_envelope.to_json}'
 
         # Ensure that the deserialized shared event object conforms
         # expect(json_payload_sub).to eql(deser_envelope)

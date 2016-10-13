@@ -20,22 +20,22 @@ require_relative '../digital_resource_type'
 require_relative '../targetable'
 
 #
-# A Frame
+# A Frame.
 #
 module Caliper
-	module Entities
-		module Reading
-			class Frame < Caliper::Entities::DigitalResource
-				include Caliper::Entities::Targetable
+  module Entities
+    module Reading
+      class Frame < Caliper::Entities::DigitalResource
+        include Caliper::Entities::Targetable
 
-				attr_accessor :index
+        attr_accessor :index
 
-				def initialize
-					super
-					@type = Caliper::Entities::DigitalResourceType::FRAME
-					@index = 0
-				end
-			end
-		end
-	end
+        def initialize
+          super
+          @type = Caliper::Entities::DigitalResourceType::FRAME
+          @index = 0
+        end
+      end
+    end
+  end
 end

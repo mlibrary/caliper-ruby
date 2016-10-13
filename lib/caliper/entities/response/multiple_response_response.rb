@@ -22,17 +22,17 @@ require_relative './response_type'
 # Representation of a response to a multiple choice question that permits one or more options to be selected.
 #
 module Caliper
-	module Entities
-		module Response
-			class MultipleResponseResponse < Response
+  module Entities
+    module Response
+      class MultipleResponseResponse < Response
 
-				attr_accessor :values
+        attr_accessor :values
 
-				def initialize
+        def initialize
           super
-					@type = Caliper::Entities::Response::ResponseType::MULTIPLERESPONSE
-				end
-			end
-		end
-	end
+          @type = Caliper::Entities::Response::ResponseType::MULTIPLERESPONSE
+        end
+      end
+    end
+  end
 end

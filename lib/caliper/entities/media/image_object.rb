@@ -19,7 +19,7 @@ require_relative './media_object'
 require_relative './media_object_type'
 
 #
-# A image object embedded in a web page.  See https://schema.org/ImageObject
+# A image object embedded in a web page. See https://schema.org/ImageObject
 #
 module Caliper
   module Entities

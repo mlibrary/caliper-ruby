@@ -24,7 +24,7 @@ require_relative './schemadotorg/thing'
 require_relative './jsonable'
 
 #
-#  The base Caliper Entity.  Analogous to a schema.org Thing.
+# The base Caliper Entity.  Analogous to a schema.org Thing.
 #
 module Caliper
   module Entities
@@ -33,7 +33,7 @@ module Caliper
 
       attr_accessor :name, :description, :extensions, :dateCreated, :dateModified
 
-      def initialize()
+      def initialize
         super
         @name = nil
         @description = nil

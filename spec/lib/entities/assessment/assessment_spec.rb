@@ -24,9 +24,9 @@ module Caliper
   module Entities
     module Assessment
 
-      describe Assessment do
+      describe Caliper::Entities::Assessment::Assessment do
 
-        it "should ensure that a base entity is correctly created and serialized" do
+        it 'should ensure that a base entity is correctly created and serialized' do
           entity = Caliper::Entities::Assessment::Assessment.new
           entity.id = 'https://example.edu/politicalScience/2014/american-revolution-101/assessment/001'
           entity.name = 'Assessment 001'
@@ -36,13 +36,13 @@ module Caliper
           entity.dateModified = '2015-03-15T23:09:11.000Z'
           # puts "Entity JSON = #{entity.to_json}"
 
-          # Compare JSON ouput
+          # Compare JSON output.
           file = File.read('spec/lib/entities/assessment/assessment.json')
           data_hash = JSON.parse(file)
           expected_json = data_hash.to_json # convert hash back to JSON string after parse
           expect(entity.to_json).to be_json_eql(expected_json)#.excluding("@class")
 
-          # Compare Deserialized JSON to desired Entity
+          # Compare Deserialized JSON to desired entity.
           des_entity = Caliper::Entities::Assessment::Assessment.new
           des_entity.from_json data_hash
           # puts "Object from JSON = #{des_entity.to_json}"

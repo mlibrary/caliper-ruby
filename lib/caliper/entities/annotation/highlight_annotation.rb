@@ -19,7 +19,7 @@ require_relative './annotation'
 require_relative './annotation_type'
 
 #
-#  Highlight Annotation entity.
+# Highlight Annotation entity.
 #
 module Caliper
   module Entities
@@ -28,7 +28,7 @@ module Caliper
 
         attr_accessor :selectionText, :selection
 
-        def initialize()
+        def initialize
           super
           @type = Caliper::Entities::Annotation::AnnotationType::HIGHLIGHT_ANNOTATION
           @selectionText = nil

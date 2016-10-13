@@ -18,7 +18,6 @@
 #
 # Session actions.
 #
-
 module Caliper
   module Actions
     module SessionActions

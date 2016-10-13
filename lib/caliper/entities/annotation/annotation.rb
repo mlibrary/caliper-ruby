@@ -20,22 +20,22 @@ require_relative '../entity_type'
 require_relative '../generatable'
 
 #
-#  Annotation entity.
+# Annotation entity.
 #
 module Caliper
-	module Entities
-		module Annotation
-			class Annotation < EntityBase
-				include Caliper::Entities::Generatable
+  module Entities
+    module Annotation
+      class Annotation < EntityBase
+        include Caliper::Entities::Generatable
 
-				attr_accessor :annotated
+        attr_accessor :annotated
 
-				def initialize
-					super
-					@type = Caliper::Entities::EntityType::ANNOTATION
-					@annotated = nil
-				end
-			end
-		end
-	end
+        def initialize
+          super
+          @type = Caliper::Entities::EntityType::ANNOTATION
+          @annotated = nil
+        end
+      end
+    end
+  end
 end

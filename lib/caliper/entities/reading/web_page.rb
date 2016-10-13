@@ -20,19 +20,19 @@ require_relative '../digital_resource_type'
 require_relative '../schemadotorg/web_page'
 
 #
-# Web Page
+# A web page.
 #
 module Caliper
-	module Entities
-		module Reading
-			class WebPage < Caliper::Entities::DigitalResource
-				include Caliper::Entities::SchemaDotOrg::WebPage
+  module Entities
+    module Reading
+      class WebPage < Caliper::Entities::DigitalResource
+        include Caliper::Entities::SchemaDotOrg::WebPage
 
-				def initialize()
-					super
-					@type = Caliper::Entities::DigitalResourceType::WEB_PAGE
+        def initialize
+          super
+          @type = Caliper::Entities::DigitalResourceType::WEB_PAGE
         end
-			end
-		end
-	end
+      end
+    end
+  end
 end

@@ -18,14 +18,13 @@
 #
 # Assessment actions.
 #
-
 module Caliper
   module Actions
     module AssessmentActions
-      PAUSED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Paused"
-      RESTARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted"
-      STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
-      SUBMITTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted"
+      PAUSED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Paused'
+      RESTARTED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Restarted'
+      STARTED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Started'
+      SUBMITTED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Submitted'
     end
   end
 end

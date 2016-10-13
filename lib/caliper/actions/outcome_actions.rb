@@ -18,11 +18,10 @@
 #
 # Outcome actions.
 #
-
 module Caliper
   module Actions
     module OutcomeActions
-      GRADED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Graded"
+      GRADED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Graded'
     end
   end
 end

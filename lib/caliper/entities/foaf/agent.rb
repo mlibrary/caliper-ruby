@@ -20,7 +20,7 @@
 #
 module Caliper
   module Entities
-	  module FOAF
+    module FOAF
       module Agent
 
       end

@@ -16,13 +16,12 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 #
-# Profile actions.
+# Navigation actions.
 #
-
 module Caliper
   module Actions
     module NavigationActions
-      NAVIGATED_TO = "http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo"
+      NAVIGATED_TO = 'http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo'
     end
   end
 end

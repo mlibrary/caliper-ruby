@@ -22,11 +22,11 @@ require_relative './thing'
 # photographs, software programs, etc.
 #
 module Caliper
-	module Entities
-		module SchemaDotOrg
-			module CreativeWork
-				include Thing
-			end
-		end
-	end
+  module Entities
+    module SchemaDotOrg
+      module CreativeWork
+        include Thing
+      end
+    end
+  end
 end

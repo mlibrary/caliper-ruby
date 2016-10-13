@@ -18,14 +18,13 @@
 #
 # Assessment item actions.
 #
-
 module Caliper
   module Actions
     module AssessmentItemActions
-      COMPLETED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Completed"
-      REVIEWED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed"
-      SKIPPED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped"
-      STARTED = "http://purl.imsglobal.org/vocab/caliper/v1/action#Started"
+      COMPLETED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Completed'
+      REVIEWED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Reviewed'
+      SKIPPED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Skipped'
+      STARTED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Started'
     end
   end
 end

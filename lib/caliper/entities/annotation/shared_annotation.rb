@@ -19,7 +19,7 @@ require_relative './annotation'
 require_relative './annotation_type'
 
 #
-#  Shared Annotation entity.
+# Shared Annotation entity.
 #
 module Caliper
   module Entities
@@ -28,10 +28,10 @@ module Caliper
 
         attr_accessor :withAgents # list of Agent objects
 
-        def initialize()
+        def initialize
           super
           @type = Caliper::Entities::Annotation::AnnotationType::SHARED_ANNOTATION
-	        @withAgents = Array.new
+          @withAgents = Array.new
         end
       end
     end

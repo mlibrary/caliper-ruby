@@ -27,8 +27,8 @@ module Caliper
     module Reading
       class EpubPart < Caliper::Entities::DigitalResource
 
-        def initialize()
-	        super
+        def initialize
+          super
           @type = Caliper::Entities::DigitalResourceType::EPUB_PART
         end
       end

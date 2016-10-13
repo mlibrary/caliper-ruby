@@ -21,7 +21,7 @@ require_relative '../foaf/agent'
 require_relative '../schemadotorg/software_application'
 
 #
-#  Software Application (from schema.org)
+# A software application (from schema.org).
 #
 module Caliper
   module Entities
@@ -30,7 +30,7 @@ module Caliper
         include Caliper::Entities::FOAF::Agent,
                 Caliper::Entities::SchemaDotOrg::SoftwareApplication
 
-        def initialize()
+        def initialize
           super
           @type = Caliper::Entities::EntityType::SOFTWARE_APPLICATION
         end

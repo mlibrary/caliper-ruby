@@ -29,7 +29,7 @@ module Caliper
 
       describe Person do
 
-        it "should ensure that a Person is correctly created and serialized" do
+        it 'should ensure that a Person is correctly created and serialized' do
           student = Caliper::Entities::Agent::Person.new
           student.id = 'https://example.edu/user/123456789'
           student.description = 'A bright individual'

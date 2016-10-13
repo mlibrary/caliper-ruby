@@ -29,8 +29,8 @@ module Caliper
       include Caliper::Events::EventContext
 
       def initialize
-	      super
-	      @type = Caliper::Events::EventType::OUTCOME
+        super
+        @type = Caliper::Events::EventType::OUTCOME
         @action = Caliper::Actions::OutcomeActions::GRADED
         @target = nil
         @generated = nil

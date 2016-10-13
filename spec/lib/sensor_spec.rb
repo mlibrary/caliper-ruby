@@ -22,9 +22,9 @@ require_relative './event_helper'
 module Caliper
 
   describe Sensor do
-  	include Helper
+    include Helper
 
-    it "should ensure that we can create and send an event" do
+    it 'should ensure that we can create and send an event' do
 
       id = 'https://example.edu/sensor/001'
       options = {
@@ -34,11 +34,11 @@ module Caliper
 
       sensor = Sensor.new id, options
       event  = session_event
-      
-      # NOTE: To test sending events to an actual endpoint, 
+
+      # NOTE: To test sending events to an actual endpoint,
       # for now, uncomment the line below after setting options.host above
       # to a new/valid request bin or end point URL.
-      
+
       # sensor.send event
     end
   end

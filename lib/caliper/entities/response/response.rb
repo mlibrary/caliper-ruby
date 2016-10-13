@@ -20,24 +20,24 @@ require_relative '../entity_type'
 require_relative '../generatable'
 
 #
-# A Response
+# A response.
 #
 module Caliper
-	module Entities
-		module Response
-			class Response < EntityBase
-				include Caliper::Entities::Generatable
+  module Entities
+    module Response
+      class Response < EntityBase
+        include Caliper::Entities::Generatable
 
-				attr_accessor :assignable, :actor, :attempt, :startedAtTime, :endedAtTime, :duration
+        attr_accessor :assignable, :actor, :attempt, :startedAtTime, :endedAtTime, :duration
 
-				def initialize
+        def initialize
           super
-					@type = Caliper::Entities::EntityType::RESPONSE
-					@startedAtTime = nil
-					@endedAtTime = nil
-					@duration = nil
-				end
-			end
-		end
-	end
+          @type = Caliper::Entities::EntityType::RESPONSE
+          @startedAtTime = nil
+          @endedAtTime = nil
+          @duration = nil
+        end
+      end
+    end
+  end
 end

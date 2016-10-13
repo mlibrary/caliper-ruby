@@ -50,12 +50,12 @@ module Caliper
 
         # The parent assessment
         assessment = Caliper::Entities::Assessment::Assessment.new
-        assessment.id = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001"
-        assessment.name = "American Revolution - Key Figures Assessment"
+        assessment.id = 'https://example.edu/politicalScience/2015/american-revolution-101/assessment/001'
+        assessment.name = 'American Revolution - Key Figures Assessment'
         assessment.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
         assessment.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
         assessment.datePublished = Time.utc(2015,8,15,9,30,0).iso8601(3)
-        assessment.version = "1.0"
+        assessment.version = '1.0'
         assessment.dateToActivate = Time.utc(2015,8,16,5,0,0).iso8601(3)
         assessment.dateToShow = Time.utc(2015,8,16,5,0,0).iso8601(3)
         assessment.dateToStartOn = Time.utc(2015,8,16,5,0,0).iso8601(3)
@@ -66,20 +66,20 @@ module Caliper
 
         # Object
         item = Caliper::Entities::Assessment::AssessmentItem.new
-        item.id = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001/item/001"
-        item.name = "Assessment Item 1"
+        item.id = 'https://example.edu/politicalScience/2015/american-revolution-101/assessment/001/item/001'
+        item.name = 'Assessment Item 1'
         item.isPartOf = assessment
         item.maxAttempts = 2
         item.maxSubmits = 2
         item.maxScore = 1.0
-        item.version = "1.0"
+        item.version = '1.0'
         item.isTimeDependent = false
 
         # Generated attempt
         attempt = Caliper::Entities::Assignable::Attempt.new
-        attempt.id = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001/item/001/attempt/789"
-        attempt.actor = "https://example.edu/user/554433"
-        attempt.assignable = "https://example.edu/politicalScience/2015/american-revolution-101/assessment/001"
+        attempt.id = 'https://example.edu/politicalScience/2015/american-revolution-101/assessment/001/item/001/attempt/789'
+        attempt.actor = 'https://example.edu/user/554433'
+        attempt.assignable = 'https://example.edu/politicalScience/2015/american-revolution-101/assessment/001'
         attempt.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
         attempt.count = 1
         attempt.startedAtTime = Time.utc(2015,9,15,10,15,0).iso8601(3)
@@ -92,10 +92,10 @@ module Caliper
 
         # LIS Course Offering
         course = Caliper::Entities::LIS::CourseOffering.new
-        course.id = "https://example.edu/politicalScience/2015/american-revolution-101"
-        course.name = "Political Science 101: The American Revolution"
-        course.courseNumber = "POL101"
-        course.academicSession = "Fall-2015"
+        course.id = 'https://example.edu/politicalScience/2015/american-revolution-101'
+        course.name = 'Political Science 101: The American Revolution'
+        course.courseNumber = 'POL101'
+        course.academicSession = 'Fall-2015'
         course.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
         course.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
@@ -103,25 +103,25 @@ module Caliper
         section = Caliper::Entities::LIS::CourseSection.new
         section.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
         section.name = 'American Revolution 101'
-        section.courseNumber = "POL101"
-        section.academicSession = "Fall-2015"
+        section.courseNumber = 'POL101'
+        section.academicSession = 'Fall-2015'
         section.subOrganizationOf = course
         section.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
         section.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
         # LIS Group
         group = Caliper::Entities::LIS::Group.new
-        group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
-        group.name = "Discussion Group 001"
+        group.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001'
+        group.name = 'Discussion Group 001'
         group.subOrganizationOf = section
         group.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
         membership = Caliper::Entities::LIS::Membership.new
-        membership.id = "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433"
-        membership.name = "American Revolution 101"
-        membership.description = "Roster entry"
-        membership.member = "https://example.edu/user/554433"
-        membership.organization = "https://example.edu/politicalScience/2015/american-revolution-101/section/001"
+        membership.id = 'https://example.edu/politicalScience/2015/american-revolution-101/roster/554433'
+        membership.name = 'American Revolution 101'
+        membership.description = 'Roster entry'
+        membership.member = 'https://example.edu/user/554433'
+        membership.organization = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
         membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
         membership.status = Caliper::Entities::LIS::Status::ACTIVE
         membership.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
@@ -142,12 +142,12 @@ module Caliper
         file = File.read('spec/fixtures/caliperAssessmentItemStartedEvent.json')
         data_hash = JSON.parse(file)
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        expect(event.to_json).to be_json_eql(expected_json)#.excluding("actor", "action", "object", "target", "generated", "ed_app", "group")
+        expect(event.to_json).to be_json_eql(expected_json)#.excluding('actor', 'action', 'object', 'target', 'generated', 'ed_app', 'group')
 
-        # puts "JSON from file = #{data_hash}"
+        # puts 'JSON from file = #{data_hash}'
         deser_event = AssessmentItemEvent.new
         deser_event.from_json data_hash
-        # puts "AssessmentItemEvent from JSON = #{deser_event.to_json}"
+        # puts 'AssessmentItemEvent from JSON = #{deser_event.to_json}'
 
         # Ensure that the deserialized bookmark event object conforms
         expect(event).to eql(deser_event)

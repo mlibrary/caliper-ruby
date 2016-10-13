@@ -28,8 +28,8 @@ module Caliper
       include Caliper::Events::EventContext
 
       def initialize
-	      super
-	      @type = Caliper::Events::EventType::MEDIA
+        super
+        @type = Caliper::Events::EventType::MEDIA
         @target = nil
         @generated = nil
         @edApp = nil

@@ -20,7 +20,7 @@ require_relative '../entity_type'
 require_relative '../w3c/organization'
 
 #
-# W3C Organization
+# W3C Organization.
 #
 module Caliper
   module Entities

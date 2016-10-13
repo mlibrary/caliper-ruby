@@ -31,8 +31,8 @@ module Caliper
       attr_accessor :navigatedFrom
 
       def initialize
-	      super
-	      @type = Caliper::Events::EventType::NAVIGATION
+        super
+        @type = Caliper::Events::EventType::NAVIGATION
         @action = Caliper::Actions::NavigationActions::NAVIGATED_TO
         @navigatedFrom = nil
         @target = nil

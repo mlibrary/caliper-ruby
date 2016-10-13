@@ -16,22 +16,18 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 #
-# Options
+# Options.
 #
 module Caliper
   class Options
-    attr_accessor :host
-    attr_accessor :api_key
-    attr_accessor :connection_request_time_out
-    attr_accessor :connection_time_out
-    attr_accessor :socket_time_out
-  end
+    attr_accessor :host, :api_key, :connection_request_time_out, :connection_time_out, :socket_time_out
 
-  def initialize(options = {})
-    self.host options[:host] || Defaults.HOST
-    self.api_key options[:api_key] || ''
-    self.connection_request_time_out options[:connection_request_time_out] || Defaults.CONNECTION_REQUEST_TIMEOUT
-    self.connection_time_out options[:connection_time_out] || Defaults.CONNECTION_TIMEOUT
-    self.socket_time_out options[:socket_time_out] || Defaults.SOCKET_TIMEOUT
+    def initialize(options = {})
+      self.host = options[:host] || Defaults.HOST
+      self.api_key = options[:api_key] || ''
+      self.connection_request_time_out = options[:connection_request_time_out] || Defaults.CONNECTION_REQUEST_TIMEOUT
+      self.connection_time_out = options[:connection_time_out] || Defaults.CONNECTION_TIMEOUT
+      self.socket_time_out = options[:socket_time_out] || Defaults.SOCKET_TIMEOUT
+    end
   end
 end

@@ -20,7 +20,7 @@ require_relative '../entity_type'
 require_relative '../w3c/organization'
 
 #
-#  LIS Course Offering.
+# LIS Course Offering.
 #
 module Caliper
   module Entities

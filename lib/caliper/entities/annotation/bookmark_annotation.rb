@@ -19,7 +19,7 @@ require_relative './annotation'
 require_relative './annotation_type'
 
 #
-#  Bookmark Annotation entity.
+# Bookmark Annotation entity.
 #
 module Caliper
   module Entities

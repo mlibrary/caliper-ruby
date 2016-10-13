@@ -37,7 +37,7 @@ module Caliper
         actor.context = nil
         actor.id = 'https://example.edu/user/554433'
         actor.type = 'http://purl.imsglobal.org/caliper/v1/Person'
-        # puts "new minimal actor entity = #{actor.to_json}"
+        # puts 'new minimal actor entity = #{actor.to_json}'
 
         # Action
         action = Caliper::Actions::ReadingActions::VIEWED
@@ -46,7 +46,7 @@ module Caliper
         obj.context = nil
         obj.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3)'
         obj.type = 'http://www.idpf.org/epub/vocab/structure/#volume'
-        # puts "new minimal object entity = #{obj.to_json}"
+        # puts 'new minimal object entity = #{obj.to_json}'
 
         # Create the Event
         event = Caliper::Events::Event.new
@@ -57,12 +57,12 @@ module Caliper
 
         # The Sensor
         options = Caliper::Options.new
-        sensor = Caliper::Sensor.new("https://example.edu/sensor/001", options)
+        sensor = Caliper::Sensor.new('https://example.edu/sensor/001', options)
         requestor = Caliper::Request::HttpRequestor.new(options)
         json_payload = requestor.generate_payload(sensor, event)
 
         # Swap out sendTime=DateTime.now() in favor of fixture value (or test will most assuredly fail).
-        json_payload_sub = json_payload.sub(/\"sendTime\":\"[^\"]*\"/, "\"sendTime\":\"2015-09-15T11:05:01.000Z\"")
+        json_payload_sub = json_payload.sub(/\'sendTime\':\'[^\']*\'/, '\'sendTime\':\'2015-09-15T11:05:01.000Z\'')
 
         # Load JSON from caliper-common-fixtures for comparison
         # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
@@ -71,10 +71,10 @@ module Caliper
         expected_json = data_hash.to_json # convert hash back to JSON string after parse
         expect(json_payload_sub).to be_json_eql(expected_json)
 
-        # puts "JSON from file = #{data_hash}"
+        # puts 'JSON from file = #{data_hash}'
         # deser_envelope = Caliper::Request::Envelope.new
         # deser_envelope.from_json data_hash
-        # puts "Envelope from JSON = #{deser_envelope.to_json}"
+        # puts 'Envelope from JSON = #{deser_envelope.to_json}'
 
         # Ensure that the deserialized shared event object conforms
         # expect(json_payload_sub).to eql(deser_envelope)

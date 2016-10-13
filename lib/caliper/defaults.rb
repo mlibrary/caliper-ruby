@@ -16,11 +16,11 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 #
-# Defaults
+# Defaults.
 #
 module Caliper
   class Defaults
-    HOST = "http://dev-null.comt"
+    HOST = 'http://dev-null.comt'
     CONNECTION_REQUEST_TIMEOUT = 10000
     CONNECTION_TIMEOUT = 10000
     SOCKET_TIMEOUT = 10000
