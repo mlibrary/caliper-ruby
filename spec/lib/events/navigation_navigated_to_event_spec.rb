@@ -65,13 +65,13 @@ module Caliper
         target.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
         target.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
-        # NavigatedFrom property (specific to Navigation Event)
-        from = Caliper::Entities::Reading::WebPage.new
-        from.id = 'https://example.edu/politicalScience/2015/american-revolution-101/index.html'
-        from.name = 'American Revolution 101 Landing Page'
-        from.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-        from.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
-        from.version = '1.0'
+        # Referrer
+        referrer = Caliper::Entities::Reading::WebPage.new
+        referrer.id = 'https://example.edu/politicalScience/2015/american-revolution-101/index.html'
+        referrer.name = 'American Revolution 101 Landing Page'
+        referrer.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+        referrer.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
+        referrer.version = '1.0'
 
         # EdApp
         ed_app = Caliper::Entities::Agent::SoftwareApplication.new
@@ -122,7 +122,7 @@ module Caliper
         event.action = action
         event.object = obj
         event.target = target
-        event.navigatedFrom = from
+        event.referrer = referrer
         event.eventTime = Time.utc(2015,9,15,10,15,0).iso8601(3)
         event.edApp = ed_app
         event.group = group

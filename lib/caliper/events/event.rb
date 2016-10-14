@@ -27,7 +27,7 @@ module Caliper
     class Event
       include Caliper::Events::Jsonable
 
-      attr_accessor :context, :type, :actor, :action, :object, :eventTime
+      attr_accessor :context, :type, :actor, :action, :object, :eventTime, :referrer
 
       def initialize()
         @context = Caliper::Context::Context::CONTEXT
@@ -36,6 +36,7 @@ module Caliper
         @action = nil
         @object = nil
         @eventTime = nil
+        @referrer = nil
       end
     end
   end
