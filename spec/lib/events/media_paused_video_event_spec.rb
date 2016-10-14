@@ -69,7 +69,7 @@ module Caliper
         target.id = 'https://example.com/super-media-tool/video/1225'
         target.version = '1.0'
         target.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-        target.currentTime = 710
+        target.currentTime = 'PT30M54S'
 
         # ed_app
         ed_app = Caliper::Entities::Agent::SoftwareApplication.new
