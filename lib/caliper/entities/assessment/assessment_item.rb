@@ -26,13 +26,10 @@ module Caliper
     module Assessment
       class AssessmentItem < Caliper::Entities::Assignable::AssignableDigitalResource
 
-        attr_accessor :isTimeDependent
+        caliper_property :isTimeDependent
 
-        def initialize
-          super
-          @type = Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT_ITEM
-          @isTimeDependent = false
-        end
+        caliper_type Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT_ITEM
+
       end
     end
   end

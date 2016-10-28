@@ -31,7 +31,7 @@ module Caliper
 
       def get_payload_json(sensor, data)
         envelope = create_envelope(sensor, data)
-        return JSON.generate(envelope)
+        envelope.to_json
       end
 
       def create_envelope(sensor, data)

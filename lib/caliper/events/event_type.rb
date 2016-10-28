@@ -26,6 +26,7 @@ module Caliper
       MEDIA = 'http://purl.imsglobal.org/caliper/v1/MediaEvent'
       NAVIGATION = 'http://purl.imsglobal.org/caliper/v1/NavigationEvent'
       OUTCOME = 'http://purl.imsglobal.org/caliper/v1/OutcomeEvent'
+      READING = 'http://purl.imsglobal.org/caliper/v1/ReadingEvent'
       SESSION = 'http://purl.imsglobal.org/caliper/v1/SessionEvent'
       VIEW = 'http://purl.imsglobal.org/caliper/v1/ViewEvent'
     end

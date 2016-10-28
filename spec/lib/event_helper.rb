@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require 'require_all'
-require_all 'lib/caliper/entities/entity_base.rb'
+require_all 'lib/caliper/entities/entity.rb'
 require_all 'lib/caliper/entities/agent/software_application.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'

@@ -26,13 +26,10 @@ module Caliper
     module Annotation
       class TagAnnotation < Annotation
 
-        attr_accessor :tags
+        caliper_type Caliper::Entities::Annotation::AnnotationType::TAG_ANNOTATION
 
-        def initialize
-          super
-          @type = Caliper::Entities::Annotation::AnnotationType::TAG_ANNOTATION
-          @tags = Array.new
-        end
+        caliper_property :tags, default: []
+
       end
     end
   end

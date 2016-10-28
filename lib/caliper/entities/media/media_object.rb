@@ -29,13 +29,11 @@ module Caliper
     module Media
       class MediaObject < DigitalResource
 
-        attr_accessor :duration
+        caliper_type Caliper::Entities::DigitalResourceType::MEDIA_OBJECT
 
-        def initialize
-          super
-          @type = Caliper::Entities::DigitalResourceType::MEDIA_OBJECT
-          @duration = nil
-        end
+        caliper_property :duration
+        caliper_property :mediaType
+
       end
     end
   end

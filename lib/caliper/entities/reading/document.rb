@@ -15,13 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative '../digital_resource'
+require_relative '../digital_resource_type'
+
 #
-# A W3C Membership.
+# Representation of an EPUB 3 Chapter. A major structural division of a piece of writing.
+# See http://www.idpf.org/epub/vocab/structure/#chapter
 #
 module Caliper
   module Entities
-    module W3C
-      module Membership
+    module Reading
+      class Document < Caliper::Entities::DigitalResource
+
+        caliper_type Caliper::Entities::DigitalResourceType::DOCUMENT
 
       end
     end

@@ -26,10 +26,8 @@ module Caliper
     module Media
       class ImageObject < MediaObject
 
-        def initialize
-          super
-          @type = Caliper::Entities::Media::MediaObjectType::IMAGE_OBJECT
-        end
+        caliper_type Caliper::Entities::Media::MediaObjectType::IMAGE_OBJECT
+
       end
     end
   end

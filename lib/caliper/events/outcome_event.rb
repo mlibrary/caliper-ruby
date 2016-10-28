@@ -28,17 +28,10 @@ module Caliper
     class OutcomeEvent < Event
       include Caliper::Events::EventContext
 
-      def initialize
-        super
-        @type = Caliper::Events::EventType::OUTCOME
-        @action = Caliper::Actions::OutcomeActions::GRADED
-        @target = nil
-        @generated = nil
-        @edApp = nil
-        @group = nil
-        @membership = nil
-        @federatedSession = nil
-      end
+      caliper_type Caliper::Events::EventType::OUTCOME
+
+      caliper_property :action, default: Caliper::Actions::OutcomeActions::GRADED
+
     end
   end
 end

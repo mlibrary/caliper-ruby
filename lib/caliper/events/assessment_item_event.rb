@@ -27,16 +27,8 @@ module Caliper
     class AssessmentItemEvent < Event
       include Caliper::Events::EventContext
 
-      def initialize
-        super
-        @type = Caliper::Events::EventType::ASSESSMENT_ITEM
-        @target = nil
-        @generated = nil
-        @edApp = nil
-        @group = nil
-        @membership = nil
-        @federatedSession = nil
-      end
+      caliper_type Caliper::Events::EventType::ASSESSMENT_ITEM
+
     end
   end
 end

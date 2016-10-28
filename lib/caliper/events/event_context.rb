@@ -18,7 +18,18 @@
 module Caliper
   module Events
     module EventContext
-      attr_accessor :target, :generated, :edApp, :group, :membership, :federatedSession
+      extend Caliper::Properties::ClassMethods
+
+      def self.included(base)
+        base.caliper_property :edApp
+        base.caliper_property :federatedSession
+        base.caliper_property :generated
+        base.caliper_property :group
+        base.caliper_property :membership
+        base.caliper_property :session
+        base.caliper_property :target
+      end
+
     end
   end
 end

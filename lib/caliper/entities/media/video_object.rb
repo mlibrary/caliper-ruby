@@ -26,10 +26,8 @@ module Caliper
     module Media
       class VideoObject < MediaObject
 
-        def initialize
-          super
-          @type = Caliper::Entities::Media::MediaObjectType::VIDEO_OBJECT
-        end
+        caliper_type Caliper::Entities::Media::MediaObjectType::VIDEO_OBJECT
+
       end
     end
   end

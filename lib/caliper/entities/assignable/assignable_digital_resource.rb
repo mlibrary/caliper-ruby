@@ -19,27 +19,24 @@ require_relative '../digital_resource'
 require_relative '../digital_resource_type'
 
 #
-# AssignableDigitalResource entity. AssignableDigitalResource's prototype is set to DigitalResource.
+# AssignableDigitalResource entity.
 #
 module Caliper
   module Entities
     module Assignable
       class AssignableDigitalResource < DigitalResource
 
-        attr_accessor :dateToActivate, :dateToShow, :dateToStartOn, :dateToSubmit, :maxAttempts, :maxSubmits, :maxScore
+        caliper_type Caliper::Entities::DigitalResourceType::ASSIGNABLE_DIGITAL_RESOURCE
 
-        def initialize
-          super
-          @type = Caliper::Entities::DigitalResourceType::ASSIGNABLE_DIGITAL_RESOURCE
-          @dateToActivate = nil
-          @dateToShow = nil
-          @dateToStartOn = nil
-          @dateToSubmit = nil
-          @maxAttempts = nil
-          @maxSubmits = nil
-          @maxScore = nil
-        end
-     end
+        caliper_property :dateToActivate
+        caliper_property :dateToShow
+        caliper_property :dateToStartOn
+        caliper_property :dateToSubmit
+        caliper_property :maxAttempts
+        caliper_property :maxScore
+        caliper_property :maxSubmits
+
+      end
     end
   end
 end

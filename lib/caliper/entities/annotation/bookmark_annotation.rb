@@ -26,13 +26,10 @@ module Caliper
     module Annotation
       class BookmarkAnnotation < Annotation
 
-        attr_accessor :bookmarkNotes
+        caliper_type Caliper::Entities::Annotation::AnnotationType::BOOKMARK_ANNOTATION
 
-        def initialize
-          super
-          @type = Caliper::Entities::Annotation::AnnotationType::BOOKMARK_ANNOTATION
-          @bookmarkNotes = nil
-        end
+        caliper_property :bookmarkNotes
+
       end
     end
   end

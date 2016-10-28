@@ -23,11 +23,11 @@ module Caliper
     attr_accessor :host, :api_key, :connection_request_time_out, :connection_time_out, :socket_time_out
 
     def initialize(options = {})
-      self.host = options[:host] || Defaults.HOST
+      self.host = options[:host] || Defaults::HOST
       self.api_key = options[:api_key] || ''
-      self.connection_request_time_out = options[:connection_request_time_out] || Defaults.CONNECTION_REQUEST_TIMEOUT
-      self.connection_time_out = options[:connection_time_out] || Defaults.CONNECTION_TIMEOUT
-      self.socket_time_out = options[:socket_time_out] || Defaults.SOCKET_TIMEOUT
+      self.connection_request_time_out = options[:connection_request_time_out] || Defaults::CONNECTION_REQUEST_TIMEOUT
+      self.connection_time_out = options[:connection_time_out] || Defaults::CONNECTION_TIMEOUT
+      self.socket_time_out = options[:socket_time_out] || Defaults::SOCKET_TIMEOUT
     end
   end
 end

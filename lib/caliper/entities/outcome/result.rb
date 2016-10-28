@@ -15,9 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative '../entity'
 require_relative '../entity_type'
-require_relative '../generatable'
 
 #
 # LIS Result.
@@ -25,26 +24,22 @@ require_relative '../generatable'
 module Caliper
   module Entities
     module Outcome
-      class Result < EntityBase
-        include Caliper::Entities::Generatable
+      class Result < Entity
 
-        attr_accessor :assignable, :actor, :normalScore, :penaltyScore, :extraCreditScore,
-                      :totalScore, :curvedTotalScore, :curveFactor, :comment, :scoredBy
+        caliper_type Caliper::Entities::EntityType::RESULT
 
-        def initialize
-          super
-          @type = Caliper::Entities::EntityType::RESULT
-          @assignable = nil
-          @actor = nil
-          @normalScore = nil
-          @penaltyScore = nil
-          @extraCreditScore = nil
-          @totalScore = nil
-          @curvedTotalScore = nil
-          @curveFactor = nil
-          @comment = nil
-          @scoredBy = nil
-        end
+        caliper_property :actor
+        caliper_property :assignable
+        caliper_property :attempt
+        caliper_property :comment
+        caliper_property :curveFactor
+        caliper_property :curvedTotalScore
+        caliper_property :extraCreditScore
+        caliper_property :normalScore
+        caliper_property :penaltyScore
+        caliper_property :scoredBy
+        caliper_property :totalScore
+
       end
     end
   end

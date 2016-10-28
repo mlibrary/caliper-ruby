@@ -15,10 +15,13 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require 'json_spec'
+require 'require_all'
 require 'simplecov'
 require 'simplecov-rcov'
-require 'require_all'
-require_all 'lib/caliper/*.rb'
+
+require_all 'lib/caliper'
+require 'shared_examples'
 
 SimpleCov.use_merging
 SimpleCov.merge_timeout(10000)

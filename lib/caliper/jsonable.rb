@@ -18,45 +18,70 @@
 require 'json'
 
 #
-#  Module that supports serialization/deserialization for Caliper Envelope.
+# Module that supports serialization/deserialization for Caliper JSON.
 #
 module Caliper
   module Jsonable
 
+    def self.included(base)
+      base.extend ClassMethods
+    end
+
     def to_json(*a)
-      # puts 'Jsonable: to_json invoked'
-      result = {}
-      # result['@context'] = self.context
-      # result['@type'] = self.type
-      self.instance_variables.each do |key|
-        # puts "got key = #{key}"
-        next if (key[1..-1] == 'context' || key[1..-1] == 'type')
-        value = self.instance_variable_get key
-        # puts "setting #{key}: #{value}"
-        attribute_key = key[1..-1]
-        if (key[1..-1] == 'id' || key[1..-1] == 'type' || key[1..-1] == 'context')
-          # prefix with @ char for linked json data
-          attribute_key = "@#{attribute_key}"
+      self.class.serialize(self).to_json(*a)
+    end
+
+    module ClassMethods
+      def from_json(json_string)
+        json_obj = JSON.parse json_string
+        deserialize json_obj
+      end
+
+      # After initial JSON parsing, recursively deserialize basic collection objects into Caliper classes where
+      # appropriate.
+      def deserialize(obj)
+        case obj
+          when Hash
+            if obj['@type'] && (klass = Caliper::Types.class_for_type obj['@type'])
+              opts = obj.each_with_object({}) do |(k,v), opts_hash|
+                key = k.sub(/\A@/,'').to_sym
+                opts_hash[key] = deserialize v
+              end
+              klass.new(opts)
+            else
+              Hash[obj.map { |k,v| [k.to_sym, deserialize(v)] }]
+            end
+          when Array
+            obj.map { |element| deserialize element }
+          else
+            obj
         end
-        result[attribute_key] = value
       end
-      result.to_json(*a)
-    end
 
-    def from_json(json_hash)
-      # puts "Jsonable: from_json: json_hash = #{json_hash}"
-      # self.context = data['@context']
-      # self.type = data['@type']
-      json_hash.each do | key, value |
-        next if (key[1..-1] == 'context' || key[1..-1] == 'type')
-        # puts "Jsonable - adding #{key} : #{value}"
-        self.instance_variable_set "@#{key}", value
+      # Before encoding to JSON, recursively serialize Caliper objects into simpler collections, using 'serialize'
+      # and 'properties' methods provided by those objects. Omit nil/empty properties and redundant contexts.
+      def serialize(obj, context=nil)
+        if obj.respond_to?(:serialize)
+          serialized = obj.serialize
+          if obj.respond_to?(:context) && !obj.context.nil? && obj.context != context
+            serialized['@context'] = context = obj.context
+          end
+          if obj.respond_to?(:properties)
+            obj.properties.each do |key, value|
+              unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
+                serialized[key.to_s] = serialize(value, context)
+              end
+            end
+          end
+          serialized
+        elsif obj.is_a?(Array)
+          obj.map { |element| serialize(element, context) }
+        elsif obj.is_a?(Hash)
+          Hash[obj.map { |k,v| [k, serialize(v, context)] }]
+        else
+          obj
+        end
       end
-      self
-    end
-
-    def eql?(other)
-      @context == other.context && @apiKey == other.apiKey
     end
   end
 end

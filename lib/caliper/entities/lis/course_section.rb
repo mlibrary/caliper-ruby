@@ -26,13 +26,10 @@ module Caliper
     module LIS
       class CourseSection < Caliper::Entities::LIS::CourseOffering
 
-        attr_accessor :category
+        caliper_type Caliper::Entities::EntityType::COURSE_SECTION
 
-        def initialize
-          super
-          @type = Caliper::Entities::EntityType::COURSE_SECTION
-          @category = nil
-        end
+        caliper_property :category
+
       end
     end
   end

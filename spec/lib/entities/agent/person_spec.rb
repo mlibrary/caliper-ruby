@@ -15,42 +15,16 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-# require 'spec_helper.rb'
-require 'require_all'
-require 'json_spec'
-require_all 'lib/caliper/entities/agent/person.rb'
+require 'spec_helper'
 
-#
-# Test Person.
-#
-module Caliper
-  module Entities
-    module Agent
-
-      describe Person do
-
-        it 'should ensure that a Person is correctly created and serialized' do
-          student = Caliper::Entities::Agent::Person.new
-          student.id = 'https://example.edu/user/123456789'
-          student.description = 'A bright individual'
-          student.extensions = {'customProp' => 42}
-          student.dateCreated = '2015-03-15T23:09:11.000Z'
-          student.dateModified = '2015-03-15T23:09:11.000Z'
-          # puts "new student = #{student.to_json}"
-
-          # Compare JSON ouput
-          file = File.read('spec/lib/entities/agent/person.json')
-          data_hash = JSON.parse(file)
-          expected_json = data_hash.to_json # convert hash back to JSON string after parse
-          expect(student.to_json).to be_json_eql(expected_json)
-
-          des_student = Caliper::Entities::Agent::Person.new
-          des_student.from_json data_hash
-          # puts "Object from JSON = #{des_student.to_json}"
-
-          expect(student).to eql(des_student)
-        end
-      end
-    end
+describe Caliper::Entities::Agent::Person do
+  subject do
+    described_class.new(
+      id: 'https://example.edu/users/554433',
+      dateCreated: '2016-08-01T06:00:00.000Z',
+      dateModified: '2016-09-02T11:30:00.000Z'
+    )
   end
+
+  include_examples 'validation against common fixture', 'caliperEntityPerson.json'
 end

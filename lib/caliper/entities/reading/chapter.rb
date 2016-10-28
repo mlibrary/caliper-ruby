@@ -15,14 +15,21 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative '../digital_resource'
+require_relative '../digital_resource_type'
+
 #
-# The Targetable interface marks an object type that provides coordinates to a target destination
-# required by certain actions. The interface allows Caliper to catch errors at compile time for
-# instances of the marked class rather than at runtime if a marker annotation was defined instead.
+# Representation of an EPUB 3 Chapter. A major structural division of a piece of writing.
+# See http://www.idpf.org/epub/vocab/structure/#chapter
 #
 module Caliper
   module Entities
-    module Targetable
+    module Reading
+      class Chapter < Caliper::Entities::DigitalResource
+
+        caliper_type Caliper::Entities::DigitalResourceType::CHAPTER
+
+      end
     end
   end
 end

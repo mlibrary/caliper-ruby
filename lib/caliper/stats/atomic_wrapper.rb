@@ -22,7 +22,7 @@ require 'concurrent'
 #
 module Caliper
   module Stats
-    class AtomicWrapper < Concurrent::Atomic
+    class AtomicWrapper < Concurrent::AtomicFixnum
 
       # Atomically sets to the given value and returns the old value.
       def get_and_set(new_value)

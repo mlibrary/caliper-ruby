@@ -27,10 +27,8 @@ module Caliper
     module Reading
       class EPubVolume < Caliper::Entities::DigitalResource
 
-        def initialize
-          super
-          @type = Caliper::Entities::DigitalResourceType::EPUB_VOLUME
-        end
+        caliper_type Caliper::Entities::DigitalResourceType::EPUB_VOLUME
+
       end
     end
   end
