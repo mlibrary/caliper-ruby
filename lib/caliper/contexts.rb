@@ -45,7 +45,7 @@ module Caliper
       # Get the context for a class. Contexts are stored as shallow-copied class instance variables to avoid unexpected
       # inheritance behavior.
       def context
-        @context ||= superclass.context.dup if superclass.respond_to?(:context)
+        @context ||= (superclass.respond_to?(:context) ? superclass.context.dup : nil)
       end
     end
 
