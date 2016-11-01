@@ -27,9 +27,7 @@ module Caliper
       class Response < Entity
 
         caliper_type Caliper::Entities::EntityType::RESPONSE
-
-        caliper_property :assignable
-        caliper_property :actor
+        
         caliper_property :attempt
         caliper_property :duration
         caliper_property :endedAtTime
