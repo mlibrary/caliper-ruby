@@ -19,15 +19,22 @@ require_relative '../digital_resource'
 require_relative '../digital_resource_type'
 
 #
+# Deprecated.
+#
 # Representation of an EPUB 3 Volume. A component of a collection.
 # See http://www.idpf.org/epub/vocab/structure/#volume
 #
 module Caliper
   module Entities
     module Reading
-      class EPubVolume < Caliper::Entities::DigitalResource
+      class EpubVolume < Caliper::Entities::DigitalResource
 
         caliper_type Caliper::Entities::DigitalResourceType::EPUB_VOLUME
+
+        def initialize(opts={})
+          warn '[DEPRECATION] Caliper::Entities::Reading::EpubVolume is deprecated.'
+          super
+        end
 
       end
     end

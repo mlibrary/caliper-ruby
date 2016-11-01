@@ -27,7 +27,7 @@ module Caliper
       class Result < Entity
 
         caliper_type Caliper::Entities::EntityType::RESULT
-        
+
         caliper_property :attempt
         caliper_property :comment
         caliper_property :curveFactor

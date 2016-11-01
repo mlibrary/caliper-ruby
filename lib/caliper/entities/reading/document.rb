@@ -19,8 +19,7 @@ require_relative '../digital_resource'
 require_relative '../digital_resource_type'
 
 #
-# Representation of an EPUB 3 Chapter. A major structural division of a piece of writing.
-# See http://www.idpf.org/epub/vocab/structure/#chapter
+# Representation of a document.
 #
 module Caliper
   module Entities

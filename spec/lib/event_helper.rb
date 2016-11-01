@@ -25,7 +25,7 @@ require_all 'lib/caliper/entities/lis/status.rb'
 require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/lis/course_offering.rb'
 require_all 'lib/caliper/entities/lis/group.rb'
-require_all 'lib/caliper/entities/reading/epub_volume.rb'
+require_all 'lib/caliper/entities/reading/document.rb'
 require_all 'lib/caliper/entities/reading/frame.rb'
 require_all 'lib/caliper/entities/session/session.rb'
 require_all 'lib/caliper/events/session_event.rb'
@@ -53,20 +53,20 @@ module Helper
     # Object
     obj = ed_app
 
-    # ePub parent (frame.isPartOf)
-    ePub = Caliper::Entities::Reading::EPubVolume.new
-    ePub.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3)'
-    ePub.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
-    ePub.version = '2nd ed.'
-    ePub.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-    ePub.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
+    # Document parent (frame.isPartOf)
+    document = Caliper::Entities::Reading::Document.new
+    document.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3)'
+    document.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
+    document.version = '2nd ed.'
+    document.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+    document.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
     # Target frame
     target = Caliper::Entities::Reading::Frame.new
     target.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3/1)'
     target.name = 'Key Figures: George Washington'
-    target.isPartOf = ePub
-    target.version = ePub.version
+    target.isPartOf = document
+    target.version = document.version
     target.index = 1
     target.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
     target.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
