@@ -40,6 +40,7 @@ module Caliper
       caliper_property :action
       caliper_property :extensions, default: {}
       caliper_property :eventTime
+      caliper_property :id
       caliper_property :referrer
       caliper_property :object
 
