@@ -28,10 +28,10 @@ module Caliper
 
       caliper_type Caliper::Entities::EntityType::DIGITAL_RESOURCE
 
-      caliper_property :alignedLearningObjective, default: []
+      caliper_property :learningObjectives, default: []
       caliper_property :datePublished
       caliper_property :isPartOf
-      caliper_property :keywords,                 default: []
+      caliper_property :keywords,           default: []
       caliper_property :version
 
     end
