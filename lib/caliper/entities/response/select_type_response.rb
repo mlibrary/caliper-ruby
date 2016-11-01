@@ -27,12 +27,10 @@ module Caliper
     module Response
       class SelectTextResponse < Response
 
-        attr_accessor :values
+        caliper_type Caliper::Entities::Response::ResponseType::SELECTTEXT
 
-        def initialize
-          super
-          @type = Caliper::Entities::Response::ResponseType::SELECTTEXT
-        end
+        caliper_property :values
+
       end
     end
   end

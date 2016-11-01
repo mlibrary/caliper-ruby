@@ -16,14 +16,40 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 #
-# A W3C Membership.
+# Module allowing Caliper classes to declare types.
+#
+# The 'caliper_type' class method declares a type for a class. Types are inherited by subclasses and cannot be
+# directly declared on instances.
 #
 module Caliper
-  module Entities
-    module W3C
-      module Membership
+  module Types
 
+    # A method call for the type of an instance is delegated to its class.
+    def type
+      self.class.type
+    end
+
+    module ClassMethods
+      attr_reader :type
+      @@classes = {}
+
+      # Declare a type for a class. Also keep track of the association from type to class in a class variable,
+      # allowing objects to be instantiated as the correct class when deserialized from JSON.
+      def caliper_type(type)
+        @type = type
+        @@classes[type] = self
       end
+
+      # Translate type IRI back to the declaring class.
+      def class_for_type(type)
+        @@classes[type]
+      end
+    end
+
+    extend ClassMethods
+
+    def self.included(base)
+      base.extend ClassMethods
     end
   end
 end

@@ -26,10 +26,10 @@ module Caliper
     module Assessment
       class Assessment < Caliper::Entities::Assignable::AssignableDigitalResource
 
-        def initialize
-          super
-          @type = Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT
-        end
+        caliper_type Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT
+
+        caliper_property :items, default: []
+
       end
     end
   end

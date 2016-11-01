@@ -15,8 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'json'
-require_relative './jsonable'
+require_relative '../jsonable'
 
 #
 # Event store envelope. Contains event info.
@@ -24,7 +23,7 @@ require_relative './jsonable'
 module Caliper
   module Request
     class Envelope
-      include Caliper::Request::Jsonable
+      include Caliper::Jsonable
 
       attr_accessor :sensor, :sendTime, :data
 
@@ -32,6 +31,18 @@ module Caliper
         @sensor = ''
         @sendTime = Time.now.utc.iso8601(3)
         @data = []
+      end
+
+      def eql?(other)
+        @sensor == other.sensor && @sendTime == other.sendTime && @data == other.data
+      end
+
+      def serialize
+        {
+          data: @data,
+          sendTime: @sendTime,
+          sensor: @sensor
+        }
       end
     end
   end

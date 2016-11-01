@@ -15,12 +15,12 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'time'
-require 'json'
+require_relative '../contexts'
+require_relative '../jsonable'
+require_relative '../properties'
+require_relative '../types'
+
 require_relative './entity_type'
-require_relative '../context/context'
-require_relative './schemadotorg/thing'
-require_relative './jsonable'
 
 #
 # The base Caliper Entity.  Analogous to a schema.org Thing.
@@ -28,15 +28,42 @@ require_relative './jsonable'
 module Caliper
   module Entities
     class Entity
-      include Caliper::Entities::SchemaDotOrg::Thing, Caliper::Entities::Jsonable
+      include Caliper::Contexts
+      include Caliper::Jsonable
+      include Caliper::Properties
+      include Caliper::Types
 
-      attr_accessor :context, :id, :type
+      attr_accessor :id
 
-      def initialize
-        @context = Caliper::Context::Context::CONTEXT
-        @id = nil
-        @type = Caliper::Entities::EntityType::ENTITY
+      caliper_type Caliper::Entities::EntityType::ENTITY
+
+      caliper_context Caliper::Contexts::CONTEXT
+
+      caliper_property :dateCreated
+      caliper_property :dateModified
+      caliper_property :description
+      caliper_property :extensions,   default: {}
+      caliper_property :name
+
+      def initialize(opts={})
+        initialize_context(opts)
+        initialize_properties(opts)
+        self.id = opts[:id] if opts.has_key?(:id)
       end
+
+      def eql?(other)
+        (self.class.properties.keys + [:context, :id, :type]).inject(true) do |eql, key|
+          eql && (send(key).eql? other.send(key))
+        end
+      end
+
+      def serialize
+        {
+          '@id' => self.id,
+          '@type' => self.type
+        }
+      end
+
     end
   end
 end

@@ -15,9 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative '../entity'
 require_relative '../entity_type'
-require_relative '../generatable'
 
 #
 # Attempt entity on an Assignable.
@@ -25,18 +24,18 @@ require_relative '../generatable'
 module Caliper
   module Entities
     module Assignable
-      class Attempt < EntityBase
-        include Caliper::Entities::Generatable
+      class Attempt < Entity
 
-        attr_accessor :assignable, :actor, :count, :startedAtTime, :endedAtTime, :duration
+        caliper_type Caliper::Entities::EntityType::ATTEMPT
 
-        def initialize
-          super
-          @type = Caliper::Entities::EntityType::ATTEMPT
-          @startedAtTime = nil
-          @endedAtTime = nil
-          @duration = nil
-        end
+        caliper_property :actor
+        caliper_property :assignable
+        caliper_property :count
+        caliper_property :duration
+        caliper_property :endedAtTime
+        caliper_property :isPartOf
+        caliper_property :startedAtTime
+
       end
     end
   end

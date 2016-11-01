@@ -19,12 +19,15 @@ module Caliper
   module Entities
     module DigitalResourceType
       ASSIGNABLE_DIGITAL_RESOURCE = 'http://purl.imsglobal.org/caliper/v1/AssignableDigitalResource'
+      CHAPTER = 'http://purl.imsglobal.org/caliper/v1/Chapter'
+      DOCUMENT = 'http://purl.imsglobal.org/caliper/v1/Document'
       EPUB_CHAPTER = 'http://www.idpf.org/epub/vocab/structure/#chapter'
       EPUB_PART = 'http://www.idpf.org/epub/vocab/structure/#part'
       EPUB_VOLUME = 'http://www.idpf.org/epub/vocab/structure/#volume'
       FRAME = 'http://purl.imsglobal.org/caliper/v1/Frame'
       MEDIA_LOCATION = 'http://purl.imsglobal.org/caliper/v1/MediaLocation'
       MEDIA_OBJECT = 'http://purl.imsglobal.org/caliper/v1/MediaObject'
+      PAGE = 'http://purl.imsglobal.org/caliper/v1/WebPage'
       READING = 'http://purl.imsglobal.org/caliper/v1/Reading'
       WEB_PAGE = 'http://purl.imsglobal.org/caliper/v1/WebPage'
     end

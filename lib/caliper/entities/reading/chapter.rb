@@ -15,13 +15,18 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative '../digital_resource'
+require_relative '../digital_resource_type'
+
 #
-# A W3C Organization.
+# Representation of a chapter. A major structural division of a piece of writing.
 #
 module Caliper
   module Entities
-    module W3C
-      module Organization
+    module Reading
+      class Chapter < Caliper::Entities::DigitalResource
+
+        caliper_type Caliper::Entities::DigitalResourceType::CHAPTER
 
       end
     end

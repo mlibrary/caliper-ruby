@@ -26,13 +26,10 @@ module Caliper
     module Media
       class MediaLocation < DigitalResource
 
-        attr_accessor :currentTime
+        caliper_type Caliper::Entities::DigitalResourceType::MEDIA_LOCATION
 
-        def initialize
-          super
-          @type = Caliper::Entities::DigitalResourceType::MEDIA_LOCATION
-          @currentTime = nil
-        end
+        caliper_property :currentTime
+
       end
     end
   end

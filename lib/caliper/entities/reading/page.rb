@@ -15,16 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './creative_work'
+require_relative '../digital_resource'
+require_relative '../digital_resource_type'
 
 #
-# Web Page.
+# A page.
 #
 module Caliper
   module Entities
-    module SchemaDotOrg
-      module WebPage
-        include CreativeWork
+    module Reading
+      class WebPage < Caliper::Entities::DigitalResource
+
+        caliper_type Caliper::Entities::DigitalResourceType::PAGE
+
       end
     end
   end

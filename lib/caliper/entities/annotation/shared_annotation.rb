@@ -26,13 +26,10 @@ module Caliper
     module Annotation
       class SharedAnnotation < Annotation
 
-        attr_accessor :withAgents # list of Agent objects
+        caliper_type Caliper::Entities::Annotation::AnnotationType::SHARED_ANNOTATION
 
-        def initialize
-          super
-          @type = Caliper::Entities::Annotation::AnnotationType::SHARED_ANNOTATION
-          @withAgents = Array.new
-        end
+        caliper_property :withAgents, default: []
+
       end
     end
   end

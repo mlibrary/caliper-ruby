@@ -19,6 +19,8 @@ require_relative '../digital_resource'
 require_relative '../digital_resource_type'
 
 #
+# Deprecated.
+#
 # Representation of an EPUB 3 Chapter. A major structural division of a piece of writing.
 # See http://www.idpf.org/epub/vocab/structure/#chapter
 #
@@ -27,10 +29,13 @@ module Caliper
     module Reading
       class EpubChapter < Caliper::Entities::DigitalResource
 
-        def initialize
+        caliper_type Caliper::Entities::DigitalResourceType::EPUB_CHAPTER
+
+        def initialize(opts={})
+          warn '[DEPRECATION] Caliper::Entities::Reading::EpubChapter is deprecated.'
           super
-          @type = Caliper::Entities::DigitalResourceType::EPUB_CHAPTER
         end
+
       end
     end
   end

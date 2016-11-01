@@ -28,17 +28,10 @@ module Caliper
     class NavigationEvent < Event
       include Caliper::Events::EventContext
 
-      def initialize
-        super
-        @type = Caliper::Events::EventType::NAVIGATION
-        @action = Caliper::Actions::NavigationActions::NAVIGATED_TO
-        @target = nil
-        @generated = nil
-        @edApp = nil
-        @group = nil
-        @membership = nil
-        @federatedSession = nil
-      end
+      caliper_type Caliper::Events::EventType::NAVIGATION
+
+      caliper_property :action, default: Caliper::Actions::NavigationActions::NAVIGATED_TO
+
     end
   end
 end

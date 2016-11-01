@@ -15,18 +15,16 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './thing'
+shared_examples 'validation against common fixture' do |fixture_filename|
+  # Load fixture JSON from caliper-common-fixtures, which should be symlinked under spec/fixtures.
+  let(:fixture_json) { File.read("spec/fixtures/#{fixture_filename}") }
 
-#
-# The most generic kind of creative work, including books, movies,
-# photographs, software programs, etc.
-#
-module Caliper
-  module Entities
-    module SchemaDotOrg
-      module CreativeWork
-        include Thing
-      end
-    end
+  it 'should be equal in serialized form' do
+    expect(subject.to_json).to be_json_eql(fixture_json)
+  end
+
+  it 'should be equal in deserialized form' do
+    deserialized_fixture = described_class.from_json fixture_json
+    expect(subject).to eql(deserialized_fixture)
   end
 end

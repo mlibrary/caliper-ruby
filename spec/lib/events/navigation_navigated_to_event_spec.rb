@@ -15,134 +15,79 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'require_all'
-require_all 'lib/caliper/actions/navigation_actions.rb'
-require_all 'lib/caliper/entities/entity_base.rb'
-require_all 'lib/caliper/entities/agent/software_application.rb'
-require_all 'lib/caliper/entities/agent/person.rb'
-require_all 'lib/caliper/entities/lis/membership.rb'
-require_all 'lib/caliper/entities/lis/role.rb'
-require_all 'lib/caliper/entities/lis/status.rb'
-require_all 'lib/caliper/entities/lis/course_section.rb'
-require_all 'lib/caliper/entities/lis/course_offering.rb'
-require_all 'lib/caliper/entities/lis/group.rb'
-require_all 'lib/caliper/entities/reading/epub_volume.rb'
-require_all 'lib/caliper/entities/reading/web_page.rb'
-require_all 'lib/caliper/events/navigation_event.rb'
-require 'json_spec'
+require 'spec_helper'
 
-module Caliper
-  module Events
-
-    describe NavigationEvent do
-
-      it 'should ensure that a NavigatedTo NavigationEvent is correctly created and serialized' do
-
-        # Actor
-        actor = Caliper::Entities::Agent::Person.new
-        actor.id = 'https://example.edu/user/554433'
-        actor.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-        actor.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
-
-        # Action
-        action = Caliper::Actions::NavigationActions::NAVIGATED_TO
-
-        # Object
-        obj = Caliper::Entities::Reading::EPubVolume.new
-        obj.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3)'
-        obj.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
-        obj.version = '2nd ed.'
-        obj.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-        obj.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
-
-        # Target frame
-        target = Caliper::Entities::Reading::Frame.new
-        target.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3/1)'
-        target.name = 'Key Figures: George Washington'
-        target.isPartOf = obj
-        target.version = obj.version
-        target.index = 1
-        target.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-        target.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
-
-        # Referrer
-        referrer = Caliper::Entities::Reading::WebPage.new
-        referrer.id = 'https://example.edu/politicalScience/2015/american-revolution-101/index.html'
-        referrer.name = 'American Revolution 101 Landing Page'
-        referrer.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-        referrer.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
-        referrer.version = '1.0'
-
-        # EdApp
-        ed_app = Caliper::Entities::Agent::SoftwareApplication.new
-        ed_app.id = 'https://example.com/viewer'
-        ed_app.name = 'ePub'
-        ed_app.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-        ed_app.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
-
-        # LIS Course Offering
-        course = Caliper::Entities::LIS::CourseOffering.new
-        course.id = 'https://example.edu/politicalScience/2015/american-revolution-101'
-        course.name = 'Political Science 101: The American Revolution'
-        course.courseNumber = 'POL101'
-        course.academicSession = 'Fall-2015'
-        course.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-        course.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
-
-        # LIS Course Section
-        section = Caliper::Entities::LIS::CourseSection.new
-        section.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
-        section.name = 'American Revolution 101'
-        section.courseNumber = 'POL101'
-        section.academicSession = 'Fall-2015'
-        section.subOrganizationOf = course
-        section.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-        section.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
-
-        # LIS Group
-        group = Caliper::Entities::LIS::Group.new
-        group.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001'
-        group.name = 'Discussion Group 001'
-        group.subOrganizationOf = section
-        group.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-
-        membership = Caliper::Entities::LIS::Membership.new
-        membership.id = 'https://example.edu/politicalScience/2015/american-revolution-101/roster/554433'
-        membership.name = 'American Revolution 101'
-        membership.description = 'Roster entry'
-        membership.member = 'https://example.edu/user/554433'
-        membership.organization = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
-        membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
-        membership.status = Caliper::Entities::LIS::Status::ACTIVE
-        membership.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-
-        # Create the Event
-        event = Caliper::Events::NavigationEvent.new
-        event.actor  = actor
-        event.action = action
-        event.object = obj
-        event.target = target
-        event.referrer = referrer
-        event.eventTime = Time.utc(2015,9,15,10,15,0).iso8601(3)
-        event.edApp = ed_app
-        event.group = group
-        event.membership = membership
-
-        # Load JSON from caliper-common-fixtures for comparison
-        # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
-        file = File.read('spec/fixtures/caliperNavigationEvent.json')
-        data_hash = JSON.parse(file)
-        expected_json = data_hash.to_json # convert hash back to JSON string after parse
-        expect(event.to_json).to be_json_eql(expected_json)#.excluding('actor', 'action', 'object', 'target', 'generated', 'edApp', 'group')
-
-        # puts 'JSON from file = #{data_hash}'
-        deser_event = Caliper::Events::NavigationEvent.new
-        deser_event.from_json data_hash
-        # puts 'ReadingEvent from JSON = #{deser_event.to_json}'
-
-        # Ensure that the deserialized shared event object conforms
-        expect(event).to eql(deser_event)
-      end
-    end
+describe Caliper::Events::NavigationEvent do
+  subject do
+    described_class.new(
+      action: Caliper::Actions::NavigationActions::NAVIGATED_TO,
+      actor: actor,
+      edApp: ed_app,
+      eventTime: '2016-11-15T10:15:00.000Z',
+      group: group,
+      membership: membership,
+      object: object,
+      referrer: referrer,
+      session: session
+    )
   end
+
+  let(:actor) do
+    Caliper::Entities::Agent::Person.new(
+      id: 'https://example.edu/users/554433',
+    )
+  end
+
+  let(:ed_app) do
+    Caliper::Entities::Agent::SoftwareApplication.new(
+      id: 'https://example.edu'
+    )
+  end
+
+  let(:group) do
+    Caliper::Entities::LIS::CourseSection.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1',
+      courseNumber: 'CPS 435-01',
+      academicSession: 'Fall 2016'
+    )
+  end
+
+  let(:membership) do
+    Caliper::Entities::LIS::Membership.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1',
+      member: actor,
+      organization: Caliper::Entities::LIS::CourseSection.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1',
+      ),
+      roles: [
+        Caliper::Entities::LIS::Role::LEARNER
+      ],
+      status: Caliper::Entities::LIS::Status::ACTIVE,
+      dateCreated: '2016-08-01T06:00:00.000Z'
+    )
+  end
+
+  let(:object) do
+    Caliper::Entities::Reading::WebPage.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/pages/2',
+      name: 'Learning Analytics Specifications',
+      description: 'Overview of Learning Analytics Specifications with particular emphasis on IMS Caliper.',
+      dateCreated: '2016-08-01T09:00:00.000Z'
+    )
+  end
+
+  let(:referrer) do
+    Caliper::Entities::Reading::WebPage.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/pages/1',
+    )
+  end
+
+  let(:session) do
+    Caliper::Entities::Session::Session.new(
+      id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259',
+      startedAtTime: '2016-11-15T10:00:00.000Z'
+    )
+  end
+
+  include_examples 'validation against common fixture', 'caliperEventNavigationNavigatedTo.json'
 end

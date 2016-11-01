@@ -18,6 +18,8 @@
 require_relative '../digital_resource'
 require_relative '../digital_resource_type'
 
+##
+# Deprecated.
 #
 # Representation of an EPUB 3 Part. A major structural division of a piece of writing, typically
 # encapsulating a set of related chapters. See http://www.idpf.org/epub/vocab/structure/#part.
@@ -27,10 +29,13 @@ module Caliper
     module Reading
       class EpubPart < Caliper::Entities::DigitalResource
 
-        def initialize
+        caliper_type Caliper::Entities::DigitalResourceType::EPUB_PART
+
+        def initialize(opts={})
+          warn '[DEPRECATION] Caliper::Entities::Reading::EpubPart is deprecated.'
           super
-          @type = Caliper::Entities::DigitalResourceType::EPUB_PART
         end
+
       end
     end
   end

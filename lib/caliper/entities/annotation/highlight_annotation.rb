@@ -26,14 +26,11 @@ module Caliper
     module Annotation
       class HighlightAnnotation < Annotation
 
-        attr_accessor :selectionText, :selection
+        caliper_type Caliper::Entities::Annotation::AnnotationType::HIGHLIGHT_ANNOTATION
 
-        def initialize
-          super
-          @type = Caliper::Entities::Annotation::AnnotationType::HIGHLIGHT_ANNOTATION
-          @selectionText = nil
-          @selection = {}
-        end
+        caliper_property :selection,      default: {}
+        caliper_property :selectionText
+
       end
     end
   end

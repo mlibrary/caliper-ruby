@@ -15,10 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './entity_base'
+require_relative './entity'
 require_relative './entity_type'
-require_relative './schemadotorg/creative_work'
-require_relative './targetable'
 
 #
 # Caliper representation of a CreativeWork. We add learning specific attributes, including a list of
@@ -26,21 +24,16 @@ require_relative './targetable'
 #
 module Caliper
   module Entities
-    class DigitalResource < EntityBase
-      include Caliper::Entities::SchemaDotOrg::CreativeWork,
-              Caliper::Entities::Targetable
+    class DigitalResource < Entity
 
-      attr_accessor :alignedLearningObjective, :keywords, :isPartOf, :datePublished, :version
+      caliper_type Caliper::Entities::EntityType::DIGITAL_RESOURCE
 
-      def initialize
-        super
-        @type = Caliper::Entities::EntityType::DIGITAL_RESOURCE
-        @alignedLearningObjective = Array.new
-        @keywords = Array.new
-        @datePublished = nil
-        @isPartOf = nil
-        @version = nil
-      end
+      caliper_property :learningObjectives, default: []
+      caliper_property :datePublished
+      caliper_property :isPartOf
+      caliper_property :keywords,           default: []
+      caliper_property :version
+
     end
   end
 end

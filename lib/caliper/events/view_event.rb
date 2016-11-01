@@ -28,17 +28,10 @@ module Caliper
     class ViewEvent < Event
       include Caliper::Events::EventContext
 
-      def initialize
-        super
-        @type = Caliper::Events::EventType::VIEW
-        @action = Caliper::Actions::ReadingActions::VIEWED
-        @target = nil
-        @generated = nil
-        @edApp = nil
-        @group = nil
-        @membership = nil
-        @federatedSession = nil
-      end
+      caliper_type Caliper::Events::EventType::VIEW
+
+      caliper_property :action, default: Caliper::Actions::ReadingActions::VIEWED
+
     end
   end
 end

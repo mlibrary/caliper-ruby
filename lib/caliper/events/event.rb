@@ -15,9 +15,12 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'json'
+require_relative '../contexts'
+require_relative '../jsonable'
+require_relative '../properties'
+require_relative '../types'
+
 require_relative './event_type'
-require_relative './jsonable'
 
 #
 # Base event.
@@ -25,19 +28,39 @@ require_relative './jsonable'
 module Caliper
   module Events
     class Event
-      include Caliper::Events::Jsonable
+      include Caliper::Jsonable
+      include Caliper::Contexts
+      include Caliper::Properties
+      include Caliper::Types
 
-      attr_accessor :context, :type, :actor, :action, :object, :eventTime, :referrer
+      caliper_context Caliper::Contexts::CONTEXT
+      caliper_type Caliper::Events::EventType::EVENT
 
-      def initialize()
-        @context = Caliper::Context::Context::CONTEXT
-        @type = Caliper::Events::EventType::EVENT
-        @actor = nil
-        @action = nil
-        @object = nil
-        @eventTime = nil
-        @referrer = nil
+      caliper_property :actor
+      caliper_property :action
+      caliper_property :extensions, default: {}
+      caliper_property :eventTime
+      caliper_property :id
+      caliper_property :referrer
+      caliper_property :object
+
+      def initialize(opts={})
+        initialize_context(opts)
+        initialize_properties(opts)
       end
+
+      def eql?(other)
+        (self.class.properties.keys + [:context, :type]).inject(true) do |eql, key|
+          eql && (send(key).eql? other.send(key))
+        end
+      end
+
+      def serialize
+        {
+          '@type' => self.type
+        }
+      end
+
     end
   end
 end

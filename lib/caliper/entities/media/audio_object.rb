@@ -26,10 +26,8 @@ module Caliper
     module Media
       class AudioObject < MediaObject
 
-        def initialize
-          super
-          @type = Caliper::Entities::Media::MediaObjectType::AUDIO_OBJECT
-        end
+        caliper_type Caliper::Entities::Media::MediaObjectType::AUDIO_OBJECT
+
       end
     end
   end

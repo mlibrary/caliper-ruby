@@ -15,9 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative '../entity'
 require_relative '../entity_type'
-require_relative '../w3c/organization'
 
 #
 # LIS Group.
@@ -25,16 +24,12 @@ require_relative '../w3c/organization'
 module Caliper
   module Entities
     module LIS
-      class Group < EntityBase
-        include Caliper::Entities::W3C::Organization
+      class Group < Entity
 
-        attr_accessor :subOrganizationOf
+        caliper_type Caliper::Entities::EntityType::GROUP
 
-        def initialize
-          super
-          @type = Caliper::Entities::EntityType::GROUP
-          @subOrganizationOf = nil
-        end
+        caliper_property :subOrganizationOf
+
       end
     end
   end

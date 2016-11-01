@@ -27,16 +27,8 @@ module Caliper
     class AssignableEvent < Event
       include Caliper::Events::EventContext
 
-      def initialize
-        super
-        @type = Caliper::Events::EventType::ASSIGNABLE
-        @target = nil
-        @generated = nil
-        @edApp = nil
-        @group = nil
-        @membership = nil
-        @federatedSession = nil
-      end
+      caliper_type Caliper::Events::EventType::ASSIGNABLE
+
     end
   end
 end

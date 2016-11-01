@@ -20,33 +20,38 @@ require 'spec_helper'
 describe Caliper::Events::SessionEvent do
   subject do
     described_class.new(
-      actor: ed_app,
-      action: Caliper::Actions::SessionActions::TIMED_OUT,
-      edApp: ed_app,
-      eventTime: '2016-11-15T11:15:00.000Z',
-      id: '513d4ca1-0ecf-4234-932d-c4cb287884a3',
-      object: session
+      actor: actor,
+      action: Caliper::Actions::SessionActions::LOGGED_OUT,
+      eventTime: '2016-11-15T11:05:00.000Z',
+      id: '5fac90a9-531a-41f6-9b8d-7a26e61dcc27',
+      object: object,
+      session: session
     )
   end
 
-  let(:ed_app) do
+  let(:actor) do
+    Caliper::Entities::Agent::Person.new(
+      id: 'https://example.edu/users/554433'
+    )
+  end
+
+  let(:object) do
     Caliper::Entities::Agent::SoftwareApplication.new(
-      id: 'https://example.edu'
+      id: 'https://example.edu',
+      version: 'v2'
     )
   end
 
   let(:session) do
     Caliper::Entities::Session::Session.new(
-      id: 'https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864',
-      actor: Caliper::Entities::Agent::Person.new(
-        id: 'https://example.edu/users/112233'
-      ),
-      dateCreated: '2016-11-15T10:15:00.000Z',
-      startedAtTime: '2016-11-15T10:15:00.000Z',
-      endedAtTime: '2016-11-15T11:15:00.000Z',
-      duration: 'PT3600S'
+      id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259',
+      actor: actor,
+      dateCreated: '2016-11-15T10:00:00.000Z',
+      startedAtTime: '2016-11-15T10:00:00.000Z',
+      endedAtTime: '2016-11-15T11:05:00.000Z',
+      duration: 'PT3000S'
     )
   end
 
-  include_examples 'validation against common fixture', 'caliperEventSessionTimedOut.json'
+  include_examples 'validation against common fixture', 'caliperEventSessionLoggedOut.json'
 end
