@@ -5,7 +5,7 @@ require 'caliper/version'
 Gem::Specification.new do |g|
   g.name        = 'ims_caliper'
   g.version     = Caliper::VERSION
-  g.authors     = ['Matthew Hogan', 'Prashant Nayak', 'Zhen Qian', 'Anthony Whyte']
+  g.authors     = ['Matthew Hogan', 'Paul Kerschen', 'Prashant Nayak', 'Zhen Qian', 'Anthony Whyte']
   g.email       = ['lmattson@imsglobal.org']
   g.homepage    = 'https://github.com/IMSGlobal/caliper-ruby'
   g.summary     = 'Caliper Sensor API'
