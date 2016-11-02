@@ -15,20 +15,28 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../assignable/assignable_digital_resource'
-require_relative '../assignable/assignable_digital_resource_type'
+require_relative '../entity'
+require_relative '../entity_type'
 
 #
-# Assessment entity.
+# Representation of a result.
 #
 module Caliper
   module Entities
-    module Assessment
-      class Assessment < Caliper::Entities::Assignable::AssignableDigitalResource
+    module Assign
+      class Result < Entity
 
-        caliper_type Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT
+        caliper_type Caliper::Entities::EntityType::RESULT
 
-        caliper_property :items, default: []
+        caliper_property :attempt
+        caliper_property :comment
+        caliper_property :curveFactor
+        caliper_property :curvedTotalScore
+        caliper_property :extraCreditScore
+        caliper_property :normalScore
+        caliper_property :penaltyScore
+        caliper_property :scoredBy
+        caliper_property :totalScore
 
       end
     end

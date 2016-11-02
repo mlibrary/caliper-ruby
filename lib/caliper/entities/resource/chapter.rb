@@ -15,24 +15,18 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
-require_relative '../digital_resource_type'
+require_relative 'digital_resource'
+require_relative '../entity_type'
 
-# An image, video, or audio object embedded in a web page. Note that a
-# creative work may have many media objects associated with it on the
-# same web page. For example, a page about a single song (MusicRecording)
-# may have a music video (VideoObject), and a high and low bandwidth audio
-# stream (2 AudioObject's). See From https://schema.org/MediaObject.
+#
+# Representation of a chapter. A major structural division of a piece of writing.
 #
 module Caliper
   module Entities
-    module Media
-      class MediaObject < DigitalResource
+    module Reading
+      class Chapter < Caliper::Entities::Resource::DigitalResource
 
-        caliper_type Caliper::Entities::DigitalResourceType::MEDIA_OBJECT
-
-        caliper_property :duration
-        caliper_property :mediaType
+        caliper_type Caliper::Entities::EntityType::CHAPTER
 
       end
     end

@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource_collection'
+require_relative 'digital_resource_collection'
 require_relative '../entity_type'
 
 #
@@ -24,7 +24,7 @@ require_relative '../entity_type'
 module Caliper
   module Entities
     module Resource
-      class Forum < Caliper::Entities::DigitalResourceCollection
+      class Forum < Caliper::Entities::Resource::DigitalResourceCollection
 
         caliper_type Caliper::Entities::EntityType::FORUM
 

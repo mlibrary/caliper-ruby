@@ -15,18 +15,18 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
-require_relative '../digital_resource_type'
+require_relative 'digital_resource'
+require_relative '../entity_type'
 
 #
-# Representation of a chapter. A major structural division of a piece of writing.
+# Representation of a document.
 #
 module Caliper
   module Entities
     module Reading
-      class Chapter < Caliper::Entities::DigitalResource
+      class Document < Caliper::Entities::Resource::DigitalResource
 
-        caliper_type Caliper::Entities::DigitalResourceType::CHAPTER
+        caliper_type Caliper::Entities::EntityType::DOCUMENT
 
       end
     end

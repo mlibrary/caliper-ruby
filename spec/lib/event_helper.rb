@@ -18,15 +18,15 @@
 require 'require_all'
 require_all 'lib/caliper/entities/entity.rb'
 require_all 'lib/caliper/entities/agent/software_application.rb'
+require_all 'lib/caliper/entities/agent/group.rb'
 require_all 'lib/caliper/entities/agent/person.rb'
 require_all 'lib/caliper/entities/lis/membership.rb'
 require_all 'lib/caliper/entities/lis/role.rb'
 require_all 'lib/caliper/entities/lis/status.rb'
 require_all 'lib/caliper/entities/lis/course_section.rb'
 require_all 'lib/caliper/entities/lis/course_offering.rb'
-require_all 'lib/caliper/entities/lis/group.rb'
-require_all 'lib/caliper/entities/reading/document.rb'
-require_all 'lib/caliper/entities/reading/frame.rb'
+require_all 'lib/caliper/entities/resource/document.rb'
+require_all 'lib/caliper/entities/resource/frame.rb'
 require_all 'lib/caliper/entities/session/session.rb'
 require_all 'lib/caliper/events/session_event.rb'
 
@@ -100,7 +100,7 @@ module Helper
     section.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
     # LIS Group
-    group = Caliper::Entities::LIS::Group.new
+    group = Caliper::Entities::Agent::Group.new
     group.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001'
     group.name = 'Discussion Group 001'
     group.subOrganizationOf = section

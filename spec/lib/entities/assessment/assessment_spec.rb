@@ -17,7 +17,7 @@
 
 require 'spec_helper'
 
-describe Caliper::Entities::Assessment::Assessment do
+describe Caliper::Entities::Resource::Assessment do
 
   subject do
     described_class.new(
@@ -35,13 +35,13 @@ describe Caliper::Entities::Assessment::Assessment do
       maxSubmits: 2,
       version: '1.0',
       items: [
-        Caliper::Entities::Assessment::AssessmentItem.new(
+        Caliper::Entities::Resource::AssessmentItem.new(
           id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/1'
         ),
-        Caliper::Entities::Assessment::AssessmentItem.new(
+        Caliper::Entities::Resource::AssessmentItem.new(
           id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2'
         ),
-        Caliper::Entities::Assessment::AssessmentItem.new(
+        Caliper::Entities::Resource::AssessmentItem.new(
           id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3'
         )
       ]

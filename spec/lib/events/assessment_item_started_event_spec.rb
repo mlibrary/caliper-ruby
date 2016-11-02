@@ -39,13 +39,13 @@ describe Caliper::Events::AssessmentItemEvent do
   end
 
   let(:attempt) do
-    Caliper::Entities::Assignable::Attempt.new(
+    Caliper::Entities::Assign::Attempt.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1',
       actor: actor,
-      assignable: Caliper::Entities::Assessment::AssessmentItem.new(
+      assignable: Caliper::Entities::Resource::AssessmentItem.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3'
       ),
-      isPartOf: Caliper::Entities::Assignable::Attempt.new(
+      isPartOf: Caliper::Entities::Assign::Attempt.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
       ),
       count: 1,
@@ -85,10 +85,10 @@ describe Caliper::Events::AssessmentItemEvent do
   end
 
   let(:object) do
-    Caliper::Entities::Assessment::AssessmentItem.new(
+    Caliper::Entities::Resource::AssessmentItem.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3',
       name: 'Assessment Item 3',
-      isPartOf: Caliper::Entities::Assessment::Assessment.new(
+      isPartOf: Caliper::Entities::Resource::Assessment.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
       ),
       dateToStartOn: '2016-11-14T05:00:00.000Z',

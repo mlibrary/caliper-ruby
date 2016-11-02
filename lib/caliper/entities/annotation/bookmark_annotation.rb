@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './annotation'
-require_relative './annotation_type'
+require_relative '../entity_type'
 
 #
 # Bookmark Annotation entity.
@@ -26,7 +26,7 @@ module Caliper
     module Annotation
       class BookmarkAnnotation < Annotation
 
-        caliper_type Caliper::Entities::Annotation::AnnotationType::BOOKMARK_ANNOTATION
+        caliper_type Caliper::Entities::EntityType::BOOKMARK_ANNOTATION
 
         caliper_property :bookmarkNotes
 

@@ -15,18 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative 'digital_resource'
+require_relative '../entity_type'
+
 #
-# Response types.
+# A page.
 #
 module Caliper
   module Entities
-    module Response
-      module ResponseType
-        FILLINBLANK = 'http://purl.imsglobal.org/caliper/v1/FillinBlankResponse'
-        MULTIPLECHOICE = 'http://purl.imsglobal.org/caliper/v1/MultipleChoiceResponse'
-        MULTIPLERESPONSE = 'http://purl.imsglobal.org/caliper/v1/MultipleResponseResponse'
-        SELECTTEXT = 'http://purl.imsglobal.org/caliper/v1/SelectTextResponse'
-        TRUEFALSE = 'http://purl.imsglobal.org/caliper/v1/TrueFalseResponse'
+    module Reading
+      class Page < Caliper::Entities::Resource::DigitalResource
+
+        caliper_type Caliper::Entities::EntityType::PAGE
+
       end
     end
   end

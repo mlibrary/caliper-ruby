@@ -15,18 +15,22 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './entity'
-require_relative './entity_type'
+require_relative 'assignable_digital_resource'
+require_relative '../entity_type'
 
 #
-# Representation of a collection of digital resources.
+# Assessment Item entity.
 #
 module Caliper
   module Entities
-    class DigitalResourceCollection < Collection
+    module Resource
+      class AssessmentItem < Caliper::Entities::Resource::AssignableDigitalResource
 
-      caliper_type Caliper::Entities::EntityType::DIGITAL_RESOURCE_COLLECTION
+        caliper_property :isTimeDependent
 
+        caliper_type Caliper::Entities::EntityType::ASSESSMENT_ITEM
+
+      end
     end
   end
 end

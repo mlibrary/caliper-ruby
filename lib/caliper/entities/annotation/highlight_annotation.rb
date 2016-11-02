@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './annotation'
-require_relative './annotation_type'
+require_relative '../entity_type'
 
 #
 # Highlight Annotation entity.
@@ -26,7 +26,7 @@ module Caliper
     module Annotation
       class HighlightAnnotation < Annotation
 
-        caliper_type Caliper::Entities::Annotation::AnnotationType::HIGHLIGHT_ANNOTATION
+        caliper_type Caliper::Entities::EntityType::HIGHLIGHT_ANNOTATION
 
         caliper_property :selection,      default: {}
         caliper_property :selectionText

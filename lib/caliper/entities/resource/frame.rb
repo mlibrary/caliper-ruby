@@ -15,20 +15,20 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../assignable/assignable_digital_resource'
-require_relative '../assignable/assignable_digital_resource_type'
+require_relative 'digital_resource'
+require_relative '../entity_type'
 
 #
-# Assessment Item entity.
+# A Frame.
 #
 module Caliper
   module Entities
-    module Assessment
-      class AssessmentItem < Caliper::Entities::Assignable::AssignableDigitalResource
+    module Reading
+      class Frame < Caliper::Entities::Resource::DigitalResource
 
-        caliper_property :isTimeDependent
+        caliper_type Caliper::Entities::EntityType::FRAME
 
-        caliper_type Caliper::Entities::Assignable::AssignableDigitalResourceType::ASSESSMENT_ITEM
+        caliper_property :index, default: 0
 
       end
     end

@@ -68,7 +68,7 @@ describe Caliper::Events::MediaEvent do
   end
 
   let(:object) do
-    Caliper::Entities::Media::VideoObject.new(
+    Caliper::Entities::Resource::VideoObject.new(
       id: 'https://example.edu/UQVK-dsU7-Y',
       name: 'Information and Welcome',
       mediaType: 'video/ogg',
@@ -84,7 +84,7 @@ describe Caliper::Events::MediaEvent do
   end
 
   let(:target) do
-    Caliper::Entities::Media::MediaLocation.new(
+    Caliper::Entities::Resource::MediaLocation.new(
       id: 'https://example.edu/UQVK-dsU7-Y?t=321',
       currentTime: 'PT05M21S'
     )

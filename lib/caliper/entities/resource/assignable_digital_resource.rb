@@ -15,26 +15,26 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
-require_relative '../digital_resource_type'
+require_relative 'digital_resource'
+require_relative '../entity_type'
 
 #
-# Deprecated.
-#
-# Representation of an EPUB 3 Volume. A component of a collection.
-# See http://www.idpf.org/epub/vocab/structure/#volume
+# AssignableDigitalResource entity.
 #
 module Caliper
   module Entities
-    module Reading
-      class EpubVolume < Caliper::Entities::DigitalResource
+    module Resource
+      class AssignableDigitalResource < DigitalResource
 
-        caliper_type Caliper::Entities::DigitalResourceType::EPUB_VOLUME
+        caliper_type Caliper::Entities::EntityType::ASSIGNABLE_DIGITAL_RESOURCE
 
-        def initialize(opts={})
-          warn '[DEPRECATION] Caliper::Entities::Reading::EpubVolume is deprecated.'
-          super
-        end
+        caliper_property :dateToActivate
+        caliper_property :dateToShow
+        caliper_property :dateToStartOn
+        caliper_property :dateToSubmit
+        caliper_property :maxAttempts
+        caliper_property :maxScore
+        caliper_property :maxSubmits
 
       end
     end

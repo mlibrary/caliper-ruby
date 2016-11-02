@@ -15,26 +15,18 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
-require_relative '../digital_resource_type'
+require_relative '../entity'
+require_relative '../entity_type'
 
 #
-# AssignableDigitalResource entity.
+# Representation of a collection of digital resources.
 #
 module Caliper
   module Entities
-    module Assignable
-      class AssignableDigitalResource < DigitalResource
+    module Resource
+      class DigitalResourceCollection < Collection
 
-        caliper_type Caliper::Entities::DigitalResourceType::ASSIGNABLE_DIGITAL_RESOURCE
-
-        caliper_property :dateToActivate
-        caliper_property :dateToShow
-        caliper_property :dateToStartOn
-        caliper_property :dateToSubmit
-        caliper_property :maxAttempts
-        caliper_property :maxScore
-        caliper_property :maxSubmits
+        caliper_type Caliper::Entities::EntityType::DIGITAL_RESOURCE_COLLECTION
 
       end
     end

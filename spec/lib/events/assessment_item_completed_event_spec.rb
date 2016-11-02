@@ -69,17 +69,17 @@ describe Caliper::Events::AssessmentItemEvent do
   end
 
   let(:object) do
-    Caliper::Entities::Assignable::Attempt.new(
+    Caliper::Entities::Assign::Attempt.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1',
       actor: actor,
-      assignable: Caliper::Entities::Assessment::AssessmentItem.new(
+      assignable: Caliper::Entities::Resource::AssessmentItem.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3',
         name: 'Assessment Item 3',
-        isPartOf: Caliper::Entities::Assessment::Assessment.new(
+        isPartOf: Caliper::Entities::Resource::Assessment.new(
           id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
         )
       ),
-      isPartOf: Caliper::Entities::Assignable::Attempt.new(
+      isPartOf: Caliper::Entities::Assign::Attempt.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
       ),
       count: 1,
@@ -90,9 +90,9 @@ describe Caliper::Events::AssessmentItemEvent do
   end
 
   let(:response) do
-    Caliper::Entities::Response::FillinBlankResponse.new(
+    Caliper::Entities::Response::FillInBlankResponse.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1',
-      attempt: Caliper::Entities::Assignable::Attempt.new(
+      attempt: Caliper::Entities::Assign::Attempt.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1'
       ),
       dateCreated: '2016-11-15T10:15:12.000Z',

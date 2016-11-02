@@ -15,20 +15,18 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
-require_relative '../digital_resource_type'
+require_relative './media_object'
+require_relative '../entity_type'
 
 #
-# A time based location within a media object.
+# A video object embedded in a web page. See https://schema.org/VideoObject.
 #
 module Caliper
   module Entities
-    module Media
-      class MediaLocation < DigitalResource
+    module Resource
+      class VideoObject < MediaObject
 
-        caliper_type Caliper::Entities::DigitalResourceType::MEDIA_LOCATION
-
-        caliper_property :currentTime
+        caliper_type Caliper::Entities::EntityType::VIDEO_OBJECT
 
       end
     end

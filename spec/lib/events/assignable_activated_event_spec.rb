@@ -68,7 +68,7 @@ describe Caliper::Events::AssignableEvent do
   end
 
   let(:object) do
-    Caliper::Entities::Assessment::Assessment.new(
+    Caliper::Entities::Resource::Assessment.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1',
       name: 'Quiz One',
       dateCreated: '2016-08-01T06:00:00.000Z',

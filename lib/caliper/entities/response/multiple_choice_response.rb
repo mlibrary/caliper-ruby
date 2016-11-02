@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './response'
-require_relative './response_type'
+require_relative '../entity_type'
 
 #
 # Represents a response to a multiple choice question that permits a single option to be selected.
@@ -26,7 +26,7 @@ module Caliper
     module Response
       class MultipleChoiceResponse < Response
 
-        caliper_type Caliper::Entities::Response::ResponseType::MULTIPLECHOICE
+        caliper_type Caliper::Entities::EntityType::MULTIPLE_CHOICE_RESPONSE
 
         caliper_property :values
 

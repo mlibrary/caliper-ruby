@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './response'
-require_relative './response_type'
+require_relative '../entity_type'
 
 #
 # Represents response text or integer/decimal/scientific numbers that completes a question
@@ -25,9 +25,9 @@ require_relative './response_type'
 module Caliper
   module Entities
     module Response
-      class FillinBlankResponse < Response
+      class FillInBlankResponse < Response
 
-        caliper_type Caliper::Entities::Response::ResponseType::FILLINBLANK
+        caliper_type Caliper::Entities::EntityType::FILL_IN_BLANK_RESPONSE
 
         caliper_property :values
 

@@ -15,26 +15,26 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
-require_relative '../digital_resource_type'
+require_relative '../entity'
+require_relative '../entity_type'
 
-##
-# Deprecated.
 #
-# Representation of an EPUB 3 Part. A major structural division of a piece of writing, typically
-# encapsulating a set of related chapters. See http://www.idpf.org/epub/vocab/structure/#part.
+# Attempt entity on an Assignable.
 #
 module Caliper
   module Entities
-    module Reading
-      class EpubPart < Caliper::Entities::DigitalResource
+    module Assign
+      class Attempt < Entity
 
-        caliper_type Caliper::Entities::DigitalResourceType::EPUB_PART
+        caliper_type Caliper::Entities::EntityType::ATTEMPT
 
-        def initialize(opts={})
-          warn '[DEPRECATION] Caliper::Entities::Reading::EpubPart is deprecated.'
-          super
-        end
+        caliper_property :actor
+        caliper_property :assignable
+        caliper_property :count
+        caliper_property :duration
+        caliper_property :endedAtTime
+        caliper_property :isPartOf
+        caliper_property :startedAtTime
 
       end
     end
