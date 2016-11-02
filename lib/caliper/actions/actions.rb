@@ -48,11 +48,14 @@ module Caliper
       LINKED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Linked'
       LOGGED_IN = 'http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedIn'
       LOGGED_OUT = 'http://purl.imsglobal.org/vocab/caliper/v1/action#LoggedOut'
+      MARKED_AS_READ = 'http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsRead'
+      MARKED_AS_UNREAD = 'http://purl.imsglobal.org/vocab/caliper/v1/action#MarkedAsUnread'
       MODIFIED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Modified'
       MUTED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Muted'
       NAVIGATED_TO = 'http://purl.imsglobal.org/vocab/caliper/v1/action#NavigatedTo'
       OPENED_POPOUT = 'http://purl.imsglobal.org/vocab/caliper/v1/action#OpenedPopout'
       PAUSED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Paused'
+      POSTED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Posted'
       RANKED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Ranked'
       QUESTIONED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Questioned'
       RECOMMENDED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Recommended'
@@ -70,6 +73,7 @@ module Caliper
       TAGGED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Tagged'
       TIMED_OUT = 'http://purl.imsglobal.org/vocab/caliper/v1/action#TimedOut'
       UNMUTED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Unmuted'
+      UNSUBSCRIBED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Unsubscribed'
       VIEWED = 'http://purl.imsglobal.org/vocab/caliper/v1/action#Viewed'
     end
   end
