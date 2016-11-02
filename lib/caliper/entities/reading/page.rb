@@ -24,7 +24,7 @@ require_relative '../digital_resource_type'
 module Caliper
   module Entities
     module Reading
-      class WebPage < Caliper::Entities::DigitalResource
+      class Page < Caliper::Entities::DigitalResource
 
         caliper_type Caliper::Entities::DigitalResourceType::PAGE
 
