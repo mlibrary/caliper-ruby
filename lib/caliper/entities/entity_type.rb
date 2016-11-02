@@ -28,6 +28,7 @@ module Caliper
       ENTITY = 'http://purl.imsglobal.org/caliper/v1/Entity'
       GROUP = 'http://purl.imsglobal.org/caliper/v1/Group'
       LEARNING_OBJECTIVE = 'http://purl.imsglobal.org/caliper/v1/LearningObjective'
+      LTI_SESSION = 'http://purl.imsglobal.org/caliper/v1/LtiSession'
       MEMBERSHIP = 'http://purl.imsglobal.org/caliper/v1/Membership'
       ORGANIZATION = 'http://purl.imsglobal.org/caliper/v1/Organization'
       PERSON = 'http://purl.imsglobal.org/caliper/v1/Person'
