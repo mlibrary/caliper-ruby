@@ -24,6 +24,7 @@ module Caliper
       COURSE_OFFERING = 'http://purl.imsglobal.org/caliper/v1/CourseOffering'
       COURSE_SECTION = 'http://purl.imsglobal.org/caliper/v1/CourseSection'
       DIGITAL_RESOURCE = 'http://purl.imsglobal.org/caliper/v1/DigitalResource'
+      DIGITAL_RESOURCE_COLLECTION = 'http://purl.imsglobal.org/caliper/v1/DigitalResourceCollection'
       ENTITY = 'http://purl.imsglobal.org/caliper/v1/Entity'
       GROUP = 'http://purl.imsglobal.org/caliper/v1/Group'
       LEARNING_OBJECTIVE = 'http://purl.imsglobal.org/caliper/v1/LearningObjective'
