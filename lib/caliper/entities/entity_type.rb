@@ -20,6 +20,7 @@ module Caliper
     module EntityType
       ANNOTATION = 'http://purl.imsglobal.org/caliper/v1/Annotation'
       ATTEMPT = 'http://purl.imsglobal.org/caliper/v1/Attempt'
+      COLLECTION = 'http://purl.imsglobal.org/caliper/v1/Collection'
       COURSE_OFFERING = 'http://purl.imsglobal.org/caliper/v1/CourseOffering'
       COURSE_SECTION = 'http://purl.imsglobal.org/caliper/v1/CourseSection'
       DIGITAL_RESOURCE = 'http://purl.imsglobal.org/caliper/v1/DigitalResource'
