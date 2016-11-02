@@ -45,7 +45,7 @@ module Caliper
         obj = Caliper::Entities::Entity.new
         obj.context = nil
         obj.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3)'
-        obj.type = 'http://purl.imsglobal.org/caliper/v1/EpubVolume'
+        obj.type = 'http://www.idpf.org/epub/vocab/structure/#volume'
         # puts "new minimal object entity = #{obj.to_json}"
 
         # Create the Event
