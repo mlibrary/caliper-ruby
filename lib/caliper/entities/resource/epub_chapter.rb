@@ -15,18 +15,26 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './media_object'
-require_relative './media_object_type'
+require_relative 'digital_resource'
+require_relative '../entity_type'
 
 #
-# Audio object embedded in a web page. See https://schema.org/AudioObject
+# Deprecated.
+#
+# Representation of an EPUB 3 Chapter. A major structural division of a piece of writing.
+# See http://www.idpf.org/epub/vocab/structure/#chapter
 #
 module Caliper
   module Entities
-    module Media
-      class AudioObject < MediaObject
+    module Reading
+      class EpubChapter < Caliper::Entities::Resource::DigitalResource
 
-        caliper_type Caliper::Entities::Media::MediaObjectType::AUDIO_OBJECT
+        caliper_type Caliper::Entities::EntityType::EPUB_CHAPTER
+
+        def initialize(opts={})
+          warn '[DEPRECATION] Caliper::Entities::Reading::EpubChapter is deprecated.'
+          super
+        end
 
       end
     end

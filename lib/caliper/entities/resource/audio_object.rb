@@ -16,17 +16,17 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './media_object'
-require_relative './media_object_type'
+require_relative '../entity_type'
 
 #
-# A video object embedded in a web page. See https://schema.org/VideoObject.
+# Audio object embedded in a web page. See https://schema.org/AudioObject
 #
 module Caliper
   module Entities
-    module Media
-      class VideoObject < MediaObject
+    module Resource
+      class AudioObject < MediaObject
 
-        caliper_type Caliper::Entities::Media::MediaObjectType::VIDEO_OBJECT
+        caliper_type Caliper::Entities::EntityType::AUDIO_OBJECT
 
       end
     end

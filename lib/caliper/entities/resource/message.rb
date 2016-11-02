@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
+require_relative 'digital_resource'
 require_relative '../entity_type'
 
 #
@@ -24,7 +24,7 @@ require_relative '../entity_type'
 module Caliper
   module Entities
     module Resource
-      class Message < Caliper::Entities::DigitalResource
+      class Message < Caliper::Entities::Resource::DigitalResource
 
         caliper_type Caliper::Entities::EntityType::MESSAGE
 

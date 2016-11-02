@@ -45,9 +45,9 @@ describe Caliper::Events::OutcomeEvent do
   end
 
   let(:object) do
-    Caliper::Entities::Assignable::Attempt.new(
+    Caliper::Entities::Assign::Attempt.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
-      assignable: Caliper::Entities::Assessment::Assessment.new(
+      assignable: Caliper::Entities::Resource::Assessment.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
       ),
       actor: Caliper::Entities::Agent::Person.new(
@@ -62,9 +62,9 @@ describe Caliper::Events::OutcomeEvent do
   end
 
   let(:result) do
-    Caliper::Entities::Outcome::Result.new(
+    Caliper::Entities::Assign::Result.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1',
-      attempt: Caliper::Entities::Assignable::Attempt.new(
+      attempt: Caliper::Entities::Assign::Attempt.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
       ),
       normalScore: 15,

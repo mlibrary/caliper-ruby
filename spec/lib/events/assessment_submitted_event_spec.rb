@@ -68,10 +68,10 @@ describe Caliper::Events::AssessmentEvent do
   end
 
   let(:object) do
-    Caliper::Entities::Assignable::Attempt.new(
+    Caliper::Entities::Assign::Attempt.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
       actor: actor,
-      assignable: Caliper::Entities::Assessment::Assessment.new(
+      assignable: Caliper::Entities::Resource::Assessment.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1',
         name: 'Quiz One',
         dateToStartOn: '2016-11-14T05:00:00.000Z',

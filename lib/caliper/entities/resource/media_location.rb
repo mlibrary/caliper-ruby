@@ -15,15 +15,21 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative 'digital_resource'
+require_relative '../entity_type'
+
 #
-# Assignable types.
+# A time based location within a media object.
 #
 module Caliper
   module Entities
-    module Assignable
-      module AssignableDigitalResourceType
-        ASSESSMENT = 'http://purl.imsglobal.org/caliper/v1/Assessment'
-        ASSESSMENT_ITEM = 'http://purl.imsglobal.org/caliper/v1/AssessmentItem'
+    module Resource
+      class MediaLocation < DigitalResource
+
+        caliper_type Caliper::Entities::EntityType::MEDIA_LOCATION
+
+        caliper_property :currentTime
+
       end
     end
   end

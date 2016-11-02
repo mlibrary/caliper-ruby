@@ -16,7 +16,7 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './response'
-require_relative './response_type'
+require_relative '../entity_type'
 
 #
 # Represents a response that identifies text from a presented paragraph or list.
@@ -27,7 +27,7 @@ module Caliper
     module Response
       class SelectTextResponse < Response
 
-        caliper_type Caliper::Entities::Response::ResponseType::SELECTTEXT
+        caliper_type Caliper::Entities::EntityType::SELECT_TEXT_RESPONSE
 
         caliper_property :values
 

@@ -15,27 +15,22 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './entity'
-require_relative './entity_type'
+require_relative '../entity'
+require_relative '../entity_type'
 
 #
-# Caliper representation of a CreativeWork. We add learning specific attributes, including a list of
-# LearningObjective learning objectives and a list of String keywords. See https://schema.org/CreativeWork.
+# Representation of a group.
 #
 module Caliper
   module Entities
-    class DigitalResource < Entity
+    module Agent
+      class Group < Entity
 
-      caliper_type Caliper::Entities::EntityType::DIGITAL_RESOURCE
+        caliper_type Caliper::Entities::EntityType::GROUP
 
-      caliper_property :creators,           default: []
-      caliper_property :datePublished
-      caliper_property :isPartOf
-      caliper_property :keywords,           default: []
-      caliper_property :learningObjectives, default: []
-      caliper_property :mediaType
-      caliper_property :version
+        caliper_property :subOrganizationOf
 
+      end
     end
   end
 end

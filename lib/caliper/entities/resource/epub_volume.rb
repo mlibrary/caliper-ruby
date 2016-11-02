@@ -15,18 +15,26 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './media_object'
-require_relative './media_object_type'
+require_relative 'digital_resource'
+require_relative '../entity_type'
 
 #
-# A image object embedded in a web page. See https://schema.org/ImageObject
+# Deprecated.
+#
+# Representation of an EPUB 3 Volume. A component of a collection.
+# See http://www.idpf.org/epub/vocab/structure/#volume
 #
 module Caliper
   module Entities
-    module Media
-      class ImageObject < MediaObject
+    module Reading
+      class EpubVolume < Caliper::Entities::Resource::DigitalResource
 
-        caliper_type Caliper::Entities::Media::MediaObjectType::IMAGE_OBJECT
+        caliper_type Caliper::Entities::EntityType::EPUB_VOLUME
+
+        def initialize(opts={})
+          warn '[DEPRECATION] Caliper::Entities::Reading::EpubVolume is deprecated.'
+          super
+        end
 
       end
     end

@@ -15,16 +15,21 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative 'assignable_digital_resource'
+require_relative '../entity_type'
+
 #
-# Media Object types.
+# Assessment entity.
 #
 module Caliper
   module Entities
-    module Media
-      module MediaObjectType
-        AUDIO_OBJECT = 'http://purl.imsglobal.org/caliper/v1/AudioObject'
-        IMAGE_OBJECT = 'http://purl.imsglobal.org/caliper/v1/ImageObject'
-        VIDEO_OBJECT = 'http://purl.imsglobal.org/caliper/v1/VideoObject'
+    module Resource
+      class Assessment < Caliper::Entities::Resource::AssignableDigitalResource
+
+        caliper_type Caliper::Entities::EntityType::ASSESSMENT
+
+        caliper_property :items, default: []
+
       end
     end
   end

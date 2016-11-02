@@ -15,20 +15,24 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity'
+require_relative 'digital_resource'
 require_relative '../entity_type'
 
-#
-# LIS Group.
+# An image, video, or audio object embedded in a web page. Note that a
+# creative work may have many media objects associated with it on the
+# same web page. For example, a page about a single song (MusicRecording)
+# may have a music video (VideoObject), and a high and low bandwidth audio
+# stream (2 AudioObject's). See From https://schema.org/MediaObject.
 #
 module Caliper
   module Entities
-    module LIS
-      class Group < Entity
+    module Resource
+      class MediaObject < DigitalResource
 
-        caliper_type Caliper::Entities::EntityType::GROUP
+        caliper_type Caliper::Entities::EntityType::MEDIA_OBJECT
 
-        caliper_property :subOrganizationOf
+        caliper_property :duration
+        caliper_property :mediaType
 
       end
     end

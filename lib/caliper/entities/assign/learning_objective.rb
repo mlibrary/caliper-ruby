@@ -15,18 +15,18 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../digital_resource'
-require_relative '../digital_resource_type'
+require_relative '../entity'
+require_relative '../entity_type'
 
 #
-# Representation of a document.
+# A learning objective.
 #
 module Caliper
   module Entities
-    module Reading
-      class Document < Caliper::Entities::DigitalResource
+    module Assign
+      class LearningObjective < Entity
 
-        caliper_type Caliper::Entities::DigitalResourceType::DOCUMENT
+        caliper_type Caliper::Entities::EntityType::LEARNING_OBJECTIVE
 
       end
     end
