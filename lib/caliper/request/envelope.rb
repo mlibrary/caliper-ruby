@@ -27,10 +27,10 @@ module Caliper
 
       attr_accessor :sensor, :sendTime, :data
 
-      def initialize
-        @sensor = ''
+      def initialize(opts = {})
+        @sensor = opts[:sensor] || ''
         @sendTime = Time.now.utc.iso8601(3)
-        @data = []
+        @data = opts[:data] || []
       end
 
       def eql?(other)

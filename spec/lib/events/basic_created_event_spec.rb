@@ -15,36 +15,32 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'securerandom'
-require_relative './envelope'
+require 'spec_helper'
 
-#
-# Event store requestor.
-#
-module Caliper
-  module Request
-    class EventStoreRequestor
-
-      def generate_payload(sensor, data)
-        create_envelope(sensor, data).to_json
-      end
-
-      private
-
-      def create_envelope(sensor, data)
-        Caliper::Request::Envelope.new(
-          sensor: sensor.id,
-          data: wrap_array(data)
-        )
-      end
-
-      def wrap_array(data)
-        case data
-          when NilClass then []
-          when Array then data
-          else [data]
-        end
-      end
-    end
+describe Caliper::Events::Event do
+  subject do
+    described_class.new(
+      actor: actor,
+      action: Caliper::Actions::Actions::CREATED,
+      object: object,
+      eventTime: '2016-11-15T10:15:00.000Z'
+    )
   end
+
+  let(:actor) do
+    Caliper::Entities::Agent::Person.new(
+      id: 'https://example.edu/users/554433',
+    )
+  end
+
+  let(:object) do
+    Caliper::Entities::Reading::Document.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123',
+      name: 'Course Syllabus',
+      dateCreated: '2016-11-12T07:15:00.000Z',
+      version: '1'
+    )
+  end
+
+  include_examples 'validation against common fixture', 'caliperEventBasicCreated.json'
 end
