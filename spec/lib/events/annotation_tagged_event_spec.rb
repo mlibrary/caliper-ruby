@@ -23,7 +23,7 @@ describe Caliper::Events::AnnotationEvent do
       actor: actor,
       action: Caliper::Actions::AnnotationActions::TAGGED,
       edApp: ed_app,
-      eventTime: '2016-09-15T10:15:00.000Z',
+      eventTime: '2016-11-15T10:15:00.000Z',
       generated: tag,
       group: group,
       membership: membership,
@@ -91,7 +91,7 @@ describe Caliper::Events::AnnotationEvent do
         id: 'https://example.edu/etexts/201.epub#epubcfi(/6/4[chap01]!/4[body01]/12[para06]/1:97)'
       ),
       tags: %w(profile event entity),
-      dateCreated: '2016-09-15T10:15:00.000Z'
+      dateCreated: '2016-11-15T10:15:00.000Z'
     )
   end
 
