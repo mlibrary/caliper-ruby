@@ -20,7 +20,7 @@ require 'spec_helper'
 describe Caliper::Events::OutcomeEvent do
   subject do
     described_class.new(
-      action: Caliper::Actions::OutcomeActions::GRADED,
+      action: Caliper::Actions::GRADED,
       actor: actor,
       eventTime: '2016-11-15T10:57:06.000Z',
       generated: result,

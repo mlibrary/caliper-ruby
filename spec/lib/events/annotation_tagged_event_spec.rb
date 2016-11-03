@@ -21,7 +21,7 @@ describe Caliper::Events::AnnotationEvent do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::AnnotationActions::TAGGED,
+      action: Caliper::Actions::TAGGED,
       edApp: ed_app,
       eventTime: '2016-11-15T10:15:00.000Z',
       generated: tag,

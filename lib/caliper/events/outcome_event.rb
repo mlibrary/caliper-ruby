@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../actions/outcome_actions.rb'
+require_relative '../actions.rb'
 require_relative './event'
 require_relative './event_context'
 require_relative './event_type'
@@ -30,7 +30,7 @@ module Caliper
 
       caliper_type Caliper::Events::EventType::OUTCOME
 
-      caliper_property :action, default: Caliper::Actions::OutcomeActions::GRADED
+      caliper_property :action, default: Caliper::Actions::GRADED
 
     end
   end

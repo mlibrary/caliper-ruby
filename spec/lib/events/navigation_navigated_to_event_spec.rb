@@ -20,7 +20,7 @@ require 'spec_helper'
 describe Caliper::Events::NavigationEvent do
   subject do
     described_class.new(
-      action: Caliper::Actions::NavigationActions::NAVIGATED_TO,
+      action: Caliper::Actions::NAVIGATED_TO,
       actor: actor,
       edApp: ed_app,
       eventTime: '2016-11-15T10:15:00.000Z',

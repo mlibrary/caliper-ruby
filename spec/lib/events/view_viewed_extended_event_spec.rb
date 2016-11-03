@@ -21,7 +21,7 @@ describe Caliper::Events::ViewEvent do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::ReadingActions::VIEWED,
+      action: Caliper::Actions::VIEWED,
       edApp: ed_app,
       eventTime: '2016-11-15T10:15:00.000Z',
       group: group,

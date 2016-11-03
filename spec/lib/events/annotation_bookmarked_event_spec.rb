@@ -20,7 +20,7 @@ require 'spec_helper'
 describe Caliper::Events::AnnotationEvent do
   subject do
     described_class.new(
-      action: Caliper::Actions::AnnotationActions::BOOKMARKED,
+      action: Caliper::Actions::BOOKMARKED,
       actor: actor,
       eventTime: '2016-11-15T10:15:00.000Z',
       edApp: ed_app,
