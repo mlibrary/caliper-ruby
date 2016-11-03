@@ -21,7 +21,7 @@ describe Caliper::Events::Event do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::Actions::MODIFIED,
+      action: Caliper::Actions::MODIFIED,
       object: object,
       eventTime: '2016-11-15T10:15:00.000Z',
       extensions: extensions

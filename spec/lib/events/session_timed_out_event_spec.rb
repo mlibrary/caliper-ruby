@@ -21,7 +21,7 @@ describe Caliper::Events::SessionEvent do
   subject do
     described_class.new(
       actor: ed_app,
-      action: Caliper::Actions::SessionActions::TIMED_OUT,
+      action: Caliper::Actions::TIMED_OUT,
       edApp: ed_app,
       eventTime: '2016-11-15T11:15:00.000Z',
       id: '513d4ca1-0ecf-4234-932d-c4cb287884a3',

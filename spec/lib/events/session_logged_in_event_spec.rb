@@ -20,7 +20,7 @@ require 'spec_helper'
 describe Caliper::Events::SessionEvent do
   subject do
     described_class.new(
-      action: Caliper::Actions::SessionActions::LOGGED_IN,
+      action: Caliper::Actions::LOGGED_IN,
       actor: actor,
       eventTime: '2016-11-15T10:15:00.000Z',
       id: '341db3d9-71cc-4081-9423-cbed73cb0179',

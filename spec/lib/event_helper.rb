@@ -48,7 +48,7 @@ module Helper
     actor.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
     # Action
-    action = Caliper::Actions::SessionActions::LOGGED_IN;
+    action = Caliper::Actions::LOGGED_IN
 
     # Object
     obj = ed_app

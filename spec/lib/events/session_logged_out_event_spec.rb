@@ -21,7 +21,7 @@ describe Caliper::Events::SessionEvent do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::SessionActions::LOGGED_OUT,
+      action: Caliper::Actions::LOGGED_OUT,
       eventTime: '2016-11-15T11:05:00.000Z',
       id: '5fac90a9-531a-41f6-9b8d-7a26e61dcc27',
       object: object,

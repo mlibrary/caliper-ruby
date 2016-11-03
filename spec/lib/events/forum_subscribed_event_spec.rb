@@ -21,7 +21,7 @@ describe Caliper::Events::ForumEvent do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::Actions::SUBSCRIBED,
+      action: Caliper::Actions::SUBSCRIBED,
       edApp: ed_app,
       eventTime: '2016-11-15T10:16:00.000Z',
       group: group,

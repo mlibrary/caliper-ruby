@@ -116,7 +116,7 @@ describe Caliper::Request::Envelope do
   it 'should ensure that a Caliper envelope containing a AssessmentEvent is correctly created and serialized' do
     navigation_event = Caliper::Events::NavigationEvent.new(
       actor: actor,
-      action: Caliper::Actions::Actions::NAVIGATED_TO,
+      action: Caliper::Actions::NAVIGATED_TO,
       object: web_page,
       eventTime: '2016-11-15T10:15:00.000Z',
       referrer: referrer,
@@ -128,7 +128,7 @@ describe Caliper::Request::Envelope do
 
     annotation_event = Caliper::Events::AnnotationEvent.new(
       actor: actor,
-      action: Caliper::Actions::Actions::BOOKMARKED,
+      action: Caliper::Actions::BOOKMARKED,
       object: document_no_timestamps,
       generated: annotation,
       eventTime: '2016-11-15T10:20:00.000Z',
@@ -140,7 +140,7 @@ describe Caliper::Request::Envelope do
 
     view_event = Caliper::Events::ViewEvent.new(
       actor: actor,
-      action: Caliper::Actions::Actions::VIEWED,
+      action: Caliper::Actions::VIEWED,
       object: document_timestamps,
       eventTime: '2016-11-15T10:21:00.000Z',
       edApp: ed_app,

@@ -35,7 +35,7 @@ describe Caliper::Request::Envelope do
     # Create the Event
     event = Caliper::Events::Event.new(
       actor: actor,
-      action: Caliper::Actions::Actions::CREATED,
+      action: Caliper::Actions::CREATED,
       object: document,
       eventTime: '2016-11-15T10:15:00.000Z'
     )

@@ -21,7 +21,7 @@ describe Caliper::Events::Event do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::Actions::CREATED,
+      action: Caliper::Actions::CREATED,
       object: object,
       eventTime: '2016-11-15T10:15:00.000Z'
     )

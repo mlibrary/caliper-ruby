@@ -21,7 +21,7 @@ describe Caliper::Events::ThreadEvent do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::Actions::MARKED_AS_READ,
+      action: Caliper::Actions::MARKED_AS_READ,
       edApp: ed_app,
       eventTime: '2016-11-15T10:16:00.000Z',
       group: group,

@@ -21,7 +21,7 @@ describe Caliper::Events::AnnotationEvent do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::AnnotationActions::SHARED,
+      action: Caliper::Actions::SHARED,
       edApp: ed_app,
       eventTime: '2016-11-15T10:15:00.000Z',
       generated: shared_annotation,

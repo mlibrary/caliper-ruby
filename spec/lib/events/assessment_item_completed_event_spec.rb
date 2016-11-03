@@ -21,7 +21,7 @@ describe Caliper::Events::AssessmentItemEvent do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::AssessmentItemActions::COMPLETED,
+      action: Caliper::Actions::COMPLETED,
       edApp: ed_app,
       eventTime: '2016-11-15T10:15:12.000Z',
       generated: response,

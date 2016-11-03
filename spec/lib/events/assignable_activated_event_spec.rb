@@ -20,7 +20,7 @@ require 'spec_helper'
 describe Caliper::Events::AssignableEvent do
   subject do
     described_class.new(
-      action: Caliper::Actions::AssignableActions::ACTIVATED,
+      action: Caliper::Actions::ACTIVATED,
       actor: actor,
       edApp: ed_app,
       eventTime: '2016-11-12T10:15:00.000Z',
