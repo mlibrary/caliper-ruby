@@ -15,20 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'require_all'
-require_all 'lib/caliper/entities/entity.rb'
-require_all 'lib/caliper/entities/agent/software_application.rb'
-require_all 'lib/caliper/entities/agent/group.rb'
-require_all 'lib/caliper/entities/agent/person.rb'
-require_all 'lib/caliper/entities/lis/membership.rb'
-require_all 'lib/caliper/entities/lis/role.rb'
-require_all 'lib/caliper/entities/lis/status.rb'
-require_all 'lib/caliper/entities/lis/course_section.rb'
-require_all 'lib/caliper/entities/lis/course_offering.rb'
-require_all 'lib/caliper/entities/resource/document.rb'
-require_all 'lib/caliper/entities/resource/frame.rb'
-require_all 'lib/caliper/entities/session/session.rb'
-require_all 'lib/caliper/events/session_event.rb'
+require 'spec_helper'
 
 module Helper
 
