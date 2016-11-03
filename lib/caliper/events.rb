@@ -15,12 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-module Caliper; end
+require 'caliper/events/event'
 
-require 'caliper/defaults'
-require 'caliper/options'
-require 'caliper/version'
-
-require 'caliper/entities'
-require 'caliper/events'
-require 'caliper/sensor'
+# Load Caliper::Events::Event subclasses.
+Dir[File.dirname(__FILE__) + '/events/*_event.rb'].each { |file| require file }
