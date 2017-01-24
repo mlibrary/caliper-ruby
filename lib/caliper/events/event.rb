@@ -57,7 +57,7 @@ module Caliper
 
       def serialize
         {
-          '@type' => self.type
+          'type' => self.type
         }
       end
 
