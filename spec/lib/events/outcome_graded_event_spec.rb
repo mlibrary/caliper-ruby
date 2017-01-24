@@ -67,8 +67,8 @@ describe Caliper::Events::OutcomeEvent do
       attempt: Caliper::Entities::Assign::Attempt.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
       ),
-      normalScore: 15,
-      totalScore: 15,
+      normalScore: 15.0,
+      totalScore: 15.0,
       scoredBy: Caliper::Entities::Agent::SoftwareApplication.new(
         id: 'https://example.edu/autograder'
       ),
