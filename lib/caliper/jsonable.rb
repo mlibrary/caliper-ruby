@@ -42,7 +42,7 @@ module Caliper
       def deserialize(obj)
         case obj
           when Hash
-            if obj['@type'] && (klass = Caliper::Types.class_for_type obj['@type'])
+            if obj['type'] && (klass = Caliper::Types.class_for_type obj['type'])
               opts = obj.each_with_object({}) do |(k,v), opts_hash|
                 key = k.sub(/\A@/,'').to_sym
                 opts_hash[key] = deserialize v

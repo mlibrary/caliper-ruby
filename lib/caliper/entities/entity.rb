@@ -59,8 +59,8 @@ module Caliper
 
       def serialize
         {
-          '@id' => self.id,
-          '@type' => self.type
+          'id' => self.id,
+          'type' => self.type
         }
       end
 

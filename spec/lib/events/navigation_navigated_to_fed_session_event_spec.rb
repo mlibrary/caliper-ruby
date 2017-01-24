@@ -75,7 +75,7 @@ describe Caliper::Events::NavigationEvent do
             :'@vocab' => 'http://example.edu/ctx/edu.jsonld',
             sdo: 'http://schema.org/'
           },
-          :'@type' => 'Faculty',
+          :'type' => 'Faculty',
           :'sdo:jobTitle' => 'Professor',
           :'sdo:givenName' => 'Trig',
           :'sdo:familyName' => 'Haversine',
