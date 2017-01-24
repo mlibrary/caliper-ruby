@@ -38,7 +38,7 @@ module Caliper
 
       caliper_property :actor
       caliper_property :action
-      caliper_property :extensions, default: {}
+      caliper_property :extensions, default: []
       caliper_property :eventTime
       caliper_property :id
       caliper_property :referrer

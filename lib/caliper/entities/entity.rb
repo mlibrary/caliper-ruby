@@ -42,7 +42,7 @@ module Caliper
       caliper_property :dateCreated
       caliper_property :dateModified
       caliper_property :description
-      caliper_property :extensions,   default: {}
+      caliper_property :extensions,   default: []
       caliper_property :name
 
       def initialize(opts={})
