@@ -31,7 +31,7 @@ describe Caliper::Entities::Resource::Assessment do
       dateToStartOn: '2016-08-16T05:00:00.000Z',
       dateToSubmit: '2016-09-28T11:59:59.000Z',
       maxAttempts: 2,
-      maxScore: 15,
+      maxScore: 15.0,
       maxSubmits: 2,
       version: '1.0',
       items: [

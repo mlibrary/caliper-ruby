@@ -78,7 +78,7 @@ describe Caliper::Events::AssessmentEvent do
         dateToSubmit: '2016-11-18T11:59:59.000Z',
         maxAttempts: 2,
         maxSubmits: 2,
-        maxScore: 25,
+        maxScore: 25.0,
         version: '1.0'
       ),
       count: 1,
