@@ -83,17 +83,32 @@ describe Caliper::Events::ViewEvent do
   end
 
   let(:extensions) do
-    {
-      :'@context' => {
-        :'@vocab' => 'http://example.edu/ctx/edu.jsonld'
-      },
-      job: {
-        id: 'https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7',
-        type: 'ChronJob',
-        jobTag: 'caliper',
-        jobDate: '2016-11-16T01:01:00.000Z'
+    [
+      {
+        :'@context' => {
+          id: '@id',
+          type: '@type',
+          example: 'http://example.edu/ctx/edu',
+          xsd: 'http://www.w3.org/2001/XMLSchema#',
+          ChronJob: 'example:ChronJob',
+          job: 'example:job',
+          jobTag: {
+            id: 'example:jobTag',
+            type: 'xsd:string'
+          },
+          jobDate: {
+            id: 'example:jobDate',
+            type: 'xsd:dateTime'
+          }
+        },
+        job: {
+          id: 'https://example.edu/data/jobs/08c1233d-9ba3-40ac-952f-004c47a50ff7',
+          type: 'ChronJob',
+          jobTag: 'caliper',
+          jobDate: '2016-11-16T01:01:00.000Z'
+        }
       }
-    }
+    ]
   end
 
   include_examples 'validation against common fixture', 'caliperEventViewViewedExtended.json'

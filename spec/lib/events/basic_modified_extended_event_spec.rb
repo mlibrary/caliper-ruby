@@ -45,14 +45,18 @@ describe Caliper::Events::Event do
   end
 
   let(:extensions) do
-    {
-      :'@context' => {
-        :'@vocab' => 'http://example.edu/ctx/edu.jsonld'
-      },
-      previousVersion: Caliper::Entities::Reading::Document.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=1'
-      )
-    }
+    [
+      {
+        :'@context' => {
+          id: '@id',
+          type: '@type',
+          previousVersion: 'http://example.edu/ctx/edu/previousVersion'
+        },
+        previousVersion: Caliper::Entities::Reading::Document.new(
+          id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=1'
+        )
+      }
+    ]
   end
 
   include_examples 'validation against common fixture', 'caliperEventBasicModifiedExtended.json'
