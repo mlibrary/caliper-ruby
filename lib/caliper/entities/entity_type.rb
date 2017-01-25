@@ -36,7 +36,7 @@ module Caliper
       EPUB_CHAPTER = 'EpubChapter'
       EPUB_PART = 'purl.imsglobal.org/caliper/v1/EpubPart'
       EPUB_VOLUME = 'EpubVolume'
-      FILL_IN_BLANK_RESPONSE = 'FillInBlankResponse'
+      FILL_IN_BLANK_RESPONSE = 'FillinBlankResponse'
       FORUM = 'Forum'
       FRAME = 'Frame'
       GROUP = 'Group'
