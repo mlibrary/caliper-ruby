@@ -25,21 +25,23 @@ module Caliper
     class Envelope
       include Caliper::Jsonable
 
-      attr_accessor :sensor, :sendTime, :data
+      attr_accessor :sensor, :sendTime, :data, :dataVersion
 
       def initialize(opts = {})
         @sensor = opts[:sensor] || ''
         @sendTime = Time.now.utc.iso8601(3)
         @data = opts[:data] || []
+        @dataVersion = opts[:dataVersion] || Caliper::Contexts::CONTEXT
       end
 
       def eql?(other)
-        @sensor == other.sensor && @sendTime == other.sendTime && @data == other.data
+        @sensor == other.sensor && @sendTime == other.sendTime && @data == other.data && @dataVersion == other.dataVersion
       end
 
       def serialize
         {
           data: @data,
+          dataVersion: @dataVersion,
           sendTime: @sendTime,
           sensor: @sensor
         }
