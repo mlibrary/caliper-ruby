@@ -61,6 +61,7 @@ module Caliper
       SELECT_TEXT_RESPONSE = 'SelectTextResponse'
       SOFTWARE_APPLICATION = 'SoftwareApplication'
       TAG_ANNOTATION = 'TagAnnotation'
+      TEXT_POSITION_SELECTOR = 'TextPositionSelector'
       THREAD = 'Thread'
       TRUE_FALSE_RESPONSE = 'TrueFalseResponse'
       VIDEO_OBJECT = 'VideoObject'

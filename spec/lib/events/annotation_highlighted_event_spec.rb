@@ -61,10 +61,10 @@ describe Caliper::Events::AnnotationEvent do
       annotated: Caliper::Entities::Reading::Document.new(
         id: 'https://example.edu/etexts/201'
       ),
-      selection: {
+      selection: Caliper::Entities::Annotation::TextPositionSelector.new(
         start: 2300,
         end: 2370
-      },
+      ),
       selectionText: 'ISO 8601 formatted date and time expressed with millisecond precision.',
       dateCreated: '2016-11-15T10:15:00.000Z'
     )
