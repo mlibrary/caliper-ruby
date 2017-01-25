@@ -13,6 +13,9 @@ gem 'concurrent-ruby'
 # translation and localization
 gem 'i18n'
 
+# UUID generation
+gem 'uuid'
+
 # REST client
 gem 'rest-client', '~> 1.7.3'
 

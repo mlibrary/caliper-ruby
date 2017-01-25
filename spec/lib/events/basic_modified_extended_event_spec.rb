@@ -24,6 +24,7 @@ describe Caliper::Events::Event do
       action: Caliper::Actions::MODIFIED,
       object: object,
       eventTime: '2016-11-15T10:15:00.000Z',
+      uuid: '5973dcd9-3126-4dcc-8fd8-8153a155361c',
       extensions: extensions
     )
   end

@@ -98,7 +98,8 @@ describe Caliper::Request::Envelope do
       edApp: ed_app,
       group: group,
       membership: membership,
-      session: session
+      session: session,
+      uuid: 'c51570e4-f8ed-4c18-bb3a-dfe51b2cc594'
     )
 
     # The Sensor

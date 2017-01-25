@@ -23,9 +23,9 @@ describe Caliper::Events::SessionEvent do
       actor: actor,
       action: Caliper::Actions::LOGGED_OUT,
       eventTime: '2016-11-15T11:05:00.000Z',
-      id: '5fac90a9-531a-41f6-9b8d-7a26e61dcc27',
       object: object,
-      session: session
+      session: session,
+      uuid: 'a438f8ac-1da3-4d48-8c86-94a1b387e0f6'
     )
   end
 

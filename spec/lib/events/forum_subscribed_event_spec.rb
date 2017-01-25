@@ -27,7 +27,8 @@ describe Caliper::Events::ForumEvent do
       group: group,
       membership: membership,
       object: forum,
-      session: session
+      session: session,
+      uuid: 'a2f41f9c-d57d-4400-b3fe-716b9026334e'
     )
   end
 

@@ -28,6 +28,7 @@ describe Caliper::Events::ViewEvent do
       object: object,
       membership: membership,
       session: session,
+      uuid: '3a9bd869-addc-48b1-80f6-a14b2ff591ed',
       extensions: extensions
     )
   end

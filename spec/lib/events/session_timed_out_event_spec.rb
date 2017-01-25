@@ -24,8 +24,8 @@ describe Caliper::Events::SessionEvent do
       action: Caliper::Actions::TIMED_OUT,
       edApp: ed_app,
       eventTime: '2016-11-15T11:15:00.000Z',
-      id: '513d4ca1-0ecf-4234-932d-c4cb287884a3',
-      object: session
+      object: session,
+      uuid: '4e61cf6c-ffbe-45bc-893f-afe7ad4079dc'
     )
   end
 
