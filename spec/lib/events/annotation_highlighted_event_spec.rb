@@ -28,7 +28,8 @@ describe Caliper::Events::AnnotationEvent do
       group: group,
       membership: membership,
       object: object,
-      session: session
+      session: session,
+      uuid: '0067a052-9bb4-4b49-9d1a-87cd43da488a'
     )
   end
 

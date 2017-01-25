@@ -27,7 +27,8 @@ describe Caliper::Events::ThreadEvent do
       group: group,
       membership: membership,
       object: thread,
-      session: session
+      session: session,
+      uuid: '6b20c5ba-301c-4e56-85a0-2f3d9a94c249'
     )
   end
 

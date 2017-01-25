@@ -27,7 +27,8 @@ describe Caliper::Events::AssignableEvent do
       group: group,
       membership: membership,
       object: object,
-      session: session
+      session: session,
+      uuid: '2635b9dd-0061-4059-ac61-2718ab366f75'
     )
   end
 

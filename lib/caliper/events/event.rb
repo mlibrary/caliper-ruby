@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require 'uuid'
+
 require_relative '../contexts'
 require_relative '../jsonable'
 require_relative '../properties'
@@ -40,9 +42,9 @@ module Caliper
       caliper_property :action
       caliper_property :extensions, default: []
       caliper_property :eventTime
-      caliper_property :id
       caliper_property :referrer
       caliper_property :object
+      caliper_property :uuid,       default: UUID.new.generate
 
       def initialize(opts={})
         initialize_context(opts)

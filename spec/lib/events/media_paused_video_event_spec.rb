@@ -28,7 +28,8 @@ describe Caliper::Events::MediaEvent do
       membership: membership,
       object: object,
       session: session,
-      target: target
+      target: target,
+      uuid: '956b4a02-8de0-4991-b8c5-b6eebb6b4cab'
     )
   end
 

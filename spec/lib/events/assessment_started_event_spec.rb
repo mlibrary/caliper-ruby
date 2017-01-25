@@ -28,7 +28,8 @@ describe Caliper::Events::AssessmentEvent do
       group: group,
       membership: membership,
       object: object,
-      session: session
+      session: session,
+      uuid: '27734504-068d-4596-861c-2315be33a2a2'
     )
   end
 

@@ -27,7 +27,8 @@ describe Caliper::Events::ViewEvent do
       group: group,
       object: object,
       membership: membership,
-      session: session
+      session: session,
+      uuid: 'cd088ca7-c044-405c-bb41-0b2a8506f907'
     )
   end
 

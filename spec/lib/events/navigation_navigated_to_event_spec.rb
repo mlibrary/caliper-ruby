@@ -28,7 +28,8 @@ describe Caliper::Events::NavigationEvent do
       membership: membership,
       object: object,
       referrer: referrer,
-      session: session
+      session: session,
+      uuid: 'ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f'
     )
   end
 

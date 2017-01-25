@@ -123,7 +123,8 @@ describe Caliper::Request::Envelope do
       edApp: ed_app,
       group: group,
       membership: membership,
-      session: session
+      session: session,
+      uuid: '72f66ce5-d2ec-44cc-bce5-41602e1015dc'
     )
 
     annotation_event = Caliper::Events::AnnotationEvent.new(
@@ -135,7 +136,8 @@ describe Caliper::Request::Envelope do
       edApp: epub_reader,
       group: group,
       membership: membership,
-      session: session
+      session: session,
+      uuid: 'c0afa013-64df-453f-b0a6-50f3efbe4cc0'
     )
 
     view_event = Caliper::Events::ViewEvent.new(
@@ -146,7 +148,8 @@ describe Caliper::Request::Envelope do
       edApp: ed_app,
       group: group,
       membership: membership,
-      session: session
+      session: session,
+      uuid: '94bad4bd-a7b1-4c3e-ade4-2253efe65172'
     )
 
     # The Sensor

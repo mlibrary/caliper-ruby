@@ -25,7 +25,8 @@ describe Caliper::Events::OutcomeEvent do
       eventTime: '2016-11-15T10:57:06.000Z',
       generated: result,
       group: group,
-      object: object
+      object: object,
+      uuid: 'a50ca17f-5971-47bb-8fca-4e6e6879001d'
     )
   end
 

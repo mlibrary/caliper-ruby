@@ -37,7 +37,8 @@ describe Caliper::Request::Envelope do
       actor: actor,
       action: Caliper::Actions::CREATED,
       object: document,
-      eventTime: '2016-11-15T10:15:00.000Z'
+      eventTime: '2016-11-15T10:15:00.000Z',
+      uuid: '7025d2f8-c76c-44b8-9d98-593d7969177f'
     )
 
     # The Sensor
