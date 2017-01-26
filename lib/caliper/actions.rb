@@ -83,6 +83,7 @@ module Caliper
     TIMED_OUT = 'TimedOut'
     UNMUTED = 'Unmuted'
     UNSUBSCRIBED = 'Unsubscribed'
+    USED = 'Used'
     VIEWED = 'Viewed'
   end
 end
