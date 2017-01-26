@@ -26,6 +26,7 @@ module Caliper
     module Agent
       class Organization < Entity
 
+        caliper_property :members,            default: []
         caliper_property :subOrganizationOf
 
         caliper_type Caliper::Entities::EntityType::ORGANIZATION
