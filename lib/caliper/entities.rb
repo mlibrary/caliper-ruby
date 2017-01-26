@@ -18,5 +18,4 @@
 require 'caliper/entities/entity'
 
 # Load Caliper::Entities::Entity subclasses.
-require 'caliper/entities/collection'
 Dir[File.dirname(__FILE__) + '/entities/*/*.rb'].each { |file| require file }

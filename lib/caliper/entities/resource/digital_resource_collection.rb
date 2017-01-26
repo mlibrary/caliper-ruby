@@ -24,9 +24,12 @@ require_relative '../entity_type'
 module Caliper
   module Entities
     module Resource
-      class DigitalResourceCollection < Collection
+      class DigitalResourceCollection < Entity
 
         caliper_type Caliper::Entities::EntityType::DIGITAL_RESOURCE_COLLECTION
+
+        caliper_property :isPartOf
+        caliper_property :items,    default: []
 
       end
     end
