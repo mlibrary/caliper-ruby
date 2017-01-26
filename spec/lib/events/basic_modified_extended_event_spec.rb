@@ -53,9 +53,10 @@ describe Caliper::Events::Event do
           type: '@type',
           previousVersion: 'http://example.edu/ctx/edu/previousVersion'
         },
-        previousVersion: Caliper::Entities::Reading::Document.new(
-          id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=1'
-        )
+        previousVersion: {
+          id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=1',
+          type: 'Document'
+        }
       }
     ]
   end

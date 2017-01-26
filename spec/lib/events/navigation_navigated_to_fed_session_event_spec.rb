@@ -73,17 +73,36 @@ describe Caliper::Events::NavigationEvent do
         custom_user_image: 'https://example.edu/users/554433/profile/avatar.jpg',
         ext_vnd_instructor: {
           :'@context' => {
-            :'@vocab' => 'http://example.edu/ctx/edu.jsonld',
-            sdo: 'http://schema.org/'
+            sdo: 'http://schema.org/',
+            xsd: 'http://www.w3.org/2001/XMLSchema#',
+            email: {
+              id: 'sdo:email',
+              type: 'xsd:string'
+            },
+            familyName: {
+              id: 'sdo:familyName',
+              type: 'xsd:string'
+            },
+            givenName: {
+              id: 'sdo:givenName',
+              type: 'xsd:string'
+            },
+            jobTitle: {
+              id: 'sdo:jobTitle',
+              type: 'xsd:string'
+            },
+            url: {
+              id: 'sdo:url',
+              type: 'xsd:string'
+            }
           },
-          :'type' => 'Faculty',
-          :'sdo:jobTitle' => 'Professor',
-          :'sdo:givenName' => 'Trig',
-          :'sdo:familyName' => 'Haversine',
-          :'sdo:email' => 'trighaversine@example.edu',
-          :'sdo:url' => 'https://example.edu/faculty/trighaversine',
-          isTenured: true,
-          isOnSabbatical: false
+          id: 'https://example.edu/faculty/trighaversine',
+          type: 'Person',
+          jobTitle: 'Professor',
+          givenName: 'Trig',
+          familyName: 'Haversine',
+          email: 'trighaversine@example.edu',
+          url: 'https://example.edu/faculty/trighaversine',
         }
       },
       dateCreated: '2016-11-15T10:15:00.000Z',
