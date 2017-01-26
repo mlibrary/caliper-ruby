@@ -39,20 +39,21 @@ module Caliper
 
       # After initial JSON parsing, recursively deserialize basic collection objects into Caliper classes where
       # appropriate.
-      def deserialize(obj)
+      def deserialize(obj, context=nil)
         case obj
           when Hash
-            if obj['type'] && (klass = Caliper::Types.class_for_type obj['type'])
+            context = obj['@context'] if obj['@context']
+            if (context == Caliper::Contexts::CONTEXT) && obj['type'] && (klass = Caliper::Types.class_for_type obj['type'])
               opts = obj.each_with_object({}) do |(k,v), opts_hash|
                 key = k.sub(/\A@/,'').to_sym
-                opts_hash[key] = deserialize v
+                opts_hash[key] = deserialize(v, context)
               end
               klass.new(opts)
             else
-              Hash[obj.map { |k,v| [k.to_sym, deserialize(v)] }]
+              Hash[obj.map { |k,v| [k.to_sym, deserialize(v, context)] }]
             end
           when Array
-            obj.map { |element| deserialize element }
+            obj.map { |element| deserialize(element, context) }
           else
             obj
         end

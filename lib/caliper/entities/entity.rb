@@ -53,7 +53,7 @@ module Caliper
 
       def eql?(other)
         (self.class.properties.keys + [:context, :id, :type]).inject(true) do |eql, key|
-          eql && (send(key).eql? other.send(key))
+          eql && other.respond_to?(key) && (send(key).eql? other.send(key))
         end
       end
 
