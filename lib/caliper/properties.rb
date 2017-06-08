@@ -44,7 +44,7 @@ module Caliper
     end
 
     module ClassMethods
-      # Declare a property for a class, with optional default value.
+      # Declare a property for a class, with optional default and type values.
       def caliper_property(property, opts={})
         attr_accessor property
         properties[property] = opts

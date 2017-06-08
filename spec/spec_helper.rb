@@ -22,6 +22,9 @@ require 'simplecov-rcov'
 require_relative '../lib/caliper'
 require 'shared_examples'
 
+# Do not exclude 'id' keys from comparison.
+JsonSpec.excluded_keys = []
+
 SimpleCov.use_merging
 SimpleCov.merge_timeout(10000)
 SimpleCov.command_name('open_data_export_gem')
