@@ -28,7 +28,6 @@ module Caliper
       MESSAGE = 'MessageEvent'
       NAVIGATION = 'NavigationEvent'
       OUTCOME = 'OutcomeEvent'
-      READING = 'ReadingEvent'
       SESSION = 'SessionEvent'
       THREAD = 'ThreadEvent'
       TOOL_USE = 'ToolUseEvent'
