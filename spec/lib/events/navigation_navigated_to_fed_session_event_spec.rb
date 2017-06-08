@@ -26,11 +26,11 @@ describe Caliper::Events::NavigationEvent do
       eventTime: '2016-11-15T10:15:00.000Z',
       federatedSession: federated_session,
       group: group,
+      id: 'urn:uuid:4be6d29d-5728-44cd-8a8f-3d3f07e46b61',
       membership: membership,
       object: object,
       referrer: referrer,
-      session: session,
-      uuid: '4be6d29d-5728-44cd-8a8f-3d3f07e46b61'
+      session: session
     )
   end
 

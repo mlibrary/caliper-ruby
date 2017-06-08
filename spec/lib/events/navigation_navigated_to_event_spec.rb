@@ -25,11 +25,11 @@ describe Caliper::Events::NavigationEvent do
       edApp: ed_app,
       eventTime: '2016-11-15T10:15:00.000Z',
       group: group,
+      id: 'urn:uuid:ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f',
       membership: membership,
       object: object,
       referrer: referrer,
-      session: session,
-      uuid: 'ff9ec22a-fc59-4ae1-ae8d-2c9463ee2f8f'
+      session: session
     )
   end
 

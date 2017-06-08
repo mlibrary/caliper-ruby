@@ -34,11 +34,11 @@ describe Caliper::Request::Envelope do
   it 'should ensure that a Caliper envelope comprising a minimalist event is correctly created and serialized' do
     # Create the Event
     event = Caliper::Events::Event.new(
-      actor: actor,
       action: Caliper::Actions::CREATED,
-      object: document,
+      actor: actor,
       eventTime: '2016-11-15T10:15:00.000Z',
-      uuid: '7025d2f8-c76c-44b8-9d98-593d7969177f'
+      id: 'urn:uuid:7025d2f8-c76c-44b8-9d98-593d7969177f',
+      object: document
     )
 
     # The Sensor

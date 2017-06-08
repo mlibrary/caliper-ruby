@@ -26,10 +26,10 @@ describe Caliper::Events::AnnotationEvent do
       edApp: ed_app,
       generated: bookmark,
       group: group,
+      id: 'urn:uuid:d4618c23-d612-4709-8d9a-478d87808067',
       membership: membership,
       object: object,
-      session: session,
-      uuid: 'd4618c23-d612-4709-8d9a-478d87808067'
+      session: session
     )
   end
 

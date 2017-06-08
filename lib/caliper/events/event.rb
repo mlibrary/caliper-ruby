@@ -42,9 +42,9 @@ module Caliper
       caliper_property :action
       caliper_property :extensions, default: []
       caliper_property :eventTime
+      caliper_property :id,         default: "urn:uuid:#{UUID.new.generate}"
       caliper_property :referrer
       caliper_property :object
-      caliper_property :uuid,       default: UUID.new.generate
 
       def initialize(opts={})
         initialize_context(opts)

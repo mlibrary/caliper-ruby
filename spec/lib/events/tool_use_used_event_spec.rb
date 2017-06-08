@@ -25,10 +25,10 @@ describe Caliper::Events::ToolUseEvent do
       edApp: edApp,
       eventTime: '2016-11-15T10:15:00.000Z',
       group: group,
+      id: 'urn:uuid:7e10e4f3-a0d8-4430-95bd-783ffae4d916',
       object: object,
       membership: membership,
-      session: session,
-      uuid: '7e10e4f3-a0d8-4430-95bd-783ffae4d916'
+      session: session
     )
   end
 

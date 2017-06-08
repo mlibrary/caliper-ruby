@@ -90,16 +90,16 @@ describe Caliper::Request::Envelope do
 
   it 'should ensure that a Caliper envelope containing a AssessmentEvent is correctly created and serialized' do
     event = Caliper::Events::AssessmentEvent.new(
-      actor: actor,
       action: Caliper::Actions::STARTED,
-      object: object,
-      generated: attempt,
-      eventTime: '2016-11-15T10:15:00.000Z',
+      actor: actor,
       edApp: ed_app,
+      eventTime: '2016-11-15T10:15:00.000Z',
+      generated: attempt,
       group: group,
+      id: 'urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594',
       membership: membership,
-      session: session,
-      uuid: 'c51570e4-f8ed-4c18-bb3a-dfe51b2cc594'
+      object: object,
+      session: session
     )
 
     # The Sensor

@@ -25,10 +25,10 @@ describe Caliper::Events::AssessmentEvent do
       edApp: ed_app,
       eventTime: '2016-11-15T10:25:30.000Z',
       group: group,
+      id: 'urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33',
       membership: membership,
       object: object,
-      session: session,
-      uuid: 'dad88464-0c20-4a19-a1ba-ddf2f9c3ff33'
+      session: session
     )
   end
 

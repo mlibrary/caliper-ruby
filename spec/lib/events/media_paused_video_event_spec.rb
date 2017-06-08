@@ -25,11 +25,11 @@ describe Caliper::Events::MediaEvent do
       edApp: ed_app,
       eventTime: '2016-11-15T10:15:00.000Z',
       group: group,
+      id: 'urn:uuid:956b4a02-8de0-4991-b8c5-b6eebb6b4cab',
       membership: membership,
       object: object,
       session: session,
-      target: target,
-      uuid: '956b4a02-8de0-4991-b8c5-b6eebb6b4cab'
+      target: target
     )
   end
 

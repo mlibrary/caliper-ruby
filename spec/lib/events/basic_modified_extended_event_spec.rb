@@ -22,16 +22,16 @@ describe Caliper::Events::Event do
     described_class.new(
       actor: actor,
       action: Caliper::Actions::MODIFIED,
-      object: object,
+      id: 'urn:uuid:5973dcd9-3126-4dcc-8fd8-8153a155361c',
       eventTime: '2016-11-15T10:15:00.000Z',
-      uuid: '5973dcd9-3126-4dcc-8fd8-8153a155361c',
-      extensions: extensions
+      extensions: extensions,
+      object: object
     )
   end
 
   let(:actor) do
     Caliper::Entities::Agent::Person.new(
-      id: 'https://example.edu/users/554433',
+      id: 'https://example.edu/users/554433'
     )
   end
 

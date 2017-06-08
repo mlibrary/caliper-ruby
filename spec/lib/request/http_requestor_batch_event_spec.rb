@@ -115,41 +115,41 @@ describe Caliper::Request::Envelope do
 
   it 'should ensure that a Caliper envelope containing a AssessmentEvent is correctly created and serialized' do
     navigation_event = Caliper::Events::NavigationEvent.new(
-      actor: actor,
       action: Caliper::Actions::NAVIGATED_TO,
-      object: web_page,
-      eventTime: '2016-11-15T10:15:00.000Z',
-      referrer: referrer,
+      actor: actor,
       edApp: ed_app,
+      eventTime: '2016-11-15T10:15:00.000Z',
       group: group,
+      id: 'urn:uuid:72f66ce5-d2ec-44cc-bce5-41602e1015dc',
       membership: membership,
-      session: session,
-      uuid: '72f66ce5-d2ec-44cc-bce5-41602e1015dc'
+      object: web_page,
+      referrer: referrer,
+      session: session
     )
 
     annotation_event = Caliper::Events::AnnotationEvent.new(
-      actor: actor,
       action: Caliper::Actions::BOOKMARKED,
-      object: document_no_timestamps,
-      generated: annotation,
-      eventTime: '2016-11-15T10:20:00.000Z',
+      actor: actor,
       edApp: epub_reader,
+      eventTime: '2016-11-15T10:20:00.000Z',
+      generated: annotation,
       group: group,
+      id: 'urn:uuid:c0afa013-64df-453f-b0a6-50f3efbe4cc0',
       membership: membership,
-      session: session,
-      uuid: 'c0afa013-64df-453f-b0a6-50f3efbe4cc0'
+      object: document_no_timestamps,
+      session: session
     )
 
     view_event = Caliper::Events::ViewEvent.new(
-      actor: actor,
       action: Caliper::Actions::VIEWED,
-      object: document_timestamps,
-      eventTime: '2016-11-15T10:21:00.000Z',
+      actor: actor,
       edApp: ed_app,
+      eventTime: '2016-11-15T10:21:00.000Z',
       group: group,
+      id: 'urn:uuid:94bad4bd-a7b1-4c3e-ade4-2253efe65172',
       membership: membership,
-      session: session,
-      uuid: '94bad4bd-a7b1-4c3e-ade4-2253efe65172'
+      object: document_timestamps,
+      session: session
     )
 
     # The Sensor
