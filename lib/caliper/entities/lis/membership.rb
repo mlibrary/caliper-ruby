@@ -28,8 +28,8 @@ module Caliper
 
         caliper_type Caliper::Entities::EntityType::MEMBERSHIP
 
-        caliper_property :member
-        caliper_property :organization
+        caliper_property :member,       type: Caliper::Entities::EntityType::PERSON
+        caliper_property :organization, type: Caliper::Entities::EntityType::ORGANIZATION
         caliper_property :roles
         caliper_property :status
 

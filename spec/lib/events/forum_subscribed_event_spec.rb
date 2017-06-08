@@ -68,9 +68,7 @@ describe Caliper::Events::ForumEvent do
     Caliper::Entities::LIS::Membership.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1',
       member: actor,
-      organization: Caliper::Entities::LIS::CourseSection.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1',
-      ),
+      organization: group,
       roles: [
         Caliper::Entities::LIS::Role::LEARNER
       ],

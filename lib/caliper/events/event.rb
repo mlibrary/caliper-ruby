@@ -38,13 +38,13 @@ module Caliper
       caliper_context Caliper::Contexts::CONTEXT
       caliper_type Caliper::Events::EventType::EVENT
 
-      caliper_property :actor
+      caliper_property :actor,      unique: true
       caliper_property :action
       caliper_property :extensions, default: []
       caliper_property :eventTime
       caliper_property :id,         default: "urn:uuid:#{UUID.new.generate}"
       caliper_property :referrer
-      caliper_property :object
+      caliper_property :object,     unique: true
 
       def initialize(opts={})
         initialize_context(opts)

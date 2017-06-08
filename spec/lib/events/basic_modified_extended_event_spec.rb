@@ -51,7 +51,11 @@ describe Caliper::Events::Event do
         :'@context' => {
           id: '@id',
           type: '@type',
-          previousVersion: 'http://example.edu/ctx/edu/previousVersion'
+          example: 'http://example.edu/ctx/edu/',
+          previousVersion: {
+            :'@id' => 'example:previousVersion',
+            :'@type' => '@id'
+          }
         },
         previousVersion: {
           id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=1',
