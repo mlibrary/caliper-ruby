@@ -26,10 +26,10 @@ describe Caliper::Events::AnnotationEvent do
       eventTime: '2016-11-15T10:15:00.000Z',
       generated: tag,
       group: group,
+      id: 'urn:uuid:b2009c63-2659-4cd2-b71e-6e03c498f02b',
       membership: membership,
       object: object,
-      session: session,
-      uuid: 'b2009c63-2659-4cd2-b71e-6e03c498f02b'
+      session: session
     )
   end
 

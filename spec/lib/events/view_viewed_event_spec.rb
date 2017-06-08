@@ -25,10 +25,10 @@ describe Caliper::Events::ViewEvent do
       edApp: ed_app,
       eventTime: '2016-11-15T10:15:00.000Z',
       group: group,
+      id: 'urn:uuid:cd088ca7-c044-405c-bb41-0b2a8506f907',
       object: object,
       membership: membership,
-      session: session,
-      uuid: 'cd088ca7-c044-405c-bb41-0b2a8506f907'
+      session: session
     )
   end
 

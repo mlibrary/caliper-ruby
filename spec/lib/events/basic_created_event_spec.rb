@@ -22,9 +22,9 @@ describe Caliper::Events::Event do
     described_class.new(
       actor: actor,
       action: Caliper::Actions::CREATED,
-      object: object,
       eventTime: '2016-11-15T10:15:00.000Z',
-      uuid: '3a648e68-f00d-4c08-aa59-8738e1884f2c'
+      id: 'urn:uuid:3a648e68-f00d-4c08-aa59-8738e1884f2c',
+      object: object
     )
   end
 

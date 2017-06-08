@@ -25,10 +25,10 @@ describe Caliper::Events::AssignableEvent do
       edApp: ed_app,
       eventTime: '2016-11-12T10:15:00.000Z',
       group: group,
+      id: 'urn:uuid:2635b9dd-0061-4059-ac61-2718ab366f75',
       membership: membership,
       object: object,
-      session: session,
-      uuid: '2635b9dd-0061-4059-ac61-2718ab366f75'
+      session: session
     )
   end
 

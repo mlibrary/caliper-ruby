@@ -26,10 +26,10 @@ describe Caliper::Events::AssessmentItemEvent do
       eventTime: '2016-11-15T10:15:00.000Z',
       generated: attempt,
       group: group,
+      id: 'urn:uuid:1b557176-ba67-4624-b060-6bee670a3d8e',
       membership: membership,
       object: object,
-      session: session,
-      uuid: '1b557176-ba67-4624-b060-6bee670a3d8e'
+      session: session
     )
   end
 

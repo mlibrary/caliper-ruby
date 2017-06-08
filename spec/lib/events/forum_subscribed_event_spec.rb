@@ -25,10 +25,10 @@ describe Caliper::Events::ForumEvent do
       edApp: ed_app,
       eventTime: '2016-11-15T10:16:00.000Z',
       group: group,
+      id: 'urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e',
       membership: membership,
       object: forum,
-      session: session,
-      uuid: 'a2f41f9c-d57d-4400-b3fe-716b9026334e'
+      session: session
     )
   end
 
