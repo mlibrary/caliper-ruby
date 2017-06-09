@@ -22,8 +22,9 @@ describe Caliper::Events::SessionEvent do
     described_class.new(
       action: Caliper::Actions::LOGGED_IN,
       actor: actor,
+      edApp: object,
       eventTime: '2016-11-15T10:15:00.000Z',
-      uuid: 'urn:uuid:fcd495d0-3740-4298-9bec-1154571dc211',
+      id: 'urn:uuid:fcd495d0-3740-4298-9bec-1154571dc211',
       object: object,
       session: session
     )
@@ -45,7 +46,7 @@ describe Caliper::Events::SessionEvent do
   let(:session) do
     Caliper::Entities::Session::Session.new(
       id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259',
-      actor: actor,
+      user: actor,
       dateCreated: '2016-11-15T10:00:00.000Z',
       startedAtTime: '2016-11-15T10:00:00.000Z'
     )

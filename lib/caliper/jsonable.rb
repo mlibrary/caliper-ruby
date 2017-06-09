@@ -72,10 +72,14 @@ module Caliper
                       reference[0].send "#{reference[1]}=", child_object
                     end
                     unique_ids[child_object.id] = child_object
-                  # Alternatively, if the property has a specified type, keep track of the reference in
-                  # case a unique object with the same id is deserialized later.
+                  # Alternatively, if the property has a specified type, replace with any unique object already
+                  # deserialized, or store the id in case a unique object with the same id is deserialized later.
                   elsif klass.properties[key][:type]
-                    references_by_id[child_object.id] << [deserialized, key]
+                    if unique_ids[child_object.id]
+                      deserialized.send "#{key}=", unique_ids[child_object.id]
+                    else
+                      references_by_id[child_object.id] << [deserialized, key]
+                    end
                   end
                 end
               end
@@ -85,6 +89,8 @@ module Caliper
             end
           when Array
             obj.map { |element| deserialize(element, context, references_by_id, unique_ids) }
+          when String
+            unique_ids[obj] || obj
           else
             obj
         end

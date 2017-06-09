@@ -51,7 +51,7 @@ describe Caliper::Events::OutcomeEvent do
       assignable: Caliper::Entities::Resource::Assessment.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
       ),
-      actor: Caliper::Entities::Agent::Person.new(
+      assigee: Caliper::Entities::Agent::Person.new(
         id: 'https://example.edu/users/554433',
       ),
       count: 1,

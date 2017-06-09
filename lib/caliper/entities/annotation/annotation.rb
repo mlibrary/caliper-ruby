@@ -28,8 +28,8 @@ module Caliper
 
         caliper_type Caliper::Entities::EntityType::ANNOTATION
 
-        caliper_property :actor
         caliper_property :annotated, type: Caliper::Entities::EntityType::DIGITAL_RESOURCE
+        caliper_property :annotator, type: Caliper::Entities::EntityType::PERSON
 
       end
     end

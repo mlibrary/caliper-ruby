@@ -47,7 +47,7 @@ module Caliper
       MULTIPLE_CHOICE_RESPONSE = 'MultipleChoiceResponse'
       MULTIPLE_RESPONSE_RESPONSE = 'MultipleResponseResponse'
       ORGANIZATION = 'Organization'
-      PAGE = 'WebPage'
+      PAGE = 'Page'
       PERSON = 'Person'
       RESPONSE = 'Response'
       RESULT = 'Result'

@@ -41,7 +41,8 @@ describe Caliper::Events::AnnotationEvent do
 
   let(:ed_app) do
     Caliper::Entities::Agent::SoftwareApplication.new(
-      id: 'https://example.edu',
+      id: 'https://example.com/reader',
+      name: 'ePub Reader',
       version: '1.2.3'
     )
   end
@@ -58,9 +59,7 @@ describe Caliper::Events::AnnotationEvent do
     Caliper::Entities::LIS::Membership.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1',
       member: actor,
-      organization: Caliper::Entities::LIS::CourseSection.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1',
-      ),
+      organization: group,
       roles: [
         Caliper::Entities::LIS::Role::LEARNER
       ],
@@ -71,7 +70,7 @@ describe Caliper::Events::AnnotationEvent do
 
   let(:object) do
     Caliper::Entities::Reading::Document.new(
-      id: 'https://example.edu/etexts/201.epub',
+      id: 'https://example.com/#/texts/imscaliperimplguide',
       name: 'IMS Caliper Implementation Guide',
       version: '1.1'
     )
@@ -79,18 +78,16 @@ describe Caliper::Events::AnnotationEvent do
 
   let(:session) do
     Caliper::Entities::Session::Session.new(
-      id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259',
+      id: 'https://example.com/sessions/1f6442a482de72ea6ad134943812bff564a76259',
       startedAtTime: '2016-11-15T10:00:00.000Z'
     )
   end
 
   let(:shared_annotation) do
     Caliper::Entities::Annotation::SharedAnnotation.new(
-      id: 'https://example.edu/users/554433/etexts/201/shares/1',
-      actor: actor,
-      annotated: Caliper::Entities::Reading::Document.new(
-        id: 'https://example.edu/etexts/201.epub'
-      ),
+      id: 'https://example.com/users/554433/texts/imscaliperimplguide/shares/1',
+      annotator: actor,
+      annotated: object,
       withAgents: [
         Caliper::Entities::Agent::Person.new(
           id: 'https://example.edu/users/657585',

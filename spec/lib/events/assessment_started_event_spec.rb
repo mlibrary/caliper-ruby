@@ -42,7 +42,7 @@ describe Caliper::Events::AssessmentEvent do
   let(:attempt) do
     Caliper::Entities::Assign::Attempt.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
-      actor: actor,
+      assignee: actor,
       assignable: Caliper::Entities::Resource::Assessment.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
       ),

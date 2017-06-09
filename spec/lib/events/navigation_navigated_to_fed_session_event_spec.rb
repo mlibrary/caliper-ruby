@@ -49,7 +49,7 @@ describe Caliper::Events::NavigationEvent do
   let(:federated_session) do
     Caliper::Entities::Session::LtiSession.new(
       id: 'https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241',
-      actor: actor,
+      user: actor,
       launchParameters: {
         lti_message_type: 'basic-lti-launch-request',
         lti_version: 'LTI-2p0',

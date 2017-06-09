@@ -28,8 +28,8 @@ module Caliper
 
         caliper_type Caliper::Entities::EntityType::ATTEMPT
 
-        caliper_property :actor
-        caliper_property :assignable
+        caliper_property :assignable,   type: Caliper::Entities::EntityType::ASSESSMENT
+        caliper_property :assignee,     type: Caliper::Entities::EntityType::PERSON
         caliper_property :count
         caliper_property :duration
         caliper_property :endedAtTime

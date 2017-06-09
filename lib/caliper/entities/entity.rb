@@ -58,10 +58,10 @@ module Caliper
       end
 
       def serialize
-        {
-          'id' => self.id,
-          'type' => self.type
-        }
+        {}.tap do |serialized|
+          serialized['id'] = self.id if self.id
+          serialized['type'] = self.type if self.type
+        end
       end
 
     end
