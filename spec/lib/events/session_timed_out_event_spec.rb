@@ -38,7 +38,7 @@ describe Caliper::Events::SessionEvent do
   let(:session) do
     Caliper::Entities::Session::Session.new(
       id: 'https://example.edu/sessions/7d6b88adf746f0692e2e873308b78c60fb13a864',
-      actor: Caliper::Entities::Agent::Person.new(
+      user: Caliper::Entities::Agent::Person.new(
         id: 'https://example.edu/users/112233'
       ),
       dateCreated: '2016-11-15T10:15:00.000Z',

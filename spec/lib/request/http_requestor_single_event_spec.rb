@@ -41,10 +41,8 @@ describe Caliper::Request::Envelope do
   let(:attempt) do
     Caliper::Entities::Assign::Attempt.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
-      actor: actor,
-      assignable: Caliper::Entities::Resource::Assessment.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
-      ),
+      assignee: actor,
+      assignable: object,
       count: 1,
       dateCreated: '2016-11-15T10:15:00.000Z',
       startedAtTime: '2016-11-15T10:15:00.000Z'

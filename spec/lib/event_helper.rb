@@ -62,7 +62,7 @@ module Helper
     generated = Caliper::Entities::Session::Session.new
     generated.id = 'https://example.com/viewer/session-123456789'
     generated.name = 'session-123456789'
-    generated.actor = actor
+    generated.user = actor
     generated.startedAtTime = '2015-09-15T10:15:00.000Z'
     generated.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
     generated.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)

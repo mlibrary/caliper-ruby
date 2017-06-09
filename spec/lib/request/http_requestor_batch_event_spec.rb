@@ -37,7 +37,7 @@ describe Caliper::Request::Envelope do
   let(:annotation) do
     Caliper::Entities::Annotation::BookmarkAnnotation.new(
       id: 'https://example.com/users/554433/texts/imscaliperimplguide/bookmarks/1',
-      actor: actor,
+      annotator: actor,
       annotated: Caliper::Entities::Resource::DigitalResource.new(
         id: 'https://example.com/#/texts/imscaliperimplguide/cfi/6/10!/4/2/2/2@0:0'
       ),

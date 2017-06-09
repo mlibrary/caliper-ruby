@@ -28,10 +28,10 @@ module Caliper
 
         caliper_type Caliper::Entities::EntityType::SESSION
 
-        caliper_property :actor
         caliper_property :duration
         caliper_property :endedAtTime
         caliper_property :startedAtTime
+        caliper_property :user,          type: Caliper::Entities::EntityType::PERSON
 
       end
     end
