@@ -24,6 +24,7 @@ describe Caliper::Events::AssessmentEvent do
       action: Caliper::Actions::SUBMITTED,
       edApp: ed_app,
       eventTime: '2016-11-15T10:25:30.000Z',
+      generated: attempt,
       group: group,
       id: 'urn:uuid:dad88464-0c20-4a19-a1ba-ddf2f9c3ff33',
       membership: membership,
@@ -35,6 +36,19 @@ describe Caliper::Events::AssessmentEvent do
   let(:actor) do
     Caliper::Entities::Agent::Person.new(
       id: 'https://example.edu/users/554433'
+    )
+  end
+
+  let(:attempt) do
+    Caliper::Entities::Assign::Attempt.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
+      assignee: actor,
+      assignable: object,
+      count: 1,
+      dateCreated: '2016-11-15T10:15:00.000Z',
+      startedAtTime: '2016-11-15T10:15:00.000Z',
+      endedAtTime: '2016-11-15T10:25:30.000Z',
+      duration: 'PT10M30S'
     )
   end
 
@@ -57,9 +71,7 @@ describe Caliper::Events::AssessmentEvent do
     Caliper::Entities::LIS::Membership.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1',
       member: actor,
-      organization: Caliper::Entities::LIS::CourseSection.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1',
-      ),
+      organization: group,
       roles: [
         Caliper::Entities::LIS::Role::LEARNER
       ],
@@ -69,24 +81,15 @@ describe Caliper::Events::AssessmentEvent do
   end
 
   let(:object) do
-    Caliper::Entities::Assign::Attempt.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
-      assignee: actor,
-      assignable: Caliper::Entities::Resource::Assessment.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1',
-        name: 'Quiz One',
-        dateToStartOn: '2016-11-14T05:00:00.000Z',
-        dateToSubmit: '2016-11-18T11:59:59.000Z',
-        maxAttempts: 2,
-        maxSubmits: 2,
-        maxScore: 25.0,
-        version: '1.0'
-      ),
-      count: 1,
-      dateCreated: '2016-11-15T10:15:00.000Z',
-      startedAtTime: '2016-11-15T10:15:00.000Z',
-      endedAtTime: '2016-11-15T10:25:30.000Z',
-      duration: 'PT10M30S'
+    Caliper::Entities::Resource::Assessment.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1',
+      name: 'Quiz One',
+      dateToStartOn: '2016-11-14T05:00:00.000Z',
+      dateToSubmit: '2016-11-18T11:59:59.000Z',
+      maxAttempts: 2,
+      maxSubmits: 2,
+      maxScore: 25.0,
+      version: '1.0'
     )
   end
 

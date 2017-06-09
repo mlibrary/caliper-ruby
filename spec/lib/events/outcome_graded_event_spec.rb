@@ -22,6 +22,7 @@ describe Caliper::Events::OutcomeEvent do
     described_class.new(
       action: Caliper::Actions::GRADED,
       actor: actor,
+      edApp: edApp,
       eventTime: '2016-11-15T10:57:06.000Z',
       generated: result,
       group: group,
@@ -34,6 +35,12 @@ describe Caliper::Events::OutcomeEvent do
     Caliper::Entities::Agent::SoftwareApplication.new(
       id: 'https://example.edu/autograder',
       version: 'v2'
+    )
+  end
+
+  let(:edApp) do
+    Caliper::Entities::Agent::SoftwareApplication.new(
+      id: 'https://example.edu'
     )
   end
 
@@ -51,7 +58,7 @@ describe Caliper::Events::OutcomeEvent do
       assignable: Caliper::Entities::Resource::Assessment.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
       ),
-      assigee: Caliper::Entities::Agent::Person.new(
+      assignee: Caliper::Entities::Agent::Person.new(
         id: 'https://example.edu/users/554433',
       ),
       count: 1,
@@ -65,14 +72,10 @@ describe Caliper::Events::OutcomeEvent do
   let(:result) do
     Caliper::Entities::Assign::Result.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1',
-      attempt: Caliper::Entities::Assign::Attempt.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
-      ),
+      attempt: object,
       normalScore: 15.0,
       totalScore: 15.0,
-      scoredBy: Caliper::Entities::Agent::SoftwareApplication.new(
-        id: 'https://example.edu/autograder'
-      ),
+      scoredBy: actor,
       dateCreated: '2016-11-15T10:55:05.000Z'
     )
   end

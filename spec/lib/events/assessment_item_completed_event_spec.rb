@@ -58,9 +58,7 @@ describe Caliper::Events::AssessmentItemEvent do
     Caliper::Entities::LIS::Membership.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1',
       member: actor,
-      organization: Caliper::Entities::LIS::CourseSection.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1',
-      ),
+      organization: group,
       roles: [
         Caliper::Entities::LIS::Role::LEARNER
       ],
@@ -70,16 +68,27 @@ describe Caliper::Events::AssessmentItemEvent do
   end
 
   let(:object) do
+    Caliper::Entities::Resource::AssessmentItem.new(
+      dateToStartOn: '2016-11-14T05:00:00.000Z',
+      dateToSubmit: '2016-11-18T11:59:59.000Z',
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3',
+      isPartOf: Caliper::Entities::Resource::Assessment.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
+      ),
+      isTimeDependent: false,
+      maxAttempts: 2,
+      maxScore: 1.0,
+      maxSubmits: 2,
+      name: 'Assessment Item 3',
+      version: '1.0'
+    )
+  end
+
+  let(:attempt) do
     Caliper::Entities::Assign::Attempt.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1',
       assignee: actor,
-      assignable: Caliper::Entities::Resource::AssessmentItem.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3',
-        name: 'Assessment Item 3',
-        isPartOf: Caliper::Entities::Resource::Assessment.new(
-          id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
-        )
-      ),
+      assignable: object,
       isPartOf: Caliper::Entities::Assign::Attempt.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
       ),
@@ -93,9 +102,7 @@ describe Caliper::Events::AssessmentItemEvent do
   let(:response) do
     Caliper::Entities::Response::FillInBlankResponse.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/responses/1',
-      attempt: Caliper::Entities::Assign::Attempt.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1'
-      ),
+      attempt: attempt,
       dateCreated: '2016-11-15T10:15:12.000Z',
       startedAtTime: '2016-11-15T10:15:02.000Z',
       endedAtTime: '2016-11-15T10:15:12.000Z',

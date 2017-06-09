@@ -19,24 +19,14 @@ require_relative '../entity'
 require_relative '../entity_type'
 
 #
-# Representation of a result.
+# Base Agent Entity.
 #
 module Caliper
   module Entities
-    module Assign
-      class Result < Entity
+    module Agent
+      class Agent < Entity
 
-        caliper_type Caliper::Entities::EntityType::RESULT
-
-        caliper_property :attempt,         type: Caliper::Entities::EntityType::ATTEMPT
-        caliper_property :comment
-        caliper_property :curveFactor
-        caliper_property :curvedTotalScore
-        caliper_property :extraCreditScore
-        caliper_property :normalScore
-        caliper_property :penaltyScore
-        caliper_property :scoredBy,         type: Caliper::Entities::EntityType::AGENT
-        caliper_property :totalScore
+        caliper_type Caliper::Entities::EntityType::AGENT
 
       end
     end

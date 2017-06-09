@@ -18,6 +18,7 @@
 module Caliper
   module Entities
     module EntityType
+      AGENT = 'Agent'
       ANNOTATION = 'Annotation'
       ASSESSMENT = 'Assessment'
       ASSESSMENT_ITEM = 'AssessmentItem'
