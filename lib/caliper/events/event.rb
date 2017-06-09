@@ -19,6 +19,7 @@ require 'uuid'
 
 require_relative '../contexts'
 require_relative '../jsonable'
+require_relative '../pretty_print'
 require_relative '../properties'
 require_relative '../types'
 
@@ -32,6 +33,7 @@ module Caliper
     class Event
       include Caliper::Jsonable
       include Caliper::Contexts
+      include Caliper::PrettyPrint
       include Caliper::Properties
       include Caliper::Types
 
