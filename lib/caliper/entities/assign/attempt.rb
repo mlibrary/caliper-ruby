@@ -33,7 +33,7 @@ module Caliper
         caliper_property :count
         caliper_property :duration
         caliper_property :endedAtTime
-        caliper_property :isPartOf
+        caliper_property :isPartOf,     type: Caliper::Entities::EntityType::ATTEMPT
         caliper_property :startedAtTime
 
       end

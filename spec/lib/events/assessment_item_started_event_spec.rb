@@ -43,9 +43,7 @@ describe Caliper::Events::AssessmentItemEvent do
     Caliper::Entities::Assign::Attempt.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1',
       assignee: actor,
-      assignable: Caliper::Entities::Resource::AssessmentItem.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3'
-      ),
+      assignable: object,
       isPartOf: Caliper::Entities::Assign::Attempt.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
       ),
@@ -74,9 +72,7 @@ describe Caliper::Events::AssessmentItemEvent do
     Caliper::Entities::LIS::Membership.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1',
       member: actor,
-      organization: Caliper::Entities::LIS::CourseSection.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1',
-      ),
+      organization: group,
       roles: [
         Caliper::Entities::LIS::Role::LEARNER
       ],

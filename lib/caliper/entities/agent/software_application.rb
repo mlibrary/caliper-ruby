@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity'
+require_relative './agent'
 require_relative '../entity_type'
 
 #
@@ -24,7 +24,7 @@ require_relative '../entity_type'
 module Caliper
   module Entities
     module Agent
-      class SoftwareApplication < Entity
+      class SoftwareApplication < Agent
 
         caliper_type Caliper::Entities::EntityType::SOFTWARE_APPLICATION
 
