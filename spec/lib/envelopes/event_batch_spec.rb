@@ -105,8 +105,8 @@ describe Caliper::Request::Envelope do
     )
   end
 
-  it 'should ensure that a Caliper envelope containing a AssessmentEvent is correctly created and serialized' do
-    navigation_event = Caliper::Events::NavigationEvent.new(
+  let(:navigation_event) do
+    Caliper::Events::NavigationEvent.new(
       action: Caliper::Actions::NAVIGATED_TO,
       actor: actor,
       edApp: epub_reader,
@@ -118,8 +118,10 @@ describe Caliper::Request::Envelope do
       referrer: referrer,
       session: session
     )
+  end
 
-    annotation_event = Caliper::Events::AnnotationEvent.new(
+  let(:annotation_event) do
+    Caliper::Events::AnnotationEvent.new(
       action: Caliper::Actions::BOOKMARKED,
       actor: actor,
       edApp: epub_reader,
@@ -131,8 +133,10 @@ describe Caliper::Request::Envelope do
       object: document_no_timestamps,
       session: session
     )
+  end
 
-    view_event = Caliper::Events::ViewEvent.new(
+  let(:view_event) do
+    Caliper::Events::ViewEvent.new(
       action: Caliper::Actions::VIEWED,
       actor: actor,
       edApp: epub_reader,
@@ -143,26 +147,21 @@ describe Caliper::Request::Envelope do
       object: document_timestamps,
       session: session
     )
-
-    # The Sensor
-    options = Caliper::Options.new
-    sensor = Caliper::Sensor.new('https://example.edu/sensors/1', options)
-    requestor = Caliper::Request::HttpRequestor.new(options)
-    json_payload = requestor.generate_payload(sensor,
-      [
-        navigation_event,
-        annotation_event,
-        view_event
-      ],
-      {optimize: {except: [:actor, :group, :object, :edApp, :membership, :session] }}
-    )
-
-    # Swap out sendTime=DateTime.now() in favor of fixture value (or test will most assuredly fail).
-    json_payload.sub!(/\"sendTime\":\"[^\"]*\"/, '"sendTime": "2016-11-15T11:05:01.000Z"')
-
-    # Load JSON from caliper-common-fixtures for comparison
-    # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
-    json_string = File.read('spec/fixtures/caliperEnvelopeEventBatch.json')
-    expect(json_payload).to be_json_eql(json_string)
   end
+
+  let(:sensor_id) { 'https://example.edu/sensors/1' }
+
+  let(:sensor_data) do
+    [
+      navigation_event,
+      annotation_event,
+      view_event
+    ]
+  end
+
+  include_examples(
+    'payload validation against common fixture',
+    'caliperEnvelopeEventBatch.json',
+    optimize: {except: [:actor, :object, :group, :edApp, :membership, :session]}
+  )
 end

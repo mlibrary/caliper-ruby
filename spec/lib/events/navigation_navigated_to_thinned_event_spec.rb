@@ -17,17 +17,18 @@
 
 require 'spec_helper'
 
-describe Caliper::Events::ForumEvent do
+describe Caliper::Events::NavigationEvent do
   subject do
     described_class.new(
+      action: Caliper::Actions::NAVIGATED_TO,
       actor: actor,
-      action: Caliper::Actions::SUBSCRIBED,
       edApp: ed_app,
-      eventTime: '2016-11-15T10:16:00.000Z',
+      eventTime: '2016-11-15T10:15:00.000Z',
       group: group,
-      id: 'urn:uuid:a2f41f9c-d57d-4400-b3fe-716b9026334e',
+      id: 'urn:uuid:71657137-8e6e-44f8-8499-e1c3df6810d2',
       membership: membership,
-      object: forum,
+      object: object,
+      referrer: referrer,
       session: session
     )
   end
@@ -40,47 +41,39 @@ describe Caliper::Events::ForumEvent do
 
   let(:ed_app) do
     Caliper::Entities::Agent::SoftwareApplication.new(
-      id: 'https://example.edu/forums',
-      version: 'v2'
-    )
-  end
-
-  let(:forum) do
-    Caliper::Entities::Resource::Forum.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/forums/1',
-      dateCreated: '2016-09-14T11:00:00.000Z',
-      isPartOf: group,
-      name: 'Caliper Forum'
+      id: 'https://example.edu'
     )
   end
 
   let(:group) do
-    Caliper::Entities::LIS::CourseSection.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1',
-      courseNumber: 'CPS 435-01',
-      academicSession: 'Fall 2016'
+    Caliper::Entities::Agent::Organization.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1'
     )
   end
 
   let(:membership) do
     Caliper::Entities::LIS::Membership.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1',
-      member: actor,
-      organization: group,
-      roles: [
-        Caliper::Entities::LIS::Role::LEARNER
-      ],
-      status: Caliper::Entities::LIS::Status::ACTIVE,
-      dateCreated: '2016-08-01T06:00:00.000Z'
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1'
+    )
+  end
+
+  let(:object) do
+    Caliper::Entities::Entity.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/pages/2'
+    )
+  end
+
+  let(:referrer) do
+    Caliper::Entities::Entity.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/pages/1',
     )
   end
 
   let(:session) do
     Caliper::Entities::Session::Session.new(
-      id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259',
-      startedAtTime: '2016-11-15T10:00:00.000Z'
+      id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259'
     )
   end
 
-  include_examples 'validation against common fixture', 'caliperEventForumSubscribed.json', excluding: 'isPartOf'
+  include_examples 'validation against common fixture', 'caliperEventNavigationNavigatedToThinned.json', optimize: :all
 end

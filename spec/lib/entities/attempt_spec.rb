@@ -15,24 +15,26 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity'
-require_relative '../entity_type'
+require 'spec_helper'
 
-#
-# LIS Course Offering.
-#
-module Caliper
-  module Entities
-    module LIS
-      class CourseOffering < Caliper::Entities::Agent::Organization
+describe Caliper::Entities::Assign::Attempt do
 
-        caliper_type Caliper::Entities::EntityType::COURSE_OFFERING
-
-        caliper_property :academicSession
-        caliper_property :courseNumber
-        caliper_property :subOrganizationOf
-
-      end
-    end
+  subject do
+    described_class.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
+      assignable: Caliper::Entities::Resource::Assessment.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
+      ),
+      assignee: Caliper::Entities::Agent::Person.new(
+        id: 'https://example.edu/users/554433'
+      ),
+      count: 1,
+      dateCreated: '2016-11-15T10:05:00.000Z',
+      startedAtTime: '2016-11-15T10:05:00.000Z',
+      endedAtTime: '2016-11-15T10:55:30.000Z',
+      duration: 'PT50M30S'
+    )
   end
+
+  include_examples 'validation against common fixture', 'caliperEntityAttempt.json', optimize: :none
 end

@@ -26,7 +26,7 @@ describe Caliper::Events::OutcomeEvent do
       eventTime: '2016-11-15T10:57:06.000Z',
       generated: result,
       group: group,
-      id: 'urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d',
+      id: 'urn:uuid:12c05c4e-253f-4073-9f29-5786f3ff3f36',
       object: object
     )
   end
@@ -54,33 +54,39 @@ describe Caliper::Events::OutcomeEvent do
 
   let(:object) do
     Caliper::Entities::Assign::Attempt.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
-      assignable: Caliper::Entities::Resource::Assessment.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1',
+      assignable: Caliper::Entities::Resource::AssessmentItem.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3',
+        name: 'Assessment Item 3',
+        isPartOf: Caliper::Entities::Resource::Assessment.new(
+          id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
+        )
       ),
       assignee: Caliper::Entities::Agent::Person.new(
         id: 'https://example.edu/users/554433',
       ),
       count: 1,
-      dateCreated: '2016-11-15T10:05:00.000Z',
-      startedAtTime: '2016-11-15T10:05:00.000Z',
-      endedAtTime: '2016-11-15T10:55:12.000Z',
-      duration: 'PT50M12S'
+      dateCreated: '2016-11-15T10:15:02.000Z',
+      startedAtTime: '2016-11-15T10:15:02.000Z',
+      endedAtTime: '2016-11-15T10:15:12.000Z',
+      isPartOf: Caliper::Entities::Assign::Attempt.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
+      )
     )
   end
 
   let(:result) do
     Caliper::Entities::Assign::Result.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1',
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/results/1',
       attempt: object,
-      normalScore: 15.0,
-      totalScore: 15.0,
+      normalScore: 1.0,
+      totalScore: 1.0,
       scoredBy: actor,
       dateCreated: '2016-11-15T10:55:05.000Z'
     )
   end
 
-  # 'object.assignable' and 'object.assignee' in the common fixture are not coerced to IRIs.
-  include_examples 'validation against common fixture', 'caliperEventOutcomeGraded.json', excluding: ['assignable', 'assignee']
+  # 'object.assignee' in the common fixture is not coerced to an IRI.
+  include_examples 'validation against common fixture', 'caliperEventOutcomeGradedItem.json', excluding: 'assignee'
 end
 

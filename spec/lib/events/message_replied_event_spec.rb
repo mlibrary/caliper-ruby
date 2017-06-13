@@ -17,16 +17,15 @@
 
 require 'spec_helper'
 
-describe Caliper::Events::AssessmentItemEvent do
+describe Caliper::Events::MessageEvent do
   subject do
     described_class.new(
+      action: Caliper::Actions::POSTED,
       actor: actor,
-      action: Caliper::Actions::STARTED,
       edApp: ed_app,
-      eventTime: '2016-11-15T10:15:00.000Z',
-      generated: attempt,
+      eventTime: '2016-11-15T10:15:30.000Z',
       group: group,
-      id: 'urn:uuid:1b557176-ba67-4624-b060-6bee670a3d8e',
+      id: 'urn:uuid:aed54386-a3fb-45ff-90f9-a35d3daaf031',
       membership: membership,
       object: object,
       session: session
@@ -35,27 +34,13 @@ describe Caliper::Events::AssessmentItemEvent do
 
   let(:actor) do
     Caliper::Entities::Agent::Person.new(
-      id: 'https://example.edu/users/554433',
-    )
-  end
-
-  let(:attempt) do
-    Caliper::Entities::Assign::Attempt.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1',
-      assignee: actor,
-      assignable: object,
-      isPartOf: Caliper::Entities::Assign::Attempt.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
-      ),
-      count: 1,
-      dateCreated: '2016-11-15T10:15:00.000Z',
-      startedAtTime: '2016-11-15T10:15:00.000Z'
+      id: 'https://example.edu/users/778899',
     )
   end
 
   let(:ed_app) do
     Caliper::Entities::Agent::SoftwareApplication.new(
-      id: 'https://example.edu',
+      id: 'https://example.edu/forums',
       version: 'v2'
     )
   end
@@ -82,29 +67,28 @@ describe Caliper::Events::AssessmentItemEvent do
   end
 
   let(:object) do
-    Caliper::Entities::Resource::AssessmentItem.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3',
-      name: 'Assessment Item 3',
-      isPartOf: Caliper::Entities::Resource::Assessment.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
+    Caliper::Entities::Resource::Message.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/3',
+      creators: [ actor ],
+      dateCreated: '2016-11-15T10:15:30.000Z',
+      isPartOf: Caliper::Entities::Resource::Thread.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1',
+        isPartOf: Caliper::Entities::Resource::Forum.new(
+          id: 'https://example.edu/terms/201601/courses/7/sections/1/forums/2'
+        )
       ),
-      dateToStartOn: '2016-11-14T05:00:00.000Z',
-      dateToSubmit: '2016-11-18T11:59:59.000Z',
-      maxAttempts: 2,
-      maxSubmits: 2,
-      maxScore: 1.0,
-      isTimeDependent: false,
-      version: '1.0'
+      replyTo: Caliper::Entities::Resource::Message.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1/forums/2/topics/1/messages/2'
+      )
     )
   end
 
   let(:session) do
     Caliper::Entities::Session::Session.new(
-      id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259',
-      startedAtTime: '2016-11-15T10:00:00.000Z'
+      id: 'https://example.edu/sessions/1d6fa9adf16f4892650e4305f6cf16610905cd50',
+      startedAtTime: '2016-11-15T10:12:00.000Z'
     )
   end
 
-  # generated.isPartOf' in the common fixture is not optimized.
-  include_examples 'validation against common fixture', 'caliperEventAssessmentItemStarted.json', excluding: :isPartOf
+  include_examples 'validation against common fixture', 'caliperEventMessageReplied.json', excluding: 'creators'
 end

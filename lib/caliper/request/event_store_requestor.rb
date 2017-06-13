@@ -25,8 +25,8 @@ module Caliper
   module Request
     class EventStoreRequestor
 
-      def generate_payload(sensor, data)
-        create_envelope(sensor, data).to_json
+      def generate_payload(sensor, data, opts={})
+        create_envelope(sensor, data).to_json(opts)
       end
 
       private

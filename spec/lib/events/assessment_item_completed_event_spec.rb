@@ -117,5 +117,6 @@ describe Caliper::Events::AssessmentItemEvent do
     )
   end
 
-  include_examples 'validation against common fixture', 'caliperEventAssessmentItemCompleted.json'
+  # 'generated.attempt.assignable' in the common fixture is not coerced to an IRI.
+  include_examples 'validation against common fixture', 'caliperEventAssessmentItemCompleted.json', excluding: 'assignable'
 end
