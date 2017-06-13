@@ -23,12 +23,32 @@ require 'json'
 module Caliper
   module Jsonable
 
+    class ExtendedGeneratorState < JSON::Ext::Generator::State
+      attr_accessor :optimize
+      attr_accessor :unique_ids
+
+      def initialize(opts={})
+        # Default optimization settings are to serialize actor, object and group properties in full.
+        @optimize = opts[:optimize] || {except: [:actor, :object, :group]}
+        @unique_ids = opts[:unique_ids] || {}
+      end
+    end
+
     def self.included(base)
       base.extend ClassMethods
     end
 
     def to_json(*a)
-      self.class.serialize(self).to_json(*a)
+      if a.first.is_a? ExtendedGeneratorState
+        state = a.first
+      else
+        if a.first.respond_to?(:[])
+          optimize = a.first[:optimize]
+          unique_ids = a.first[:unique_ids]
+        end
+        state = ExtendedGeneratorState.new(optimize: optimize, unique_ids: unique_ids)
+      end
+      self.class.serialize(self, {optimize: state.optimize}, nil, state.unique_ids).to_json(state)
     end
 
     module ClassMethods
@@ -39,58 +59,61 @@ module Caliper
 
       # After initial JSON parsing, recursively deserialize basic collection objects into Caliper classes where
       # appropriate.
-      def deserialize(obj, context=nil, references_by_id={}, unique_ids={})
+      def deserialize(obj, context=nil, references_by_id={}, objects_by_id={})
         case obj
           when Hash
             context = obj['@context'] if obj['@context']
             if (context == Caliper::Contexts::CONTEXT) && obj['type'] && (klass = Caliper::Types.class_for_type obj['type'])
-              if obj['id'] && unique_ids[obj['id']]
-                return unique_ids[obj['id']]
-              end
-              opts = obj.each_with_object({}) do |(k,v), opts_hash|
+              deserialized = klass.new(id: obj['id'])
+              obj.each do |k ,v|
+                next if %w(id type).include? k
                 key = k.sub(/\A@/,'').to_sym
                 # If a child object is an IRI string, the parent object's class definition may
                 # specify a type.
-                if v.is_a?(String) && klass.properties[key] && klass.properties[key][:type]
-                  serialized = {
-                    'id' => v,
-                    'type' => klass.properties[key][:type]
-                  }
-                else
-                  serialized = v
-                end
-                opts_hash[key] = deserialize(serialized, context, references_by_id, unique_ids)
-              end
-              deserialized = klass.new(opts)
-              opts.each do |key, child_object|
-                if child_object.respond_to?(:id) && klass.properties[key]
-                  references_by_id[child_object.id] ||= []
-                  # If this property is specified as unique, any previously deserialized references to the
-                  # same id should be updated to point to the newly deserialized object.
-                  if klass.properties[key][:unique]
-                    references_by_id[child_object.id].each do |reference|
-                      reference[0].send "#{reference[1]}=", child_object
-                    end
-                    unique_ids[child_object.id] = child_object
-                  # Alternatively, if the property has a specified type, replace with any unique object already
-                  # deserialized, or store the id in case a unique object with the same id is deserialized later.
-                  elsif klass.properties[key][:type]
-                    if unique_ids[child_object.id]
-                      deserialized.send "#{key}=", unique_ids[child_object.id]
+                serialized = if v.is_a?(String) && klass.properties[key] && klass.properties[key][:type]
+                               {
+                                 'id' => v,
+                                 'type' => klass.properties[key][:type]
+                               }
+                             else
+                               v
+                             end
+                child_object = deserialize(serialized, context, references_by_id, objects_by_id)
+                deserialized.send "#{key}=", child_object
+                if child_object.respond_to? :id
+                  if objects_by_id[child_object.id]
+                    if objects_by_id[child_object.id].class < child_object.class
+                      child_object.properties.each do |key, value|
+                        unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
+                          objects_by_id[child_object.id].send "#{key}=", value
+                        end
+                      end
                     else
-                      references_by_id[child_object.id] << [deserialized, key]
+                      objects_by_id[child_object.id].properties.each do |key, value|
+                        unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
+                          child_object.send "#{key}=", value
+                        end
+                      end
+                      objects_by_id[child_object.id] = child_object
                     end
+                  else
+                    objects_by_id[child_object.id] = child_object
+                  end
+                  references_by_id[child_object.id] ||= []
+                  references_by_id[child_object.id] << [deserialized, key]
+                  references_by_id[child_object.id].each do |reference|
+                    reference[0].send "#{reference[1]}=", objects_by_id[child_object.id]
                   end
                 end
               end
               deserialized
             else
-              Hash[obj.map { |k,v| [k.to_sym, deserialize(v, context, references_by_id, unique_ids)] }]
+              Hash[obj.map { |k,v| [k.to_sym, deserialize(v, context, references_by_id, objects_by_id)] }]
             end
           when Array
-            obj.map { |element| deserialize(element, context, references_by_id, unique_ids) }
+            obj.map { |element| deserialize(element, context, references_by_id, objects_by_id) }
           when String
-            unique_ids[obj] || obj
+            objects_by_id[obj] || obj
           else
             obj
         end
@@ -98,50 +121,57 @@ module Caliper
 
       # Before encoding to JSON, recursively serialize Caliper objects into simpler collections, using 'serialize'
       # and 'properties' methods provided by those objects. Omit nil/empty and redundant properties.
-      def serialize(obj, context=nil, unique_ids=[], parent_property_definition={})
+      def serialize(obj, opts, context=nil, unique_ids={}, parent_property_definition={})
         # If this object's type is known and its id has been marked unique, return id string only, unless the parent
         # property definition also includes 'unique' to indicate that the object should here be serialized in full.
-        if obj.respond_to?(:id) && unique_ids.include?(obj.id) && parent_property_definition[:type] && !parent_property_definition[:unique]
-          obj.id
-        elsif obj.respond_to?(:serialize)
+        if obj.respond_to?(:serialize)
           serialized = obj.serialize
           if obj.respond_to?(:context) && !obj.context.nil? && obj.context != context
             serialized['@context'] = context = obj.context
           end
           if obj.respond_to?(:properties)
-            # Note any properties marked 'unique', as associated objects should be serialized in full only once.
-            # Any other references to the same object should be serialized as id string only.
-            obj.class.properties.each do |property_name, property_definition|
-              if property_definition[:unique]
-                if (child_object = obj.send property_name) && child_object.respond_to?(:id)
-                  unique_ids << child_object.id
-                end
-              end
-            end
             # Serialize each child object, passing in the property definition from the parent object class.
             obj.properties.each do |key, value|
               unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
                 property_definition = obj.class.properties[key].merge(key: key)
-                serialized[key.to_s] = serialize(value, context, unique_ids, property_definition)
+                serialized[key.to_s] = serialize(value, opts, context, unique_ids, property_definition)
               end
             end
           end
-          # If the object has no properties but id and type, and the type is already known from the parent object
-          # definition, return id string only.
-          if (serialized.keys - %w(id type)).empty? && serialized['type'] == parent_property_definition[:type]
+          if serialize_to_id?(opts, obj, serialized, unique_ids, parent_property_definition)
             serialized['id']
-          # Otherwise return the entire serialized object.
           else
+            unique_ids[serialized['id']] = obj if opts[:optimize] != :none
             serialized
           end
         elsif obj.is_a?(Array)
-          obj.map { |element| serialize(element, context) }
+          obj.map { |element| serialize(element, opts, context, unique_ids) }
         elsif obj.is_a?(Hash)
-          Hash[obj.map { |k,v| [k, serialize(v, context)] }]
+          Hash[obj.map { |k,v| [k, serialize(v, opts, context, unique_ids)] }]
         else
           obj
         end
       end
+
+      def serialize_to_id?(opts, obj, serialized, unique_ids, parent_property_definition)
+        # Do not serialize to id unless optimization settings allow.
+        return false unless optimize_key?(opts, parent_property_definition[:key])
+        # Serialize to id if we've already serialized the same object.
+        return true if unique_ids[serialized['id']] == obj
+        # Otherwise, serialize only if the object contains only id and type, and 1) another object with the same id has
+        # already been serialized, or 2) the type can be inferred from the parent definition (or is a generic Entity).
+        if (serialized.keys - %w(id type)).empty? &&
+           (unique_ids.has_key?(serialized['id']) || [parent_property_definition[:type], 'Entity'].include?(serialized['type']))
+          true
+        else
+          false
+        end
+      end
+
+      def optimize_key?(opts, key)
+        opts[:optimize] == :all || (opts[:optimize].is_a?(Hash) && opts[:optimize][:except] && !opts[:optimize][:except].include?(key))
+      end
+
     end
   end
 end

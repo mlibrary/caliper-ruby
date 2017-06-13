@@ -15,24 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity'
-require_relative '../entity_type'
+require 'spec_helper'
 
-#
-# LIS Course Offering.
-#
-module Caliper
-  module Entities
-    module LIS
-      class CourseOffering < Caliper::Entities::Agent::Organization
+describe Caliper::Entities::Resource::AudioObject do
 
-        caliper_type Caliper::Entities::EntityType::COURSE_OFFERING
-
-        caliper_property :academicSession
-        caliper_property :courseNumber
-        caliper_property :subOrganizationOf
-
-      end
-    end
+  subject do
+    described_class.new(
+      id: 'https://example.edu/audio/765',
+      name: 'Audio Recording: IMS Caliper Sensor API Q&A.',
+      mediaType: 'audio/ogg',
+      datePublished: '2016-12-01T06:00:00.000Z',
+      duration: 'PT55M13S'
+    )
   end
+
+  include_examples 'validation against common fixture', 'caliperEntityAudioObject.json'
 end

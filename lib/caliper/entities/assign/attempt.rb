@@ -28,7 +28,7 @@ module Caliper
 
         caliper_type Caliper::Entities::EntityType::ATTEMPT
 
-        caliper_property :assignable,   type: Caliper::Entities::EntityType::ASSESSMENT
+        caliper_property :assignable,   type: Caliper::Entities::EntityType::DIGITAL_RESOURCE
         caliper_property :assignee,     type: Caliper::Entities::EntityType::PERSON
         caliper_property :count
         caliper_property :duration

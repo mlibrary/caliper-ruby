@@ -21,12 +21,11 @@ describe Caliper::Events::AssessmentItemEvent do
   subject do
     described_class.new(
       actor: actor,
-      action: Caliper::Actions::STARTED,
+      action: Caliper::Actions::SKIPPED,
       edApp: ed_app,
-      eventTime: '2016-11-15T10:15:00.000Z',
-      generated: attempt,
+      eventTime: '2016-11-15T10:14:30.000Z',
       group: group,
-      id: 'urn:uuid:1b557176-ba67-4624-b060-6bee670a3d8e',
+      id: 'urn:uuid:04e27704-73bf-4d3c-912c-1b2da40aef8f',
       membership: membership,
       object: object,
       session: session
@@ -36,20 +35,6 @@ describe Caliper::Events::AssessmentItemEvent do
   let(:actor) do
     Caliper::Entities::Agent::Person.new(
       id: 'https://example.edu/users/554433',
-    )
-  end
-
-  let(:attempt) do
-    Caliper::Entities::Assign::Attempt.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1',
-      assignee: actor,
-      assignable: object,
-      isPartOf: Caliper::Entities::Assign::Attempt.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
-      ),
-      count: 1,
-      dateCreated: '2016-11-15T10:15:00.000Z',
-      startedAtTime: '2016-11-15T10:15:00.000Z'
     )
   end
 
@@ -83,8 +68,8 @@ describe Caliper::Events::AssessmentItemEvent do
 
   let(:object) do
     Caliper::Entities::Resource::AssessmentItem.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3',
-      name: 'Assessment Item 3',
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/2',
+      name: 'Assessment Item 2',
       isPartOf: Caliper::Entities::Resource::Assessment.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
       ),
@@ -105,6 +90,5 @@ describe Caliper::Events::AssessmentItemEvent do
     )
   end
 
-  # generated.isPartOf' in the common fixture is not optimized.
-  include_examples 'validation against common fixture', 'caliperEventAssessmentItemStarted.json', excluding: :isPartOf
+  include_examples 'validation against common fixture', 'caliperEventAssessmentItemSkipped.json'
 end

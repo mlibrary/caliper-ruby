@@ -17,36 +17,32 @@
 
 require 'spec_helper'
 
-describe Caliper::Events::AssessmentItemEvent do
-  subject do
-    described_class.new(
-      actor: actor,
-      action: Caliper::Actions::STARTED,
-      edApp: ed_app,
-      eventTime: '2016-11-15T10:15:00.000Z',
-      generated: attempt,
-      group: group,
-      id: 'urn:uuid:1b557176-ba67-4624-b060-6bee670a3d8e',
-      membership: membership,
-      object: object,
-      session: session
-    )
-  end
+describe Caliper::Request::Envelope do
 
   let(:actor) do
     Caliper::Entities::Agent::Person.new(
-      id: 'https://example.edu/users/554433',
+      id: 'https://example.edu/users/554433'
+    )
+  end
+
+  let(:object) do
+    Caliper::Entities::Resource::Assessment.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1',
+      name: 'Quiz One',
+      dateToStartOn: '2016-11-14T05:00:00.000Z',
+      dateToSubmit: '2016-11-18T11:59:59.000Z',
+      maxAttempts: 2,
+      maxSubmits: 2,
+      maxScore: 25.0,
+      version: '1.0'
     )
   end
 
   let(:attempt) do
     Caliper::Entities::Assign::Attempt.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1',
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
       assignee: actor,
       assignable: object,
-      isPartOf: Caliper::Entities::Assign::Attempt.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
-      ),
       count: 1,
       dateCreated: '2016-11-15T10:15:00.000Z',
       startedAtTime: '2016-11-15T10:15:00.000Z'
@@ -72,29 +68,14 @@ describe Caliper::Events::AssessmentItemEvent do
     Caliper::Entities::LIS::Membership.new(
       id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1',
       member: actor,
-      organization: group,
+      organization: Caliper::Entities::LIS::CourseSection.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1',
+      ),
       roles: [
         Caliper::Entities::LIS::Role::LEARNER
       ],
       status: Caliper::Entities::LIS::Status::ACTIVE,
       dateCreated: '2016-08-01T06:00:00.000Z'
-    )
-  end
-
-  let(:object) do
-    Caliper::Entities::Resource::AssessmentItem.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3',
-      name: 'Assessment Item 3',
-      isPartOf: Caliper::Entities::Resource::Assessment.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
-      ),
-      dateToStartOn: '2016-11-14T05:00:00.000Z',
-      dateToSubmit: '2016-11-18T11:59:59.000Z',
-      maxAttempts: 2,
-      maxSubmits: 2,
-      maxScore: 1.0,
-      isTimeDependent: false,
-      version: '1.0'
     )
   end
 
@@ -105,6 +86,22 @@ describe Caliper::Events::AssessmentItemEvent do
     )
   end
 
-  # generated.isPartOf' in the common fixture is not optimized.
-  include_examples 'validation against common fixture', 'caliperEventAssessmentItemStarted.json', excluding: :isPartOf
+  let(:sensor_id) { 'https://example.edu/sensors/1' }
+
+  let(:sensor_data) do
+    Caliper::Events::AssessmentEvent.new(
+      action: Caliper::Actions::STARTED,
+      actor: actor,
+      edApp: ed_app,
+      eventTime: '2016-11-15T10:15:00.000Z',
+      generated: attempt,
+      group: group,
+      id: 'urn:uuid:c51570e4-f8ed-4c18-bb3a-dfe51b2cc594',
+      membership: membership,
+      object: object,
+      session: session
+    )
+  end
+
+  include_examples 'payload validation against common fixture', 'caliperEnvelopeEventSingle.json'
 end
