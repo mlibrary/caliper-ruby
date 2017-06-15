@@ -29,8 +29,8 @@ module Caliper
 
       caliper_type Caliper::Events::EventType::ASSESSMENT
 
-      caliper_property :actor,  type: Caliper::Entities::EntityType::PERSON, unique: true
-      caliper_property :object, type: Caliper::Entities::EntityType::ASSESSMENT, unique: true
+      caliper_property :actor,  type: Caliper::Entities::EntityType::PERSON
+      caliper_property :object, type: Caliper::Entities::EntityType::ASSESSMENT
 
     end
   end

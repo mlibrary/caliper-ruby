@@ -31,7 +31,7 @@ module Caliper
       caliper_type Caliper::Events::EventType::NAVIGATION
 
       caliper_property :action, default: Caliper::Actions::NAVIGATED_TO
-      caliper_property :actor,  type: Caliper::Entities::EntityType::PERSON, unique: true
+      caliper_property :actor,  type: Caliper::Entities::EntityType::PERSON
 
     end
   end

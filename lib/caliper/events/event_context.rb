@@ -24,7 +24,7 @@ module Caliper
         base.caliper_property :edApp,            type: Caliper::Entities::EntityType::SOFTWARE_APPLICATION
         base.caliper_property :federatedSession, type: Caliper::Entities::EntityType::LTI_SESSION
         base.caliper_property :generated
-        base.caliper_property :group,            type: Caliper::Entities::EntityType::ORGANIZATION, unique: true
+        base.caliper_property :group,            type: Caliper::Entities::EntityType::ORGANIZATION
         base.caliper_property :membership,       type: Caliper::Entities::EntityType::MEMBERSHIP
         base.caliper_property :session,          type: Caliper::Entities::EntityType::SESSION
         base.caliper_property :target
