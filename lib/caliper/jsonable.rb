@@ -25,12 +25,12 @@ module Caliper
 
     class ExtendedGeneratorState < JSON::Ext::Generator::State
       attr_accessor :optimize
-      attr_accessor :unique_ids
+      attr_accessor :objects_by_id
 
       def initialize(opts={})
         # Default optimization settings are to serialize actor, object and group properties in full.
         @optimize = opts[:optimize] || {except: [:actor, :object, :group]}
-        @unique_ids = opts[:unique_ids] || {}
+        @objects_by_id = opts[:objects_by_id] || {}
       end
     end
 
@@ -44,11 +44,11 @@ module Caliper
       else
         if a.first.respond_to?(:[])
           optimize = a.first[:optimize]
-          unique_ids = a.first[:unique_ids]
+          objects_by_id = a.first[:objects_by_id]
         end
-        state = ExtendedGeneratorState.new(optimize: optimize, unique_ids: unique_ids)
+        state = ExtendedGeneratorState.new(optimize: optimize, objects_by_id: objects_by_id)
       end
-      self.class.serialize(self, {optimize: state.optimize}, nil, state.unique_ids).to_json(state)
+      self.class.serialize(self, {optimize: state.optimize}, nil, state.objects_by_id).to_json(state)
     end
 
     module ClassMethods
@@ -121,9 +121,7 @@ module Caliper
 
       # Before encoding to JSON, recursively serialize Caliper objects into simpler collections, using 'serialize'
       # and 'properties' methods provided by those objects. Omit nil/empty and redundant properties.
-      def serialize(obj, opts, context=nil, unique_ids={}, parent_property_definition={})
-        # If this object's type is known and its id has been marked unique, return id string only, unless the parent
-        # property definition also includes 'unique' to indicate that the object should here be serialized in full.
+      def serialize(obj, opts, context=nil, objects_by_id={}, parent_property_definition={})
         if obj.respond_to?(:serialize)
           serialized = obj.serialize
           if obj.respond_to?(:context) && !obj.context.nil? && obj.context != context
@@ -134,34 +132,34 @@ module Caliper
             obj.properties.each do |key, value|
               unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
                 property_definition = obj.class.properties[key].merge(key: key)
-                serialized[key.to_s] = serialize(value, opts, context, unique_ids, property_definition)
+                serialized[key.to_s] = serialize(value, opts, context, objects_by_id, property_definition)
               end
             end
           end
-          if serialize_to_id?(opts, obj, serialized, unique_ids, parent_property_definition)
+          if serialize_to_id?(opts, obj, serialized, objects_by_id, parent_property_definition)
             serialized['id']
           else
-            unique_ids[serialized['id']] = obj if opts[:optimize] != :none
+            objects_by_id[serialized['id']] = obj if opts[:optimize] != :none
             serialized
           end
         elsif obj.is_a?(Array)
-          obj.map { |element| serialize(element, opts, context, unique_ids) }
+          obj.map { |element| serialize(element, opts, context, objects_by_id) }
         elsif obj.is_a?(Hash)
-          Hash[obj.map { |k,v| [k, serialize(v, opts, context, unique_ids)] }]
+          Hash[obj.map { |k,v| [k, serialize(v, opts, context, objects_by_id)] }]
         else
           obj
         end
       end
 
-      def serialize_to_id?(opts, obj, serialized, unique_ids, parent_property_definition)
+      def serialize_to_id?(opts, obj, serialized, objects_by_id, parent_property_definition)
         # Do not serialize to id unless optimization settings allow.
         return false unless optimize_key?(opts, parent_property_definition[:key])
         # Serialize to id if we've already serialized the same object.
-        return true if unique_ids[serialized['id']] == obj
+        return true if objects_by_id[serialized['id']] == obj
         # Otherwise, serialize only if the object contains only id and type, and 1) another object with the same id has
         # already been serialized, or 2) the type can be inferred from the parent definition (or is a generic Entity).
         if (serialized.keys - %w(id type)).empty? &&
-           (unique_ids.has_key?(serialized['id']) || [parent_property_definition[:type], 'Entity'].include?(serialized['type']))
+           (objects_by_id.has_key?(serialized['id']) || [parent_property_definition[:type], 'Entity'].include?(serialized['type']))
           true
         else
           false

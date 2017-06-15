@@ -48,7 +48,7 @@ describe Caliper::Events::NavigationEvent do
 
   let(:federated_session) do
     Caliper::Entities::Session::LtiSession.new(
-      id: 'https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241',
+      id: 'https://example.edu/sessions/b533eb02823f31024e6b7f53436c42fb99b31241',
       user: actor,
       launchParameters: {
         lti_message_type: 'basic-lti-launch-request',
@@ -148,7 +148,7 @@ describe Caliper::Events::NavigationEvent do
 
   let(:session) do
     Caliper::Entities::Session::Session.new(
-      id: 'https://example.com/sessions/b533eb02823f31024e6b7f53436c42fb99b31241',
+      id: 'https://example.com/sessions/c25fd3da-87fa-45f5-8875-b682113fa5ee',
       startedAtTime: '2016-11-15T10:00:00.000Z'
     )
   end

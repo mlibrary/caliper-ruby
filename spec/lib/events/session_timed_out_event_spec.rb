@@ -48,5 +48,5 @@ describe Caliper::Events::SessionEvent do
     )
   end
 
-  include_examples 'validation against common fixture', 'caliperEventSessionTimedOut.json'
+  include_examples 'validation against common fixture', 'caliperEventSessionTimedOut.json', optimize: {except: [:user]}
 end
