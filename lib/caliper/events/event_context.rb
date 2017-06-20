@@ -23,11 +23,11 @@ module Caliper
       def self.included(base)
         base.caliper_property :edApp,            type: Caliper::Entities::EntityType::SOFTWARE_APPLICATION
         base.caliper_property :federatedSession, type: Caliper::Entities::EntityType::LTI_SESSION
-        base.caliper_property :generated
+        base.caliper_property :generated,        type: Caliper::Entities::EntityType::ENTITY
         base.caliper_property :group,            type: Caliper::Entities::EntityType::ORGANIZATION
         base.caliper_property :membership,       type: Caliper::Entities::EntityType::MEMBERSHIP
         base.caliper_property :session,          type: Caliper::Entities::EntityType::SESSION
-        base.caliper_property :target
+        base.caliper_property :target,           type: Caliper::Entities::EntityType::ENTITY
       end
 
     end
