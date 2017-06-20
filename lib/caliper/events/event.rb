@@ -40,7 +40,7 @@ module Caliper
       caliper_context Caliper::Contexts::CONTEXT
       caliper_type Caliper::Events::EventType::EVENT
 
-      caliper_property :actor
+      caliper_property :actor,      type: Caliper::Entities::EntityType::AGENT
       caliper_property :action
       caliper_property :extensions, default: []
       caliper_property :eventTime
