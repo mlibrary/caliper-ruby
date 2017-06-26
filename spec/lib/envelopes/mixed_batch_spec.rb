@@ -123,7 +123,20 @@ describe Caliper::Request::Envelope do
       assignable: assessment,
       count: 1,
       dateCreated: '2016-11-15T10:15:00.000Z',
-      duration: 'PT50M12S',
+      duration: 'PT40M12S',
+      endedAtTime:'2016-11-15T10:55:12.000Z',
+      startedAtTime: '2016-11-15T10:15:00.000Z'
+    )
+  end
+
+  let(:attempt2) do
+    Caliper::Entities::Assign::Attempt.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
+      assignee: person,
+      assignable: assessment,
+      count: 1,
+      dateCreated: '2016-11-15T10:15:00.000Z',
+      duration: 'PT40M12S',
       endedAtTime:'2016-11-15T10:55:12.000Z',
       startedAtTime: '2016-11-15T10:15:00.000Z'
     )
@@ -153,19 +166,6 @@ describe Caliper::Request::Envelope do
     )
   end
 
-  let(:attempt2) do
-    Caliper::Entities::Assign::Attempt.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
-      assignee: person,
-      assignable: assessment,
-      count: 1,
-      dateCreated: '2016-11-15T10:05:00.000Z',
-      duration: 'PT50M12S',
-      endedAtTime:'2016-11-15T10:55:12.000Z',
-      startedAtTime: '2016-11-15T10:05:00.000Z'
-    )
-  end
-
   let(:autograder) do
     Caliper::Entities::Agent::SoftwareApplication.new(
       id: 'https://example.edu/autograder',
@@ -173,19 +173,20 @@ describe Caliper::Request::Envelope do
     )
   end
 
-  let(:outcome_event) do
-    Caliper::Events::OutcomeEvent.new(
+  let(:grade_event) do
+    Caliper::Events::GradeEvent.new(
       action: Caliper::Actions::GRADED,
       actor: autograder,
       edApp: ed_app,
       eventTime: '2016-11-15T10:57:06.000Z',
-      generated: Caliper::Entities::Assign::Result.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/results/1',
+      generated: Caliper::Entities::Assign::Score.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1',
         attempt: attempt2,
-        normalScore: 15.0,
-        totalScore: 15.0,
+        comment: 'auto-graded exam',
+        maxScore: 15.0,
+        scoreGiven: 10.0,
         scoredBy: autograder,
-        dateCreated: '2016-11-15T10:55:05.000Z'
+        dateCreated: '2016-11-15T10:56:00.000Z'
       ),
       group: course_section,
       id: 'urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d',
@@ -203,7 +204,7 @@ describe Caliper::Request::Envelope do
       course_section,
       assessment_event_started,
       assessment_event_submitted,
-      outcome_event
+      grade_event
     ]
   end
 

@@ -15,24 +15,23 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity'
-require_relative '../entity_type'
+require_relative '../actions.rb'
+require_relative './event'
+require_relative './event_context'
+require_relative './event_type'
 
 #
-# Representation of a result.
+# Grade Event.
 #
 module Caliper
-  module Entities
-    module Assign
-      class Result < Entity
+  module Events
+    class GradeEvent < Event
+      include Caliper::Events::EventContext
 
-        caliper_type Caliper::Entities::EntityType::RESULT
+      caliper_type Caliper::Events::EventType::GRADE
 
-        caliper_property :attempt,         type: Caliper::Entities::EntityType::ATTEMPT
-        caliper_property :comment
-        caliper_property :scoredBy,         type: Caliper::Entities::EntityType::AGENT
+      caliper_property :action, default: Caliper::Actions::GRADED
 
-      end
     end
   end
 end

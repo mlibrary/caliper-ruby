@@ -15,23 +15,26 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../actions.rb'
-require_relative './event'
-require_relative './event_context'
-require_relative './event_type'
+require_relative '../entity'
+require_relative '../entity_type'
 
 #
-# Outcome Event.
+# Representation of a score.
 #
 module Caliper
-  module Events
-    class OutcomeEvent < Event
-      include Caliper::Events::EventContext
+  module Entities
+    module Assign
+      class Score < Entity
 
-      caliper_type Caliper::Events::EventType::OUTCOME
+        caliper_type Caliper::Entities::EntityType::SCORE
 
-      caliper_property :action, default: Caliper::Actions::GRADED
+        caliper_property :attempt,         type: Caliper::Entities::EntityType::ATTEMPT
+        caliper_property :comment
+        caliper_property :maxScore
+        caliper_property :scoreGiven
+        caliper_property :scoredBy,         type: Caliper::Entities::EntityType::AGENT
 
+      end
     end
   end
 end
