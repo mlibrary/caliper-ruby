@@ -72,28 +72,28 @@ describe Caliper::Events::NavigationEvent do
         custom_resource_link_title: 'LTI tool',
         custom_user_image: 'https://example.edu/users/554433/profile/avatar.jpg',
         ext_vnd_instructor: {
-          :'@context' => {
+          '@context': {
             sdo: 'http://schema.org/',
             xsd: 'http://www.w3.org/2001/XMLSchema#',
             email: {
-              id: 'sdo:email',
-              type: 'xsd:string'
+              '@id': 'sdo:email',
+              '@type': 'xsd:string'
             },
             familyName: {
-              id: 'sdo:familyName',
-              type: 'xsd:string'
+              '@id': 'sdo:familyName',
+              '@type': 'xsd:string'
             },
             givenName: {
-              id: 'sdo:givenName',
-              type: 'xsd:string'
+              '@id': 'sdo:givenName',
+              '@type': 'xsd:string'
             },
             jobTitle: {
-              id: 'sdo:jobTitle',
-              type: 'xsd:string'
+              '@id': 'sdo:jobTitle',
+              '@type': 'xsd:string'
             },
             url: {
-              id: 'sdo:url',
-              type: 'xsd:string'
+              '@id': 'sdo:url',
+              '@type': 'xsd:string'
             }
           },
           id: 'https://example.edu/faculty/trighaversine',

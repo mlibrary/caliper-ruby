@@ -25,37 +25,16 @@ describe Caliper::Entities::Resource::AssessmentItem do
       dateCreated: '2016-08-01T06:00:00.000Z',
       datePublished: '2016-08-15T09:30:00.000Z',
       isTimeDependent: false,
-      maxAttempts: 2,
-      maxScore: 5.0,
+      maxScore: 1.0,
       maxSubmits: 2,
       isPartOf: Caliper::Entities::Resource::Assessment.new(
         id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
       ),
-      extensions: [
-        {
-          '@context': {
-            example: 'http://example.edu/ctx/edu',
-            id: '@id',
-            itemCorrectResponse: {
-              id: 'example:itemCorrectResponse',
-              type: 'xsd:boolean'
-            },
-            itemText: {
-              id: 'example:itemText',
-              type: 'xsd:string'
-            },
-            itemType: {
-              id: 'example:itemType',
-              type: 'xsd:string'
-            },
-            type: '@type',
-            xsd: 'http://www.w3.org/2001/XMLSchema#'
-          },
-          itemCorrectResponse: false,
-          itemText: 'In Caliper event actors are limited to people only.',
-          itemType: 'true/false'
-        }
-      ]
+      extensions: {
+        correctResponse: 'yes',
+        questionText: 'Is a Caliper SoftwareApplication a subtype of Caliper Agent?',
+        questionType: 'Dichotomous'
+      }
     )
   end
 

@@ -37,32 +37,30 @@ describe Caliper::Events::Event do
 
   let(:object) do
     Caliper::Entities::Reading::Document.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123',
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=3',
       name: 'Course Syllabus',
       dateCreated: '2016-11-12T07:15:00.000Z',
       dateModified: '2016-11-15T10:15:00.000Z',
-      version: '2'
+      version: '3'
     )
   end
 
   let(:extensions) do
-    [
-      {
-        :'@context' => {
-          id: '@id',
-          type: '@type',
-          example: 'http://example.edu/ctx/edu/',
-          previousVersion: {
-            :'@id' => 'example:previousVersion',
-            :'@type' => '@id'
-          }
-        },
-        previousVersion: {
+    {
+      archive: [
+        Caliper::Entities::Reading::Document.new(
+          dateCreated: '2016-11-12T07:15:00.000Z',
+          dateModified: '2016-11-13T11:00:00.000Z',
+          id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=2',
+          version: '2'
+        ),
+        Caliper::Entities::Reading::Document.new(
+          dateCreated: '2016-11-12T07:15:00.000Z',
           id: 'https://example.edu/terms/201601/courses/7/sections/1/resources/123?version=1',
-          type: 'Document'
-        }
-      }
-    ]
+          version: '1'
+        )
+      ]
+    }
   end
 
   include_examples 'validation against common fixture', 'caliperEventBasicModifiedExtended.json'
