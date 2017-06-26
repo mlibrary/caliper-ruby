@@ -17,16 +17,16 @@
 
 require 'spec_helper'
 
-describe Caliper::Events::OutcomeEvent do
+describe Caliper::Events::GradeEvent do
   subject do
     described_class.new(
       action: Caliper::Actions::GRADED,
       actor: actor,
       edApp: edApp,
       eventTime: '2016-11-15T10:57:06.000Z',
-      generated: result,
+      generated: score,
       group: group,
-      id: 'urn:uuid:12c05c4e-253f-4073-9f29-5786f3ff3f36',
+      id: 'urn:uuid:a50ca17f-5971-47bb-8fca-4e6e6879001d',
       object: object
     )
   end
@@ -54,39 +54,34 @@ describe Caliper::Events::OutcomeEvent do
 
   let(:object) do
     Caliper::Entities::Assign::Attempt.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/attempts/1',
-      assignable: Caliper::Entities::Resource::AssessmentItem.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3',
-        name: 'Assessment Item 3',
-        isPartOf: Caliper::Entities::Resource::Assessment.new(
-          id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
-        )
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1',
+      assignable: Caliper::Entities::Resource::Assessment.new(
+        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1'
       ),
       assignee: Caliper::Entities::Agent::Person.new(
         id: 'https://example.edu/users/554433',
       ),
       count: 1,
-      dateCreated: '2016-11-15T10:15:02.000Z',
-      startedAtTime: '2016-11-15T10:15:02.000Z',
-      endedAtTime: '2016-11-15T10:15:12.000Z',
-      isPartOf: Caliper::Entities::Assign::Attempt.new(
-        id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1'
-      )
+      dateCreated: '2016-11-15T10:05:00.000Z',
+      startedAtTime: '2016-11-15T10:05:00.000Z',
+      endedAtTime: '2016-11-15T10:55:12.000Z',
+      duration: 'PT50M12S'
     )
   end
 
-  let(:result) do
-    Caliper::Entities::Assign::Result.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/items/3/users/554433/results/1',
+  let(:score) do
+    Caliper::Entities::Assign::Score.new(
+      id: 'https://example.edu/terms/201601/courses/7/sections/1/assess/1/users/554433/attempts/1/scores/1',
       attempt: object,
-      normalScore: 1.0,
-      totalScore: 1.0,
+      comment: 'auto-graded exam',
+      maxScore: 15.0,
+      scoreGiven: 10.0,
       scoredBy: actor,
-      dateCreated: '2016-11-15T10:55:05.000Z'
+      dateCreated: '2016-11-15T10:56:00.000Z'
     )
   end
 
-  # 'object.assignee' in the common fixture is not coerced to an IRI.
-  include_examples 'validation against common fixture', 'caliperEventOutcomeGradedItem.json', excluding: 'assignee'
+  # 'object.assignable' and 'object.assignee' in the common fixture are not coerced to IRIs.
+  include_examples 'validation against common fixture', 'caliperEventGradeGraded.json', excluding: ['assignable', 'assignee']
 end
 

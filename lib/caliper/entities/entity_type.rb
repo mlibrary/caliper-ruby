@@ -52,6 +52,7 @@ module Caliper
       PERSON = 'Person'
       RESPONSE = 'Response'
       RESULT = 'Result'
+      SCORE = 'Score'
       SESSION = 'Session'
       SHARED_ANNOTATION = 'SharedAnnotation'
       SELECT_TEXT_RESPONSE = 'SelectTextResponse'
