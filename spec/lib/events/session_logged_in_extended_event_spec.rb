@@ -23,7 +23,6 @@ describe Caliper::Events::SessionEvent do
       action: Caliper::Actions::LOGGED_IN,
       actor: actor,
       edApp: object,
-      extensions: extensions,
       eventTime: '2016-11-15T20:11:15.000Z',
       id: 'urn:uuid:4ec2c31e-3ec0-4fe1-a017-b81561b075d7',
       object: object,
@@ -49,39 +48,19 @@ describe Caliper::Events::SessionEvent do
       id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259',
       user: actor,
       dateCreated: '2016-11-15T20:11:15.000Z',
-      startedAtTime: '2016-11-15T20:11:15.000Z'
+      startedAtTime: '2016-11-15T20:11:15.000Z',
+      extensions: extensions
     )
   end
 
   let(:extensions) do
-    [
-      {
-        requestId: 'd71016dc-ed2f-46f9-ac2c-b93f15f38fdc',
+    {
+      request: {
+        id: 'd71016dc-ed2f-46f9-ac2c-b93f15f38fdc',
         hostname: 'example.com',
         userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
-      },
-      {
-        id: 'https://example.com/maps/@42.27611,-83.73778,19z',
-        latitude: 42.27611,
-        longitude: -83.73778,
-        type: 'GeoCoordinates',
-        :'@context' => {
-          id: '@id',
-          type: '@type',
-          sdo: 'http://schema.org',
-          xsd: 'http://www.w3.org/2001/XMLSchema#',
-          GeoCoordinates: 'sdo:GeoCoordinates',
-          latitude: {
-            id: 'sdo:latitude',
-            type: 'xsd:decimal'
-          },
-          longitude: {
-            id: 'sdo:longitude',
-            type: 'xsd:decimal'
-          }
-        }
       }
-    ]
+    }
   end
 
   include_examples 'validation against common fixture', 'caliperEventSessionLoggedInExtended.json'

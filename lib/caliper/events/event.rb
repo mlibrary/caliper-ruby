@@ -42,7 +42,7 @@ module Caliper
 
       caliper_property :actor,      type: Caliper::Entities::EntityType::AGENT
       caliper_property :action
-      caliper_property :extensions, default: []
+      caliper_property :extensions, default: {}
       caliper_property :eventTime
       caliper_property :id,         default: "urn:uuid:#{UUID.new.generate}"
       caliper_property :referrer,   type: Caliper::Entities::EntityType::ENTITY
