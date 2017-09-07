@@ -28,7 +28,7 @@ module Caliper
 
         caliper_type Caliper::Entities::EntityType::LTI_SESSION
 
-        caliper_property :launchParameters, default: {}
+        caliper_property :messageParameters, default: {}
 
       end
     end
