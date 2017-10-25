@@ -17,6 +17,7 @@
 
 require_relative '../entity'
 require_relative '../entity_type'
+require_relative '../agent/organization'
 
 #
 # LIS Course Offering.
