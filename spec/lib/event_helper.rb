@@ -15,20 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'require_all'
-require_all 'lib/caliper/entities/entity_base.rb'
-require_all 'lib/caliper/entities/agent/software_application.rb'
-require_all 'lib/caliper/entities/agent/person.rb'
-require_all 'lib/caliper/entities/lis/membership.rb'
-require_all 'lib/caliper/entities/lis/role.rb'
-require_all 'lib/caliper/entities/lis/status.rb'
-require_all 'lib/caliper/entities/lis/course_section.rb'
-require_all 'lib/caliper/entities/lis/course_offering.rb'
-require_all 'lib/caliper/entities/lis/group.rb'
-require_all 'lib/caliper/entities/reading/epub_volume.rb'
-require_all 'lib/caliper/entities/reading/frame.rb'
-require_all 'lib/caliper/entities/session/session.rb'
-require_all 'lib/caliper/events/session_event.rb'
+require 'spec_helper'
 
 module Helper
 
@@ -48,25 +35,25 @@ module Helper
     actor.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
     # Action
-    action = Caliper::Actions::SessionActions::LOGGED_IN;
+    action = Caliper::Actions::LOGGED_IN
 
     # Object
     obj = ed_app
 
-    # ePub parent (frame.isPartOf)
-    ePub = Caliper::Entities::Reading::EPubVolume.new
-    ePub.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3)'
-    ePub.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
-    ePub.version = '2nd ed.'
-    ePub.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
-    ePub.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
+    # Document parent (frame.isPartOf)
+    document = Caliper::Entities::Reading::Document.new
+    document.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3)'
+    document.name = 'The Glorious Cause: The American Revolution, 1763-1789 (Oxford History of the United States)'
+    document.version = '2nd ed.'
+    document.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
+    document.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
     # Target frame
     target = Caliper::Entities::Reading::Frame.new
     target.id = 'https://example.com/viewer/book/34843#epubcfi(/4/3/1)'
     target.name = 'Key Figures: George Washington'
-    target.isPartOf = ePub
-    target.version = ePub.version
+    target.isPartOf = document
+    target.version = document.version
     target.index = 1
     target.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
     target.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
@@ -75,17 +62,17 @@ module Helper
     generated = Caliper::Entities::Session::Session.new
     generated.id = 'https://example.com/viewer/session-123456789'
     generated.name = 'session-123456789'
-    generated.actor = actor
+    generated.user = actor
     generated.startedAtTime = '2015-09-15T10:15:00.000Z'
     generated.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
     generated.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
     # LIS Course Offering
     course = Caliper::Entities::LIS::CourseOffering.new
-    course.id = "https://example.edu/politicalScience/2015/american-revolution-101"
-    course.name = "Political Science 101: The American Revolution"
-    course.courseNumber = "POL101"
-    course.academicSession = "Fall-2015"
+    course.id = 'https://example.edu/politicalScience/2015/american-revolution-101'
+    course.name = 'Political Science 101: The American Revolution'
+    course.courseNumber = 'POL101'
+    course.academicSession = 'Fall-2015'
     course.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
     course.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
@@ -93,25 +80,25 @@ module Helper
     section = Caliper::Entities::LIS::CourseSection.new
     section.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
     section.name = 'American Revolution 101'
-    section.courseNumber = "POL101"
-    section.academicSession = "Fall-2015"
+    section.courseNumber = 'POL101'
+    section.academicSession = 'Fall-2015'
     section.subOrganizationOf = course
     section.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
     section.dateModified = Time.utc(2015,9,2,11,30,0).iso8601(3)
 
     # LIS Group
-    group = Caliper::Entities::LIS::Group.new
-    group.id = "https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001"
-    group.name = "Discussion Group 001"
+    group = Caliper::Entities::Agent::Group.new
+    group.id = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001/group/001'
+    group.name = 'Discussion Group 001'
     group.subOrganizationOf = section
     group.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)
 
     membership = Caliper::Entities::LIS::Membership.new
-    membership.id = "https://example.edu/politicalScience/2015/american-revolution-101/roster/554433"
-    membership.name = "American Revolution 101"
-    membership.description = "Roster entry"
-    membership.member = "https://example.edu/user/554433"
-    membership.organization = "https://example.edu/politicalScience/2015/american-revolution-101/section/001"
+    membership.id = 'https://example.edu/politicalScience/2015/american-revolution-101/roster/554433'
+    membership.name = 'American Revolution 101'
+    membership.description = 'Roster entry'
+    membership.member = 'https://example.edu/user/554433'
+    membership.organization = 'https://example.edu/politicalScience/2015/american-revolution-101/section/001'
     membership.roles = [Caliper::Entities::LIS::Role::LEARNER]
     membership.status = Caliper::Entities::LIS::Status::ACTIVE
     membership.dateCreated = Time.utc(2015,8,1,6,0,0).iso8601(3)

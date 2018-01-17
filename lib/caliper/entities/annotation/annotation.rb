@@ -15,27 +15,23 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative '../entity'
 require_relative '../entity_type'
-require_relative '../generatable'
 
 #
-#  Annotation entity.
+# Annotation entity.
 #
 module Caliper
-	module Entities
-		module Annotation
-			class Annotation < EntityBase
-				include Caliper::Entities::Generatable
+  module Entities
+    module Annotation
+      class Annotation < Entity
 
-				attr_accessor :annotated
+        caliper_type Caliper::Entities::EntityType::ANNOTATION
 
-				def initialize
-					super
-					@type = Caliper::Entities::EntityType::ANNOTATION
-					@annotated = nil
-				end
-			end
-		end
-	end
+        caliper_property :annotated, type: Caliper::Entities::EntityType::DIGITAL_RESOURCE
+        caliper_property :annotator, type: Caliper::Entities::EntityType::PERSON
+
+      end
+    end
+  end
 end

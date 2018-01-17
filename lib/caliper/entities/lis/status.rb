@@ -16,15 +16,15 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 #
-# LIS Status
+# LIS Status.
 #
 module Caliper
   module Entities
     module LIS
       module Status
-        ACTIVE = 'http://purl.imsglobal.org/vocab/lis/v2/status#Active'
-        DELETED = 'http://purl.imsglobal.org/vocab/lis/v2/status#Deleted'
-        INACTIVE = 'http://purl.imsglobal.org/vocab/lis/v2/status#Inactive'
+        ACTIVE = 'Active'
+        DELETED = 'Deleted'
+        INACTIVE = 'Inactive'
       end
     end
   end

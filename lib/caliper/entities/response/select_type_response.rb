@@ -16,24 +16,22 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './response'
-require_relative './response_type'
+require_relative '../entity_type'
 
 #
 # Represents a response that identifies text from a presented paragraph or list.
 # The response is the identified string or a mapping to a logical identifier.
 #
 module Caliper
-	module Entities
-		module Response
-			class SelectTextResponse < Response
+  module Entities
+    module Response
+      class SelectTextResponse < Response
 
-				attr_accessor :values
+        caliper_type Caliper::Entities::EntityType::SELECT_TEXT_RESPONSE
 
-				def initialize
-          super
-					@type = Caliper::Entities::Response::ResponseType::SELECTTEXT
-        end
-			end
-		end
-	end
+        caliper_property :values
+
+      end
+    end
+  end
 end

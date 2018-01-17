@@ -15,30 +15,24 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative '../entity'
 require_relative '../entity_type'
-require_relative '../generatable'
-require_relative '../targetable'
 
 #
-#  Session Entity.
+# A session.
 #
 module Caliper
   module Entities
     module Session
-      class Session < EntityBase
-        include Caliper::Entities::Generatable,
-                Caliper::Entities::Targetable
+      class Session < Entity
 
-        attr_accessor :actor, :startedAtTime, :endedAtTime, :duration
+        caliper_type Caliper::Entities::EntityType::SESSION
 
-        def initialize
-          super
-          @type = Caliper::Entities::EntityType::SESSION
-          @startedAtTime = nil
-          @endedAtTime = nil
-          @duration = nil
-        end
+        caliper_property :duration
+        caliper_property :endedAtTime
+        caliper_property :startedAtTime
+        caliper_property :user,          type: Caliper::Entities::EntityType::PERSON
+
       end
     end
   end

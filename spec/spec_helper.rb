@@ -15,10 +15,16 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require 'json_spec'
+require 'pp'
 require 'simplecov'
 require 'simplecov-rcov'
-require 'require_all'
-require_all 'lib/caliper/*.rb'
+
+require_relative '../lib/caliper'
+require 'shared_examples'
+
+# Do not exclude 'id' keys from comparison.
+JsonSpec.excluded_keys = []
 
 SimpleCov.use_merging
 SimpleCov.merge_timeout(10000)
@@ -38,5 +44,5 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = 'random'
 end

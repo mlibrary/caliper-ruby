@@ -16,23 +16,20 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './annotation'
-require_relative './annotation_type'
+require_relative '../entity_type'
 
 #
-#  Tag Annotation entity.
+# Tag Annotation entity.
 #
 module Caliper
   module Entities
     module Annotation
       class TagAnnotation < Annotation
 
-        attr_accessor :tags
+        caliper_type Caliper::Entities::EntityType::TAG_ANNOTATION
 
-        def initialize()
-          super
-          @type = Caliper::Entities::Annotation::AnnotationType::TAG_ANNOTATION
-          @tags = Array.new
-        end
+        caliper_property :tags, default: []
+
       end
     end
   end

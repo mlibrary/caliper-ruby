@@ -15,20 +15,12 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-module Caliper
-  autoload :Client, "caliper/client"
-  
-  module Consumer
-    autoload :Base, "caliper/consumer/base"
-    autoload :Queue, "caliper/consumer/queue"
-    autoload :Socket, "caliper/consumer/socket"
-  end
+module Caliper; end
 
-  module Event
-    autoload :Base, "caliper/events/base"
-  end
+require 'caliper/defaults'
+require 'caliper/options'
+require 'caliper/version'
 
-  module Entities
-    autoload :Base, "caliper/entity/base"
-  end
-end
+require 'caliper/entities'
+require 'caliper/events'
+require 'caliper/sensor'

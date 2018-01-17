@@ -15,25 +15,21 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative './agent'
 require_relative '../entity_type'
-require_relative '../foaf/agent'
-require_relative '../schemadotorg/software_application'
 
 #
-#  Software Application (from schema.org)
+# A software application (from schema.org).
 #
 module Caliper
   module Entities
     module Agent
-      class SoftwareApplication < EntityBase
-        include Caliper::Entities::FOAF::Agent,
-                Caliper::Entities::SchemaDotOrg::SoftwareApplication
+      class SoftwareApplication < Agent
 
-        def initialize()
-          super
-          @type = Caliper::Entities::EntityType::SOFTWARE_APPLICATION
-        end
+        caliper_type Caliper::Entities::EntityType::SOFTWARE_APPLICATION
+
+        caliper_property :version
+
       end
     end
   end

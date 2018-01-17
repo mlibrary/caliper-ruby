@@ -25,24 +25,25 @@ module Caliper
   module Request
     class EventStoreRequestor
 
-      def generate_payload(sensor, data)
-        return get_payload_json(sensor, data)
+      def generate_payload(sensor, data, opts={})
+        create_envelope(sensor, data).to_json(opts)
       end
 
-      def get_payload_json(sensor, data)
-        envelope = create_envelope(sensor, data)
-        return JSON.generate(envelope)
-      end
+      private
 
       def create_envelope(sensor, data)
-        envelope = Caliper::Request::Envelope.new
-        envelope.sensor = sensor.id
-        envelope.data = to_array(data)
-        return envelope
+        Caliper::Request::Envelope.new(
+          sensor: sensor.id,
+          data: wrap_array(data)
+        )
       end
 
-      def to_array(data)
-        return [data] if !(data.is_a?(Array))
+      def wrap_array(data)
+        case data
+          when NilClass then []
+          when Array then data
+          else [data]
+        end
       end
     end
   end

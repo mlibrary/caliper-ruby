@@ -16,23 +16,22 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './response'
-require_relative './response_type'
+require_relative '../entity_type'
 
 #
 # Represents response to a multiple choice question that limits options to either 'true or false',
 # 'agree or disagree', etc.
 #
 module Caliper
-	module Entities
-		module Response
-			class TrueFalseResponse < Response
-				attr_accessor :values
+  module Entities
+    module Response
+      class TrueFalseResponse < Response
 
-				def initialize
-          super
-					@type = Caliper::Entities::Response::ResponseType::TRUEFALSE
-				end
-			end
-		end
-	end
+        caliper_type Caliper::Entities::EntityType::TRUE_FALSE_RESPONSE
+
+        caliper_property :values
+
+      end
+    end
+  end
 end

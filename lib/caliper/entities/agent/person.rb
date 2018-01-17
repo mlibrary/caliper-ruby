@@ -15,24 +15,19 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative './agent'
 require_relative '../entity_type'
-require_relative '../foaf/agent.rb'
 
 #
-# An FOAF LIS Person
-# @extends Agent
+# An FOAF LIS Person.
 #
 module Caliper
   module Entities
     module Agent
-      class Person < EntityBase
-        include Caliper::Entities::FOAF::Agent
+      class Person < Agent
 
-        def initialize
-          super
-          @type = Caliper::Entities::EntityType::PERSON
-        end
+        caliper_type Caliper::Entities::EntityType::PERSON
+
       end
     end
   end

@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 # Declare your gem's dependencies in open_data_export.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -12,6 +12,9 @@ gem 'concurrent-ruby'
 
 # translation and localization
 gem 'i18n'
+
+# UUID generation
+gem 'uuid'
 
 # REST client
 gem 'rest-client', '~> 1.7.3'

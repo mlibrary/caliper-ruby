@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../actions/navigation_actions.rb'
+require_relative '../actions.rb'
 require_relative './event'
 require_relative './event_context'
 require_relative './event_type'
@@ -28,20 +28,11 @@ module Caliper
     class NavigationEvent < Event
       include Caliper::Events::EventContext
 
-      attr_accessor :navigatedFrom
+      caliper_type Caliper::Events::EventType::NAVIGATION
 
-      def initialize
-	      super
-	      @type = Caliper::Events::EventType::NAVIGATION
-        @action = Caliper::Actions::NavigationActions::NAVIGATED_TO
-        @navigatedFrom = nil
-        @target = nil
-        @generated = nil
-        @edApp = nil
-        @group = nil
-        @membership = nil
-        @federatedSession = nil
-      end
+      caliper_property :action, default: Caliper::Actions::NAVIGATED_TO
+      caliper_property :actor,  type: Caliper::Entities::EntityType::PERSON
+
     end
   end
 end

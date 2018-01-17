@@ -15,28 +15,24 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative '../entity'
 require_relative '../entity_type'
-require_relative '../w3c/organization'
+require_relative '../agent/organization'
 
 #
-#  LIS Course Offering.
+# LIS Course Offering.
 #
 module Caliper
   module Entities
     module LIS
-      class CourseOffering < EntityBase
-        include Caliper::Entities::W3C::Organization
+      class CourseOffering < Caliper::Entities::Agent::Organization
 
-        attr_accessor :courseNumber, :academicSession, :subOrganizationOf
+        caliper_type Caliper::Entities::EntityType::COURSE_OFFERING
 
-        def initialize
-          super
-          @type = Caliper::Entities::EntityType::COURSE_OFFERING
-          @courseNumber = nil
-          @academicSession = nil
-          @subOrganizationOf = nil
-        end
+        caliper_property :academicSession
+        caliper_property :courseNumber
+        caliper_property :subOrganizationOf
+
       end
     end
   end

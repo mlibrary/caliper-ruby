@@ -15,29 +15,25 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative '../entity'
 require_relative '../entity_type'
-require_relative '../generatable'
 
 #
-# A Response
+# A response.
 #
 module Caliper
-	module Entities
-		module Response
-			class Response < EntityBase
-				include Caliper::Entities::Generatable
+  module Entities
+    module Response
+      class Response < Entity
 
-				attr_accessor :assignable, :actor, :attempt, :startedAtTime, :endedAtTime, :duration
+        caliper_type Caliper::Entities::EntityType::RESPONSE
+        
+        caliper_property :attempt
+        caliper_property :duration
+        caliper_property :endedAtTime
+        caliper_property :startedAtTime
 
-				def initialize
-          super
-					@type = Caliper::Entities::EntityType::RESPONSE
-					@startedAtTime = nil
-					@endedAtTime = nil
-					@duration = nil
-				end
-			end
-		end
-	end
+      end
+    end
+  end
 end

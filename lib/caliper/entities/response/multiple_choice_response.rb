@@ -16,23 +16,21 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './response'
-require_relative './response_type'
+require_relative '../entity_type'
 
 #
-# Represents a response to a multiple choice question that permits a single option to be selected
+# Represents a response to a multiple choice question that permits a single option to be selected.
 #
 module Caliper
-	module Entities
-		module Response
-			class MultipleChoiceResponse < Response
+  module Entities
+    module Response
+      class MultipleChoiceResponse < Response
 
-				attr_accessor :values
+        caliper_type Caliper::Entities::EntityType::MULTIPLE_CHOICE_RESPONSE
 
-				def initialize
-          super
-					@type = Caliper::Entities::Response::ResponseType::MULTIPLECHOICE
-				end
-			end
-		end
-	end
+        caliper_property :values
+
+      end
+    end
+  end
 end

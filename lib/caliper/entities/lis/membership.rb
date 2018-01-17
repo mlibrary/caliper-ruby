@@ -15,25 +15,23 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative '../entity'
 require_relative '../entity_type'
-require_relative '../w3c/membership'
 
 #
-#  W3C Membership.
+# W3C Membership.
 #
 module Caliper
   module Entities
     module LIS
-      class Membership < EntityBase
-        include Caliper::Entities::W3C::Membership
+      class Membership < Entity
 
-        attr_accessor :member, :organization, :roles, :status
+        caliper_type Caliper::Entities::EntityType::MEMBERSHIP
 
-        def initialize
-          super
-          @type = Caliper::Entities::EntityType::MEMBERSHIP
-        end
+        caliper_property :member,       type: Caliper::Entities::EntityType::PERSON
+        caliper_property :organization, type: Caliper::Entities::EntityType::ORGANIZATION
+        caliper_property :roles
+        caliper_property :status
 
       end
     end

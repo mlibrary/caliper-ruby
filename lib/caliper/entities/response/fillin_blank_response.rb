@@ -16,24 +16,22 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './response'
-require_relative './response_type'
+require_relative '../entity_type'
 
 #
 # Represents response text or integer/decimal/scientific numbers that completes a question
 # designed with one or more "fill in the blank" option prompts.
 #
 module Caliper
-	module Entities
-		module Response
-			class FillinBlankResponse < Response
+  module Entities
+    module Response
+      class FillInBlankResponse < Response
 
-				attr_accessor :values
+        caliper_type Caliper::Entities::EntityType::FILL_IN_BLANK_RESPONSE
 
-				def initialize
-          super
-					@type = Caliper::Entities::Response::ResponseType::FILLINBLANK
-				end
-			end
-		end
-	end
+        caliper_property :values
+
+      end
+    end
+  end
 end

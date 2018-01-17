@@ -15,26 +15,22 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../entity_base'
+require_relative './agent'
 require_relative '../entity_type'
-require_relative '../w3c/organization'
 
 #
-# W3C Organization
+# W3C Organization.
 #
 module Caliper
   module Entities
     module Agent
-      class Organization < EntityBase
-        include Caliper::Entities::FOAF::Agent,
-                Caliper::Entities::W3C::Organization
+      class Organization < Agent
 
-        attr_accessor :subOrganizationOf
+        caliper_property :members,            default: []
+        caliper_property :subOrganizationOf
 
-        def initialize
-          super
-          @type = Caliper::Entities::EntityType::ORGANIZATION
-        end
+        caliper_type Caliper::Entities::EntityType::ORGANIZATION
+
       end
     end
   end

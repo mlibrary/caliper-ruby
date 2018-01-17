@@ -16,23 +16,20 @@
 # with this program. If not, see http://www.gnu.org/licenses/.
 
 require_relative './annotation'
-require_relative './annotation_type'
+require_relative '../entity_type'
 
 #
-#  Shared Annotation entity.
+# Shared Annotation entity.
 #
 module Caliper
   module Entities
     module Annotation
       class SharedAnnotation < Annotation
 
-        attr_accessor :withAgents # list of Agent objects
+        caliper_type Caliper::Entities::EntityType::SHARED_ANNOTATION
 
-        def initialize()
-          super
-          @type = Caliper::Entities::Annotation::AnnotationType::SHARED_ANNOTATION
-	        @withAgents = Array.new
-        end
+        caliper_property :withAgents, default: []
+
       end
     end
   end

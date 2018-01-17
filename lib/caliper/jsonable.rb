@@ -18,54 +18,158 @@
 require 'json'
 
 #
-#  Module that supports ser-des for Caliper Envelope
+# Module that supports serialization/deserialization for Caliper JSON.
 #
 module Caliper
   module Jsonable
+
+    class ExtendedGeneratorState < JSON::Ext::Generator::State
+      attr_accessor :optimize
+      attr_accessor :objects_by_id
+
+      def initialize(opts={})
+        # Default optimization settings are to serialize actor, object and group properties in full.
+        @optimize = opts[:optimize] || {except: [:actor, :object, :group]}
+        @objects_by_id = opts[:objects_by_id] || {}
+      end
+    end
 
     def self.included(base)
       base.extend ClassMethods
     end
 
-    module ClassMethods
-    end
-
     def to_json(*a)
-      # puts 'Jsonable: to_json invoked'
-      result = {}
-      # result['@context'] = self.context
-      # result['@type'] = self.type
-      self.instance_variables.each do |key|
-        # puts "got key = #{key}"
-        next if (key[1..-1] == 'context' || key[1..-1] == 'type')
-        value = self.instance_variable_get key
-        # puts "setting #{key}: #{value}"
-        attribute_key = key[1..-1]
-        if (key[1..-1] == 'id' || key[1..-1] == 'type' || key[1..-1] == 'context')
-	        ## prefix with @ char for linked json data
-	        attribute_key = "@#{attribute_key}"
+      if a.first.is_a? ExtendedGeneratorState
+        state = a.first
+      else
+        if a.first.respond_to?(:[])
+          optimize = a.first[:optimize]
+          objects_by_id = a.first[:objects_by_id]
         end
-        result[attribute_key] = value
+        state = ExtendedGeneratorState.new(optimize: optimize, objects_by_id: objects_by_id)
       end
-      result.to_json(*a)
+      self.class.serialize(self, {optimize: state.optimize}, nil, state.objects_by_id).to_json(state)
     end
 
-    def from_json json_hash
-      data = json_hash
-      # puts "Jsonable: from_json: json_hash = #{json_hash}"
-      # self.context = data['@context']
-      # self.type = data['@type']
-      json_hash.each do | key, value |
-        next if (key[1..-1] == 'context' || key[1..-1] == 'type')
-        # puts "Jsonable - adding #{key} : #{value}"
-        self.instance_variable_set "@#{key}", value
+    module ClassMethods
+      def from_json(json_string)
+        json_obj = JSON.parse json_string
+        deserialize json_obj
       end
-      return self
-    end
 
-    def eql?(other)
-      @context == other.context && @apiKey == other.apiKey
-      # @context == other.context && @sensorId == other.sensorId && @apiKey == other.apiKey
+      # After initial JSON parsing, recursively deserialize basic collection objects into Caliper classes where
+      # appropriate.
+      def deserialize(obj, context=nil, references_by_id={}, objects_by_id={})
+        case obj
+          when Hash
+            context = obj['@context'] if obj['@context']
+            if (context == Caliper::Contexts::CONTEXT) && obj['type'] && (klass = Caliper::Types.class_for_type obj['type'])
+              deserialized = klass.new(id: obj['id'])
+              obj.each do |k ,v|
+                next if %w(id type).include? k
+                key = k.sub(/\A@/,'').to_sym
+                # If a child object is an IRI string, the parent object's class definition may
+                # specify a type.
+                serialized = if v.is_a?(String) && klass.properties[key] && klass.properties[key][:type]
+                               {
+                                 'id' => v,
+                                 'type' => klass.properties[key][:type]
+                               }
+                             else
+                               v
+                             end
+                child_object = deserialize(serialized, context, references_by_id, objects_by_id)
+                deserialized.send "#{key}=", child_object
+                if child_object.respond_to? :id
+                  if objects_by_id[child_object.id]
+                    if objects_by_id[child_object.id].class < child_object.class
+                      child_object.properties.each do |key, value|
+                        unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
+                          objects_by_id[child_object.id].send "#{key}=", value
+                        end
+                      end
+                    else
+                      objects_by_id[child_object.id].properties.each do |key, value|
+                        unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
+                          child_object.send "#{key}=", value
+                        end
+                      end
+                      objects_by_id[child_object.id] = child_object
+                    end
+                  else
+                    objects_by_id[child_object.id] = child_object
+                  end
+                  references_by_id[child_object.id] ||= []
+                  references_by_id[child_object.id] << [deserialized, key]
+                  references_by_id[child_object.id].each do |reference|
+                    reference[0].send "#{reference[1]}=", objects_by_id[child_object.id]
+                  end
+                end
+              end
+              deserialized
+            else
+              Hash[obj.map { |k,v| [k.to_sym, deserialize(v, context, references_by_id, objects_by_id)] }]
+            end
+          when Array
+            obj.map { |element| deserialize(element, context, references_by_id, objects_by_id) }
+          when String
+            objects_by_id[obj] || obj
+          else
+            obj
+        end
+      end
+
+      # Before encoding to JSON, recursively serialize Caliper objects into simpler collections, using 'serialize'
+      # and 'properties' methods provided by those objects. Omit nil/empty and redundant properties.
+      def serialize(obj, opts, context=nil, objects_by_id={}, parent_property_definition={})
+        if obj.respond_to?(:serialize)
+          serialized = obj.serialize
+          if obj.respond_to?(:context) && !obj.context.nil? && obj.context != context
+            serialized['@context'] = context = obj.context
+          end
+          if obj.respond_to?(:properties)
+            # Serialize each child object, passing in the property definition from the parent object class.
+            obj.properties.each do |key, value|
+              unless value.nil? || (value.respond_to?(:empty?) && value.empty?)
+                property_definition = obj.class.properties[key].merge(key: key)
+                serialized[key.to_s] = serialize(value, opts, context, objects_by_id, property_definition)
+              end
+            end
+          end
+          if serialize_to_id?(opts, obj, serialized, objects_by_id, parent_property_definition)
+            serialized['id']
+          else
+            objects_by_id[serialized['id']] = obj if opts[:optimize] != :none
+            serialized
+          end
+        elsif obj.is_a?(Array)
+          obj.map { |element| serialize(element, opts, context, objects_by_id) }
+        elsif obj.is_a?(Hash)
+          Hash[obj.map { |k,v| [k, serialize(v, opts, context, objects_by_id)] }]
+        else
+          obj
+        end
+      end
+
+      def serialize_to_id?(opts, obj, serialized, objects_by_id, parent_property_definition)
+        # Do not serialize to id unless optimization settings allow.
+        return false unless optimize_key?(opts, parent_property_definition[:key])
+        # Serialize to id if we've already serialized the same object.
+        return true if objects_by_id[serialized['id']] == obj
+        # Otherwise, serialize only if the object contains only id and type, and 1) another object with the same id has
+        # already been serialized, or 2) the type can be inferred from the parent definition (or is a generic Entity).
+        if (serialized.keys - %w(id type)).empty? &&
+           (objects_by_id.has_key?(serialized['id']) || [parent_property_definition[:type], 'Entity'].include?(serialized['type']))
+          true
+        else
+          false
+        end
+      end
+
+      def optimize_key?(opts, key)
+        opts[:optimize] == :all || (opts[:optimize].is_a?(Hash) && opts[:optimize][:except] && !opts[:optimize][:except].include?(key))
+      end
+
     end
   end
 end

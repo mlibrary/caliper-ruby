@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../actions/reading_actions.rb'
+require_relative '../actions.rb'
 require_relative './event'
 require_relative './event_context'
 require_relative './event_type'
@@ -28,17 +28,10 @@ module Caliper
     class ViewEvent < Event
       include Caliper::Events::EventContext
 
-      def initialize
-        super
-        @type = Caliper::Events::EventType::VIEW
-        @action = Caliper::Actions::ReadingActions::VIEWED
-        @target = nil
-        @generated = nil
-        @edApp = nil
-        @group = nil
-        @membership = nil
-        @federatedSession = nil
-      end
+      caliper_type Caliper::Events::EventType::VIEW
+
+      caliper_property :action, default: Caliper::Actions::VIEWED
+
     end
   end
 end

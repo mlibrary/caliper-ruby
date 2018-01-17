@@ -18,16 +18,20 @@
 module Caliper
   module Events
     module EventType
-      ANNOTATION = "http://purl.imsglobal.org/caliper/v1/AnnotationEvent"
-      ASSESSMENT = "http://purl.imsglobal.org/caliper/v1/AssessmentEvent"
-      ASSESSMENT_ITEM = "http://purl.imsglobal.org/caliper/v1/AssessmentItemEvent"
-      ASSIGNABLE = "http://purl.imsglobal.org/caliper/v1/AssignableEvent"
-      EVENT = "http://purl.imsglobal.org/caliper/v1/Event"
-      MEDIA = "http://purl.imsglobal.org/caliper/v1/MediaEvent"
-      NAVIGATION = "http://purl.imsglobal.org/caliper/v1/NavigationEvent"
-      OUTCOME = "http://purl.imsglobal.org/caliper/v1/OutcomeEvent"
-      SESSION = "http://purl.imsglobal.org/caliper/v1/SessionEvent"
-      VIEW = "http://purl.imsglobal.org/caliper/v1/ViewEvent"
+      ANNOTATION = 'AnnotationEvent'
+      ASSESSMENT = 'AssessmentEvent'
+      ASSESSMENT_ITEM = 'AssessmentItemEvent'
+      ASSIGNABLE = 'AssignableEvent'
+      EVENT = 'Event'
+      FORUM = 'ForumEvent'
+      GRADE = 'GradeEvent'
+      MEDIA = 'MediaEvent'
+      MESSAGE = 'MessageEvent'
+      NAVIGATION = 'NavigationEvent'
+      SESSION = 'SessionEvent'
+      THREAD = 'ThreadEvent'
+      TOOL_USE = 'ToolUseEvent'
+      VIEW = 'ViewEvent'
     end
   end
 end
