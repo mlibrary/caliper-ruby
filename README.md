@@ -26,7 +26,7 @@ information.
 
 ## Getting Started
 1. *Read* the [Caliper Analytics&reg; Specification](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1).  
-2. Fork the IMS Global *caliper-js* project to your Github account and clone your copy to a local 
+2. Fork the IMS Global *caliper-ruby* project to your Github account and clone your copy to a local 
 development machine.
 3. Ensure you have ruby, bundler, rspec installed 
 4. Run the installer to set up the development environment:
