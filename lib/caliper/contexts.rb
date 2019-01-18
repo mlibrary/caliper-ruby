@@ -27,6 +27,7 @@ module Caliper
   module Contexts
 
     CONTEXT = 'http://purl.imsglobal.org/ctx/caliper/v1p1'
+    CONTEXTS = [CONTEXT]
 
     attr_accessor :context
 

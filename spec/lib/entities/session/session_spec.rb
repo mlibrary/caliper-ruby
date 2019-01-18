@@ -15,20 +15,22 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative './event'
-require_relative './event_context'
-require_relative './event_type'
+require 'spec_helper'
 
-#
-# Representation of a tool use event.
-#
-module Caliper
-  module Events
-    class ToolUseEvent < Event
-      include Caliper::Events::EventContext
-
-      caliper_type Caliper::Events::EventType::TOOL_USE
-
-    end
+describe Caliper::Entities::Session::Session do
+  subject do
+    described_class.new(
+      id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259',
+      user: actor,
+      startedAtTime: '2016-09-15T10:00:00.000Z'
+    )
   end
+
+  let(:actor) do
+    Caliper::Entities::Agent::Person.new(
+      id: 'https://example.edu/users/554433',
+    )
+  end
+
+  include_examples 'validation against common fixture', 'caliperEntitySession.json', optimize: :none
 end

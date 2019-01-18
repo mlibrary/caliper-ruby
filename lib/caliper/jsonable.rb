@@ -63,7 +63,7 @@ module Caliper
         case obj
           when Hash
             context = obj['@context'] if obj['@context']
-            if (context == Caliper::Contexts::CONTEXT) && obj['type'] && (klass = Caliper::Types.class_for_type obj['type'])
+            if (Caliper::Contexts::CONTEXTS.include?(context)) && obj['type'] && (klass = Caliper::Types.class_for_type obj['type'])
               deserialized = klass.new(id: obj['id'])
               obj.each do |k ,v|
                 next if %w(id type).include? k
@@ -113,7 +113,7 @@ module Caliper
           when Array
             obj.map { |element| deserialize(element, context, references_by_id, objects_by_id) }
           when String
-            objects_by_id[obj] || obj
+            obj
           else
             obj
         end
@@ -124,7 +124,8 @@ module Caliper
       def serialize(obj, opts, context=nil, objects_by_id={}, parent_property_definition={})
         if obj.respond_to?(:serialize)
           serialized = obj.serialize
-          if obj.respond_to?(:context) && !obj.context.nil? && obj.context != context
+          if obj.respond_to?(:context) && !obj.context.nil? && obj.context != context &&
+              (context.nil? || obj.context != Caliper::Contexts::CONTEXT)
             serialized['@context'] = context = obj.context
           end
           if obj.respond_to?(:properties)
