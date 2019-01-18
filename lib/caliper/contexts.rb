@@ -27,7 +27,8 @@ module Caliper
   module Contexts
 
     CONTEXT = 'http://purl.imsglobal.org/ctx/caliper/v1p1'
-    CONTEXTS = [CONTEXT]
+    TOOL_LAUNCH_PROFILE_EXTENSION = 'http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension'
+    CONTEXTS = [CONTEXT, TOOL_LAUNCH_PROFILE_EXTENSION]
 
     attr_accessor :context
 

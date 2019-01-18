@@ -15,24 +15,15 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-module Caliper
-  module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
-    end
+require 'spec_helper'
+
+describe Caliper::Entities::Link::LtiLink do
+  subject do
+    described_class.new(
+      id: 'https://tool.com/link/123',
+      messageType: 'LtiResourceLinkRequest'
+    )
   end
+
+  include_examples 'validation against common fixture', 'caliperEntityLtiLink.json', optimize: :none
 end

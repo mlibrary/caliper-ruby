@@ -40,7 +40,9 @@ module Caliper
       HIGHLIGHT_ANNOTATION = 'HighlightAnnotation'
       IMAGE_OBJECT = 'ImageObject'
       LEARNING_OBJECTIVE = 'LearningObjective'
+      LINK = 'Link'
       LTI_SESSION = 'LtiSession'
+      LTI_LINK = "LtiLink"
       MEDIA_LOCATION = 'MediaLocation'
       MEDIA_OBJECT = 'MediaObject'
       MEMBERSHIP = 'Membership'

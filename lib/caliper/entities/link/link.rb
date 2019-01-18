@@ -15,24 +15,23 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative '../../contexts'
+require_relative '../entity'
+require_relative '../entity_type'
+
+#
+# A Link.
+#
 module Caliper
-  module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
+  module Entities
+    module Link
+      class Link < Caliper::Entities::Entity
+
+        caliper_type Caliper::Entities::EntityType::LINK
+
+        caliper_context Caliper::Contexts::TOOL_LAUNCH_PROFILE_EXTENSION
+
+      end
     end
   end
 end
