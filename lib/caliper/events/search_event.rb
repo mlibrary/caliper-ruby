@@ -15,25 +15,26 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative '../contexts'
+require_relative './event'
+require_relative './event_context'
+require_relative './event_type'
+
+#
+# Representation of a search event.
+#
 module Caliper
   module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SEARCH = 'SearchEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
+    class SearchEvent < Event
+      include Caliper::Events::EventContext
+
+      caliper_type Caliper::Events::EventType::SEARCH
+
+      caliper_context Caliper::Contexts::SEARCH_PROFILE_EXTENSION
+
+      caliper_property :action, default: Caliper::Actions::SEARCHED
+      caliper_property :generated, type: Caliper::Entities::EntityType::SEARCH_RESPONSE
+
     end
   end
 end
