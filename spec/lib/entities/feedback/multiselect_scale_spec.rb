@@ -15,27 +15,22 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-module Caliper
-  module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FEEDBACK = 'FeedbackEvent'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      RESOURCE_MANAGEMENT = 'ResourceManagementEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SEARCH = 'SearchEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
-    end
+require 'spec_helper'
+
+describe Caliper::Entities::Feedback::MultiselectScale do
+  subject do
+    described_class.new(
+      id: 'https://example.edu/scale/3',
+      points: 5,
+      question: 'How do you feel about this content? (select one or more)',
+      itemLabels: ["😁", "😀", "😐", "😕", "😞"],
+      itemValues: ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
+      orderedSelection: false,
+      minSelections: 1,
+      maxSelections: 5,
+      dateCreated: '2018-08-01T06:00:00.000Z'
+    )
   end
+
+  include_examples 'validation against common fixture', 'caliperEntityMultiselectScale.json'
 end

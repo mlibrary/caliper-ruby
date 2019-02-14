@@ -15,27 +15,29 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative '../../contexts'
+require_relative '../entity'
+require_relative '../entity_type'
+
+#
+# A feedback rating.
+#
 module Caliper
-  module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FEEDBACK = 'FeedbackEvent'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      RESOURCE_MANAGEMENT = 'ResourceManagementEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SEARCH = 'SearchEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
+  module Entities
+    module Feedback
+      class Rating < Entity
+
+        caliper_type Caliper::Entities::EntityType::RATING
+
+        caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
+
+        caliper_property :rater, type: Caliper::Entities::EntityType::PERSON
+        caliper_property :rated, type: Caliper::Entities::EntityType::ENTITY
+        caliper_property :scale, type: Caliper::Entities::EntityType::SCALE
+        caliper_property :selections, default: []
+        caliper_property :ratingComment, type: Caliper::Entities::EntityType::COMMENT
+
+      end
     end
   end
 end
