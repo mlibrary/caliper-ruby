@@ -19,9 +19,15 @@ gem 'uuid'
 # REST client
 gem 'rest-client', '~> 1.7.3'
 
-# Gems for Testing
-gem 'test-unit'
-gem 'simplecov', :require => false, :group => :test
-gem 'simplecov-rcov', :require => false, :group => :test
-gem 'mocha', '~> 1.1.0'
-gem 'json_spec'
+group :development do
+  # irb is not bundled with ruby 2.6+, so add for development convenience
+  gem 'irb', require: false
+end
+
+group :development, :test do
+  gem 'test-unit'
+  gem 'simplecov', :require => false, :group => :test
+  gem 'simplecov-rcov', :require => false, :group => :test
+  gem 'mocha', '~> 1.1.0'
+  gem 'json_spec'
+end
