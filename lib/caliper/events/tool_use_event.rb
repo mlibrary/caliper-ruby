@@ -20,7 +20,7 @@ require_relative './event_context'
 require_relative './event_type'
 
 #
-# Representation of a thread event.
+# Representation of a tool use event.
 #
 module Caliper
   module Events

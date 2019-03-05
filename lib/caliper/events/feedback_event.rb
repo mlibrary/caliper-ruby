@@ -15,27 +15,23 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative '../contexts'
+require_relative './event'
+require_relative './event_context'
+require_relative './event_type'
+
+#
+# Representation of a feedback event.
+#
 module Caliper
   module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FEEDBACK = 'FeedbackEvent'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      RESOURCE_MANAGEMENT = 'ResourceManagementEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SEARCH = 'SearchEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
+    class FeedbackEvent < Event
+      include Caliper::Events::EventContext
+
+      caliper_type Caliper::Events::EventType::FEEDBACK
+
+      caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
+
     end
   end
 end

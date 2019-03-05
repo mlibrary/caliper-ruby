@@ -15,27 +15,22 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-module Caliper
-  module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FEEDBACK = 'FeedbackEvent'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      RESOURCE_MANAGEMENT = 'ResourceManagementEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SEARCH = 'SearchEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
-    end
+require 'spec_helper'
+
+describe Caliper::Entities::Session::Session do
+  subject do
+    described_class.new(
+      id: 'https://example.edu/sessions/1f6442a482de72ea6ad134943812bff564a76259',
+      user: actor,
+      startedAtTime: '2016-09-15T10:00:00.000Z'
+    )
   end
+
+  let(:actor) do
+    Caliper::Entities::Agent::Person.new(
+      id: 'https://example.edu/users/554433',
+    )
+  end
+
+  include_examples 'validation against common fixture', 'caliperEntitySession.json', optimize: :none
 end

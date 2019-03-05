@@ -15,27 +15,28 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative '../../contexts'
+require_relative '../entity'
+require_relative '../entity_type'
+require_relative 'scale'
+
+#
+# A likert scale.
+#
 module Caliper
-  module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FEEDBACK = 'FeedbackEvent'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      RESOURCE_MANAGEMENT = 'ResourceManagementEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SEARCH = 'SearchEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
+  module Entities
+    module Feedback
+      class LikertScale < Scale
+
+        caliper_type Caliper::Entities::EntityType::LIKERT_SCALE
+
+        caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
+
+        caliper_property :points
+        caliper_property :itemLabels, default: []
+        caliper_property :itemValues, default: []
+
+      end
     end
   end
 end

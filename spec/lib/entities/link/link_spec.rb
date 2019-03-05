@@ -15,27 +15,14 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-module Caliper
-  module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FEEDBACK = 'FeedbackEvent'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      RESOURCE_MANAGEMENT = 'ResourceManagementEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SEARCH = 'SearchEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
-    end
+require 'spec_helper'
+
+describe Caliper::Entities::Link::Link do
+  subject do
+    described_class.new(
+      id: 'https://example.edu/terms/201801/courses/7/sections/1/pages/1'
+    )
   end
+
+  include_examples 'validation against common fixture', 'caliperEntityLink.json', optimize: :none
 end

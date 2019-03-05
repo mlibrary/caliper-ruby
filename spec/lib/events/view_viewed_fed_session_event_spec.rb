@@ -89,37 +89,26 @@ describe Caliper::Events::ViewEvent do
       id: 'urn:uuid:1c519ff7-3dfa-4764-be48-d2fb35a2925a',
       user: actor,
       messageParameters: {
-        lti_message_type: 'basic-lti-launch-request',
-        lti_version: 'LTI-2p0',
-        context_id: '4f1a161f-59c3-43e5-be37-445ad09e3f76',
-        context_type: 'CourseSection',
-        resource_link_id: '6b37a950-42c9-4117-8f4f-03e6e5c88d24',
+        lti_message_type: "basic-lti-launch-request",
+        lti_version: "LTI-1p0",
+        context_id: "4f1a161f-59c3-43e5-be37-445ad09e3f76",
+        context_type: "urn:lti:context-type:ims/lis/CourseSection",
+        context_label: "SI182",
+        context_title: "Design of Personal Environments",
+        resource_link_id: "6b37a950-42c9-4117-8f4f-03e6e5c88d24",
         roles: [
-          'Learner'
+            "urn:lti:role:ims/lis/Learner"
         ],
-        user_id: '0ae836b9-7fc9-4060-006f-27b2066ac545',
-        custom: {
-          caliper_profile_url: 'https://example.edu/lti/tc/cps',
-          caliper_session_id: '1c519ff7-3dfa-4764-be48-d2fb35a2925a',
-          tool_consumer_instance_url: 'https://example.edu'
-        },
-        ext: {
-          edu_example_course_section: group,
-          edu_example_course_section_instructor: 'https://example.edu/faculty/1234',
-          edu_example_course_section_learner: actor,
-          edu_example_course_section_roster: membership
-        }
+        tool_consumer_instance_guid: "SomeLMS.example.edu",
+        tool_consumer_instance_description: "Sample University (SomeLMS)",
+        user_id: "0ae836b9-7fc9-4060-006f-27b2066ac545",
+        custom_xstart: "2016-08-21T01:00:00Z",
+        ext_com_somelms_example_course_section_instructor: "https://example.edu/faculty/1234"
       },
       dateCreated: '2016-11-15T10:15:00.000Z',
       startedAtTime: '2016-11-15T10:15:00.000Z'
     )
   end
 
-  include_examples(
-    'validation against common fixture',
-    'caliperEventViewViewedFedSession.json',
-    # The fixture serializes event properties out of alphabetical order, resulting in a different
-    # optimization structure.
-    excluding: ['membership', 'edu_example_course_section', 'edu_example_course_section_roster']
-  )
+  include_examples('validation against common fixture', 'caliperEventViewViewedFedSession.json')
 end

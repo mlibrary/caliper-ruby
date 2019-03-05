@@ -15,27 +15,30 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-module Caliper
-  module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FEEDBACK = 'FeedbackEvent'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      RESOURCE_MANAGEMENT = 'ResourceManagementEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SEARCH = 'SearchEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
-    end
+require 'spec_helper'
+
+describe Caliper::Entities::Search::Query do
+  subject do
+    described_class.new(
+      id: 'https://example.edu/users/554433/search?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29',
+      creator: actor,
+      searchTarget: search_target,
+      searchTerms: 'IMS AND (Caliper OR Analytics)',
+      dateCreated: '2018-11-15T10:05:00.000Z',
+    )
   end
+
+  let(:actor) do
+    Caliper::Entities::Agent::Person.new(
+      id: 'https://example.edu/users/554433',
+    )
+  end
+
+  let(:search_target) do
+    Caliper::Entities::Agent::SoftwareApplication.new(
+      id: 'https://example.edu/catalog',
+    )
+  end
+
+  include_examples 'validation against common fixture', 'caliperEntityQuery.json', optimize: :none
 end

@@ -15,27 +15,25 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
+require_relative '../../contexts'
+require_relative '../resource/digital_resource'
+require_relative '../entity_type'
+
+#
+# A LTI Link.
+#
 module Caliper
-  module Events
-    module EventType
-      ANNOTATION = 'AnnotationEvent'
-      ASSESSMENT = 'AssessmentEvent'
-      ASSESSMENT_ITEM = 'AssessmentItemEvent'
-      ASSIGNABLE = 'AssignableEvent'
-      EVENT = 'Event'
-      FEEDBACK = 'FeedbackEvent'
-      FORUM = 'ForumEvent'
-      GRADE = 'GradeEvent'
-      RESOURCE_MANAGEMENT = 'ResourceManagementEvent'
-      MEDIA = 'MediaEvent'
-      MESSAGE = 'MessageEvent'
-      NAVIGATION = 'NavigationEvent'
-      SEARCH = 'SearchEvent'
-      SESSION = 'SessionEvent'
-      THREAD = 'ThreadEvent'
-      TOOL_LAUNCH = 'ToolLaunchEvent'
-      TOOL_USE = 'ToolUseEvent'
-      VIEW = 'ViewEvent'
+  module Entities
+    module Link
+      class LtiLink < Caliper::Entities::Resource::DigitalResource
+
+        caliper_type Caliper::Entities::EntityType::LTI_LINK
+
+        caliper_context Caliper::Contexts::TOOL_LAUNCH_PROFILE_EXTENSION
+
+        caliper_property :messageType
+
+      end
     end
   end
 end
