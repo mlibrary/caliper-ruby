@@ -21,20 +21,23 @@ require_relative '../entity_type'
 require_relative 'scale'
 
 #
-# A likert scale.
+# A multiselection scale.
 #
 module Caliper
   module Entities
-    module Feedback
-      class LikertScale < Scale
+    module Scale
+      class MultiselectScale < Scale
 
-        caliper_type Caliper::Entities::EntityType::LIKERT_SCALE
+        caliper_type Caliper::Entities::EntityType::MULTISELECT_SCALE
 
         caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
 
-        caliper_property :points
+        caliper_property :scalePoints
         caliper_property :itemLabels, default: []
         caliper_property :itemValues, default: []
+        caliper_property :isOrderedSelection
+        caliper_property :minSelections
+        caliper_property :maxSelections
 
       end
     end

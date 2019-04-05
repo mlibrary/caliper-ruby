@@ -15,16 +15,28 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'spec_helper'
+require_relative '../../contexts'
+require_relative '../entity'
+require_relative '../entity_type'
+require_relative 'scale'
 
-describe Caliper::Entities::Feedback::Scale do
-  subject do
-    described_class.new(
-      id: 'https://example.edu/scale/1',
-      question: 'How would you rate this?',
-      dateCreated: '2018-08-01T06:00:00.000Z'
-    )
+#
+# A likert scale.
+#
+module Caliper
+  module Entities
+    module Scale
+      class LikertScale < Scale
+
+        caliper_type Caliper::Entities::EntityType::LIKERT_SCALE
+
+        caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
+
+        caliper_property :scalePoints
+        caliper_property :itemLabels, default: []
+        caliper_property :itemValues, default: []
+
+      end
+    end
   end
-
-  include_examples 'validation against common fixture', 'caliperEntityScale.json'
 end

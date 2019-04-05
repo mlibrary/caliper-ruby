@@ -15,25 +15,15 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../contexts'
-require_relative '../entity'
-require_relative '../entity_type'
+require 'spec_helper'
 
-#
-# A scale.
-#
-module Caliper
-  module Entities
-    module Feedback
-      class Scale < Entity
-
-        caliper_type Caliper::Entities::EntityType::SCALE
-
-        caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
-
-        caliper_property :question
-
-      end
-    end
+describe Caliper::Entities::Question::Question do
+  subject do
+    described_class.new(
+      id: 'https://example.edu/question/1',
+      questionPosed: 'How would you rate this?'
+    )
   end
+
+  include_examples 'validation against common fixture', 'caliperEntityQuestion.json'
 end

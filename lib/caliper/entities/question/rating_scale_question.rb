@@ -18,24 +18,21 @@
 require_relative '../../contexts'
 require_relative '../entity'
 require_relative '../entity_type'
+require_relative 'question'
 
 #
-# A feedback rating.
+# A rating scale question.
 #
 module Caliper
   module Entities
-    module Feedback
-      class Rating < Entity
+    module Question
+      class RatingScaleQuestion < Question
 
-        caliper_type Caliper::Entities::EntityType::RATING
+        caliper_type Caliper::Entities::EntityType::RATING_SCALE_QUESTION
 
         caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
 
-        caliper_property :rater, type: Caliper::Entities::EntityType::PERSON
-        caliper_property :rated, type: Caliper::Entities::EntityType::ENTITY
-        caliper_property :question, type: Caliper::Entities::EntityType::QUESTION
-        caliper_property :selections, default: []
-        caliper_property :ratingComment, type: Caliper::Entities::EntityType::COMMENT
+        caliper_property :scale, type: Caliper::Entities::EntityType::SCALE
 
       end
     end

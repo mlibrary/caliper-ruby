@@ -17,20 +17,18 @@
 
 require 'spec_helper'
 
-describe Caliper::Entities::Feedback::MultiselectScale do
+describe Caliper::Entities::Scale::NumericScale do
   subject do
     described_class.new(
-      id: 'https://example.edu/scale/3',
-      points: 5,
-      question: 'How do you feel about this content? (select one or more)',
-      itemLabels: ["😁", "😀", "😐", "😕", "😞"],
-      itemValues: ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
-      orderedSelection: false,
-      minSelections: 1,
-      maxSelections: 5,
+      id: 'https://example.edu/scale/4',
+      minValue: 0.0,
+      minLabel: 'Disliked',
+      maxValue: 10.0,
+      maxLabel: 'Liked',
+      step: 0.5,
       dateCreated: '2018-08-01T06:00:00.000Z'
     )
   end
 
-  include_examples 'validation against common fixture', 'caliperEntityMultiselectScale.json'
+  include_examples 'validation against common fixture', 'caliperEntityNumericScale.json'
 end

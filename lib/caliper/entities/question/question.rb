@@ -15,18 +15,25 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require 'spec_helper'
+require_relative '../../contexts'
+require_relative '../entity'
+require_relative '../entity_type'
 
-describe Caliper::Entities::Feedback::LikertScale do
-  subject do
-    described_class.new(
-      id: 'https://example.edu/scale/2',
-      points: 4,
-      question: 'Do you agree with the opinion presented?',
-      itemLabels: ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-      itemValues: [-2, -1, 1, 2]
-    )
+#
+# A question.
+#
+module Caliper
+  module Entities
+    module Question
+      class Question < Entity
+
+        caliper_type Caliper::Entities::EntityType::QUESTION
+
+        caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
+
+        caliper_property :questionPosed
+
+      end
+    end
   end
-
-  include_examples 'validation against common fixture', 'caliperEntityLikertScale.json'
 end

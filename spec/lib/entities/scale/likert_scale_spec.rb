@@ -17,19 +17,15 @@
 
 require 'spec_helper'
 
-describe Caliper::Entities::Feedback::NumericScale do
+describe Caliper::Entities::Scale::LikertScale do
   subject do
     described_class.new(
-      id: 'https://example.edu/scale/4',
-      question: 'How do you feel about this content?',
-      minValue: 0.0,
-      minLabel: 'Disliked',
-      maxValue: 10.0,
-      maxLabel: 'Liked',
-      step: 0.5,
-      dateCreated: '2018-08-01T06:00:00.000Z'
+      id: 'https://example.edu/scale/2',
+      scalePoints: 4,
+      itemLabels: ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
+      itemValues: [-2, -1, 1, 2]
     )
   end
 
-  include_examples 'validation against common fixture', 'caliperEntityNumericScale.json'
+  include_examples 'validation against common fixture', 'caliperEntityLikertScale.json'
 end

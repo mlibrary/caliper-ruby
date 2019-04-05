@@ -18,25 +18,18 @@
 require_relative '../../contexts'
 require_relative '../entity'
 require_relative '../entity_type'
-require_relative 'scale'
 
 #
-# A numeric scale.
+# A scale.
 #
 module Caliper
   module Entities
-    module Feedback
-      class NumericScale < Scale
+    module Scale
+      class Scale < Entity
 
-        caliper_type Caliper::Entities::EntityType::NUMERIC_SCALE
+        caliper_type Caliper::Entities::EntityType::SCALE
 
         caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
-
-        caliper_property :minValue
-        caliper_property :minLabel
-        caliper_property :maxValue
-        caliper_property :maxLabel
-        caliper_property :step
 
       end
     end

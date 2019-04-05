@@ -23,7 +23,7 @@ describe Caliper::Entities::Feedback::Rating do
       id: 'https://example.edu/users/554433/rating/1',
       rater: actor,
       rated: object,
-      scale: scale,
+      question: question,
       selections: ["1"],
       ratingComment: comment,
       dateCreated: '2018-08-01T06:00:00.000Z',
@@ -70,11 +70,18 @@ describe Caliper::Entities::Feedback::Rating do
     )
   end
 
+  let(:question) do
+    Caliper::Entities::Question::RatingScaleQuestion.new(
+        id: 'https://example.edu/question/2',
+        questionPosed: 'Do you agree with the opinion presented?',
+        scale: scale
+    )
+  end
+
   let(:scale) do
-    Caliper::Entities::Feedback::LikertScale.new(
+    Caliper::Entities::Scale::LikertScale.new(
       id: 'https://example.edu/scale/2',
-      points: 4,
-      question: 'Do you agree with the opinion presented?',
+      scalePoints: 4,
       itemLabels: ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
       itemValues: [-2, -1, 1, 2]
     )

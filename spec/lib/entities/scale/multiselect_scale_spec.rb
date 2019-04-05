@@ -15,29 +15,21 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program. If not, see http://www.gnu.org/licenses/.
 
-require_relative '../../contexts'
-require_relative '../entity'
-require_relative '../entity_type'
+require 'spec_helper'
 
-#
-# A feedback rating.
-#
-module Caliper
-  module Entities
-    module Feedback
-      class Rating < Entity
-
-        caliper_type Caliper::Entities::EntityType::RATING
-
-        caliper_context Caliper::Contexts::FEEDBACK_PROFILE_EXTENSION
-
-        caliper_property :rater, type: Caliper::Entities::EntityType::PERSON
-        caliper_property :rated, type: Caliper::Entities::EntityType::ENTITY
-        caliper_property :question, type: Caliper::Entities::EntityType::QUESTION
-        caliper_property :selections, default: []
-        caliper_property :ratingComment, type: Caliper::Entities::EntityType::COMMENT
-
-      end
-    end
+describe Caliper::Entities::Scale::MultiselectScale do
+  subject do
+    described_class.new(
+      id: 'https://example.edu/scale/3',
+      scalePoints: 5,
+      itemLabels: ["😁", "😀", "😐", "😕", "😞"],
+      itemValues: ["superhappy", "happy", "indifferent", "unhappy", "disappointed"],
+      isOrderedSelection: false,
+      minSelections: 1,
+      maxSelections: 5,
+      dateCreated: '2018-08-01T06:00:00.000Z'
+    )
   end
+
+  include_examples 'validation against common fixture', 'caliperEntityMultiselectScale.json'
 end
