@@ -29,6 +29,23 @@ module Caliper
 
       caliper_type Caliper::Events::EventType::TOOL_USE
 
+      caliper_property :object,     type: Caliper::Entities::EntityType::SOFTWARE_APPLICATION
+      caliper_property :target,     type: Caliper::Entities::EntityType::SOFTWARE_APPLICATION
+      caliper_property :generated,  type: Caliper::Entities::EntityType::AGGREGATE_MEASURE_COLLECTION
+
+      # During object initialization, set properties from the options hash, falling back to class-defined defaults
+      # when not specified.
+      def initialize_properties(opts)
+        self.class.properties.each do |prop_key, prop_attributes|
+          value = opts.has_key?(prop_key) ? opts[prop_key] : self.class.safe_dup(prop_attributes[:default])
+          send "#{prop_key}=", value
+
+          if prop_key == :generated && ! value.nil?
+            @context = Caliper::Contexts::TOOL_USE_PROFILE_EXTENSION
+          end
+        end
+      end
+
     end
   end
 end

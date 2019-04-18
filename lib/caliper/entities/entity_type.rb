@@ -19,6 +19,8 @@ module Caliper
   module Entities
     module EntityType
       AGENT = 'Agent'
+      AGGREGATE_MEASURE = 'AggregateMeasure'
+      AGGREGATE_MEASURE_COLLECTION = 'AggregateMeasureCollection'
       ANNOTATION = 'Annotation'
       ASSESSMENT = 'Assessment'
       ASSESSMENT_ITEM = 'AssessmentItem'
@@ -27,6 +29,7 @@ module Caliper
       AUDIO_OBJECT = 'AudioObject'
       BOOKMARK_ANNOTATION = 'BookmarkAnnotation'
       CHAPTER = 'Chapter'
+      COLLECTION = 'Collection'
       COMMENT = 'Comment'
       COURSE_OFFERING = 'CourseOffering'
       COURSE_SECTION = 'CourseSection'

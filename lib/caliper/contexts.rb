@@ -31,12 +31,14 @@ module Caliper
     RESOURCE_MANAGEMENT_EXTENSION = 'http://purl.imsglobal.org/ctx/caliper/v1p1/ResourceManagementProfile-extension'
     SEARCH_PROFILE_EXTENSION = 'http://purl.imsglobal.org/ctx/caliper/v1p1/SearchProfile-extension'
     TOOL_LAUNCH_PROFILE_EXTENSION = 'http://purl.imsglobal.org/ctx/caliper/v1p1/ToolLaunchProfile-extension'
+    TOOL_USE_PROFILE_EXTENSION = 'http://purl.imsglobal.org/ctx/caliper/v1p1/ToolUseProfile-extension'
     CONTEXTS = [
         CONTEXT,
         FEEDBACK_PROFILE_EXTENSION,
         RESOURCE_MANAGEMENT_EXTENSION,
         SEARCH_PROFILE_EXTENSION,
-        TOOL_LAUNCH_PROFILE_EXTENSION
+        TOOL_LAUNCH_PROFILE_EXTENSION,
+        TOOL_USE_PROFILE_EXTENSION
     ]
 
     attr_accessor :context
