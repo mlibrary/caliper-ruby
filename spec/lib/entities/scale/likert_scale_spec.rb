@@ -23,7 +23,7 @@ describe Caliper::Entities::Scale::LikertScale do
       id: 'https://example.edu/scale/2',
       scalePoints: 4,
       itemLabels: ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-      itemValues: [-2, -1, 1, 2]
+      itemValues: ["-2", "-1", "1", "2"]
     )
   end
 

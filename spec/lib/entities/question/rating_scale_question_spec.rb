@@ -31,7 +31,7 @@ describe Caliper::Entities::Question::RatingScaleQuestion do
       id: 'https://example.edu/scale/2',
       scalePoints: 4,
       itemLabels: ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"],
-      itemValues: [-2, -1, 1, 2],
+      itemValues: ["-2", "-1", "1", "2"],
       dateCreated: '2018-08-01T06:00:00.000Z'
     )
   end
