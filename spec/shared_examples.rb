@@ -19,7 +19,7 @@ shared_examples 'validation against common fixture' do |fixture_filename, option
   options ||= {}
 
   # Load fixture JSON from caliper-common-fixtures, which should be symlinked under spec/fixtures.
-  let(:fixture_json) { File.read("spec/fixtures/#{fixture_filename}") }
+  let(:fixture_json) { File.read(File.join(FIXTURE_DIR, fixture_filename) ) }
 
   it 'should be equal in serialized form' do
     json = subject.to_json(options)
@@ -36,7 +36,7 @@ shared_examples 'payload validation against common fixture' do |fixture_filename
   options ||= {}
 
   # Load fixture JSON from caliper-common-fixtures, which should be symlinked under spec/fixtures.
-  let(:fixture_json) { File.read("spec/fixtures/#{fixture_filename}") }
+  let(:fixture_json) { File.read( File.join(FIXTURE_DIR, fixture_filename) ) }
 
   let(:caliper_options) { Caliper::Options.new }
   let(:sensor) { Caliper::Sensor.new(sensor_id, caliper_options) }

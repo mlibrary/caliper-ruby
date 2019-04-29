@@ -111,7 +111,7 @@ describe Caliper::Request::Envelope do
 
     # Load JSON from caliper-common-fixtures for comparison
     # NOTE - sym link to caliper-common-fixtures needs to exist under spec/fixtures
-    json_string = File.read('spec/fixtures/caliperEnvelopeEventSingle.json')
+    json_string = File.read(File.join(FIXTURE_DIR, 'caliperEnvelopeEventSingle.json'))
     expect(json_payload).to be_json_eql(json_string)
   end
 end
