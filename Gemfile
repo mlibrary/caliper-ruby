@@ -30,4 +30,5 @@ group :development, :test do
   gem 'simplecov-rcov', :require => false, :group => :test
   gem 'mocha', '~> 1.1.0'
   gem 'json_spec'
+  gem 'rake'
 end

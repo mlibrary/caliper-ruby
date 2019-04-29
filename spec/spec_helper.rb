@@ -21,6 +21,14 @@ require 'simplecov'
 require 'simplecov-rcov'
 
 require_relative '../lib/caliper'
+
+unless defined? FIXTURE_DIR
+  FIXTURE_DIR_1_0 = "spec/fixtures/v1p0/"
+  FIXTURE_DIR_1_1 = "spec/fixtures/v1p1/"
+  FIXTURE_DIR_1_2 = "spec/fixtures/v1p2/"
+  FIXTURE_DIR = FIXTURE_DIR_1_1
+end
+
 require 'shared_examples'
 
 # Do not exclude 'id' keys from comparison.

@@ -1,5 +1,7 @@
 # IMS Global Learning Consortium, Inc.
 
+[![Build Status](https://travis-ci.org/IMSGlobal/caliper-ruby.svg?branch=develop)](https://travis-ci.org/IMSGlobal/caliper-ruby)
+
 # caliper-ruby
 
 The [Caliper Analytics&reg; Specification](https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1) 
@@ -40,10 +42,11 @@ development machine.
 
 #### Note
 To run specs, you need to clone [caliper-common-fixtures](https://github.com/IMSGlobal/caliper-common-fixtures) 
-at the same level as *caliper-ruby*. Then create a symlink similar to
+at the same level as *caliper-ruby*. This library is currently setup to run against the `develop` branch of the
+ fixtures repo, so check that out. Then create a symlink similar to
 
 ```
-➜ caliper-ruby git:(master) ln -s ../../caliper-common-fixtures/src/test/resources/fixtures ./spec/fixtures
+➜ caliper-ruby git:(develop) ln -s ../../caliper-common-fixtures ./spec/fixtures
 
 ```
 
