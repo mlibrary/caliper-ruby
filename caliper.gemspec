@@ -17,4 +17,10 @@ Gem::Specification.new do |g|
   g.executables   = g.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   g.test_files    = g.files.grep(%r{^(test|spec|features)/})
   g.require_path = 'lib'
+
+  g.add_dependency 'require_all'
+  g.add_dependency 'concurrent-ruby'
+  g.add_dependency 'i18n'
+  g.add_dependency 'uuid'
+  g.add_dependency 'rest-client'
 end
