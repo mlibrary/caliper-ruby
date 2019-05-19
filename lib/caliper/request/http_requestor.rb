@@ -28,15 +28,27 @@ module Caliper
 
       attr_accessor :options
 
+      ##
+      # Create a new HttpRequestor
+      #
+      # @param options [Hash] expects 'host' and 'auth_token' keys/values
+      #                       'host' - The URL to send the JSON to
+      #                       'auth_token' - The value for the Authorization header's bearer token
+      #
+      # @return [String] the object converted into the expected format.
       def initialize(options)
         @options = options
       end
 
+      # Send the Caliper request via POST to a service endpoint
+      #
+      # @param sensor [Caliper::Sensor]
+      # @param data [Hash]
       def send(sensor, data)
         payload = generate_payload(sensor, data)
 
         # What about the api key (authorization)?
-        RestClient.post @options['host'], payload, :content_type => :json, :accept => :json
+        RestClient.post @options['host'], payload, :content_type => :json, :accept => :json, :authorization => "Bearer #{options['auth_token']}"
       end
     end
   end
