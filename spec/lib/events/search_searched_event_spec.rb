@@ -57,12 +57,7 @@ describe Caliper::Events::SearchEvent do
         searchProvider: search_provider,
         searchTarget: object,
         query: query,
-        searchResultsItemCount: 3,
-        searchResults: [
-            'https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29',
-            'https://example.edu/catalog/record/09876?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29',
-            'https://example.edu/catalog/record/05432?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29'
-        ]
+        searchResultsItemCount: 3
     )
   end
 

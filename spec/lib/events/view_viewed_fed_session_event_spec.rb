@@ -23,7 +23,7 @@ describe Caliper::Events::ViewEvent do
       action: Caliper::Actions::VIEWED,
       actor: actor,
       edApp: ed_app,
-      eventTime: '2016-11-15T10:20:00.000Z',
+      eventTime: '2018-11-15T10:20:00.000Z',
       federatedSession: federated_session,
       group: group,
       id: 'urn:uuid:4be6d29d-5728-44cd-8a8f-3d3f07e46b61',
@@ -47,7 +47,7 @@ describe Caliper::Events::ViewEvent do
 
   let(:group) do
     Caliper::Entities::LIS::CourseSection.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1',
+      id: 'https://example.edu/terms/201801/courses/7/sections/1',
       extensions: {
         edu_example_course_section_instructor: 'https://example.edu/faculty/1234'
       }
@@ -56,14 +56,14 @@ describe Caliper::Events::ViewEvent do
 
   let(:membership) do
     Caliper::Entities::LIS::Membership.new(
-      id: 'https://example.edu/terms/201601/courses/7/sections/1/rosters/1',
+      id: 'https://example.edu/terms/201801/courses/7/sections/1/rosters/1',
       member: actor,
       organization: group,
       roles: [
         Caliper::Entities::LIS::Role::LEARNER
       ],
       status: Caliper::Entities::LIS::Status::ACTIVE,
-      dateCreated: '2016-08-01T06:00:00.000Z'
+      dateCreated: '2018-08-01T06:00:00.000Z'
     )
   end
 
@@ -72,15 +72,15 @@ describe Caliper::Events::ViewEvent do
       id: 'https://example.com/lti/reader/202.epub',
       name: 'Caliper Case Studies',
       mediaType: 'application/epub+zip',
-      dateCreated: '2016-08-01T09:00:00.000Z'
+      dateCreated: '2018-08-01T09:00:00.000Z'
     )
   end
 
   let(:session) do
     Caliper::Entities::Session::Session.new(
-      dateCreated: '2016-11-15T10:20:00.000Z',
+      dateCreated: '2018-11-15T10:20:00.000Z',
       id: 'https://example.com/sessions/c25fd3da-87fa-45f5-8875-b682113fa5ee',
-      startedAtTime: '2016-11-15T10:20:00.000Z'
+      startedAtTime: '2018-11-15T10:20:00.000Z'
     )
   end
 
@@ -146,8 +146,8 @@ describe Caliper::Events::ViewEvent do
         },
         "https://purl.imsglobal.org/spec/lti/claim/lis": {
             "person_sourcedid": "example.edu:71ee7e42-f6d2-414a-80db-b69ac2defd4",
-            "course_offering_sourcedid": "example.edu:SI182-F16",
-            "course_section_sourcedid": "example.edu:SI182-001-F16"
+            "course_offering_sourcedid": "example.edu:SI182-F18",
+            "course_section_sourcedid": "example.edu:SI182-001-F18"
         },
         "http://www.ExamplePlatformVendor.com/session": {
             "id": "89023sj890dju080"

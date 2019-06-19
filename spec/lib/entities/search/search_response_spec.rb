@@ -24,8 +24,7 @@ describe Caliper::Entities::Search::SearchResponse do
       searchProvider: search_provider,
       searchTarget: search_target,
       query: query,
-      searchResultsItemCount: search_results.length,
-      searchResults: search_results,
+      searchResultsItemCount: 3,
       dateCreated: '2018-11-15T10:05:00.000Z',
     )
   end
@@ -46,23 +45,6 @@ describe Caliper::Entities::Search::SearchResponse do
     Caliper::Entities::Agent::SoftwareApplication.new(
       id: 'https://example.edu/catalog',
     )
-  end
-
-  let(:search_results) do
-    [
-        Caliper::Entities::Reading::Document.new(
-          id: 'https://example.edu/catalog/record/01234?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29',
-          mediaType: 'application/pdf'
-        ),
-        Caliper::Entities::Resource::VideoObject.new(
-          id: 'https://example.edu/catalog/record/09876?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29',
-          mediaType: 'video/ogg'
-        ),
-        Caliper::Entities::Reading::Document.new(
-          id: 'https://example.edu/catalog/record/05432?query=IMS%20AND%20%28Caliper%20OR%20Analytics%29',
-          mediaType: 'application/epub+zip'
-        )
-    ]
   end
 
   let(:query) do
