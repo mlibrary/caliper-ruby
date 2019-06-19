@@ -2,6 +2,6 @@ language: ruby
 rvm:
   - 2.6.3
 before_script:
-  - wget https://github.com/IMSGlobal/caliper-common-fixtures/archive/develop.zip
+  - wget https://github.com/IMSGlobal/caliper-spec/archive/develop.zip
   - unzip develop.zip -d spec/
-  - mv spec/caliper-common-fixtures-develop spec/fixtures
+  - mv spec/caliper-spec-develop/fixtures spec/fixtures
