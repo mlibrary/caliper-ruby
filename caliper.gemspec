@@ -22,5 +22,5 @@ Gem::Specification.new do |g|
   g.add_dependency 'concurrent-ruby'
   g.add_dependency 'i18n'
   g.add_dependency 'uuid'
-  g.add_dependency 'rest-client', '~> 1.7.3'
+  g.add_dependency 'rest-client', '~> 2.0.2'
 end

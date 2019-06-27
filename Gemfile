@@ -17,7 +17,7 @@ gem 'i18n'
 gem 'uuid'
 
 # REST client
-gem 'rest-client', '~> 1.7.3'
+gem 'rest-client', '~> 2.0.2'
 
 group :development do
   # irb is not bundled with ruby 2.6+, so add for development convenience
